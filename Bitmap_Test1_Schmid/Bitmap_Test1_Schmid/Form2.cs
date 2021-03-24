@@ -30,7 +30,7 @@ namespace Bitmap_Test1_Schmid
 
 
                 // Loop through the images pixels to reset color.
-                for (x = 100; x < 500; x++)
+                for (x = 460; x < 1460; x++)
                 {
 
                     for (y = 145; y < 150; y++)
