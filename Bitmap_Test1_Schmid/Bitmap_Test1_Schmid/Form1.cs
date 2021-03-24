@@ -30,5 +30,9 @@ namespace Bitmap_Test1_Schmid
         {
             Environment.Exit(1);
         }
+
+        private void bestätigen_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

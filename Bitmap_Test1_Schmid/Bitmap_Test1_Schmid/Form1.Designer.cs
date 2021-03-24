@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
+            this.steps = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bestätigen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.button1.Location = new System.Drawing.Point(127, 72);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(96, 40);
             this.button1.TabIndex = 0;
@@ -41,12 +45,45 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // steps
+            // 
+            this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.steps.Location = new System.Drawing.Point(116, 22);
+            this.steps.Name = "steps";
+            this.steps.Size = new System.Drawing.Size(71, 32);
+            this.steps.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label1.Location = new System.Drawing.Point(18, 25);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(92, 26);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Schritte:";
+            // 
+            // bestätigen
+            // 
+            this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.bestätigen.Location = new System.Drawing.Point(23, 72);
+            this.bestätigen.Name = "bestätigen";
+            this.bestätigen.Size = new System.Drawing.Size(96, 40);
+            this.bestätigen.TabIndex = 3;
+            this.bestätigen.Text = "bestätigen";
+            this.bestätigen.UseVisualStyleBackColor = true;
+            this.bestätigen.Click += new System.EventHandler(this.bestätigen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(120, 64);
+            this.ClientSize = new System.Drawing.Size(235, 124);
+            this.Controls.Add(this.bestätigen);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.steps);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -58,12 +95,16 @@
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox steps;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bestätigen;
     }
 }
 
