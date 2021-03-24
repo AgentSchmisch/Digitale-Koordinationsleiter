@@ -28,7 +28,7 @@ namespace Bitmap_Test1_Schmid
 
         private void button1_Click(object sender, EventArgs e)
         {
-            screen.Close();
+            Environment.Exit(1);
         }
     }
 }

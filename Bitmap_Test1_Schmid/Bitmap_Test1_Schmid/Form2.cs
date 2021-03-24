@@ -30,10 +30,10 @@ namespace Bitmap_Test1_Schmid
 
 
                 // Loop through the images pixels to reset color.
-                for (x = 460; x < 1460; x++)
+                for (x = 0; x < image1.Width; x++)
                 {
 
-                    for (y = 145; y < 150; y++)
+                    for (y = 245; y < 250; y++)
                     {
 
 
@@ -48,21 +48,17 @@ namespace Bitmap_Test1_Schmid
 
                     for (y = 95; y < 100; y++)
                     {
-
-
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(169, 20, 20);
                         image1.SetPixel(x, y, newColor);
                     }
                 }
 
-                for (x = 50; x < 100; x++)
+                for (x = 150; x < 300; x++)
                 {
 
-                    for (y = 90; y < 160; y++)
+                    for (y = 90; y < 260; y++)
                     {
-
-
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(150, 100, 20, 160);
                         image1.SetPixel(x, y, newColor);
@@ -78,6 +74,16 @@ namespace Bitmap_Test1_Schmid
             {
                 MessageBox.Show("Fehler");
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 
