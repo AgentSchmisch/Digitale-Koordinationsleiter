@@ -19,35 +19,35 @@ namespace Bitmap_Test1_Schmid
         {
             InitializeComponent();
         }
-        Bitmap image1 = new Bitmap(1920,1080);
+        Bitmap image1 = new Bitmap(1920,1080); //1920 entspricht 5m = 500cm
         private void Form2_Load(object sender, EventArgs e)
         {
             try
             {
                 
-                for (x = 0; x < image1.Width; x++) //waagrecht oben
+                for (x = 0; x < image1.Width; x++)               //waagrecht oben
                 {
 
-                    for (y = 245; y < 250; y++)
+                    for (y = 445; y < 450; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(169, 20, 20);
+                        Color newColor = Color.FromArgb(255, 0, 0);
                         image1.SetPixel(x, y, newColor);
                     }
                 }
-                for (x = 0; x < image1.Width; x++) //waagrecht unten
+                for (x = 0; x < image1.Width; x++)              //waagrecht unten
                 {
 
-                    for (y = 95; y < 100; y++)
+                    for (y = 295; y < 300; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(169, 20, 20);
+                        Color newColor = Color.FromArgb(255, 0, 0);
                         image1.SetPixel(x, y, newColor);
                     }
                 }
 
-
-                for (x = 150; x < 300; x++)
+                /*
+                for (x = 150; x < 300; x++)                 //fläche
                 {
 
                     for (y = 90; y < 260; y++)
@@ -57,6 +57,7 @@ namespace Bitmap_Test1_Schmid
                         image1.SetPixel(x, y, newColor);
                     }
                 }
+                */
 
                 // Set the PictureBox to display the image.
                 pictureBox1.Image = image1;
@@ -79,23 +80,38 @@ namespace Bitmap_Test1_Schmid
 
         }
 
+        private void beenden_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
+        }
+
         private void bestätigen_Click(object sender, EventArgs e)
         {
             try
             {
-
                 schrittlänge = image1.Width / Int32.Parse(steps.Text);
                 // MessageBox.Show(schrittlänge.ToString());
                 schrittlängealt = schrittlänge;
 
-                while (schrittlänge+10 < image1.Width)
+
+                for (x = 0; x < image1.Width; x++) //alles löschen
+                {
+                    for (y = 300; y < 445; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(0, 0, 0);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }
+
+                while (schrittlänge+5 < image1.Width)
                 {
                     for (x = schrittlänge; x < schrittlänge + 5; x++) //senkrecht
                     {
-                        for (y = 100; y < 250; y++)
-                        {
+                        for (y = 300; y < 450; y++)
+                        {  
                             Color pixelColor = image1.GetPixel(x, y);
-                            Color newColor = Color.FromArgb(169, 20, 20);
+                            Color newColor = Color.FromArgb(255, 0, 0);
                             image1.SetPixel(x, y, newColor);
                         }
                     }
