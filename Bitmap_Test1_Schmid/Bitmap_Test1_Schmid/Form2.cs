@@ -12,8 +12,8 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Form2 : Form
     {
-        int schrittlänge = 100;
-        int schrittlängealt=100;
+        double schrittlänge = 100;
+        double schrittlängealt=100;
         int x, y;
         public Form2()
         {
@@ -89,7 +89,7 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
-                schrittlänge = image1.Width / Int32.Parse(steps.Text);
+                schrittlänge = image1.Width / Convert.ToDouble(steps.Text); 
                 // MessageBox.Show(schrittlänge.ToString());
                 schrittlängealt = schrittlänge;
 
@@ -106,7 +106,7 @@ namespace Bitmap_Test1_Schmid
 
                 while (schrittlänge+5 < image1.Width)
                 {
-                    for (x = schrittlänge; x < schrittlänge + 5; x++) //senkrecht
+                    for (x = Convert.ToInt32(schrittlänge); x < schrittlänge + 5; x++) //senkrecht
                     {
                         for (y = 300; y < 450; y++)
                         {  

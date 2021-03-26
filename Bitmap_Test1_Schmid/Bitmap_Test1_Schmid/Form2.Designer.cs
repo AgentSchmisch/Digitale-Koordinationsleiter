@@ -84,7 +84,7 @@ namespace Bitmap_Test1_Schmid
             this.steps.ForeColor = System.Drawing.Color.White;
             this.steps.Location = new System.Drawing.Point(144, 12);
             this.steps.Name = "steps";
-            this.steps.Size = new System.Drawing.Size(71, 38);
+            this.steps.Size = new System.Drawing.Size(78, 38);
             this.steps.TabIndex = 4;
             // 
             // beenden
