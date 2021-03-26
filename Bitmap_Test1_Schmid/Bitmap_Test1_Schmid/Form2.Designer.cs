@@ -33,17 +33,17 @@ namespace Bitmap_Test1_Schmid
             this.bestätigen = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.steps = new System.Windows.Forms.TextBox();
-            this.beenden = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 1);
+            this.pictureBox1.Location = new System.Drawing.Point(0, -1);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1920, 1078);
+            this.pictureBox1.Size = new System.Drawing.Size(1920, 1080);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
@@ -54,7 +54,7 @@ namespace Bitmap_Test1_Schmid
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.bestätigen.ForeColor = System.Drawing.Color.White;
-            this.bestätigen.Location = new System.Drawing.Point(45, 56);
+            this.bestätigen.Location = new System.Drawing.Point(50, 76);
             this.bestätigen.Name = "bestätigen";
             this.bestätigen.Size = new System.Drawing.Size(156, 70);
             this.bestätigen.TabIndex = 6;
@@ -87,28 +87,28 @@ namespace Bitmap_Test1_Schmid
             this.steps.Size = new System.Drawing.Size(78, 38);
             this.steps.TabIndex = 4;
             // 
-            // beenden
+            // button1
             // 
-            this.beenden.BackColor = System.Drawing.Color.Black;
-            this.beenden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.beenden.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.beenden.ForeColor = System.Drawing.Color.White;
-            this.beenden.Location = new System.Drawing.Point(1735, 958);
-            this.beenden.Name = "beenden";
-            this.beenden.Size = new System.Drawing.Size(157, 71);
-            this.beenden.TabIndex = 7;
-            this.beenden.Text = "Beenden";
-            this.beenden.UseVisualStyleBackColor = false;
-            this.beenden.Click += new System.EventHandler(this.beenden_Click);
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.button1.Location = new System.Drawing.Point(1822, -1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(98, 42);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.beenden);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.bestätigen);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.steps);
@@ -131,6 +131,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Button bestätigen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox steps;
-        private System.Windows.Forms.Button beenden;
+        private System.Windows.Forms.Button button1;
     }
 }

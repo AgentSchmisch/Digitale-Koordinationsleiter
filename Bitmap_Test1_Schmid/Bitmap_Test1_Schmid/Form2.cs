@@ -80,7 +80,7 @@ namespace Bitmap_Test1_Schmid
 
         }
 
-        private void beenden_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             Environment.Exit(1);
         }
