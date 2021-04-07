@@ -46,18 +46,6 @@ namespace Bitmap_Test1_Schmid
                     }
                 }
 
-                /*
-                for (x = 150; x < 300; x++)                 //fläche
-                {
-
-                    for (y = 90; y < 260; y++)
-                    {
-                        Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(150, 100, 20, 160);
-                        image1.SetPixel(x, y, newColor);
-                    }
-                }
-                */
 
                 // Set the PictureBox to display the image.
                 pictureBox1.Image = image1;
@@ -85,15 +73,37 @@ namespace Bitmap_Test1_Schmid
             Environment.Exit(1);
         }
 
+        private void regler_ValueChanged(object sender, EventArgs e)
+        {
+            reglertext.Text = regler.Value.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (x = 150; x < 400; x++)                 //fläche
+            {
+
+                for (y = 250; y < 480; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(150, 100, 20, 160);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }
+            pictureBox1.Image = image1;
+        }
+
         private void bestätigen_Click(object sender, EventArgs e)
         {
             try
             {
+               
+                regler.Maximum = Convert.ToInt32(steps.Text);
                 schrittlänge = image1.Width / Convert.ToDouble(steps.Text); 
                 // MessageBox.Show(schrittlänge.ToString());
                 schrittlängealt = schrittlänge;
 
-
+                
                 for (x = 0; x < image1.Width; x++) //alles löschen
                 {
                     for (y = 300; y < 445; y++)
@@ -103,7 +113,7 @@ namespace Bitmap_Test1_Schmid
                         image1.SetPixel(x, y, newColor);
                     }
                 }
-
+                
                 while (schrittlänge+5 < image1.Width)
                 {
                     for (x = Convert.ToInt32(schrittlänge); x < schrittlänge + 5; x++) //senkrecht
