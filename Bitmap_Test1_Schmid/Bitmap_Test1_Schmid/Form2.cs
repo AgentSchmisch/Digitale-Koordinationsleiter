@@ -12,7 +12,7 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Form2 : Form
     {
-        double schrittlänge = 100;
+        double[] schrittlänge = new double[100];
         double schrittlängealt=100;
         int x, y;
         public Form2()
@@ -80,7 +80,7 @@ namespace Bitmap_Test1_Schmid
 
         private void button2_Click(object sender, EventArgs e)
         {
-            for (x = 150; x < 400; x++)                 //fläche
+            for (x = 150; x < 300; x++)                 //fläche
             {
 
                 for (y = 250; y < 480; y++)
@@ -97,45 +97,65 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
-               
-                regler.Maximum = Convert.ToInt32(steps.Text);
-                schrittlänge = image1.Width / Convert.ToDouble(steps.Text); 
-                // MessageBox.Show(schrittlänge.ToString());
-                schrittlängealt = schrittlänge;
 
-                
+                regler.Maximum = Convert.ToInt32(steps.Text);
+                schrittlänge[1] = image1.Width / Convert.ToDouble(steps.Text);
+                // MessageBox.Show(schrittlänge.ToString());
+                schrittlängealt = schrittlänge[1];
+
+
                 for (x = 0; x < image1.Width; x++) //alles löschen
                 {
-                    for (y = 300; y < 445; y++)
+                    for (y = 250; y < 500; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(0, 0, 0);
                         image1.SetPixel(x, y, newColor);
                     }
                 }
-                
-                while (schrittlänge+5 < image1.Width)
+                for (x = 0; x < image1.Width; x++)               //waagrecht oben
                 {
-                    for (x = Convert.ToInt32(schrittlänge); x < schrittlänge + 5; x++) //senkrecht
+
+                    for (y = 445; y < 450; y++)
                     {
-                        for (y = 300; y < 450; y++)
-                        {  
-                            Color pixelColor = image1.GetPixel(x, y);
-                            Color newColor = Color.FromArgb(255, 0, 0);
-                            image1.SetPixel(x, y, newColor);
-                        }
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(255, 0, 0);
+                        image1.SetPixel(x, y, newColor);
                     }
-                    schrittlänge = schrittlänge + schrittlängealt;
+                }//waagrecht oben
+                for (x = 0; x < image1.Width; x++)              //waagrecht unten
+                {
+
+                    for (y = 295; y < 300; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(255, 0, 0);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }//waagrecht unten
+
+                for (int zähler = 0; zähler <= Convert.ToInt32(steps.Text); zähler++)
+                {
+                    while (schrittlänge[zähler]+5 < image1.Width)
+                    {
+                        for (x = Convert.ToInt32(schrittlänge[zähler]); x < schrittlänge[zähler] + 5; x++) //senkrecht
+                        {
+                            for (y = 300; y < 450; y++)
+                            {
+                                Color pixelColor = image1.GetPixel(x, y);
+                                Color newColor = Color.FromArgb(255, 0, 0);
+                                image1.SetPixel(x, y, newColor);
+                            }
+                        }
+                        schrittlänge[zähler] = schrittlänge[zähler] + schrittlängealt;
+                    }
+                    pictureBox1.Image = image1;                  
                 }
-                pictureBox1.Image = image1;
             }
             catch (ArgumentException)
             {
                 MessageBox.Show("Fehler");
             }
         }
-    }
-
-
-    
+    }  
 }
