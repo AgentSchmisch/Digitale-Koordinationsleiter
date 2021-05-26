@@ -12,12 +12,14 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Form2 : Form
     {
-        public double[] schrittlänge = new double[100];
+        public double[] schrittlänge = new double[500];
         public double schrittlängealt = 100;
         int x, y;
         public int waagrechtoben = 400;
-        public int waagrechtunten = 550;
+        public int waagrechtunten = 800;
         public int zähler = 0;
+        public int dicke = 10;
+        public static int sendvar = 0;
         public Form2()
         {
             InitializeComponent();
@@ -30,7 +32,7 @@ namespace Bitmap_Test1_Schmid
                 for (x = 0; x < image1.Width; x++)               //waagrecht unten
                 {
 
-                    for (y = waagrechtunten; y < waagrechtunten + 5; y++)
+                    for (y = waagrechtunten-dicke; y < waagrechtunten + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(255, 0, 0);
@@ -40,7 +42,7 @@ namespace Bitmap_Test1_Schmid
                 for (x = 0; x < image1.Width; x++)              //waagrecht oben
                 {
 
-                    for (y = waagrechtoben; y < waagrechtoben + 5; y++)
+                    for (y = waagrechtoben-dicke; y < waagrechtoben + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(255, 0, 0);
@@ -95,7 +97,7 @@ namespace Bitmap_Test1_Schmid
                 for (x = 0; x < image1.Width; x++)               //waagrecht unten
                 {
 
-                    for (y = waagrechtunten; y < waagrechtunten + 5; y++)
+                    for (y = waagrechtunten-dicke; y < waagrechtunten + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(255, 0, 0);
@@ -105,7 +107,7 @@ namespace Bitmap_Test1_Schmid
                 for (x = 0; x < image1.Width; x++)              //waagrecht oben
                 {
 
-                    for (y = waagrechtoben; y < waagrechtoben + 5; y++)
+                    for (y = waagrechtoben-dicke; y < waagrechtoben + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(255, 0, 0);
@@ -114,7 +116,7 @@ namespace Bitmap_Test1_Schmid
                 }//waagrechte oben
                 for (zähler = 0; zähler < Convert.ToDouble(steps.Text); zähler++)
                 {
-                    for (x = Convert.ToInt32(schrittlänge[zähler]); x < schrittlänge[zähler] + 5; x++) //senkrecht
+                    for (x = Convert.ToInt32(schrittlänge[zähler]); x < schrittlänge[zähler] +dicke+ 5; x++) //senkrecht
                     {
                         for (y = waagrechtoben; y < waagrechtunten; y++)
                         {
@@ -125,16 +127,25 @@ namespace Bitmap_Test1_Schmid
                     }
                     schrittlänge[zähler + 1] = schrittlänge[zähler] + schrittlängealt;
                 } //linien erneut anzeigen
-                for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglertext.Text)]); x < schrittlänge[Convert.ToInt32(reglertext.Text) + längebox.Value]; x++)                 //fläche
+                for (x = 1920 - dicke - 5; x < 1920; x++) //senkrecht
+                {
+                    for (y = waagrechtoben; y < waagrechtunten; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(255, 0, 0);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }//senkrechte am schluss automatisch
+                for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglertext.Text)])+dicke+5; x < schrittlänge[Convert.ToInt32(reglertext.Text) + längebox.Value]; x++)                 //fläche
                 {
 
                     for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(150, 100, 20, 160);
+                        Color newColor = Color.FromArgb(150, 150, 20, 255);
                         image1.SetPixel(x, y, newColor);
                     }
-                }
+                } //box
                 pictureBox1.Image = image1;
 
             }
@@ -153,7 +164,7 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
-
+                steps.Text = sendvar.ToString();
                 regler.Maximum = Convert.ToInt32(steps.Text) - 1;
                 schrittlänge[1] = image1.Width / Convert.ToDouble(steps.Text);
                 //MessageBox.Show(schrittlänge[1].ToString());
@@ -173,7 +184,7 @@ namespace Bitmap_Test1_Schmid
                 for (x = 0; x < image1.Width; x++)               //waagrecht oben
                 {
 
-                    for (y = waagrechtunten; y < waagrechtunten + 5; y++)
+                    for (y = waagrechtunten-dicke; y < waagrechtunten + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(255, 0, 0);
@@ -183,7 +194,7 @@ namespace Bitmap_Test1_Schmid
                 for (x = 0; x < image1.Width; x++)              //waagrecht unten
                 {
 
-                    for (y = waagrechtoben; y < waagrechtoben + 5; y++)
+                    for (y = waagrechtoben-dicke; y < waagrechtoben + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(255, 0, 0);
@@ -193,7 +204,7 @@ namespace Bitmap_Test1_Schmid
 
                 for (zähler = 0; zähler < Convert.ToDouble(steps.Text); zähler++)
                 {
-                    for (x = Convert.ToInt32(schrittlänge[zähler]); x < schrittlänge[zähler] + 5; x++) //senkrecht
+                    for (x = Convert.ToInt32(schrittlänge[zähler]); x < schrittlänge[zähler] + dicke+5; x++) //senkrecht
                     {
                         for (y = waagrechtoben; y < waagrechtunten; y++)
                         {
@@ -203,7 +214,17 @@ namespace Bitmap_Test1_Schmid
                         }
                     }
                     schrittlänge[zähler + 1] = schrittlänge[zähler] + schrittlängealt;
-                }
+                }//senkrecht
+
+                for (x = 1920-dicke-5; x <1920; x++) //senkrecht
+                {
+                    for (y = waagrechtoben; y < waagrechtunten; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(255, 0, 0);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }//senkrechte am schluss automatisch
                 pictureBox1.Image = image1;
             }
             catch (ArgumentException)

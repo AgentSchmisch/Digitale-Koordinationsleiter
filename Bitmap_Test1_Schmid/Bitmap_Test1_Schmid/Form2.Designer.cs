@@ -94,7 +94,7 @@ namespace Bitmap_Test1_Schmid
             this.steps.Name = "steps";
             this.steps.Size = new System.Drawing.Size(78, 38);
             this.steps.TabIndex = 4;
-            this.steps.Text = "12";
+            this.steps.Text = "5";
             // 
             // button1
             // 
@@ -216,9 +216,7 @@ namespace Bitmap_Test1_Schmid
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button bestätigen;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox steps;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TrackBar regler;
         private System.Windows.Forms.Label reglertext;
@@ -226,5 +224,7 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.TrackBar längebox;
         private System.Windows.Forms.Label längelabel;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox steps;
+        public System.Windows.Forms.Button bestätigen;
     }
 }
