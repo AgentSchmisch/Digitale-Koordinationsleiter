@@ -15,14 +15,16 @@ namespace Bitmap_Test1_Schmid
         public double[] schrittlänge = new double[500];
         public double schrittlängealt = 100;
         int x, y;
-        public int waagrechtoben = 400;
-        public int waagrechtunten = 800;
+        public int waagrechtoben = 280;
+        public int waagrechtunten = 880;
         public int zähler = 0;
         public int dicke = 10;
         public static int sendvar = 0;
+        
         public Form2()
         {
             InitializeComponent();
+            
         }
         Bitmap image1 = new Bitmap(1920, 1080); //1920 entspricht 5m = 500cm
         private void Form2_Load(object sender, EventArgs e)
@@ -83,7 +85,8 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
-                    längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
+                //längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
+                
 
                 for (x = 0; x < image1.Width; x++) //alles löschen
                 {

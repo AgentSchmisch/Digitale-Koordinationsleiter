@@ -19,11 +19,8 @@ namespace Bitmap_Test1_Schmid
         {
             InitializeComponent();
             screen.Show();
-
-    }
-
-
-        private void Form1_Load(object sender, EventArgs e)
+        }
+    private void Form1_Load(object sender, EventArgs e)
         {
 
         }
@@ -39,5 +36,30 @@ namespace Bitmap_Test1_Schmid
             Form2.sendvar = Convert.ToInt32(steps.Text);
             screen.bestätigen.PerformClick();
         }
+
+        private void fläche_Click(object sender, EventArgs e)
+        {
+            längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
+            screen.längebox.Maximum = längebox.Maximum;
+            screen.fläche.PerformClick();
+        }
+
+        private void längebox_ValueChanged(object sender, EventArgs e)
+        {
+            länge.Text = längebox.Value.ToString();
+            screen.längebox.Value = Convert.ToInt32(länge.Text);
+            screen.längelabel.Text = länge.Text;
+        }
+
+        private void regler_ValueChanged(object sender, EventArgs e)
+        {
+            reglertext.Text = regler.Value.ToString();
+            screen.regler.Value = Convert.ToInt32(reglertext.Text);
+            screen.reglertext.Text = reglertext.Text;
+        }
+
+        private void Form1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+        }  
     }
 }

@@ -62,7 +62,7 @@ namespace Bitmap_Test1_Schmid
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.bestätigen.ForeColor = System.Drawing.Color.White;
-            this.bestätigen.Location = new System.Drawing.Point(82, 161);
+            this.bestätigen.Location = new System.Drawing.Point(80, 96);
             this.bestätigen.Name = "bestätigen";
             this.bestätigen.Size = new System.Drawing.Size(156, 70);
             this.bestätigen.TabIndex = 6;
@@ -76,12 +76,13 @@ namespace Bitmap_Test1_Schmid
             this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(61, 89);
+            this.label1.Location = new System.Drawing.Point(53, 51);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(115, 31);
             this.label1.TabIndex = 5;
             this.label1.Text = "Schritte:";
+            this.label1.Visible = false;
             // 
             // steps
             // 
@@ -90,11 +91,12 @@ namespace Bitmap_Test1_Schmid
             this.steps.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.steps.ForeColor = System.Drawing.Color.White;
-            this.steps.Location = new System.Drawing.Point(182, 87);
+            this.steps.Location = new System.Drawing.Point(174, 49);
             this.steps.Name = "steps";
             this.steps.Size = new System.Drawing.Size(78, 38);
             this.steps.TabIndex = 4;
             this.steps.Text = "5";
+            this.steps.Visible = false;
             // 
             // button1
             // 
@@ -108,16 +110,18 @@ namespace Bitmap_Test1_Schmid
             this.button1.TabIndex = 8;
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // regler
             // 
             this.regler.BackColor = System.Drawing.Color.Black;
-            this.regler.Location = new System.Drawing.Point(375, 76);
+            this.regler.Location = new System.Drawing.Point(367, 51);
             this.regler.Name = "regler";
             this.regler.Size = new System.Drawing.Size(273, 45);
             this.regler.TabIndex = 9;
             this.regler.Value = 1;
+            this.regler.Visible = false;
             this.regler.ValueChanged += new System.EventHandler(this.regler_ValueChanged);
             // 
             // reglertext
@@ -126,11 +130,12 @@ namespace Bitmap_Test1_Schmid
             this.reglertext.BackColor = System.Drawing.Color.Black;
             this.reglertext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.reglertext.ForeColor = System.Drawing.SystemColors.Control;
-            this.reglertext.Location = new System.Drawing.Point(497, 124);
+            this.reglertext.Location = new System.Drawing.Point(489, 99);
             this.reglertext.Name = "reglertext";
             this.reglertext.Size = new System.Drawing.Size(24, 26);
             this.reglertext.TabIndex = 10;
             this.reglertext.Text = "1";
+            this.reglertext.Visible = false;
             // 
             // fläche
             // 
@@ -138,7 +143,7 @@ namespace Bitmap_Test1_Schmid
             this.fläche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fläche.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.fläche.ForeColor = System.Drawing.Color.White;
-            this.fläche.Location = new System.Drawing.Point(622, 161);
+            this.fläche.Location = new System.Drawing.Point(610, 96);
             this.fläche.Name = "fläche";
             this.fläche.Size = new System.Drawing.Size(156, 70);
             this.fläche.TabIndex = 11;
@@ -149,12 +154,13 @@ namespace Bitmap_Test1_Schmid
             // längebox
             // 
             this.längebox.BackColor = System.Drawing.Color.Black;
-            this.längebox.Location = new System.Drawing.Point(758, 76);
+            this.längebox.Location = new System.Drawing.Point(750, 51);
             this.längebox.Minimum = 1;
             this.längebox.Name = "längebox";
             this.längebox.Size = new System.Drawing.Size(273, 45);
             this.längebox.TabIndex = 12;
             this.längebox.Value = 1;
+            this.längebox.Visible = false;
             this.längebox.ValueChanged += new System.EventHandler(this.längebox_ValueChanged);
             // 
             // längelabel
@@ -163,11 +169,12 @@ namespace Bitmap_Test1_Schmid
             this.längelabel.BackColor = System.Drawing.Color.Black;
             this.längelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.längelabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.längelabel.Location = new System.Drawing.Point(889, 134);
+            this.längelabel.Location = new System.Drawing.Point(881, 109);
             this.längelabel.Name = "längelabel";
             this.längelabel.Size = new System.Drawing.Size(24, 26);
             this.längelabel.TabIndex = 13;
             this.längelabel.Text = "1";
+            this.längelabel.Visible = false;
             // 
             // label2
             // 
@@ -175,11 +182,12 @@ namespace Bitmap_Test1_Schmid
             this.label2.BackColor = System.Drawing.Color.Black;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(793, 28);
+            this.label2.Location = new System.Drawing.Point(785, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(211, 26);
             this.label2.TabIndex = 14;
             this.label2.Text = "Länge des Objektes:";
+            this.label2.Visible = false;
             // 
             // Form2
             // 
@@ -218,13 +226,13 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TrackBar regler;
-        private System.Windows.Forms.Label reglertext;
-        private System.Windows.Forms.Button fläche;
-        private System.Windows.Forms.TrackBar längebox;
-        private System.Windows.Forms.Label längelabel;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox steps;
         public System.Windows.Forms.Button bestätigen;
+        public System.Windows.Forms.Button fläche;
+        public System.Windows.Forms.TrackBar regler;
+        public System.Windows.Forms.TrackBar längebox;
+        public System.Windows.Forms.Label reglertext;
+        public System.Windows.Forms.Label längelabel;
     }
 }
