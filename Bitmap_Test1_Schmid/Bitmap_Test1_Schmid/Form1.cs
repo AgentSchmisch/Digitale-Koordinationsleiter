@@ -12,7 +12,7 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Form1 : Form
     {
-        Form2 screen=new Form2();
+        Form2 screen = new Form2();
         public static int schritt = 0;
 
         public Form1()
@@ -20,11 +20,6 @@ namespace Bitmap_Test1_Schmid
             InitializeComponent();
             screen.Show();
         }
-    private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Environment.Exit(1);
@@ -32,34 +27,101 @@ namespace Bitmap_Test1_Schmid
 
         private void bestätigen_Click(object sender, EventArgs e)
         {
-            //schritt=Convert.ToInt32(steps.Text);
-            Form2.sendvar = Convert.ToInt32(steps.Text);
-            screen.bestätigen.PerformClick();
+            try
+            {
+                //schritt=Convert.ToInt32(steps.Text);
+                Form2.sendvar = Convert.ToInt32(steps.Text);
+                regler.Maximum = Convert.ToInt32(steps.Text)-1;
+                screen.regler.Maximum = Convert.ToInt32(steps.Text)-1;
+                längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
+                screen.bestätigen.PerformClick();
+
+                regler.Enabled = true; //entfernt den ausgegrauten look
+                längebox.Enabled = true;
+                fläche.Enabled = true;
+                reglertext.ForeColor = Color.White;
+                länge.ForeColor = Color.White;
+                label2.ForeColor = Color.White;
+
+            }
+            catch
+            {
+                MessageBox.Show(screen.e001.Message, "Error", 0, MessageBoxIcon.Error);
+            }
         }
 
         private void fläche_Click(object sender, EventArgs e)
         {
-            längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
-            screen.längebox.Maximum = längebox.Maximum;
-            screen.fläche.PerformClick();
+            try
+            {
+                längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
+                screen.längebox.Maximum = längebox.Maximum;
+                screen.fläche.PerformClick();
+            }
+            catch
+            {
+                MessageBox.Show(screen.e001.Message, "Error", 0, MessageBoxIcon.Error);
+            }
         }
 
         private void längebox_ValueChanged(object sender, EventArgs e)
         {
-            länge.Text = längebox.Value.ToString();
-            screen.längebox.Value = Convert.ToInt32(länge.Text);
-            screen.längelabel.Text = länge.Text;
+            try
+            {
+                länge.Text = längebox.Value.ToString();
+                screen.längebox.Value = Convert.ToInt32(länge.Text);
+                screen.längelabel.Text = länge.Text;
+            }
+            catch
+            {
+                MessageBox.Show(screen.e001.Message, "Error", 0, MessageBoxIcon.Error);
+            }
         }
 
         private void regler_ValueChanged(object sender, EventArgs e)
         {
-            reglertext.Text = regler.Value.ToString();
-            screen.regler.Value = Convert.ToInt32(reglertext.Text);
-            screen.reglertext.Text = reglertext.Text;
+            try
+            {
+                reglertext.Text = regler.Value.ToString();
+                screen.regler.Value = Convert.ToInt32(reglertext.Text);
+                screen.reglertext.Text = reglertext.Text;
+            }
+            catch
+            {
+                MessageBox.Show(screen.e001.Message, "Error", 0, MessageBoxIcon.Error);
+            }
+        }
+        private void steps_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bestätigen.PerformClick();
+            }
         }
 
-        private void Form1_KeyDown_1(object sender, KeyEventArgs e)
+        private void regler_KeyDown(object sender, KeyEventArgs e)
         {
-        }  
+            if (e.KeyCode == Keys.Enter)
+            {
+                fläche.PerformClick();
+            }
+        }
+
+        private void längebox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                fläche.PerformClick();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("Mit diesem Regler können Sie auswählen, bei welchem Schritt (von links beginnend) ein Objekt eingeblendet werden soll.", "Hilfe", 0, MessageBoxIcon.Question);
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Wählen Sie, wielang das Objekt sein soll.", "Hilfe", 0, MessageBoxIcon.Question);
+        }
     }
 }

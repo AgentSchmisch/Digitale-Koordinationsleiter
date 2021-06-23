@@ -61,7 +61,7 @@ namespace Bitmap_Test1_Schmid
             this.bestätigen.BackColor = System.Drawing.Color.Black;
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.bestätigen.ForeColor = System.Drawing.Color.White;
+            this.bestätigen.ForeColor = System.Drawing.Color.Black;
             this.bestätigen.Location = new System.Drawing.Point(80, 96);
             this.bestätigen.Name = "bestätigen";
             this.bestätigen.Size = new System.Drawing.Size(156, 70);
@@ -92,10 +92,11 @@ namespace Bitmap_Test1_Schmid
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.steps.ForeColor = System.Drawing.Color.White;
             this.steps.Location = new System.Drawing.Point(174, 49);
+            this.steps.MaxLength = 2;
             this.steps.Name = "steps";
             this.steps.Size = new System.Drawing.Size(78, 38);
             this.steps.TabIndex = 4;
-            this.steps.Text = "5";
+            this.steps.Text = "10";
             this.steps.Visible = false;
             // 
             // button1
@@ -117,11 +118,13 @@ namespace Bitmap_Test1_Schmid
             // 
             this.regler.BackColor = System.Drawing.Color.Black;
             this.regler.Location = new System.Drawing.Point(367, 51);
+            this.regler.Maximum = 20;
             this.regler.Name = "regler";
             this.regler.Size = new System.Drawing.Size(273, 45);
             this.regler.TabIndex = 9;
             this.regler.Value = 1;
             this.regler.Visible = false;
+            this.regler.Scroll += new System.EventHandler(this.regler_Scroll);
             this.regler.ValueChanged += new System.EventHandler(this.regler_ValueChanged);
             // 
             // reglertext
@@ -134,7 +137,7 @@ namespace Bitmap_Test1_Schmid
             this.reglertext.Name = "reglertext";
             this.reglertext.Size = new System.Drawing.Size(24, 26);
             this.reglertext.TabIndex = 10;
-            this.reglertext.Text = "1";
+            this.reglertext.Text = "0";
             this.reglertext.Visible = false;
             // 
             // fläche
@@ -142,7 +145,7 @@ namespace Bitmap_Test1_Schmid
             this.fläche.BackColor = System.Drawing.Color.Black;
             this.fläche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fläche.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.fläche.ForeColor = System.Drawing.Color.White;
+            this.fläche.ForeColor = System.Drawing.Color.Black;
             this.fläche.Location = new System.Drawing.Point(610, 96);
             this.fläche.Name = "fläche";
             this.fläche.Size = new System.Drawing.Size(156, 70);
@@ -228,11 +231,11 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox steps;
-        public System.Windows.Forms.Button bestätigen;
         public System.Windows.Forms.Button fläche;
         public System.Windows.Forms.TrackBar regler;
         public System.Windows.Forms.TrackBar längebox;
         public System.Windows.Forms.Label reglertext;
         public System.Windows.Forms.Label längelabel;
+        public System.Windows.Forms.Button bestätigen;
     }
 }
