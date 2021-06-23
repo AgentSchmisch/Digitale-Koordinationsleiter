@@ -311,7 +311,7 @@ namespace Bitmap_Test1_Schmid
             {
                 get
                 {
-                    return "Bitte üerprüfen Sie eingegebene Werte, wenn das Problem ohne Grund auftritt kontaktieren Sie bitte die Entwickler";
+                    return "Bitte überprüfen Sie eingegebene Werte, wenn das Problem ohne Grund auftritt kontaktieren Sie bitte die Entwickler";
                 }
             }
         }

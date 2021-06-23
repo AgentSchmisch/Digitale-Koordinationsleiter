@@ -55,6 +55,7 @@
             this.steps.Size = new System.Drawing.Size(71, 38);
             this.steps.TabIndex = 1;
             this.steps.Text = "10";
+            this.steps.TextChanged += new System.EventHandler(this.steps_TextChanged);
             this.steps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.steps_KeyDown);
             // 
             // label1

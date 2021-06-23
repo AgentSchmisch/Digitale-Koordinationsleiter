@@ -123,5 +123,17 @@ namespace Bitmap_Test1_Schmid
         {
             MessageBox.Show("Wählen Sie, wielang das Objekt sein soll.", "Hilfe", 0, MessageBoxIcon.Question);
         }
+
+        private void steps_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                UInt16 Variable = Convert.ToUInt16(steps.Text);
+            }
+            catch (FormatException)
+            {
+                steps.Clear();
+            }
+        }
     }
 }
