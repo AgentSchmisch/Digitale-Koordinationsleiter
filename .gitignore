@@ -348,3 +348,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/Bitmap_Test1_Schmid/Bitmap_Test1_Schmid/Database/test
