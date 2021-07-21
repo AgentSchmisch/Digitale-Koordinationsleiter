@@ -13,6 +13,7 @@ namespace Bitmap_Test1_Schmid
     public partial class Form1 : Form
     {
         Form2 screen = new Form2();
+        Patientendatenbank Patientendatenbank = new Patientendatenbank();
         public static int schritt = 0;
 
         public Form1()
@@ -134,6 +135,35 @@ namespace Bitmap_Test1_Schmid
             {
                 steps.Clear();
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void patientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Patientendatenbank.Show();
+               
+            }
+            catch
+
+            {
+                MessageBox.Show("fehlgeschlagen");
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnSitzungBeenden_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

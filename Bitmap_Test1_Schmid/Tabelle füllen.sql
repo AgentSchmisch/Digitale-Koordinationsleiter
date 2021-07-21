@@ -1,0 +1,2 @@
+﻿Insert into Patientenliste(Versicherungsnummer,Name,Geburtsdatum,Adresse,Ort,Postleitzahl,Telefonnummer)
+values ('0000000000','Hannes Hiller','04.10.2002','blabla','unterstinkenbrunn','1212','212121212121212');

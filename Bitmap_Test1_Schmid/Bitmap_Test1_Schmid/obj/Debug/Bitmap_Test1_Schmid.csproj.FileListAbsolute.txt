@@ -41,3 +41,4 @@ C:\CS-Projekte\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug
 C:\CS-Projekte\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.csproj.CoreCompileInputs.cache
 C:\CS-Projekte\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.exe
 C:\CS-Projekte\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.pdb
+C:\Users\Flori\Source\Repos\AgentSchmisch\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.Patientendatenbank.resources

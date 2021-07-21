@@ -41,9 +41,19 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BtnSitzungBeenden = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblSteps = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblLezteTherapie = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // steps
@@ -75,7 +85,7 @@
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.bestätigen.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.bestätigen.Location = new System.Drawing.Point(55, 179);
+            this.bestätigen.Location = new System.Drawing.Point(51, 179);
             this.bestätigen.Name = "bestätigen";
             this.bestätigen.Size = new System.Drawing.Size(160, 56);
             this.bestätigen.TabIndex = 3;
@@ -94,10 +104,11 @@
             this.label2.Size = new System.Drawing.Size(211, 26);
             this.label2.TabIndex = 20;
             this.label2.Text = "Länge des Objektes:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // längelabel
             // 
-            this.längelabel.Location = new System.Drawing.Point(0, 0);
+            this.längelabel.Location = new System.Drawing.Point(26, 39);
             this.längelabel.Name = "längelabel";
             this.längelabel.Size = new System.Drawing.Size(100, 23);
             this.längelabel.TabIndex = 21;
@@ -123,7 +134,7 @@
             this.fläche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fläche.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.fläche.ForeColor = System.Drawing.Color.White;
-            this.fläche.Location = new System.Drawing.Point(357, 269);
+            this.fläche.Location = new System.Drawing.Point(365, 271);
             this.fläche.Name = "fläche";
             this.fläche.Size = new System.Drawing.Size(156, 70);
             this.fläche.TabIndex = 17;
@@ -170,7 +181,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Bitmap_Test1_Schmid.Properties.Resources.HTLMI_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(114, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -205,6 +216,110 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.patientToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1123, 24);
+            this.menuStrip1.TabIndex = 26;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // patientToolStripMenuItem
+            // 
+            this.patientToolStripMenuItem.Name = "patientToolStripMenuItem";
+            this.patientToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
+            this.patientToolStripMenuItem.Text = "Patient auswählen";
+            this.patientToolStripMenuItem.Click += new System.EventHandler(this.patientToolStripMenuItem_Click);
+            // 
+            // BtnSitzungBeenden
+            // 
+            this.BtnSitzungBeenden.BackColor = System.Drawing.Color.DimGray;
+            this.BtnSitzungBeenden.Enabled = false;
+            this.BtnSitzungBeenden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSitzungBeenden.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.BtnSitzungBeenden.ForeColor = System.Drawing.Color.White;
+            this.BtnSitzungBeenden.Location = new System.Drawing.Point(757, 271);
+            this.BtnSitzungBeenden.Name = "BtnSitzungBeenden";
+            this.BtnSitzungBeenden.Size = new System.Drawing.Size(233, 42);
+            this.BtnSitzungBeenden.TabIndex = 28;
+            this.BtnSitzungBeenden.Text = "Sitzung beenden";
+            this.BtnSitzungBeenden.UseVisualStyleBackColor = false;
+            this.BtnSitzungBeenden.Click += new System.EventHandler(this.BtnSitzungBeenden_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(659, 48);
+            this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label3.Size = new System.Drawing.Size(86, 31);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Name";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label5.Location = new System.Drawing.Point(659, 127);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label5.Size = new System.Drawing.Size(180, 31);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Schrittanzahl:";
+            // 
+            // lblSteps
+            // 
+            this.lblSteps.AutoSize = true;
+            this.lblSteps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblSteps.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblSteps.Location = new System.Drawing.Point(875, 127);
+            this.lblSteps.Name = "lblSteps";
+            this.lblSteps.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblSteps.Size = new System.Drawing.Size(44, 31);
+            this.lblSteps.TabIndex = 32;
+            this.lblSteps.Text = "10";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label6.Location = new System.Drawing.Point(659, 87);
+            this.label6.Name = "label6";
+            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label6.Size = new System.Drawing.Size(194, 31);
+            this.label6.TabIndex = 33;
+            this.label6.Text = "letzte Therapie";
+            // 
+            // lblLezteTherapie
+            // 
+            this.lblLezteTherapie.AutoSize = true;
+            this.lblLezteTherapie.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblLezteTherapie.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblLezteTherapie.Location = new System.Drawing.Point(875, 87);
+            this.lblLezteTherapie.Name = "lblLezteTherapie";
+            this.lblLezteTherapie.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblLezteTherapie.Size = new System.Drawing.Size(0, 31);
+            this.lblLezteTherapie.TabIndex = 34;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblName.Location = new System.Drawing.Point(875, 48);
+            this.lblName.Name = "lblName";
+            this.lblName.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblName.Size = new System.Drawing.Size(221, 31);
+            this.lblName.TabIndex = 35;
+            this.lblName.Text = "Max Mustermann";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,7 +327,14 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(650, 370);
+            this.ClientSize = new System.Drawing.Size(1123, 370);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.lblLezteTherapie);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblSteps);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.BtnSitzungBeenden);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
@@ -226,8 +348,10 @@
             this.Controls.Add(this.bestätigen);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.steps);
+            this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -236,9 +360,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Digitale Koordinationsleiter";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +385,15 @@
         private System.Windows.Forms.Button button2;
         public System.Windows.Forms.Label reglertext;
         public System.Windows.Forms.Label länge;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem patientToolStripMenuItem;
+        private System.Windows.Forms.Button BtnSitzungBeenden;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblSteps;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblLezteTherapie;
+        private System.Windows.Forms.Label lblName;
     }
 }
 
