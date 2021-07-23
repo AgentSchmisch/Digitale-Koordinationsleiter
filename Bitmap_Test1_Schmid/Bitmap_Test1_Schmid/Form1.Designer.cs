@@ -359,8 +359,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Digitale Koordinationsleiter";
-            this.TopMost = true;
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -393,7 +391,7 @@
         private System.Windows.Forms.Label lblSteps;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblLezteTherapie;
-        private System.Windows.Forms.Label lblName;
+        public System.Windows.Forms.Label lblName;
     }
 }
 

@@ -122,7 +122,7 @@ namespace Bitmap_Test1_Schmid
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Wählen Sie, wielang das Objekt sein soll.", "Hilfe", 0, MessageBoxIcon.Question);
+            MessageBox.Show("Wählen Sie, wie lang das Objekt sein soll.", "Hilfe", 0, MessageBoxIcon.Question);
         }
 
         private void steps_TextChanged(object sender, EventArgs e)
@@ -147,7 +147,7 @@ namespace Bitmap_Test1_Schmid
             try
             {
                 Patientendatenbank.Show();
-               
+                lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
             }
             catch
 
@@ -155,11 +155,28 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show("fehlgeschlagen");
             }
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        public void letzteBehandlung(string Name, string schrittweite, string letzteBehandlung)
         {
-
+            lblSteps.Text="angekommen";
+            lblName.Text = Name;
+            lblSteps.Text = schrittweite;
+            lblLezteTherapie.Text = letzteBehandlung;
+            
         }
+
+        //public string Labelsteps
+        //{
+        //    get
+        //    {
+        //        return this.lblSteps.Text;
+        //    }
+        //    set
+        //    {
+        //        this.lblSteps.Text = value;
+        //    }
+        //}
+
+
 
         private void BtnSitzungBeenden_Click(object sender, EventArgs e)
         {

@@ -43,7 +43,6 @@ namespace Bitmap_Test1_Schmid
             this.TbGeburtsdatum = new System.Windows.Forms.TextBox();
             this.TbTelefonnummer = new System.Windows.Forms.TextBox();
             this.labelHinweis = new System.Windows.Forms.Label();
-            this.TbSVNr = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,8 +76,9 @@ namespace Bitmap_Test1_Schmid
             // eintragungLöschenToolStripMenuItem
             // 
             this.eintragungLöschenToolStripMenuItem.Name = "eintragungLöschenToolStripMenuItem";
-            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eintragungLöschenToolStripMenuItem.Text = "Eintragung löschen";
+            this.eintragungLöschenToolStripMenuItem.Click += new System.EventHandler(this.eintragungLöschenToolStripMenuItem_Click);
             // 
             // sucheBtn
             // 
@@ -184,23 +184,12 @@ namespace Bitmap_Test1_Schmid
             this.labelHinweis.TabIndex = 10;
             this.labelHinweis.Text = "Verbindungsstatus Datenbank";
             // 
-            // TbSVNr
-            // 
-            this.TbSVNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbSVNr.Location = new System.Drawing.Point(192, 145);
-            this.TbSVNr.Name = "TbSVNr";
-            this.TbSVNr.Size = new System.Drawing.Size(115, 27);
-            this.TbSVNr.TabIndex = 11;
-            this.TbSVNr.Text = "SV-Nummer";
-            this.TbSVNr.Click += new System.EventHandler(this.TbSVNr_Click);
-            // 
             // Patientendatenbank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(455, 450);
-            this.Controls.Add(this.TbSVNr);
             this.Controls.Add(this.labelHinweis);
             this.Controls.Add(this.TbTelefonnummer);
             this.Controls.Add(this.TbGeburtsdatum);
@@ -240,6 +229,5 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.TextBox TbGeburtsdatum;
         private System.Windows.Forms.TextBox TbTelefonnummer;
         private System.Windows.Forms.Label labelHinweis;
-        private System.Windows.Forms.TextBox TbSVNr;
     }
 }
