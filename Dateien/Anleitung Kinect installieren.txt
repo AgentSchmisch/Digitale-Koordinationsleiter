@@ -1,0 +1,64 @@
+Installation Kinect - Visual Studio 2019
+
+Projekt -> NuGet-Pakete verwalten -> Durchsuchen -> nach kinect suchen und Microsoft.Kinect wählen (Version 2.0.1410.19000)
+
+Die Bibliothek mittels using Microsoft.Kinect; aufrufen
+
+public void InitializeKinect()
+        {
+            kinectSensor = KinectSensor.GetDefault();
+            if (kinectSensor != null) //turn on kinect
+            {
+                kinectSensor.Open();
+            }
+            {
+                bodyFrameReader = kinectSensor.BodyFrameSource.OpenReader();
+                if (bodyFrameReader!=null)
+
+                {
+                    bodyFrameReader.FrameArrived += reader_FrameArrived;
+                }
+            }
+        }
+
+        private void reader_FrameArrived(object sender,BodyFrameArrivedEventArgs e)
+        {
+            bool dataRecieved = false;
+            using (BodyFrame bodyFrame = e.FrameReference.AcquireFrame())
+            {
+                if (bodyFrame!=null)
+                {
+                    if (bodies == null)
+                        bodies = new Body[bodyFrame.BodyCount];
+
+                    bodyFrame.GetAndRefreshBodyData(bodies);
+
+                }
+                dataRecieved = true;
+            }
+            if (dataRecieved)
+            {
+                foreach (Body body in bodies)
+                {
+                    if (body.IsTracked)
+                    {
+                        IReadOnlyDictionary<JointType, Joint> joints = body.Joints;
+                        Dictionary<JointType, Point> jointPoints = new Dictionary<JointType, Point>();
+
+                        Joint HandRight = joints[JointType.HandRight];
+                        
+                        float rh_distance_x = HandRight.Position.X;
+                        float rh_distance_y = HandRight.Position.Y;
+                        float rh_distance_z = HandRight.Position.Z;
+
+                        lblX.Text = rh_distance_x.ToString("#.##");
+                        lblY.Text = rh_distance_y.ToString("#.##");
+                        lblZ.Text = rh_distance_z.ToString("#.##");
+
+                        label1.Text = body.HandRightState.ToString();
+
+                    }
+
+                }
+            }
+        }
