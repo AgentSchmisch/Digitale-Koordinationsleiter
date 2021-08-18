@@ -148,6 +148,7 @@ namespace Bitmap_Test1_Schmid
             {
                 Patientendatenbank.Show();
                 lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
+                Patientendatenbank.FormClosing += Patientendatenbank_Closing;
             }
             catch
 
@@ -155,32 +156,21 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show("fehlgeschlagen");
             }
         }
-        public void letzteBehandlung(string Name, string schrittweite, string letzteBehandlung)
-        {
-            lblSteps.Text="angekommen";
-            lblName.Text = Name;
-            lblSteps.Text = schrittweite;
-            lblLezteTherapie.Text = letzteBehandlung;
-            
-        }
 
-        //public string Labelsteps
-        //{
-        //    get
-        //    {
-        //        return this.lblSteps.Text;
-        //    }
-        //    set
-        //    {
-        //        this.lblSteps.Text = value;
-        //    }
-        //}
+
+        private void Patientendatenbank_Closing(object sender, FormClosingEventArgs e)
+        {
+            lblName.Text = Patientendatenbank.Nameaktuell;
+            lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
+            lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
+
+        }
 
 
 
         private void BtnSitzungBeenden_Click(object sender, EventArgs e)
         {
-            
+              //TODO: einfügen der daten in die Datenbank über die Form "Patientendatenbank"
         }
     }
 }
