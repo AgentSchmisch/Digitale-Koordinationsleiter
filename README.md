@@ -1,4 +1,4 @@
-# Virtual-Walkway
+# Digitale Koordinationsleiter
 
 <h1>Ziel</h1>
 <p>Therapie von zu kurzer beziehungsweise ungleicher Schrittlänge nach einem Unfall, Erkrankung oder Schlaganfall. Das Gerät soll die Kognitiven Fähigkeiten Testen, und die Schrittlänge durch üben wieder vergrößern.</p>
