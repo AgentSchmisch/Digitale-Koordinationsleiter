@@ -52,12 +52,12 @@ namespace Bitmap_Test1_Schmid
             {
                 conn.Close();
             }
-           
+
         }
 
         private void sucheBtn_Click(object sender, EventArgs e)
         {
-            query1 = "select Name, Postleitzahl, Ort, Geburtsdatum from Patientenliste where Name in ('"+TbName.Text+"') order by Name asc ;";
+            query1 = "select Name, Postleitzahl, Ort, Geburtsdatum from Patientenliste where Name in ('" + TbName.Text + "') order by Name asc ;";
 
             try
             {
@@ -87,8 +87,8 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[j].ColumnName == "Name")
                     {
-                       
-                            record += row[j] + "\t";
+
+                        record += row[j] + "\t";
                         Nameaktuell += row[j];
                         continue;
                     }
@@ -98,7 +98,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[k].ColumnName == "Postleitzahl")
                     {
-                        record +=  row[k] + "\t";
+                        record += row[k] + "\t";
                         continue;
                     }
                 }
@@ -115,24 +115,24 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[m].ColumnName == "Geburtsdatum")
                     {
-                        record +=  row[m] + "\t";
+                        record += row[m] + "\t";
                         continue;
                     }
                 }
                 //present the information in the listbox
                 Patienten.Items.Add(record);
-               
+
             }
         }
-        
+
         private void button1_Click(object sender, EventArgs e) //auswahlBtn
         {
-           // string pickeditem = Patienten.SelectedItem.ToString();
+            // string pickeditem = Patienten.SelectedItem.ToString();
 
             Nameaktuell = Nameaktuell.Replace(" ", "_");
             labelHinweis.Text = Nameaktuell;
-            
-            query3 = "select Max(Behandlungsnummer) Name, Behandlungsdatum,Schrittweite from "+Nameaktuell+"); ";
+
+            query3 = "select Max(Behandlungsnummer) Name, Behandlungsdatum,Schrittweite from " + Nameaktuell + "); ";
             for (int i = 0; i < tbl.Rows.Count; i++)
             {
                 record = "";
@@ -165,88 +165,113 @@ namespace Bitmap_Test1_Schmid
                     }
                 }
 
-               // Form1 UI = new Form1();
+                // Form1 UI = new Form1();
 
                 //UI.Labelsteps = Text = "Text";
-                    //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
-                
+                //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
+
                 wertuebergabe(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
 
             }
-         }
+        }
         //clear the textbox if clicked
         private void TbName_Click(object sender, EventArgs e)
         {
-            TbName.Text = "";
+            if (TbName.Text == "Name")
+            {
+                TbName.Text = "";
+                TbName.ForeColor = Color.Black;
+            }
         }
         private void TbAdresse_Click(object sender, EventArgs e)
         {
-            TbAdresse.Text = "";
+            if (TbAdresse.Text == "Adresse")
+            {
+                TbAdresse.Text = "";
+                TbAdresse.ForeColor = Color.Black;
+            }
         }
         private void TbGeburtsdatum_Click(object sender, EventArgs e)
         {
-            TbGeburtsdatum.Text = "";
+            if (TbGeburtsdatum.Text == "Geburtsdatum")
+            {
+                TbGeburtsdatum.Text = "";
+                TbGeburtsdatum.ForeColor = Color.Black;
+            }
         }
         private void TbOrt_Click(object sender, EventArgs e)
         {
-            TbOrt.Text = "";
+            if (TbOrt.Text == "Ort")
+            {
+                TbOrt.Text = "";
+                TbOrt.ForeColor = Color.Black;
+            }
         }
         private void TbPLZ_Click(object sender, EventArgs e)
         {
-            TbPLZ.Text = "";
+            if (TbPLZ.Text == "PLZ")
+            {
+                TbPLZ.Text = "";
+                TbPLZ.ForeColor = Color.Black;
+            }
         }
         private void TbTelefonnummer_Click(object sender, EventArgs e)
         {
-            TbTelefonnummer.Text = "";
+            if (TbTelefonnummer.Text == "Telefonnummer")
+            {
+                TbTelefonnummer.Text = "";
+                TbTelefonnummer.ForeColor = Color.Black;
+            }
         }
 
-        void wertuebergabe(string Name,string schrittweite,string letzteBehandlung) {
+        void wertuebergabe(string Name, string schrittweite, string letzteBehandlung)
+        {
 
-             //Prio 1: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
-       
+            //Prio 1: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
+
         }
 
         private void Patientendatenbank_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-   
+
             //BUG:      Fehler beim schließen und wiederöffnen der Form während form1 & projetktion geöffnet bleibt    
 
-              
+
         }
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-           Patientenname=TbName.Text.ToString();
-           Patientenname= Patientenname.Replace(' ', '_');
+
+            Patientenname = TbName.Text.ToString();
+            Patientenname = Patientenname.Replace(' ', '_');
             //erstellen der Datenbank für den jeweiligen Patienten, Füllen der allgemeinen tablle mit Informationen für die Suche
             query2 = "create table " + Patientenname + " (Patientennummer nvarchar(10) not null primary key , Name nvarchar(50), Behandlungsdatum nvarchar(50),Schrittweite nvarchar(5));" +
-                "Insert into Patientenliste(Name,Geburtsdatum,Adresse,Ort,Postleitzahl,Telefonnummer) values('" + Patientenname + "','"+
-                TbGeburtsdatum.Text+"','"+TbAdresse.Text+"','"+TbOrt.Text+"','"+TbPLZ.Text+"','"+TbTelefonnummer.Text+"');";
-                try
-                {
-                   conn.Open();
-                
+                "Insert into Patientenliste(Name,Geburtsdatum,Adresse,Ort,Postleitzahl,Telefonnummer) values('" + Patientenname + "','" +
+                TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "');";
+            try
+            {
+                conn.Open();
+
                 cmd = new SqlCommand(query2, conn);
-                
+
                 cmd.ExecuteNonQuery();
                 labelHinweis.Text = "erfolgreich";
 
-                }
-                 catch
-                {
+            }
+            catch
+            {
                 MessageBox.Show("Fehler");
-                }
-               
+            }
 
-                finally
-                {
-                    //MessageBox.Show("Patient erfolgreich hinzugefügt", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    conn.Close();
-                }
-            
-            
+
+            finally
+            {
+                //MessageBox.Show("Patient erfolgreich hinzugefügt", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                conn.Close();
+            }
+
+
         }
 
         private void eintragungLöschenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -254,11 +279,60 @@ namespace Bitmap_Test1_Schmid
             //TODO: löschen von angelegten Patienten
             //using (Form1 UI = new Form1())
             //{
-                
+
             //    UI.Text = "TEST";
             //    UI.Labelsteps = "Text";
 
             //}
+        }
+
+        private void TbName_Leave(object sender, EventArgs e)
+        {
+            if (TbName.Text == "")
+            {
+                TbName.ForeColor = Color.Gray;
+                TbName.Text = "Name";
+            }
+        }
+        private void TbAdresse_Leave(object sender, EventArgs e)
+        {
+            if (TbAdresse.Text == "")
+            {
+                TbAdresse.ForeColor = Color.Gray;
+                TbAdresse.Text = "Adresse";
+            }
+        }
+        private void TbTelefonnummer_Leave(object sender, EventArgs e)
+        {
+            if (TbTelefonnummer.Text == "")
+            {
+                TbTelefonnummer.ForeColor = Color.Gray;
+                TbTelefonnummer.Text = "Telefonnummer";
+            }
+        }
+        private void TbOrt_Leave(object sender, EventArgs e)
+        {
+            if (TbOrt.Text == "")
+            {
+                TbOrt.ForeColor = Color.Gray;
+                TbOrt.Text = "Ort";
+            }
+        }
+        private void TbGeburtsdatum_Leave(object sender, EventArgs e)
+        {
+            if (TbGeburtsdatum.Text == "")
+            {
+                TbGeburtsdatum.ForeColor = Color.Gray;
+                TbGeburtsdatum.Text = "Geburtsdatum";
+            }
+        }
+        private void TbPLZ_Leave(object sender, EventArgs e)
+        {
+            if (TbPLZ.Text == "")
+            {
+                TbPLZ.ForeColor = Color.Gray;
+                TbPLZ.Text = "PLZ";
+            }
         }
     }
 }
