@@ -168,15 +168,13 @@ namespace Bitmap_Test1_Schmid
                 // Form1 UI = new Form1();
 
                 //UI.Labelsteps = Text = "Text";
-<<<<<<< HEAD
                     //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
                 
                 //wertuebergabe(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
-=======
+
                 //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
 
-                wertuebergabe(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
->>>>>>> 5092191acfd5ec037764009e180ebcf59ec9dabb
+                //wertuebergabe(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
 
             }
         }
@@ -230,7 +228,6 @@ namespace Bitmap_Test1_Schmid
             }
         }
 
-<<<<<<< HEAD
         public string wertuebergabe {
             get
             {
@@ -241,8 +238,8 @@ namespace Bitmap_Test1_Schmid
             set
             {
                 Nameaktuell = Nameaktuell.Replace(" ", "_");
-                query3 = "Insert Into "+Nameaktuell+"(Name,Behandlungsdatum,Schrittweite,Geburtsdatum,Behandlungsnummer) Values"+Nameaktuell+","
-                    +DateTime.Now.ToString("yyyy.mm.dd")+","+value+","+;
+                query3 = "Insert Into " + Nameaktuell + "(Name,Behandlungsdatum,Schrittweite,Geburtsdatum,Behandlungsnummer) Values" + Nameaktuell + ","
+                    + DateTime.Now.ToString("yyyy.mm.dd") + "," + value + "," +;
                 try
                 {
                     cmd = new SqlCommand(query3, conn);
@@ -260,16 +257,10 @@ namespace Bitmap_Test1_Schmid
                     conn.Close();
                 }
             }
-             //Prio 1: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
-       
-=======
-        void wertuebergabe(string Name, string schrittweite, string letzteBehandlung)
-        {
-
             //Prio 1: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
 
->>>>>>> 5092191acfd5ec037764009e180ebcf59ec9dabb
         }
+       
 
         private void Patientendatenbank_FormClosing(object sender, FormClosingEventArgs e)
         {
