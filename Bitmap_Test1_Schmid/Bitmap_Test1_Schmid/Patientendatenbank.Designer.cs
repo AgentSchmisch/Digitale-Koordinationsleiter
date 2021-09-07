@@ -29,6 +29,7 @@ namespace Bitmap_Test1_Schmid
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Patientendatenbank));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.neuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,6 +95,7 @@ namespace Bitmap_Test1_Schmid
             // Patienten
             // 
             this.Patienten.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Patienten.ForeColor = System.Drawing.Color.Gray;
             this.Patienten.FormattingEnabled = true;
             this.Patienten.ItemHeight = 20;
             this.Patienten.Location = new System.Drawing.Point(15, 231);
@@ -140,9 +142,9 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbPLZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbPLZ.ForeColor = System.Drawing.Color.Gray;
-            this.TbPLZ.Location = new System.Drawing.Point(324, 110);
+            this.TbPLZ.Location = new System.Drawing.Point(191, 110);
             this.TbPLZ.Name = "TbPLZ";
-            this.TbPLZ.Size = new System.Drawing.Size(119, 27);
+            this.TbPLZ.Size = new System.Drawing.Size(111, 27);
             this.TbPLZ.TabIndex = 6;
             this.TbPLZ.Text = "PLZ";
             this.TbPLZ.Click += new System.EventHandler(this.TbPLZ_Click);
@@ -152,9 +154,9 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbOrt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbOrt.ForeColor = System.Drawing.Color.Gray;
-            this.TbOrt.Location = new System.Drawing.Point(192, 110);
+            this.TbOrt.Location = new System.Drawing.Point(324, 110);
             this.TbOrt.Name = "TbOrt";
-            this.TbOrt.Size = new System.Drawing.Size(115, 27);
+            this.TbOrt.Size = new System.Drawing.Size(119, 27);
             this.TbOrt.TabIndex = 7;
             this.TbOrt.Text = "Ort";
             this.TbOrt.Click += new System.EventHandler(this.TbOrt_Click);
@@ -213,11 +215,11 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.Patienten);
             this.Controls.Add(this.sucheBtn);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Patientendatenbank";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Patientendatenbank";
             this.TopMost = true;

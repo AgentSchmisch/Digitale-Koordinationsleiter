@@ -213,6 +213,7 @@ namespace Bitmap_Test1_Schmid
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form2";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Virtual Walkway";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form2_Load);

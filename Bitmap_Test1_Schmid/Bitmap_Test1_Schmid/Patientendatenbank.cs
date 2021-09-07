@@ -16,7 +16,7 @@ namespace Bitmap_Test1_Schmid
         /* TODO: erstellen der Tabellen nach Schema: Vorname_Nachname
         * TODO: überarbeiten aller SQL Queries um fehler auszuschließen die von vorherigen versionen übrig sind
          */
-        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
         string query1;
         string query2;
         string query3;
@@ -58,7 +58,6 @@ namespace Bitmap_Test1_Schmid
         private void sucheBtn_Click(object sender, EventArgs e)
         {
             query1 = "select Name, Postleitzahl, Ort, Geburtsdatum from Patientenliste where Name in ('" + TbName.Text + "') order by Name asc ;";
-
             try
             {
                 cmd = new SqlCommand(query1, conn);

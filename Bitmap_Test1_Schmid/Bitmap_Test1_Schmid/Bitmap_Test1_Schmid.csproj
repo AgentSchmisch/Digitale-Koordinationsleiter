@@ -101,5 +101,8 @@
   <ItemGroup>
     <None Include="Resources\HTLMI_logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\1f6b6-2642.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
