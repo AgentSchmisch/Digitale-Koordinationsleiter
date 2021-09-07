@@ -170,7 +170,7 @@ namespace Bitmap_Test1_Schmid
                 //UI.Labelsteps = Text = "Text";
                     //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
                 
-                wertuebergabe(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
+                //wertuebergabe(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
 
             }
          }
@@ -200,8 +200,35 @@ namespace Bitmap_Test1_Schmid
             TbTelefonnummer.Text = "";
         }
 
-        void wertuebergabe(string Name,string schrittweite,string letzteBehandlung) {
+        public string wertuebergabe {
+            get
+            {
 
+                return "0";
+            }
+
+            set
+            {
+                Nameaktuell = Nameaktuell.Replace(" ", "_");
+                query3 = "Insert Into "+Nameaktuell+"(Name,Behandlungsdatum,Schrittweite,Geburtsdatum,Behandlungsnummer) Values"+Nameaktuell+","
+                    +DateTime.Now.ToString("yyyy.mm.dd")+","+value+","+;
+                try
+                {
+                    cmd = new SqlCommand(query3, conn);
+                    conn.Open();
+
+                }
+                catch
+                {
+                    labelHinweis.Text = "Abfrage fehlgeschlagen";
+                    return;
+                }
+                finally
+                {
+
+                    conn.Close();
+                }
+            }
              //Prio 1: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
        
         }

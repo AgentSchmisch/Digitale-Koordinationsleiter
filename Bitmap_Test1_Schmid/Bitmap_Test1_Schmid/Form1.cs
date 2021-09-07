@@ -170,6 +170,8 @@ namespace Bitmap_Test1_Schmid
 
         private void BtnSitzungBeenden_Click(object sender, EventArgs e)
         {
+
+            Patientendatenbank.wertuebergabe = steps.Text.ToString();
               //TODO: einfügen der daten in die Datenbank über die Form "Patientendatenbank"
         }
     }

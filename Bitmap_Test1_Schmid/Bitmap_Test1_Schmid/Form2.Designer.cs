@@ -49,9 +49,9 @@ namespace Bitmap_Test1_Schmid
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
             this.pictureBox1.Location = new System.Drawing.Point(0, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1920, 1080);
+            this.pictureBox1.Size = new System.Drawing.Size(2560, 1329);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
@@ -62,9 +62,10 @@ namespace Bitmap_Test1_Schmid
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.bestätigen.ForeColor = System.Drawing.Color.Black;
-            this.bestätigen.Location = new System.Drawing.Point(80, 96);
+            this.bestätigen.Location = new System.Drawing.Point(107, 118);
+            this.bestätigen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.bestätigen.Name = "bestätigen";
-            this.bestätigen.Size = new System.Drawing.Size(156, 70);
+            this.bestätigen.Size = new System.Drawing.Size(208, 86);
             this.bestätigen.TabIndex = 6;
             this.bestätigen.Text = "bestätigen";
             this.bestätigen.UseVisualStyleBackColor = false;
@@ -76,10 +77,11 @@ namespace Bitmap_Test1_Schmid
             this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(53, 51);
+            this.label1.Location = new System.Drawing.Point(71, 63);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(115, 31);
+            this.label1.Size = new System.Drawing.Size(141, 39);
             this.label1.TabIndex = 5;
             this.label1.Text = "Schritte:";
             this.label1.Visible = false;
@@ -91,10 +93,11 @@ namespace Bitmap_Test1_Schmid
             this.steps.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.steps.ForeColor = System.Drawing.Color.White;
-            this.steps.Location = new System.Drawing.Point(174, 49);
+            this.steps.Location = new System.Drawing.Point(232, 60);
+            this.steps.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.steps.MaxLength = 2;
             this.steps.Name = "steps";
-            this.steps.Size = new System.Drawing.Size(78, 38);
+            this.steps.Size = new System.Drawing.Size(103, 45);
             this.steps.TabIndex = 4;
             this.steps.Text = "10";
             this.steps.Visible = false;
@@ -105,9 +108,10 @@ namespace Bitmap_Test1_Schmid
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.button1.Location = new System.Drawing.Point(1845, -1);
+            this.button1.Location = new System.Drawing.Point(2460, -1);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 42);
+            this.button1.Size = new System.Drawing.Size(100, 52);
             this.button1.TabIndex = 8;
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = false;
@@ -117,10 +121,11 @@ namespace Bitmap_Test1_Schmid
             // regler
             // 
             this.regler.BackColor = System.Drawing.Color.Black;
-            this.regler.Location = new System.Drawing.Point(367, 51);
+            this.regler.Location = new System.Drawing.Point(489, 63);
+            this.regler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.regler.Maximum = 20;
             this.regler.Name = "regler";
-            this.regler.Size = new System.Drawing.Size(273, 45);
+            this.regler.Size = new System.Drawing.Size(364, 56);
             this.regler.TabIndex = 9;
             this.regler.Value = 1;
             this.regler.Visible = false;
@@ -133,9 +138,10 @@ namespace Bitmap_Test1_Schmid
             this.reglertext.BackColor = System.Drawing.Color.Black;
             this.reglertext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.reglertext.ForeColor = System.Drawing.SystemColors.Control;
-            this.reglertext.Location = new System.Drawing.Point(489, 99);
+            this.reglertext.Location = new System.Drawing.Point(652, 122);
+            this.reglertext.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reglertext.Name = "reglertext";
-            this.reglertext.Size = new System.Drawing.Size(24, 26);
+            this.reglertext.Size = new System.Drawing.Size(29, 31);
             this.reglertext.TabIndex = 10;
             this.reglertext.Text = "0";
             this.reglertext.Visible = false;
@@ -146,9 +152,10 @@ namespace Bitmap_Test1_Schmid
             this.fläche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fläche.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.fläche.ForeColor = System.Drawing.Color.Black;
-            this.fläche.Location = new System.Drawing.Point(610, 96);
+            this.fläche.Location = new System.Drawing.Point(813, 118);
+            this.fläche.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fläche.Name = "fläche";
-            this.fläche.Size = new System.Drawing.Size(156, 70);
+            this.fläche.Size = new System.Drawing.Size(208, 86);
             this.fläche.TabIndex = 11;
             this.fläche.Text = "bestätigen";
             this.fläche.UseVisualStyleBackColor = false;
@@ -157,10 +164,11 @@ namespace Bitmap_Test1_Schmid
             // längebox
             // 
             this.längebox.BackColor = System.Drawing.Color.Black;
-            this.längebox.Location = new System.Drawing.Point(750, 51);
+            this.längebox.Location = new System.Drawing.Point(1000, 63);
+            this.längebox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.längebox.Minimum = 1;
             this.längebox.Name = "längebox";
-            this.längebox.Size = new System.Drawing.Size(273, 45);
+            this.längebox.Size = new System.Drawing.Size(364, 56);
             this.längebox.TabIndex = 12;
             this.längebox.Value = 1;
             this.längebox.Visible = false;
@@ -172,9 +180,10 @@ namespace Bitmap_Test1_Schmid
             this.längelabel.BackColor = System.Drawing.Color.Black;
             this.längelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.längelabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.längelabel.Location = new System.Drawing.Point(881, 109);
+            this.längelabel.Location = new System.Drawing.Point(1175, 134);
+            this.längelabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.längelabel.Name = "längelabel";
-            this.längelabel.Size = new System.Drawing.Size(24, 26);
+            this.längelabel.Size = new System.Drawing.Size(29, 31);
             this.längelabel.TabIndex = 13;
             this.längelabel.Text = "1";
             this.längelabel.Visible = false;
@@ -185,20 +194,21 @@ namespace Bitmap_Test1_Schmid
             this.label2.BackColor = System.Drawing.Color.Black;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(785, 16);
+            this.label2.Location = new System.Drawing.Point(1047, 20);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(211, 26);
+            this.label2.Size = new System.Drawing.Size(263, 31);
             this.label2.TabIndex = 14;
             this.label2.Text = "Länge des Objektes:";
             this.label2.Visible = false;
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1942, 1102);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.längelabel);
             this.Controls.Add(this.längebox);
@@ -211,9 +221,10 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.steps);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form2";
             this.ShowIcon = false;
-            this.Text = "Virtual Walkway";
+            this.Text = "6";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
