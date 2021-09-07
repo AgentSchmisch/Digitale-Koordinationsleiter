@@ -25,6 +25,7 @@ namespace Bitmap_Test1_Schmid
         public string Nameaktuell;
         public string letzteBehandlung;
         public string letzteSchrittanzahl;
+        public string BehandlungsnummerMax;
         //parameters for database connection
         SqlConnection conn;
         SqlCommand cmd;
@@ -127,12 +128,12 @@ namespace Bitmap_Test1_Schmid
 
         private void button1_Click(object sender, EventArgs e) //auswahlBtn
         {
-            // string pickeditem = Patienten.SelectedItem.ToString();
+           
 
             Nameaktuell = Nameaktuell.Replace(" ", "_");
             labelHinweis.Text = Nameaktuell;
 
-            query3 = "select Max(Behandlungsnummer) Name, Behandlungsdatum,Schrittweite from " + Nameaktuell + "); ";
+            query3 = "select Max(Behandlungsnummer) Name, Behandlungsdatum, Schrittweite, Behandlungsnummer from " + Nameaktuell + "); ";
             for (int i = 0; i < tbl.Rows.Count; i++)
             {
                 record = "";
@@ -164,21 +165,29 @@ namespace Bitmap_Test1_Schmid
                         continue;
                     }
                 }
+                for (int l = 0; l < tbl.Columns.Count; l++)
+                {
+                    if (tbl.Columns[l].ColumnName == "Behandlungsnummer")
+                    {
+                        BehandlungsnummerMax += row[l] + "\t";
+                        continue;
+                    }
+                }
 
-                // Form1 UI = new Form1();
+
 
                 //UI.Labelsteps = Text = "Text";
-                    //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
-                
-                //wertuebergabe(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
-
                 //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
 
                 //wertuebergabe(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
 
+                //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
+
+
+
             }
         }
-        //clear the textbox if clicked
+        #region clear the textbox if clicked
         private void TbName_Click(object sender, EventArgs e)
         {
             if (TbName.Text == "Name")
@@ -227,19 +236,14 @@ namespace Bitmap_Test1_Schmid
                 TbTelefonnummer.ForeColor = Color.Black;
             }
         }
-
+        #endregion
         public string wertuebergabe {
-            get
-            {
-
-                return "0";
-            }
-
             set
             {
+               int _BehandlungsnummerMax = Convert.ToInt32(BehandlungsnummerMax) + 1;
                 Nameaktuell = Nameaktuell.Replace(" ", "_");
                 query3 = "Insert Into " + Nameaktuell + "(Name,Behandlungsdatum,Schrittweite,Geburtsdatum,Behandlungsnummer) Values" + Nameaktuell + ","
-                    + DateTime.Now.ToString("yyyy.mm.dd") + "," + value + "," +;
+                    + DateTime.Now.ToString("yyyy.mm.dd") + "," + value + "," +_BehandlungsnummerMax.ToString()+",";
                 try
                 {
                     cmd = new SqlCommand(query3, conn);
@@ -253,7 +257,6 @@ namespace Bitmap_Test1_Schmid
                 }
                 finally
                 {
-
                     conn.Close();
                 }
             }
