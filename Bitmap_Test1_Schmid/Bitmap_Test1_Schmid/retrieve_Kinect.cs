@@ -85,6 +85,7 @@ namespace Bitmap_Test1_Schmid
 
         private string rightFoot
         {
+
             get
             {
                 return "0";

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -236,6 +237,54 @@ namespace Bitmap_Test1_Schmid
                 TbTelefonnummer.ForeColor = Color.Black;
             }
         }
+        private void TbName_Leave(object sender, EventArgs e)
+        {
+            if (TbName.Text == "")
+            {
+                TbName.ForeColor = Color.Gray;
+                TbName.Text = "Name";
+            }
+        }
+        private void TbAdresse_Leave(object sender, EventArgs e)
+        {
+            if (TbAdresse.Text == "")
+            {
+                TbAdresse.ForeColor = Color.Gray;
+                TbAdresse.Text = "Adresse";
+            }
+        }
+        private void TbTelefonnummer_Leave(object sender, EventArgs e)
+        {
+            if (TbTelefonnummer.Text == "")
+            {
+                TbTelefonnummer.ForeColor = Color.Gray;
+                TbTelefonnummer.Text = "Telefonnummer";
+            }
+        }
+        private void TbOrt_Leave(object sender, EventArgs e)
+        {
+            if (TbOrt.Text == "")
+            {
+                TbOrt.ForeColor = Color.Gray;
+                TbOrt.Text = "Ort";
+            }
+        }
+        private void TbGeburtsdatum_Leave(object sender, EventArgs e)
+        {
+            if (TbGeburtsdatum.Text == "")
+            {
+                TbGeburtsdatum.ForeColor = Color.Gray;
+                TbGeburtsdatum.Text = "Geburtsdatum";
+            }
+        }
+        private void TbPLZ_Leave(object sender, EventArgs e)
+        {
+            if (TbPLZ.Text == "")
+            {
+                TbPLZ.ForeColor = Color.Gray;
+                TbPLZ.Text = "PLZ";
+            }
+        }
         #endregion
         public string wertuebergabe {
             set
@@ -320,53 +369,6 @@ namespace Bitmap_Test1_Schmid
             //}
         }
 
-        private void TbName_Leave(object sender, EventArgs e)
-        {
-            if (TbName.Text == "")
-            {
-                TbName.ForeColor = Color.Gray;
-                TbName.Text = "Name";
-            }
-        }
-        private void TbAdresse_Leave(object sender, EventArgs e)
-        {
-            if (TbAdresse.Text == "")
-            {
-                TbAdresse.ForeColor = Color.Gray;
-                TbAdresse.Text = "Adresse";
-            }
-        }
-        private void TbTelefonnummer_Leave(object sender, EventArgs e)
-        {
-            if (TbTelefonnummer.Text == "")
-            {
-                TbTelefonnummer.ForeColor = Color.Gray;
-                TbTelefonnummer.Text = "Telefonnummer";
-            }
-        }
-        private void TbOrt_Leave(object sender, EventArgs e)
-        {
-            if (TbOrt.Text == "")
-            {
-                TbOrt.ForeColor = Color.Gray;
-                TbOrt.Text = "Ort";
-            }
-        }
-        private void TbGeburtsdatum_Leave(object sender, EventArgs e)
-        {
-            if (TbGeburtsdatum.Text == "")
-            {
-                TbGeburtsdatum.ForeColor = Color.Gray;
-                TbGeburtsdatum.Text = "Geburtsdatum";
-            }
-        }
-        private void TbPLZ_Leave(object sender, EventArgs e)
-        {
-            if (TbPLZ.Text == "")
-            {
-                TbPLZ.ForeColor = Color.Gray;
-                TbPLZ.Text = "PLZ";
-            }
-        }
+
     }
 }
