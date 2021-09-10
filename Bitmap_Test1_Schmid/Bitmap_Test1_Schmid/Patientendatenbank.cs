@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -14,10 +15,17 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Patientendatenbank : Form
     {
-        /* TODO: erstellen der Tabellen nach Schema: Vorname_Nachname
+        /* TODO: erstellen der Tabellen nach Schema: Vorname_Nachname_Geburtsdatum(Format: DDMMYYYY)
         * TODO: überarbeiten aller SQL Queries um fehler auszuschließen die von vorherigen versionen übrig sind
+        * TODO: tabellen überarbeiten um vor und nachname zu trennen
          */
-        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+        string connString_Christoph = @"";
+        string pfadCHP = @"";
+
+        string connString_SchmischLaptop = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security = True; Connect Timeout = 30";
+        string pfadSchmischLaptop = @"C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
+        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\\Bitmap_Test1_Schmid\\Bitmap_Test1_Schmid\\Database\\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+        string pfadSchmisch = @"C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
         string query1;
         string query2;
         string query3;
@@ -35,9 +43,31 @@ namespace Bitmap_Test1_Schmid
         public Patientendatenbank() //constructuor
         {
             InitializeComponent();
-            conn = new SqlConnection(connString);
+            conns();
         }
 
+        private void conns()
+        {
+            if (Directory.Exists(pfadSchmisch))
+            {
+                conn = new SqlConnection(connString);
+
+            }
+            else if (Directory.Exists(pfadSchmisch))
+            {
+                conn = new SqlConnection(connString_Christoph);
+
+            }
+            else if (Directory.Exists(pfadSchmischLaptop))
+            {
+                conn = new SqlConnection(connString_SchmischLaptop);
+
+            }
+            else
+            {
+                MessageBox.Show("fehler");
+            }
+        }
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
 
@@ -59,7 +89,7 @@ namespace Bitmap_Test1_Schmid
 
         private void sucheBtn_Click(object sender, EventArgs e)
         {
-            query1 = "select Name, Postleitzahl, Ort, Geburtsdatum from Patientenliste where Name in ('" + TbName.Text + "') order by Name asc ;";
+            query1 = "select Vorname, Nachname Postleitzahl, Ort, Geburtsdatum from Patientenliste where Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"') order by Name asc ;";
 
             try
             {
@@ -188,10 +218,10 @@ namespace Bitmap_Test1_Schmid
 
             }
         }
-        #region clear the textbox if clicked
+        #region clear the textbox if clicked color, the box black if text is entered
         private void TbName_Click(object sender, EventArgs e)
         {
-            if (TbName.Text == "Name")
+            if (TbName.Text == "Vorname")
             {
                 TbName.Text = "";
                 TbName.ForeColor = Color.Black;
@@ -237,12 +267,29 @@ namespace Bitmap_Test1_Schmid
                 TbTelefonnummer.ForeColor = Color.Black;
             }
         }
+        private void TbNachname_Click(object sender, EventArgs e)
+        {
+            if (TbNachname.Text == "Nachname")
+            {
+                TbNachname.Text = "";
+                TbNachname.ForeColor = Color.Black;
+            }
+        }
+
         private void TbName_Leave(object sender, EventArgs e)
         {
             if (TbName.Text == "")
             {
                 TbName.ForeColor = Color.Gray;
-                TbName.Text = "Name";
+                TbName.Text = "Vorname";
+            }
+        }
+        private void TbNachname_Leave(object sender, EventArgs e)
+        {
+            if(TbNachname.Text=="")
+            {
+                TbName.ForeColor = Color.Gray;
+                TbName.Text = "Vorname";
             }
         }
         private void TbAdresse_Leave(object sender, EventArgs e)
@@ -309,7 +356,7 @@ namespace Bitmap_Test1_Schmid
                     conn.Close();
                 }
             }
-            //Prio 1: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
+            //TODO: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
 
         }
        

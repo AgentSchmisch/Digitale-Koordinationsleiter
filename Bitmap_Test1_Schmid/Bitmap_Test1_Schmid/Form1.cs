@@ -163,7 +163,7 @@ namespace Bitmap_Test1_Schmid
             lblName.Text = Patientendatenbank.Nameaktuell;
             lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
             lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
-
+           
         }
 
 
