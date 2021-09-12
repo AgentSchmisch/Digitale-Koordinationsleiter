@@ -24,7 +24,7 @@ namespace Bitmap_Test1_Schmid
 
         string connString_SchmischLaptop = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security = True; Connect Timeout = 30";
         string pfadSchmischLaptop = @"C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
-        string connString_Schmisch = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\\Bitmap_Test1_Schmid\\Bitmap_Test1_Schmid\\Database\\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\\Bitmap_Test1_Schmid\\Bitmap_Test1_Schmid\\Database\\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
         string pfadSchmisch = @"C:\Users\Flori\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
         string query1;
         string query2;
@@ -43,20 +43,20 @@ namespace Bitmap_Test1_Schmid
         public Patientendatenbank() //constructuor
         {
             InitializeComponent();
-            conns();
+            
         }
 
         private void conns()
         {
             if (Directory.Exists(pfadSchmisch))
             {
-                conn = new SqlConnection(connString_Schmisch);
+                conn = new SqlConnection(connString);
             }
-            if (Directory.Exists(pfadCHP))
+            else if (Directory.Exists(pfadCHP))
             {
                 conn = new SqlConnection(connString_Christoph);
             }
-            if (Directory.Exists(pfadSchmischLaptop))
+            else if (Directory.Exists(pfadSchmischLaptop))
             {
                 conn = new SqlConnection(connString_SchmischLaptop);
             }
@@ -67,7 +67,7 @@ namespace Bitmap_Test1_Schmid
         }
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
-            
+            conns();
             try
             {
                 conn.Open();
