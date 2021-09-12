@@ -16,7 +16,6 @@ namespace Bitmap_Test1_Schmid
         {
             InitializeKinect();
         }
-
         public void InitializeKinect()
         {
             kinectSensor = KinectSensor.GetDefault();
@@ -47,10 +46,7 @@ namespace Bitmap_Test1_Schmid
                         bodies = new Body[bodyFrame.BodyCount];
                     }
                     bodyFrame.GetAndRefreshBodyData(bodies);
-
-
                 }
-
                 dataRecieved = true;
             }
             if (dataRecieved)
@@ -73,17 +69,17 @@ namespace Bitmap_Test1_Schmid
                         float lf_distance_x = FootLeft.Position.X;
                         float lf_distance_y = FootLeft.Position.Y;
                         float lf_distance_z = FootLeft.Position.Z;
-
                         #endregion
-                        rightFoot = rf_distance_x.ToString() + rf_distance_y.ToString() + rf_distance_z.ToString();
-                        leftFoot = lf_distance_x.ToString() + lf_distance_y.ToString() + lf_distance_z.ToString();
+                        RightFoot = (rf_distance_x*1000).ToString() + (rf_distance_y*1000).ToString() + rf_distance_z.ToString();
+                        LeftFoot = (lf_distance_x*1000).ToString() + (lf_distance_y*1000).ToString() + lf_distance_z.ToString();
                     }
 
                 }
             }
         }
 
-        private string rightFoot
+        //Properties zur berechnung der Koordinaten des Rechten und linken Fußes
+        public string RightFoot
         {
 
             get
@@ -95,7 +91,7 @@ namespace Bitmap_Test1_Schmid
 
             }
         }
-        private string leftFoot
+        public string LeftFoot
         {
             get
             {

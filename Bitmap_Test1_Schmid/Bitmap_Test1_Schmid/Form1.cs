@@ -14,16 +14,13 @@ namespace Bitmap_Test1_Schmid
     {
         Form2 screen = new Form2();
         Patientendatenbank Patientendatenbank = new Patientendatenbank();
+        retrieve_Kinect kinect = new retrieve_Kinect();
         public static int schritt = 0;
 
         public Form1()
         {
             InitializeComponent();
             screen.Show();
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(1);
         }
 
         private void bestätigen_Click(object sender, EventArgs e)

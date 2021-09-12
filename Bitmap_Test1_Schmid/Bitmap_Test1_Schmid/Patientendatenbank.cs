@@ -24,7 +24,7 @@ namespace Bitmap_Test1_Schmid
 
         string connString_SchmischLaptop = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security = True; Connect Timeout = 30";
         string pfadSchmischLaptop = @"C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
-        string connString_Schmisch = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\\Bitmap_Test1_Schmid\\Bitmap_Test1_Schmid\\Database\\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
         string pfadSchmisch = @"C:\Users\Flori\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
         string query1;
         string query2;
@@ -50,16 +50,19 @@ namespace Bitmap_Test1_Schmid
         {
             if (Directory.Exists(pfadSchmisch))
             {
-                conn = new SqlConnection(connString_Schmisch);
+                conn = new SqlConnection(connString);
             }
-            if (Directory.Exists(pfadCHP))
+
+            else if (Directory.Exists(pfadCHP))
             {
                 conn = new SqlConnection(connString_Christoph);
             }
-            if (Directory.Exists(pfadSchmischLaptop))
+
+            else if (Directory.Exists(pfadSchmischLaptop))
             {
                 conn = new SqlConnection(connString_SchmischLaptop);
             }
+
             else
             {
                 MessageBox.Show("fehler");
@@ -86,7 +89,7 @@ namespace Bitmap_Test1_Schmid
 
         private void sucheBtn_Click(object sender, EventArgs e)
         {
-            query1 = "select Vorname, Nachname Postleitzahl, Ort, Geburtsdatum from Patientenliste where Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"') order by Name asc ;";
+            query1 = "select Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"');";
 
             try
             {
@@ -96,9 +99,9 @@ namespace Bitmap_Test1_Schmid
                 tbl = new DataTable();
                 da.Fill(tbl);
             }
-            catch
+            catch(Exception ex)
             {
-                labelHinweis.Text = "Abfrage fehlgeschlagen";
+                labelHinweis.Text = "Abfrage fehlgeschlagen"+ex;
                 return;
             }
             finally
@@ -129,7 +132,7 @@ namespace Bitmap_Test1_Schmid
                     {
 
                         record += row[j] + "\t";
-                        Nameaktuell += row[j];
+                        Nameaktuell += row[j]+" ";
                         continue;
                     }
                 }
@@ -177,10 +180,8 @@ namespace Bitmap_Test1_Schmid
 
         private void button1_Click(object sender, EventArgs e) //auswahlBtn
         {
-           
 
-            Nameaktuell = Nameaktuell.Replace(" ", "_");
-            labelHinweis.Text = Nameaktuell;
+            //labelHinweis.Text = Nameaktuell;
 
             query3 = "select Max(Behandlungsnummer) Vorname,Nachname, Behandlungsdatum, Schrittweite, Behandlungsnummer from " + Nameaktuell + "); ";
             for (int i = 0; i < tbl.Rows.Count; i++)
@@ -383,8 +384,8 @@ namespace Bitmap_Test1_Schmid
             Patientenname = TbName.Text.ToString();
             Patientenname = Patientenname.Replace(' ', '_');
             //erstellen der Datenbank für den jeweiligen Patienten, Füllen der allgemeinen tablle mit Informationen für die Suche
-            query2 = "create table " + Patientenname + " (Patientennummer nvarchar(10) not null primary key , Name nvarchar(50), Behandlungsdatum nvarchar(50),Schrittweite nvarchar(5));" +
-                "Insert into Patientenliste(Name,Geburtsdatum,Adresse,Ort,Postleitzahl,Telefonnummer) values('" + Patientenname + "','" +
+            query2 = "create table " + TbName.Text+"_"+TbNachname.Text+"_"+TbGeburtsdatum.Text + " (Patientennummer nvarchar(10) not null primary key , Name nvarchar(50), Behandlungsdatum nvarchar(50),Schrittweite nvarchar(5));" +
+                "Insert into Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,Ort,PLZ,Telefonnummer) values('" + TbName.Text + "','"+TbNachname+ "','" +
                 TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "');";
             try
             {
@@ -401,26 +402,18 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show("Fehler");
             }
 
-
             finally
             {
                 //MessageBox.Show("Patient erfolgreich hinzugefügt", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 conn.Close();
             }
 
-
         }
 
         private void eintragungLöschenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //TODO: löschen von angelegten Patienten
-            //using (Form1 UI = new Form1())
-            //{
-
-            //    UI.Text = "TEST";
-            //    UI.Labelsteps = "Text";
-
-            //}
+            labelHinweis.Text=Patienten.SelectedItem.ToString();
         }
 
 
