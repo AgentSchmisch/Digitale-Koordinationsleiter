@@ -25,7 +25,7 @@ namespace Bitmap_Test1_Schmid
         string connString_SchmischLaptop = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security = True; Connect Timeout = 30";
         string pfadSchmischLaptop = @"C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
         string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\\Bitmap_Test1_Schmid\\Bitmap_Test1_Schmid\\Database\\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
-        string pfadSchmisch = @"C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
+        string pfadSchmisch = @"C:\Users\Flori\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
         string query1;
         string query2;
         string query3;
@@ -43,7 +43,7 @@ namespace Bitmap_Test1_Schmid
         public Patientendatenbank() //constructuor
         {
             InitializeComponent();
-            conns();
+            
         }
 
         private void conns()
@@ -51,17 +51,14 @@ namespace Bitmap_Test1_Schmid
             if (Directory.Exists(pfadSchmisch))
             {
                 conn = new SqlConnection(connString);
-
             }
-            else if (Directory.Exists(pfadSchmisch))
+            else if (Directory.Exists(pfadCHP))
             {
                 conn = new SqlConnection(connString_Christoph);
-
             }
             else if (Directory.Exists(pfadSchmischLaptop))
             {
                 conn = new SqlConnection(connString_SchmischLaptop);
-
             }
             else
             {
@@ -70,7 +67,7 @@ namespace Bitmap_Test1_Schmid
         }
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
-
+            conns();
             try
             {
                 conn.Open();
@@ -117,7 +114,28 @@ namespace Bitmap_Test1_Schmid
                 DataRow row = tbl.Rows[i];
                 for (int j = 0; j < tbl.Columns.Count; j++)
                 {
-                    if (tbl.Columns[j].ColumnName == "Name")
+                    if (tbl.Columns[j].ColumnName == "Patientennummer")
+                    {
+
+                        record += row[j] + "\t";
+                        
+                        continue;
+                    }
+                }
+
+                for (int j = 0; j < tbl.Columns.Count; j++)
+                {
+                    if (tbl.Columns[j].ColumnName == "Vorname")
+                    {
+
+                        record += row[j] + "\t";
+                        Nameaktuell += row[j];
+                        continue;
+                    }
+                }
+                for (int j = 0; j < tbl.Columns.Count; j++)
+                {
+                    if (tbl.Columns[j].ColumnName == "Nachname")
                     {
 
                         record += row[j] + "\t";
@@ -164,7 +182,7 @@ namespace Bitmap_Test1_Schmid
             Nameaktuell = Nameaktuell.Replace(" ", "_");
             labelHinweis.Text = Nameaktuell;
 
-            query3 = "select Max(Behandlungsnummer) Name, Behandlungsdatum, Schrittweite, Behandlungsnummer from " + Nameaktuell + "); ";
+            query3 = "select Max(Behandlungsnummer) Vorname,Nachname, Behandlungsdatum, Schrittweite, Behandlungsnummer from " + Nameaktuell + "); ";
             for (int i = 0; i < tbl.Rows.Count; i++)
             {
                 record = "";
@@ -205,20 +223,9 @@ namespace Bitmap_Test1_Schmid
                     }
                 }
 
-
-
-                //UI.Labelsteps = Text = "Text";
-                //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
-
-                //wertuebergabe(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
-
-                //UI.letzteBehandlung(Nameaktuell, letzteBehandlung, letzteSchrittanzahl);
-
-
-
             }
         }
-        #region clear the textbox if clicked color, the box black if text is entered
+        #region clear the textbox if clicked, color the box black if text is entered
         private void TbName_Click(object sender, EventArgs e)
         {
             if (TbName.Text == "Vorname")
