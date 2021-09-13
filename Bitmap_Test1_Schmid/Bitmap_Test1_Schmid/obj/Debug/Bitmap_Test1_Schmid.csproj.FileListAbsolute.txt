@@ -84,3 +84,6 @@ C:\Users\Florian\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_
 C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\Microsoft.Kinect.dll
 C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\Microsoft.Kinect.xml
 C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.csproj.CopyComplete
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\Microsoft.Kinect.dll
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\Microsoft.Kinect.xml
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.csproj.CopyComplete
