@@ -81,9 +81,10 @@ namespace Bitmap_Test1_Schmid
         //Properties zur berechnung der Koordinaten des Rechten und linken Fußes
         public string RightFoot
         {
-
+            //Hier verarbeitung der Daten zur übergabe an den zweiten Thread im Hauptprogramm
             get
             {
+
                 return "0";
             }
             set

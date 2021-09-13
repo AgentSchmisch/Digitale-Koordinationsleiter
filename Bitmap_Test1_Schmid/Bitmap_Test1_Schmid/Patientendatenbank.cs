@@ -15,10 +15,11 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Patientendatenbank : Form
     {
-        /* TODO: erstellen der Tabellen nach Schema: Vorname_Nachname_Geburtsdatum(Format: DDMMYYYY)
+        /* TODO: erstellen der Tabellen nach Schema: Patientennummer
         * TODO: überarbeiten aller SQL Queries um fehler auszuschließen die von vorherigen versionen übrig sind
         * TODO: tabellen überarbeiten um vor und nachname zu trennen
          */
+        //Variablen für die verschiedenen Verbindungszeichenfolgen auf verschiedenen PC's, so können alle die dieses Programm bearbeiten alle Programmfunktionen verwenden
         string connString_Christoph = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\CS-Projekte\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
         string pfadCHP = @"C:\CS-Projekte\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\";
 
@@ -26,11 +27,13 @@ namespace Bitmap_Test1_Schmid
         string pfadSchmischLaptop = @"C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
         string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
         string pfadSchmisch = @"C:\Users\Flori\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
+       
         string query1;
         string query2;
         string query3;
         string record;
         string Patientenname;
+        string PatNr_aktuell;
         public string Nameaktuell;
         public string letzteBehandlung;
         public string letzteSchrittanzahl;
@@ -70,7 +73,6 @@ namespace Bitmap_Test1_Schmid
         }
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
-            
             try
             {
                 conn.Open();
@@ -89,7 +91,7 @@ namespace Bitmap_Test1_Schmid
 
         private void sucheBtn_Click(object sender, EventArgs e)
         {
-            query1 = "select Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"');";
+            query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"');";
 
             try
             {
@@ -99,9 +101,9 @@ namespace Bitmap_Test1_Schmid
                 tbl = new DataTable();
                 da.Fill(tbl);
             }
-            catch(Exception ex)
+            catch
             {
-                labelHinweis.Text = "Abfrage fehlgeschlagen"+ex;
+                labelHinweis.Text = "Abfrage fehlgeschlagen";
                 return;
             }
             finally
@@ -119,9 +121,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[j].ColumnName == "Patientennummer")
                     {
-
-                        record += row[j] + "\t";
-                        
+                        record += row[j] + ";";
                         continue;
                     }
                 }
@@ -130,9 +130,66 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[j].ColumnName == "Vorname")
                     {
+                        record += row[j] + ";";
+                        continue;
+                    }
+                }
+                for (int j = 0; j < tbl.Columns.Count; j++)
+                {
+                    if (tbl.Columns[j].ColumnName == "Nachname")
+                    {
+                        record += row[j] + ";";
+                        continue;
+                    }
+                }
 
-                        record += row[j] + "\t";
-                        Nameaktuell += row[j]+" ";
+                for (int j = 0; j < tbl.Columns.Count; j++)
+                {
+                    if (tbl.Columns[j].ColumnName == "Postleitzahl")
+                    {
+                        record += row[j] + ";";
+                        continue;
+                    }
+                }
+
+                for (int j = 0; j < tbl.Columns.Count; j++)
+                {
+                    if (tbl.Columns[j].ColumnName == "Ort")
+                    {
+                        record += row[j] + ";";
+                        continue;
+                    }
+                }
+                for (int j = 0; j < tbl.Columns.Count; j++)
+                {
+                    if (tbl.Columns[j].ColumnName == "Geburtsdatum")
+                    {
+                        record += row[j] + ";";
+                        continue;
+                    }
+                }
+
+                //Alle übereinstimmenden Patienten in der ListBox anzeigen um dem Betreuer die Auswahl zu ermöglichen
+                Patienten.Items.Add(record.Replace(";","\t"));
+                
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e) //auswahlBtn
+        {
+            labelHinweis.Text = PatNr_aktuell;
+            query3 = "select Max(Behandlungsnummer) Vorname, Nachname, Behandlungsdatum, Schrittweite, Behandlungsnummer from " + Convert.ToInt32(PatNr_aktuell) + "); ";
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                record = "";
+                DataRow row = tbl.Rows[i];
+                for (int j = 0; j < tbl.Columns.Count; j++)
+                {
+                    if (tbl.Columns[j].ColumnName == "Vorname")
+                    {
+
+                        Nameaktuell += row[j] + " ";
                         continue;
                     }
                 }
@@ -141,59 +198,7 @@ namespace Bitmap_Test1_Schmid
                     if (tbl.Columns[j].ColumnName == "Nachname")
                     {
 
-                        record += row[j] + "\t";
                         Nameaktuell += row[j];
-                        continue;
-                    }
-                }
-
-                for (int k = 0; k < tbl.Columns.Count; k++)
-                {
-                    if (tbl.Columns[k].ColumnName == "Postleitzahl")
-                    {
-                        record += row[k] + "\t";
-                        continue;
-                    }
-                }
-
-                for (int l = 0; l < tbl.Columns.Count; l++)
-                {
-                    if (tbl.Columns[l].ColumnName == "Ort")
-                    {
-                        record += row[l] + "\t";
-                        continue;
-                    }
-                }
-                for (int m = 0; m < tbl.Columns.Count; m++)
-                {
-                    if (tbl.Columns[m].ColumnName == "Geburtsdatum")
-                    {
-                        record += row[m] + "\t";
-                        continue;
-                    }
-                }
-                //present the information in the listbox
-                Patienten.Items.Add(record);
-
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e) //auswahlBtn
-        {
-
-            //labelHinweis.Text = Nameaktuell;
-
-            query3 = "select Max(Behandlungsnummer) Vorname,Nachname, Behandlungsdatum, Schrittweite, Behandlungsnummer from " + Nameaktuell + "); ";
-            for (int i = 0; i < tbl.Rows.Count; i++)
-            {
-                record = "";
-                DataRow row = tbl.Rows[i];
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
-                    if (tbl.Columns[j].ColumnName == "Name")
-                    {
-
-                        Nameaktuell += row[j] + "\t";
                         continue;
                     }
                 }
@@ -202,7 +207,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[k].ColumnName == "Behandlungsdatum")
                     {
-                        letzteBehandlung += row[k] + "\t";
+                        letzteBehandlung += row[k];
                         continue;
                     }
                 }
@@ -211,7 +216,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[l].ColumnName == "Schrittweite")
                     {
-                        letzteSchrittanzahl += row[l] + "\t";
+                        letzteSchrittanzahl += row[l];
                         continue;
                     }
                 }
@@ -219,7 +224,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[l].ColumnName == "Behandlungsnummer")
                     {
-                        BehandlungsnummerMax += row[l] + "\t";
+                        BehandlungsnummerMax += row[l];
                         continue;
                     }
                 }
@@ -415,6 +420,20 @@ namespace Bitmap_Test1_Schmid
             //TODO: löschen von angelegten Patienten
             labelHinweis.Text=Patienten.SelectedItem.ToString();
         }
+
+        private void Patienten_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PatNr_aktuell = "";
+            string s_ = Patienten.SelectedItem.ToString();
+            for (int i = 0; i < 10; i++)
+            {
+                if (Char.IsDigit(s_[i]))
+                {
+                    PatNr_aktuell += s_[i];
+                }
+            }
+        }
+
 
 
     }

@@ -73,14 +73,14 @@ namespace Bitmap_Test1_Schmid
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // eintragungLöschenToolStripMenuItem
             // 
             this.eintragungLöschenToolStripMenuItem.Name = "eintragungLöschenToolStripMenuItem";
-            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eintragungLöschenToolStripMenuItem.Text = "Eintragung löschen";
             this.eintragungLöschenToolStripMenuItem.Click += new System.EventHandler(this.eintragungLöschenToolStripMenuItem_Click);
             // 
@@ -104,6 +104,7 @@ namespace Bitmap_Test1_Schmid
             this.Patienten.Name = "Patienten";
             this.Patienten.Size = new System.Drawing.Size(431, 104);
             this.Patienten.TabIndex = 9;
+            this.Patienten.SelectedIndexChanged += new System.EventHandler(this.Patienten_SelectedIndexChanged);
             // 
             // auswahlBtn
             // 
@@ -227,7 +228,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(455, 449);
+            this.ClientSize = new System.Drawing.Size(455, 432);
             this.Controls.Add(this.TbPatNr);
             this.Controls.Add(this.TbNachname);
             this.Controls.Add(this.labelHinweis);
