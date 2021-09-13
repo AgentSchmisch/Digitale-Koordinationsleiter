@@ -25,16 +25,16 @@ namespace Bitmap_Test1_Schmid
         public int count2 = 0;
         public string reglerwertalt;
         public int längewertalt;
-
+        Bitmap image1 = null;
 
         public Form2()
         {
             InitializeComponent();       
         }
-        Bitmap image1 = new Bitmap(1920, 1080); //1920 entspricht 5m = 500cm
+        
         private void Form2_Load(object sender, EventArgs e)
         {
-
+             image1 = new Bitmap(1920, 1080); //1920 entspricht 5m = 500cm
             try
             {
                 for (x = 0; x < image1.Width; x++)               //waagrecht unten
@@ -65,11 +65,6 @@ namespace Bitmap_Test1_Schmid
             {
                 MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
             }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)

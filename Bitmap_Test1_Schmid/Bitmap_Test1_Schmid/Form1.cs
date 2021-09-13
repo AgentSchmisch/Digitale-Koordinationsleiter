@@ -14,16 +14,13 @@ namespace Bitmap_Test1_Schmid
     {
         Form2 screen = new Form2();
         Patientendatenbank Patientendatenbank = new Patientendatenbank();
+        retrieve_Kinect kinect = new retrieve_Kinect();
         public static int schritt = 0;
 
         public Form1()
         {
             InitializeComponent();
             screen.Show();
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(1);
         }
 
         private void bestätigen_Click(object sender, EventArgs e)
@@ -146,31 +143,33 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
+                //öffnen der Form für die Patientendatenbank, 
+                //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
                 Patientendatenbank.Show();
-                lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
                 Patientendatenbank.FormClosing += Patientendatenbank_Closing;
             }
             catch
 
             {
-                MessageBox.Show("fehlgeschlagen");
+                MessageBox.Show("Fehlgeschlagen");
             }
         }
 
 
         private void Patientendatenbank_Closing(object sender, FormClosingEventArgs e)
         {
+            //wenn die Form geschlossen wird die Werte aus der Patientendatenbank übernehmen und in Label anzeigen
             lblName.Text = Patientendatenbank.Nameaktuell;
             lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
             lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
-
+           
         }
-
-
 
         private void BtnSitzungBeenden_Click(object sender, EventArgs e)
         {
-              //TODO: einfügen der daten in die Datenbank über die Form "Patientendatenbank"
+            //übergabe der aktuellen schrittweite nach abschließen der Behandlungssitzung
+            Patientendatenbank.wertuebergabe = steps.Text.ToString();
+            //TODO: einfügen der daten in die Datenbank über die Form "Patientendatenbank"
         }
     }
 }
