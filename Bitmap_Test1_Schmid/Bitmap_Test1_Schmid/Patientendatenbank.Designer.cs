@@ -29,6 +29,7 @@ namespace Bitmap_Test1_Schmid
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Patientendatenbank));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.neuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,14 +74,14 @@ namespace Bitmap_Test1_Schmid
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // eintragungLöschenToolStripMenuItem
             // 
             this.eintragungLöschenToolStripMenuItem.Name = "eintragungLöschenToolStripMenuItem";
-            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.eintragungLöschenToolStripMenuItem.Text = "Eintragung löschen";
             this.eintragungLöschenToolStripMenuItem.Click += new System.EventHandler(this.eintragungLöschenToolStripMenuItem_Click);
             // 
@@ -221,7 +222,9 @@ namespace Bitmap_Test1_Schmid
             this.TbPatNr.Name = "TbPatNr";
             this.TbPatNr.Size = new System.Drawing.Size(115, 27);
             this.TbPatNr.TabIndex = 2;
-            this.TbPatNr.Text = "Patientenr.";
+            this.TbPatNr.Text = "Patientennr.";
+            this.TbPatNr.Click += new System.EventHandler(this.TbPatNr_Click);
+            this.TbPatNr.Leave += new System.EventHandler(this.TbPatNr_Leave);
             // 
             // Patientendatenbank
             // 
@@ -242,11 +245,11 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.Patienten);
             this.Controls.Add(this.sucheBtn);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Patientendatenbank";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Patientendatenbank";
             this.TopMost = true;

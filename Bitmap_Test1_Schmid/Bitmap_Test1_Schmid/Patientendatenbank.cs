@@ -289,6 +289,15 @@ namespace Bitmap_Test1_Schmid
             }
         }
 
+        private void TbPatNr_Click(object sender, EventArgs e)
+        {
+            if (TbPatNr.Text == "Patientennr.")
+            {
+                TbPatNr.Text = "";
+                TbPatNr.ForeColor = Color.Black;
+            }
+        }
+        //-----------------------------------------------------------------------------------
         private void TbName_Leave(object sender, EventArgs e)
         {
             if (TbName.Text == "")
@@ -301,8 +310,8 @@ namespace Bitmap_Test1_Schmid
         {
             if(TbNachname.Text=="")
             {
-                TbName.ForeColor = Color.Gray;
-                TbName.Text = "Vorname";
+                TbNachname.ForeColor = Color.Gray;
+                TbNachname.Text = "Nachname";
             }
         }
         private void TbAdresse_Leave(object sender, EventArgs e)
@@ -343,6 +352,14 @@ namespace Bitmap_Test1_Schmid
             {
                 TbPLZ.ForeColor = Color.Gray;
                 TbPLZ.Text = "PLZ";
+            }
+        }
+        private void TbPatNr_Leave(object sender, EventArgs e)
+        {
+            if (TbPatNr.Text == "")
+            {
+                TbPatNr.ForeColor = Color.Gray;
+                TbPatNr.Text = "Patientennr.";
             }
         }
         #endregion
@@ -433,8 +450,5 @@ namespace Bitmap_Test1_Schmid
                 }
             }
         }
-
-
-
     }
 }
