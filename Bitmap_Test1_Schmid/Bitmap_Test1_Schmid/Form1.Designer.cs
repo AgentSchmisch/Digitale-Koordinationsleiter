@@ -182,7 +182,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Bitmap_Test1_Schmid.Properties.Resources.HTLMI_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 39);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(114, 67);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
