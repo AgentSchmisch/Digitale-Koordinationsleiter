@@ -87,10 +87,12 @@ namespace Bitmap_Test1_Schmid
             // 
             // sucheBtn
             // 
-            this.sucheBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sucheBtn.Location = new System.Drawing.Point(12, 205);
+            this.sucheBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sucheBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.sucheBtn.ForeColor = System.Drawing.SystemColors.Control;
+            this.sucheBtn.Location = new System.Drawing.Point(12, 214);
             this.sucheBtn.Name = "sucheBtn";
-            this.sucheBtn.Size = new System.Drawing.Size(79, 32);
+            this.sucheBtn.Size = new System.Drawing.Size(90, 32);
             this.sucheBtn.TabIndex = 8;
             this.sucheBtn.Text = "Suchen";
             this.sucheBtn.UseVisualStyleBackColor = true;
@@ -98,21 +100,25 @@ namespace Bitmap_Test1_Schmid
             // 
             // Patienten
             // 
+            this.Patienten.BackColor = System.Drawing.SystemColors.Menu;
+            this.Patienten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Patienten.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Patienten.FormattingEnabled = true;
             this.Patienten.ItemHeight = 20;
-            this.Patienten.Location = new System.Drawing.Point(16, 259);
+            this.Patienten.Location = new System.Drawing.Point(12, 263);
             this.Patienten.Name = "Patienten";
-            this.Patienten.Size = new System.Drawing.Size(431, 104);
+            this.Patienten.Size = new System.Drawing.Size(435, 100);
             this.Patienten.TabIndex = 9;
             this.Patienten.SelectedIndexChanged += new System.EventHandler(this.Patienten_SelectedIndexChanged);
             // 
             // auswahlBtn
             // 
-            this.auswahlBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.auswahlBtn.Location = new System.Drawing.Point(313, 382);
+            this.auswahlBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.auswahlBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.auswahlBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.auswahlBtn.Location = new System.Drawing.Point(166, 379);
             this.auswahlBtn.Name = "auswahlBtn";
-            this.auswahlBtn.Size = new System.Drawing.Size(133, 37);
+            this.auswahlBtn.Size = new System.Drawing.Size(133, 41);
             this.auswahlBtn.TabIndex = 10;
             this.auswahlBtn.Text = "Auswählen";
             this.auswahlBtn.UseVisualStyleBackColor = true;
@@ -220,7 +226,7 @@ namespace Bitmap_Test1_Schmid
             this.TbPatNr.ForeColor = System.Drawing.Color.Gray;
             this.TbPatNr.Location = new System.Drawing.Point(328, 75);
             this.TbPatNr.Name = "TbPatNr";
-            this.TbPatNr.Size = new System.Drawing.Size(115, 27);
+            this.TbPatNr.Size = new System.Drawing.Size(118, 27);
             this.TbPatNr.TabIndex = 2;
             this.TbPatNr.Text = "Patientennr.";
             this.TbPatNr.Click += new System.EventHandler(this.TbPatNr_Click);

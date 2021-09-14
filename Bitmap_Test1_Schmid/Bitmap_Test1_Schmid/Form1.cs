@@ -143,6 +143,7 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
+                this.Size = new Size(1139, 409);
                 //öffnen der Form für die Patientendatenbank, 
                 //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
                 Patientendatenbank.Show();
@@ -170,6 +171,11 @@ namespace Bitmap_Test1_Schmid
             //übergabe der aktuellen schrittweite nach abschließen der Behandlungssitzung
             Patientendatenbank.wertuebergabe = steps.Text.ToString();
             //TODO: einfügen der daten in die Datenbank über die Form "Patientendatenbank"
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
