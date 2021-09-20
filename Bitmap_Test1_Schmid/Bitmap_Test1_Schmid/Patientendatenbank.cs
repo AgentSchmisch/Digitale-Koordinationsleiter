@@ -229,7 +229,7 @@ namespace Bitmap_Test1_Schmid
                         continue;
                     }
                 }
-
+                
             }
         }
         #region clear the textbox if clicked, color the box black if text is entered
