@@ -93,7 +93,7 @@ namespace Bitmap_Test1_Schmid
             this.sucheBtn.Location = new System.Drawing.Point(12, 214);
             this.sucheBtn.Name = "sucheBtn";
             this.sucheBtn.Size = new System.Drawing.Size(90, 32);
-            this.sucheBtn.TabIndex = 8;
+            this.sucheBtn.TabIndex = 0;
             this.sucheBtn.Text = "Suchen";
             this.sucheBtn.UseVisualStyleBackColor = true;
             this.sucheBtn.Click += new System.EventHandler(this.sucheBtn_Click);
@@ -131,7 +131,7 @@ namespace Bitmap_Test1_Schmid
             this.TbName.Location = new System.Drawing.Point(12, 75);
             this.TbName.Name = "TbName";
             this.TbName.Size = new System.Drawing.Size(161, 27);
-            this.TbName.TabIndex = 0;
+            this.TbName.TabIndex = 1;
             this.TbName.Text = "Vorname";
             this.TbName.Click += new System.EventHandler(this.TbName_Click);
             this.TbName.Leave += new System.EventHandler(this.TbName_Leave);
@@ -143,7 +143,7 @@ namespace Bitmap_Test1_Schmid
             this.TbAdresse.Location = new System.Drawing.Point(12, 140);
             this.TbAdresse.Name = "TbAdresse";
             this.TbAdresse.Size = new System.Drawing.Size(161, 27);
-            this.TbAdresse.TabIndex = 4;
+            this.TbAdresse.TabIndex = 5;
             this.TbAdresse.Text = "Adresse";
             this.TbAdresse.Click += new System.EventHandler(this.TbAdresse_Click);
             this.TbAdresse.Leave += new System.EventHandler(this.TbAdresse_Leave);
@@ -155,7 +155,7 @@ namespace Bitmap_Test1_Schmid
             this.TbPLZ.Location = new System.Drawing.Point(328, 140);
             this.TbPLZ.Name = "TbPLZ";
             this.TbPLZ.Size = new System.Drawing.Size(119, 27);
-            this.TbPLZ.TabIndex = 6;
+            this.TbPLZ.TabIndex = 7;
             this.TbPLZ.Text = "PLZ";
             this.TbPLZ.Click += new System.EventHandler(this.TbPLZ_Click);
             this.TbPLZ.Leave += new System.EventHandler(this.TbPLZ_Leave);
@@ -167,7 +167,7 @@ namespace Bitmap_Test1_Schmid
             this.TbOrt.Location = new System.Drawing.Point(178, 140);
             this.TbOrt.Name = "TbOrt";
             this.TbOrt.Size = new System.Drawing.Size(141, 27);
-            this.TbOrt.TabIndex = 5;
+            this.TbOrt.TabIndex = 6;
             this.TbOrt.Text = "Ort";
             this.TbOrt.Click += new System.EventHandler(this.TbOrt_Click);
             this.TbOrt.Leave += new System.EventHandler(this.TbOrt_Leave);
@@ -179,7 +179,7 @@ namespace Bitmap_Test1_Schmid
             this.TbGeburtsdatum.Location = new System.Drawing.Point(12, 107);
             this.TbGeburtsdatum.Name = "TbGeburtsdatum";
             this.TbGeburtsdatum.Size = new System.Drawing.Size(119, 27);
-            this.TbGeburtsdatum.TabIndex = 3;
+            this.TbGeburtsdatum.TabIndex = 4;
             this.TbGeburtsdatum.Text = "Geburtsdatum";
             this.TbGeburtsdatum.Click += new System.EventHandler(this.TbGeburtsdatum_Click);
             this.TbGeburtsdatum.Leave += new System.EventHandler(this.TbGeburtsdatum_Leave);
@@ -191,7 +191,7 @@ namespace Bitmap_Test1_Schmid
             this.TbTelefonnummer.Location = new System.Drawing.Point(12, 172);
             this.TbTelefonnummer.Name = "TbTelefonnummer";
             this.TbTelefonnummer.Size = new System.Drawing.Size(161, 27);
-            this.TbTelefonnummer.TabIndex = 7;
+            this.TbTelefonnummer.TabIndex = 8;
             this.TbTelefonnummer.Text = "Telefonnummer";
             this.TbTelefonnummer.Click += new System.EventHandler(this.TbTelefonnummer_Click);
             this.TbTelefonnummer.Leave += new System.EventHandler(this.TbTelefonnummer_Leave);
@@ -215,7 +215,7 @@ namespace Bitmap_Test1_Schmid
             this.TbNachname.Location = new System.Drawing.Point(178, 75);
             this.TbNachname.Name = "TbNachname";
             this.TbNachname.Size = new System.Drawing.Size(141, 27);
-            this.TbNachname.TabIndex = 1;
+            this.TbNachname.TabIndex = 2;
             this.TbNachname.Text = "Nachname";
             this.TbNachname.Click += new System.EventHandler(this.TbNachname_Click);
             this.TbNachname.Leave += new System.EventHandler(this.TbNachname_Leave);
@@ -227,7 +227,7 @@ namespace Bitmap_Test1_Schmid
             this.TbPatNr.Location = new System.Drawing.Point(328, 75);
             this.TbPatNr.Name = "TbPatNr";
             this.TbPatNr.Size = new System.Drawing.Size(118, 27);
-            this.TbPatNr.TabIndex = 2;
+            this.TbPatNr.TabIndex = 3;
             this.TbPatNr.Text = "Patientennr.";
             this.TbPatNr.Click += new System.EventHandler(this.TbPatNr_Click);
             this.TbPatNr.Leave += new System.EventHandler(this.TbPatNr_Leave);
