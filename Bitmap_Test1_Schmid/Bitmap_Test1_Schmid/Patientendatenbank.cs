@@ -18,6 +18,7 @@ namespace Bitmap_Test1_Schmid
         /* TODO: erstellen der Tabellen nach Schema: Patientennummer
         * TODO: überarbeiten aller SQL Queries um fehler auszuschließen die von vorherigen versionen übrig sind
         * TODO: tabellen überarbeiten um vor und nachname zu trennen
+        * TODO: Felder mit der eigenschaft not null schon im hauptprogramm abfragen
          */
         //Variablen für die verschiedenen Verbindungszeichenfolgen auf verschiedenen PC's, so können alle die dieses Programm bearbeiten alle Programmfunktionen verwenden
         string connString_Christoph = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\CS-Projekte\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
