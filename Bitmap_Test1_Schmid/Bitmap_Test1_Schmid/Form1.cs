@@ -143,6 +143,7 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
+                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
                 this.Size = new Size(1139, 409);
                 //öffnen der Form für die Patientendatenbank, 
                 //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
@@ -150,7 +151,6 @@ namespace Bitmap_Test1_Schmid
                 Patientendatenbank.FormClosing += Patientendatenbank_Closing;
             }
             catch
-
             {
                 MessageBox.Show("Fehlgeschlagen");
             }
@@ -159,11 +159,10 @@ namespace Bitmap_Test1_Schmid
 
         private void Patientendatenbank_Closing(object sender, FormClosingEventArgs e)
         {
-            //wenn die Form geschlossen wird die Werte aus der Patientendatenbank übernehmen und in Label anzeigen
+            //wenn die Form geschlossen wird die Werte aus der Patientendatenbank übernehmen und im Label anzeigen
             lblName.Text = Patientendatenbank.Nameaktuell;
             lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
             lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
-           
         }
 
         private void BtnSitzungBeenden_Click(object sender, EventArgs e)
@@ -173,9 +172,5 @@ namespace Bitmap_Test1_Schmid
             //TODO: einfügen der daten in die Datenbank über die Form "Patientendatenbank"
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -15,9 +15,8 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Patientendatenbank : Form
     {
-        /* TODO: erstellen der Tabellen nach Schema: Patientennummer
+        /* TODO: erstellen der Tabellen nach Schema: Patientennummer_Vorname_Nachname
         * TODO: überarbeiten aller SQL Queries um fehler auszuschließen die von vorherigen versionen übrig sind
-        * TODO: tabellen überarbeiten um vor und nachname zu trennen
         * TODO: Felder mit der eigenschaft not null schon im hauptprogramm abfragen
          */
         //Variablen für die verschiedenen Verbindungszeichenfolgen auf verschiedenen PC's, so können alle die dieses Programm bearbeiten alle Programmfunktionen verwenden
@@ -33,7 +32,7 @@ namespace Bitmap_Test1_Schmid
         string query2;
         string query3;
         string record;
-        string Patientenname;
+        public string Patientenname;
         string PatNr_aktuell;
         public string Nameaktuell;
         public string letzteBehandlung;
@@ -92,7 +91,9 @@ namespace Bitmap_Test1_Schmid
 
         private void sucheBtn_Click(object sender, EventArgs e)
         {
-            query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"');";
+            query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where " +
+                "(Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"')) " +
+                "or (PLZ in('"+TbPLZ.Text+"')) or (Ort ='"+TbOrt.Text+"');";
 
             try
             {
@@ -179,8 +180,8 @@ namespace Bitmap_Test1_Schmid
 
         private void button1_Click(object sender, EventArgs e) //auswahlBtn
         {
-            labelHinweis.Text = PatNr_aktuell;
-            query3 = "select Max(Behandlungsnummer) Vorname, Nachname, Behandlungsdatum, Schrittweite, Behandlungsnummer from " + Convert.ToInt32(PatNr_aktuell) + "); ";
+            labelHinweis.Text = PatNr_aktuell+" "+Patientenname;
+            query3 = "select Max(Behandlungsnummer) Vorname, Nachname, Behandlungsdatum, Schrittweite, Behandlungsnummer from 1_Florian_Schmid; "; //Patientennummer_Convert.ToInt32(PatNr_aktuell)
             for (int i = 0; i < tbl.Rows.Count; i++)
             {
                 record = "";
@@ -221,6 +222,7 @@ namespace Bitmap_Test1_Schmid
                         continue;
                     }
                 }
+
                 for (int l = 0; l < tbl.Columns.Count; l++)
                 {
                     if (tbl.Columns[l].ColumnName == "Behandlungsnummer")
