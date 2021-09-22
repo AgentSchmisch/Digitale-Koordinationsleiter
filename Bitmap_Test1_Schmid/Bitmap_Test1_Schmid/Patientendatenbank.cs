@@ -32,12 +32,14 @@ namespace Bitmap_Test1_Schmid
         string query2;
         string query3;
         string record;
+
         public string Patientenname;
         string PatNr_aktuell;
         public string Nameaktuell;
         public string letzteBehandlung;
         public string letzteSchrittanzahl;
         public string BehandlungsnummerMax;
+        int[] tabs=new int[5];
         //parameters for database connection
         SqlConnection conn;
         SqlCommand cmd;
@@ -48,7 +50,7 @@ namespace Bitmap_Test1_Schmid
             InitializeComponent();
             conns();
         }
-
+        #region conditions for creating the right Connectionstring for the current PC
         private void conns()
         {
             if (Directory.Exists(pfadSchmisch))
@@ -71,6 +73,7 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show("fehler");
             }
         }
+        #endregion
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
             try
@@ -93,7 +96,7 @@ namespace Bitmap_Test1_Schmid
         {
             query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where " +
                 "(Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"')) " +
-                "or (PLZ in('"+TbPLZ.Text+"')) or (Ort ='"+TbOrt.Text+"');";
+                "or (PLZ in('"+TbPLZ.Text+"')) or (Ort in('"+TbOrt.Text+ "'));"; //TODO:  or (Patientennummer in('" + TbPatNr.Text + "')) einbauen Fehler Abfrage Schlägt fehl weil leeres feld auch als text in int abgefragt wird -> Patientennr. ist hier kein string
 
             try
             {
@@ -103,9 +106,9 @@ namespace Bitmap_Test1_Schmid
                 tbl = new DataTable();
                 da.Fill(tbl);
             }
-            catch
+            catch (SqlException ex )
             {
-                labelHinweis.Text = "Abfrage fehlgeschlagen";
+                labelHinweis.Text = "Abfrage fehlgeschlagen "+ex;
                 return;
             }
             finally
@@ -117,12 +120,12 @@ namespace Bitmap_Test1_Schmid
             for (int i = 0; i < tbl.Rows.Count; i++)
             {
                 record = "";
-                Nameaktuell = "";
                 DataRow row = tbl.Rows[i];
                 for (int j = 0; j < tbl.Columns.Count; j++)
                 {
                     if (tbl.Columns[j].ColumnName == "Patientennummer")
                     {
+
                         record += row[j] + ";";
                         continue;
                     }
@@ -132,6 +135,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[j].ColumnName == "Vorname")
                     {
+                        
                         record += row[j] + ";";
                         continue;
                     }
@@ -174,14 +178,26 @@ namespace Bitmap_Test1_Schmid
                 //Alle übereinstimmenden Patienten in der ListBox anzeigen um dem Betreuer die Auswahl zu ermöglichen
                 Patienten.Items.Add(record.Replace(";","\t"));
                 
-
             }
         }
 
         private void button1_Click(object sender, EventArgs e) //auswahlBtn
         {
-            labelHinweis.Text = PatNr_aktuell+" "+Patientenname;
-            query3 = "select Max(Behandlungsnummer) Vorname, Nachname, Behandlungsdatum, Schrittweite, Behandlungsnummer from 1_Florian_Schmid; "; //Patientennummer_Convert.ToInt32(PatNr_aktuell)
+            string s = Patienten.SelectedItem.ToString();
+            for (int i = tabs[0]; i < tabs[2]; i++)
+            {
+                if (i == tabs[1])
+                {
+                    Patientenname += " ";
+                }
+
+                Patientenname += s[i];
+                
+            }
+            
+            labelHinweis.Text = PatNr_aktuell + " " + Patientenname;
+            Patientenname=Patientenname.Replace("\t", "");
+            query3 = "select Max(Behandlungsnummer) Vorname, Nachname, Behandlungsdatum, Schrittweite, Behandlungsnummer from "+Patientenname.Replace(" ","_")+"_"+PatNr_aktuell+"; "; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
             for (int i = 0; i < tbl.Rows.Count; i++)
             {
                 record = "";
@@ -233,8 +249,13 @@ namespace Bitmap_Test1_Schmid
                 }
                 
             }
+ 
         }
-        #region clear the textbox if clicked, color the box black if text is entered
+
+
+        #region clear the textbox if clicked, color the box black if text is entered 
+
+        //TODO: funktioniert nur wenn man in die Textbox klickt und nicht wenn man "hineintabbt"
         private void TbName_Click(object sender, EventArgs e)
         {
             if (TbName.Text == "Vorname")
@@ -366,6 +387,8 @@ namespace Bitmap_Test1_Schmid
             }
         }
         #endregion
+
+
         public string wertuebergabe {
             set
             {
@@ -394,12 +417,7 @@ namespace Bitmap_Test1_Schmid
         }
        
 
-        private void Patientendatenbank_FormClosing(object sender, FormClosingEventArgs e)
-        {
 
-
-
-        }
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -431,7 +449,7 @@ namespace Bitmap_Test1_Schmid
                 conn.Close();
             }
 
-        }
+        } 
 
         private void eintragungLöschenToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -445,11 +463,31 @@ namespace Bitmap_Test1_Schmid
             string s_ = Patienten.SelectedItem.ToString();
             for (int i = 0; i < 10; i++)
             {
+
                 if (Char.IsDigit(s_[i]))
                 {
                     PatNr_aktuell += s_[i];
                 }
             }
+
+            //auslesen der Tabulatoren aus dem ausgewählten String
+            int x = 0;
+            for (int i = 0; i < s_.Length; i++)
+            {
+                
+                if (s_[i].ToString() == "\t")
+                {
+                    // schreiben der index der tabs in ein array um sie später wieder abrufen zu können
+                    //einführen einer 2.Variable "x" um so das Array so klein wie möglich zu halten
+                    tabs [x] = i;
+                    x++;
+                }
+            }
+        }
+
+        private void Patientendatenbank_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

@@ -147,8 +147,10 @@ namespace Bitmap_Test1_Schmid
                 Size = new Size(1139, 409);
                 //öffnen der Form für die Patientendatenbank, 
                 //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
-                Patientendatenbank p = new Patientendatenbank();
-                p.Show();
+               // Patientendatenbank p = new Patientendatenbank(); 
+               //BUG: aufgrund der neuinstanzierung wird das Closing event nicht mehr ausgelöst so können die werte nicht übergeben werden
+               //BUG: beim schließen und wiederöffnen der form
+                Patientendatenbank.Show();
                 Patientendatenbank.FormClosing += Patientendatenbank_Closing;
             }
             catch(Exception ex)
@@ -161,7 +163,7 @@ namespace Bitmap_Test1_Schmid
         private void Patientendatenbank_Closing(object sender, FormClosingEventArgs e)
         {
             //wenn die Form geschlossen wird die Werte aus der Patientendatenbank übernehmen und im Label anzeigen
-            lblName.Text = Patientendatenbank.Nameaktuell;
+            lblName.Text = Patientendatenbank.Patientenname;
             lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
             lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
         }

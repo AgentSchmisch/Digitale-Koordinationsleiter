@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Kinect;
 using System.Drawing;
+
 namespace Bitmap_Test1_Schmid
 {
     class retrieve_Kinect
@@ -13,8 +14,8 @@ namespace Bitmap_Test1_Schmid
         BodyFrameReader bodyFrameReader = null;
         Body[] bodies = null;
 
-        string footright;
-        string footleft;
+       private string footright;
+       private  string footleft;
         public retrieve_Kinect()
         {
             InitializeKinect();
@@ -24,7 +25,7 @@ namespace Bitmap_Test1_Schmid
             kinectSensor = KinectSensor.GetDefault();
             if (kinectSensor != null) //turn on kinect
             {
-                kinectSensor.Open();
+                kinectSensor.Open(); //open connection to the kinect Sensor
             }
             else
             {
@@ -100,7 +101,7 @@ namespace Bitmap_Test1_Schmid
         {
             get
             {
-                return footright;
+                return footleft;
             }
             set
             {
