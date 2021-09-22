@@ -398,8 +398,6 @@ namespace Bitmap_Test1_Schmid
         {
 
 
-            //BUG:      Fehler beim schließen und wiederöffnen der Form während form1 & projetktion geöffnet bleibt    
-
 
         }
 

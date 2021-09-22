@@ -144,15 +144,16 @@ namespace Bitmap_Test1_Schmid
             try
             {
                 //vergrößern der UI um die aktuellen Patientenwerte auszulesen
-                this.Size = new Size(1139, 409);
+                Size = new Size(1139, 409);
                 //öffnen der Form für die Patientendatenbank, 
                 //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
-                Patientendatenbank.Show();
+                Patientendatenbank p = new Patientendatenbank();
+                p.Show();
                 Patientendatenbank.FormClosing += Patientendatenbank_Closing;
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Fehlgeschlagen");
+                MessageBox.Show("Fehlgeschlagen" +ex);
             }
         }
 

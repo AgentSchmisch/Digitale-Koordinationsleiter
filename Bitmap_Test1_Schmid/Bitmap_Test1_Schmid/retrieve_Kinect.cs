@@ -12,6 +12,9 @@ namespace Bitmap_Test1_Schmid
         KinectSensor kinectSensor = null;
         BodyFrameReader bodyFrameReader = null;
         Body[] bodies = null;
+
+        string footright;
+        string footleft;
         public retrieve_Kinect()
         {
             InitializeKinect();
@@ -81,26 +84,27 @@ namespace Bitmap_Test1_Schmid
         //Properties zur berechnung der Koordinaten des Rechten und linken Fußes
         public string RightFoot
         {
+            
             //Hier verarbeitung der Daten zur übergabe an den zweiten Thread im Hauptprogramm
             get
             {
 
-                return "0";
+                return footright;
             }
             set
             {
-
+                 footright=value;
             }
         }
         public string LeftFoot
         {
             get
             {
-                return "0";
+                return footright;
             }
             set
             {
-
+                footleft = value;
             }
         }
     }
