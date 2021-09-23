@@ -175,5 +175,11 @@ namespace Bitmap_Test1_Schmid
             //TODO: einfügen der daten in die Datenbank über die Form "Patientendatenbank"
         }
 
+        private void kinectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            KinectMonitor kinectM = new KinectMonitor();
+
+            kinectM.Show();
+        }
     }
 }
