@@ -15,6 +15,15 @@ namespace Bitmap_Test1_Schmid
         public KinectMonitor()
         {
             InitializeComponent();
+            fillKinect();
         }
+        void fillKinect()
+        {
+            retrieve_Kinect kinect = new retrieve_Kinect();
+
+            label1.Text = kinect.LeftFoot;
+            label2.Text = kinect.RightFoot;
+        }
+
     }
 }
