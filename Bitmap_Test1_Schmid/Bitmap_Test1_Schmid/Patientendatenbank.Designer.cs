@@ -46,6 +46,8 @@ namespace Bitmap_Test1_Schmid
             this.labelHinweis = new System.Windows.Forms.Label();
             this.TbNachname = new System.Windows.Forms.TextBox();
             this.TbPatNr = new System.Windows.Forms.TextBox();
+            this.lblEditStatus = new System.Windows.Forms.Label();
+            this.NeuAbbrechenBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -232,12 +234,39 @@ namespace Bitmap_Test1_Schmid
             this.TbPatNr.Click += new System.EventHandler(this.TbPatNr_Click);
             this.TbPatNr.Leave += new System.EventHandler(this.TbPatNr_Leave);
             // 
+            // lblEditStatus
+            // 
+            this.lblEditStatus.AutoSize = true;
+            this.lblEditStatus.BackColor = System.Drawing.Color.Lime;
+            this.lblEditStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEditStatus.Location = new System.Drawing.Point(-3, 24);
+            this.lblEditStatus.Name = "lblEditStatus";
+            this.lblEditStatus.Size = new System.Drawing.Size(458, 4);
+            this.lblEditStatus.TabIndex = 11;
+            this.lblEditStatus.Text = resources.GetString("lblEditStatus.Text");
+            // 
+            // NeuAbbrechenBtn
+            // 
+            this.NeuAbbrechenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NeuAbbrechenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.NeuAbbrechenBtn.ForeColor = System.Drawing.SystemColors.Control;
+            this.NeuAbbrechenBtn.Location = new System.Drawing.Point(293, 214);
+            this.NeuAbbrechenBtn.Name = "NeuAbbrechenBtn";
+            this.NeuAbbrechenBtn.Size = new System.Drawing.Size(150, 32);
+            this.NeuAbbrechenBtn.TabIndex = 12;
+            this.NeuAbbrechenBtn.Text = "Abbrechen";
+            this.NeuAbbrechenBtn.UseVisualStyleBackColor = true;
+            this.NeuAbbrechenBtn.Visible = false;
+            this.NeuAbbrechenBtn.Click += new System.EventHandler(this.NeuAbbrechenBtn_Click);
+            // 
             // Patientendatenbank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(455, 432);
+            this.Controls.Add(this.NeuAbbrechenBtn);
+            this.Controls.Add(this.lblEditStatus);
             this.Controls.Add(this.TbPatNr);
             this.Controls.Add(this.TbNachname);
             this.Controls.Add(this.labelHinweis);
@@ -286,5 +315,7 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Label labelHinweis;
         private System.Windows.Forms.TextBox TbNachname;
         private System.Windows.Forms.TextBox TbPatNr;
+        private System.Windows.Forms.Label lblEditStatus;
+        private System.Windows.Forms.Button NeuAbbrechenBtn;
     }
 }
