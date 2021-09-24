@@ -48,6 +48,7 @@ namespace Bitmap_Test1_Schmid
             this.TbPatNr = new System.Windows.Forms.TextBox();
             this.lblEditStatus = new System.Windows.Forms.Label();
             this.NeuAbbrechenBtn = new System.Windows.Forms.Button();
+            this.NeuSpeichernBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -259,12 +260,27 @@ namespace Bitmap_Test1_Schmid
             this.NeuAbbrechenBtn.Visible = false;
             this.NeuAbbrechenBtn.Click += new System.EventHandler(this.NeuAbbrechenBtn_Click);
             // 
+            // NeuSpeichernBtn
+            // 
+            this.NeuSpeichernBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NeuSpeichernBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.NeuSpeichernBtn.ForeColor = System.Drawing.SystemColors.Control;
+            this.NeuSpeichernBtn.Location = new System.Drawing.Point(12, 214);
+            this.NeuSpeichernBtn.Name = "NeuSpeichernBtn";
+            this.NeuSpeichernBtn.Size = new System.Drawing.Size(150, 32);
+            this.NeuSpeichernBtn.TabIndex = 13;
+            this.NeuSpeichernBtn.Text = "Speichern";
+            this.NeuSpeichernBtn.UseVisualStyleBackColor = true;
+            this.NeuSpeichernBtn.Visible = false;
+            this.NeuSpeichernBtn.Click += new System.EventHandler(this.NeuSpeichernBtn_Click);
+            // 
             // Patientendatenbank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(455, 432);
+            this.Controls.Add(this.NeuSpeichernBtn);
             this.Controls.Add(this.NeuAbbrechenBtn);
             this.Controls.Add(this.lblEditStatus);
             this.Controls.Add(this.TbPatNr);
@@ -317,5 +333,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.TextBox TbPatNr;
         private System.Windows.Forms.Label lblEditStatus;
         private System.Windows.Forms.Button NeuAbbrechenBtn;
+        private System.Windows.Forms.Button NeuSpeichernBtn;
     }
 }

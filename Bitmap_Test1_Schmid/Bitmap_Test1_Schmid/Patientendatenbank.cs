@@ -26,7 +26,7 @@ namespace Bitmap_Test1_Schmid
 
         string connString_SchmischLaptop = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security = True; Connect Timeout = 30";
         string pfadSchmischLaptop = @"C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
-        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
         string pfadSchmisch = @"C:\Users\Flori\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
        
         string query1;
@@ -43,7 +43,6 @@ namespace Bitmap_Test1_Schmid
         public string BehandlungsnummerMax;
 
         //variablen die aus verschiedenen gründen global sind
-        int zähler = 0;
         int[] tabs=new int[5];
 
         //Parameter für die Datenbank
@@ -86,10 +85,15 @@ namespace Bitmap_Test1_Schmid
             {
                 conn.Open();
                 labelHinweis.Text = "Verbindung zur Datenbank hergestellt";
+                
+                lblEditStatus.ForeColor = Color.Lime;
             }
             catch
             {
                 labelHinweis.Text = "Verbindung zur Datenbank fehlgeschlagen";
+
+                lblEditStatus.ForeColor = Color.Red;
+
             }
             finally
             {
@@ -100,6 +104,7 @@ namespace Bitmap_Test1_Schmid
 
         private void sucheBtn_Click(object sender, EventArgs e)
         {
+
             query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where " +
                 "(Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"')) " +
                 "or (PLZ in('"+TbPLZ.Text+"')) or (Ort in('"+TbOrt.Text+ "'));"; //TODO:  or (Patientennummer in('" + TbPatNr.Text + "')) einbauen Fehler Abfrage Schlägt fehl weil leeres feld auch als text in int abgefragt wird -> Patientennr. ist hier kein string
@@ -453,12 +458,11 @@ namespace Bitmap_Test1_Schmid
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            if (zähler==0)
-            {
-                string patientennummer = "";
 
-                #region SQL Verbindung um die höchste Patientennummer abzurufen
+            string patientennummer = "";
+            //BUG: Autoincrement erhöht den wert auch wenn die Position danach wieder gelöscht wird
+            //-> Autoincrement daher möglicherweise höher als Max(Patientennummer)
+            #region SQL Verbindung um die höchste Patientennummer abzurufen
                 try
                 {
                     cmd = new SqlCommand("select Max(Patientennummer) from Patientenliste", conn);
@@ -485,74 +489,40 @@ namespace Bitmap_Test1_Schmid
                         patientennummer += row[j];
                     }
                 }
-                TbPatNr.Text = patientennummer;
-                TbPatNr.ForeColor = Color.Black;
-                TbPatNr.ReadOnly = true;
-                lblEditStatus.BackColor = Color.Crimson;
-                NeuAbbrechenBtn.Visible = true;
 
-                sucheBtn.Visible = false;
-                Patienten.Visible = false;
-                auswahlBtn.Visible = false;
-                
-                 
-                zähler++;
-                #endregion
-            }
-
-            else if (zähler == 1)
-            {
-                //überprüfen ob die Felder Vorname und Nachname ausgefüllt wurden
-                //ansonsten die Messagebox anzeigen
-                if (TbName.Text == "Vorname" || TbName.Text == "")
-                {
-                    messagebox_leerfeld();
-                    zähler = 1;
-                    return;
-                }
-                if (TbNachname.Text == "Vorname" || TbNachname.Text == "")
-                {
-                    messagebox_leerfeld();
-                    zähler = 1;
-                    return;
-                }
-
-                string[] PatName_ = new string[2];
-                Patientenname = TbName.Text.ToString();
-                PatName_ = Patientenname.Split('_');
-                //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
-                query2 = "create Table "+ TbName.Text+"_"+TbNachname.Text+"_"+TbPatNr.Text+ "( [FK_Patientennummer] INT NULL ,[Behandlungsnummer] INT IDENTITY (1, 1) NOT NULL, [Vorname] NVARCHAR(50) NOT NULL," +
-                    " [Nachname] NVARCHAR(50) NOT NULL, [Schrittweite] INT NULL, [Behandlungsdatum] DATE NULL, PRIMARY KEY CLUSTERED([Behandlungsnummer] ASC));" +
-                    "insert into Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname + "','" +
-                    TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "') ;";
+                int patientennummer_ = Convert.ToInt32(patientennummer);
+                 patientennummer_++;
 
 
-                try
-                {
-                    conn.Open();
+            #endregion
+            TbPatNr.Text = patientennummer_.ToString();
+            TbPatNr.ForeColor = Color.Black;
+            TbPatNr.ReadOnly = true;
+            lblEditStatus.BackColor = Color.Orange;
+            NeuAbbrechenBtn.Visible = true;
+            NeuSpeichernBtn.Visible = true;
 
-                    cmd = new SqlCommand(query2, conn);
+            sucheBtn.Visible = false;
+            Patienten.Visible = false;
+            auswahlBtn.Visible = false;
 
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Patient erfolgreich hinzugefügt!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch(SqlException ex)
-                {
-                    MessageBox.Show("Fehler"+ex);
-                }
-
-                finally
-                {
-                    
-                    conn.Close();
-                    zähler = 0;
-                }
-            }
-
-        } 
+        }
 
         private void eintragungLöschenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string s = Patienten.SelectedItem.ToString();
+            for (int i = tabs[0]; i < tabs[2]; i++)
+            {
+                if (i == tabs[1])
+                {
+                    Patientenname += "_";
+                }
+
+                Patientenname += s[i];
+
+            }
+            string query4 = " drop Table " + Patientenname;
+
             //TODO: löschen von angelegten Patienten
             labelHinweis.Text=Patienten.SelectedItem.ToString();
         }
@@ -597,16 +567,78 @@ namespace Bitmap_Test1_Schmid
 
         private void NeuAbbrechenBtn_Click(object sender, EventArgs e)
         {
+            
             TbPatNr.Text = "Patientennr.";
+            TbPatNr.ForeColor = Color.Gray;
             TbPatNr.ReadOnly = false;
-            lblEditStatus.BackColor = Color.Lime;
+            
 
             NeuAbbrechenBtn.Visible = false;
             sucheBtn.Visible = true;
             Patienten.Visible = true;
             auswahlBtn.Visible = true;
-            zähler = 0;
+            NeuSpeichernBtn.Visible = false;
+            lblEditStatus.BackColor = Color.Lime;
         }
+
+        private void NeuSpeichernBtn_Click(object sender, EventArgs e)
+        {
+            //überprüfen ob die Felder Vorname und Nachname ausgefüllt wurden
+            //ansonsten die Messagebox anzeigen
+            if (TbName.Text == "Vorname" || TbName.Text == "")
+            {
+                messagebox_leerfeld();
+                return;
+            }
+            if (TbNachname.Text == "Vorname" || TbNachname.Text == "")
+            {
+                messagebox_leerfeld();
+                return;
+            }
+
+            string[] PatName_ = new string[2];
+            Patientenname = TbName.Text.ToString();
+            PatName_ = Patientenname.Split('_');
+            //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
+            query2 = "create Table " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "( [FK_Patientennummer] INT NULL ,[Behandlungsnummer] INT IDENTITY (1, 1) NOT NULL, [Vorname] NVARCHAR(50) NOT NULL," +
+                " [Nachname] NVARCHAR(50) NOT NULL, [Schrittweite] INT NULL, [Behandlungsdatum] DATE NULL, PRIMARY KEY CLUSTERED([Behandlungsnummer] ASC));" +
+                "insert into Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname + "','" +
+                 TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "') ;";
+
+
+            try
+            {
+                conn.Open();
+
+                cmd = new SqlCommand(query2, conn);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Patient erfolgreich hinzugefügt!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                TbPatNr.Text = "Patientennr.";
+                TbPatNr.ForeColor = Color.Gray;
+                TbPatNr.ReadOnly = false;
+                lblEditStatus.BackColor = Color.Lime;
+
+                NeuAbbrechenBtn.Visible = false;
+                sucheBtn.Visible = true;
+                Patienten.Visible = true;
+                auswahlBtn.Visible = true;
+                NeuSpeichernBtn.Visible = false;
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Fehler" + ex);
+            }
+
+            finally
+            {
+
+                conn.Close();
+            }
+        
+    }
     }
 
 }

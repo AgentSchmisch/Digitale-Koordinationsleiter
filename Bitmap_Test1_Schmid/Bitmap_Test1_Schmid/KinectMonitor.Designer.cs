@@ -32,21 +32,22 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.Zrechts = new System.Windows.Forms.Label();
+            this.Yrechts = new System.Windows.Forms.Label();
+            this.Xrechts = new System.Windows.Forms.Label();
+            this.Zlinks = new System.Windows.Forms.Label();
+            this.Ylinks = new System.Windows.Forms.Label();
+            this.Xlinks = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 11);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(481, 426);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -54,9 +55,10 @@ namespace Bitmap_Test1_Schmid
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(527, 29);
+            this.label1.Location = new System.Drawing.Point(563, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 29);
+            this.label1.Size = new System.Drawing.Size(98, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "linker Fuß";
             // 
@@ -64,88 +66,97 @@ namespace Bitmap_Test1_Schmid
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(759, 29);
+            this.label2.Location = new System.Drawing.Point(737, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(142, 29);
+            this.label2.Size = new System.Drawing.Size(112, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "rechter Fuß";
             // 
-            // label3
+            // Zrechts
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(527, 108);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 29);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "X";
+            this.Zrechts.AutoSize = true;
+            this.Zrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Zrechts.Location = new System.Drawing.Point(737, 210);
+            this.Zrechts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Zrechts.Name = "Zrechts";
+            this.Zrechts.Size = new System.Drawing.Size(24, 25);
+            this.Zrechts.TabIndex = 17;
+            this.Zrechts.Text = "Z";
             // 
-            // label4
+            // Yrechts
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(527, 147);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 29);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Y";
+            this.Yrechts.AutoSize = true;
+            this.Yrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Yrechts.Location = new System.Drawing.Point(737, 135);
+            this.Yrechts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Yrechts.Name = "Yrechts";
+            this.Yrechts.Size = new System.Drawing.Size(25, 25);
+            this.Yrechts.TabIndex = 16;
+            this.Yrechts.Text = "Y";
             // 
-            // label5
+            // Xrechts
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(527, 189);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 29);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Z";
+            this.Xrechts.AutoSize = true;
+            this.Xrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Xrechts.Location = new System.Drawing.Point(737, 61);
+            this.Xrechts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Xrechts.Name = "Xrechts";
+            this.Xrechts.Size = new System.Drawing.Size(26, 25);
+            this.Xrechts.TabIndex = 15;
+            this.Xrechts.Text = "X";
             // 
-            // label6
+            // Zlinks
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(759, 189);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 29);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Z";
+            this.Zlinks.AutoSize = true;
+            this.Zlinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Zlinks.Location = new System.Drawing.Point(563, 210);
+            this.Zlinks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Zlinks.Name = "Zlinks";
+            this.Zlinks.Size = new System.Drawing.Size(24, 25);
+            this.Zlinks.TabIndex = 14;
+            this.Zlinks.Text = "Z";
             // 
-            // label7
+            // Ylinks
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(759, 147);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(29, 29);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Y";
+            this.Ylinks.AutoSize = true;
+            this.Ylinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Ylinks.Location = new System.Drawing.Point(563, 135);
+            this.Ylinks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Ylinks.Name = "Ylinks";
+            this.Ylinks.Size = new System.Drawing.Size(25, 25);
+            this.Ylinks.TabIndex = 13;
+            this.Ylinks.Text = "Y";
             // 
-            // label8
+            // Xlinks
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(759, 108);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 29);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "X";
+            this.Xlinks.AutoSize = true;
+            this.Xlinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Xlinks.Location = new System.Drawing.Point(563, 61);
+            this.Xlinks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Xlinks.Name = "Xlinks";
+            this.Xlinks.Size = new System.Drawing.Size(26, 25);
+            this.Xlinks.TabIndex = 12;
+            this.Xlinks.Text = "X";
             // 
             // KinectMonitor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 450);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(923, 454);
+            this.Controls.Add(this.Zrechts);
+            this.Controls.Add(this.Yrechts);
+            this.Controls.Add(this.Xrechts);
+            this.Controls.Add(this.Zlinks);
+            this.Controls.Add(this.Ylinks);
+            this.Controls.Add(this.Xlinks);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "KinectMonitor";
             this.Text = "Kinect Monitor";
+            this.Load += new System.EventHandler(this.KinectMonitor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -157,11 +168,11 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label Zrechts;
+        private System.Windows.Forms.Label Yrechts;
+        private System.Windows.Forms.Label Xrechts;
+        private System.Windows.Forms.Label Zlinks;
+        private System.Windows.Forms.Label Ylinks;
+        private System.Windows.Forms.Label Xlinks;
     }
 }
