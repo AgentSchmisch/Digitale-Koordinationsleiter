@@ -89,3 +89,9 @@ C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Sch
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.csproj.CopyComplete
 C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.KinectMonitor.resources
 C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.KinectMonitor.resources
+C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.dll
+C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Imaging.dll
+C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Math.dll
+C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.xml
+C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Imaging.xml
+C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Math.xml

@@ -38,7 +38,9 @@ namespace Bitmap_Test1_Schmid
             this.Zlinks = new System.Windows.Forms.Label();
             this.Ylinks = new System.Windows.Forms.Label();
             this.Xlinks = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -46,7 +48,7 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1.Location = new System.Drawing.Point(11, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(481, 426);
+            this.pictureBox1.Size = new System.Drawing.Size(538, 432);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -139,11 +141,24 @@ namespace Bitmap_Test1_Schmid
             this.Xlinks.TabIndex = 12;
             this.Xlinks.Text = "X";
             // 
+            // trackBar1
+            // 
+            this.trackBar1.LargeChange = 10;
+            this.trackBar1.Location = new System.Drawing.Point(557, 320);
+            this.trackBar1.Maximum = 255;
+            this.trackBar1.Minimum = 15;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(354, 45);
+            this.trackBar1.SmallChange = 10;
+            this.trackBar1.TabIndex = 18;
+            this.trackBar1.Value = 15;
+            // 
             // KinectMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 454);
+            this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.Zrechts);
             this.Controls.Add(this.Yrechts);
             this.Controls.Add(this.Xrechts);
@@ -158,6 +173,7 @@ namespace Bitmap_Test1_Schmid
             this.Text = "Kinect Monitor";
             this.Load += new System.EventHandler(this.KinectMonitor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +190,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Label Zlinks;
         private System.Windows.Forms.Label Ylinks;
         private System.Windows.Forms.Label Xlinks;
+        private System.Windows.Forms.TrackBar trackBar1;
     }
 }

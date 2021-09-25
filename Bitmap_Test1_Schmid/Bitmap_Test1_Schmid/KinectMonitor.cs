@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.Kinect;
 using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
+using AForge.Imaging.Filters;
 using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid
@@ -61,6 +62,18 @@ namespace Bitmap_Test1_Schmid
                     Marshal.Copy(data, 0, bitmapData.Scan0, data.Length);
                     bitmap.UnlockBits(bitmapData);
                     bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
+
+
+                    
+
+                    ColorFiltering filter = new ColorFiltering();
+                    BrightnessCorrection filter2 = new BrightnessCorrection(+50);
+
+                    filter.Red = new AForge.IntRange(trackBar1.Value, 255);
+                    filter.Green = new AForge.IntRange(0, 75);
+                    filter.Blue = new AForge.IntRange(0, 75);
+                    filter2.ApplyInPlace(bitmap);
+                    filter.ApplyInPlace(bitmap);
                     pictureBox1.Image = bitmap;
                 }
             }
