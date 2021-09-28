@@ -27,7 +27,7 @@ namespace Bitmap_Test1_Schmid
         double[] zw_tracker_xrechts = new double[10];
         double[] zw_tracker_xlinks = new double[10];
         int count = 0;
-
+        int ix = 0;
         public KinectMonitor()
         {
             InitializeComponent();
@@ -129,16 +129,46 @@ namespace Bitmap_Test1_Schmid
                         Yrechts.Text = rf_distance_y.ToString("###");
                         Zrechts.Text = rf_distance_z.ToString("#.##");
 
-                        zw_tracker_xrechts[count] = Convert.ToDouble(Xrechts.Text);
-                        zw_tracker_xlinks[count] = Convert.ToDouble(Xlinks.Text);
-                        for(int i = 0; i < 10; i++)
-                        {
-                            tracker_xrechts[i+1] = zw_tracker_xrechts[i];
-                            tracker_xlinks[i+1] = zw_tracker_xlinks[i];
-                        }
-                        
+                        tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
+                        tracker_xlinks[0] = Convert.ToDouble(Xlinks.Text);
+                        //tracker_xrechts[0] = count;
+                        //tracker_xlinks[0] = count;
 
-                        //count++;
+
+                        for (int i = 0; i < 9; i++)
+                        {
+                            tracker_xrechts[i + 1] = zw_tracker_xrechts[i];
+                            tracker_xlinks[i + 1] = zw_tracker_xlinks[i];
+                        }
+                        /*
+                        text.Text = "";
+                        for (int i = 0; i < 10; i++)
+                        {
+                            text.Text += zw_tracker_xrechts[i] + ",";
+                        }
+                        text.Text += "\n";
+                        for (int i = 0; i < 10; i++)
+                        {
+                            text.Text += tracker_xrechts[i] + ",";
+                        }
+
+                        if (count<10&&ix==0)
+                            count++;
+                        if (count == 10)
+                            ix = 1;
+                        if (count > 0 && ix==1)
+                            count--;
+                        if (count == 0)
+                            ix = 0;
+                        *///Bsp Code
+
+                        //Hier Code schreiben. Mit tracker_xrechts[] Arbeiten
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            zw_tracker_xrechts[i] = tracker_xrechts[i];
+                            zw_tracker_xlinks[i] = tracker_xlinks[i];
+                        }
                     }
 
                 }
