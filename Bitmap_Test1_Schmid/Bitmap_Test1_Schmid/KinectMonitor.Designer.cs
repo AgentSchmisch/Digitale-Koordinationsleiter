@@ -146,12 +146,10 @@ namespace Bitmap_Test1_Schmid
             this.trackBar1.LargeChange = 10;
             this.trackBar1.Location = new System.Drawing.Point(557, 320);
             this.trackBar1.Maximum = 255;
-            this.trackBar1.Minimum = 15;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(354, 45);
             this.trackBar1.SmallChange = 10;
             this.trackBar1.TabIndex = 18;
-            this.trackBar1.Value = 15;
             // 
             // KinectMonitor
             // 

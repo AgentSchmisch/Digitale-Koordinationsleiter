@@ -21,6 +21,13 @@ namespace Bitmap_Test1_Schmid
         BodyFrameReader bodyFrameReader = null;
         Body[] bodies = null;
 
+        double[] tracker_xrechts = new double[10];
+        double[] tracker_xlinks = new double[10];
+
+        double[] zw_tracker_xrechts = new double[10];
+        double[] zw_tracker_xlinks = new double[10];
+        int count = 0;
+
         public KinectMonitor()
         {
             InitializeComponent();
@@ -64,7 +71,7 @@ namespace Bitmap_Test1_Schmid
                     bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
 
 
-                    
+
 
                     ColorFiltering filter = new ColorFiltering();
                     BrightnessCorrection filter2 = new BrightnessCorrection(+50);
@@ -72,8 +79,8 @@ namespace Bitmap_Test1_Schmid
                     filter.Red = new AForge.IntRange(trackBar1.Value, 255);
                     filter.Green = new AForge.IntRange(0, 75);
                     filter.Blue = new AForge.IntRange(0, 75);
-                    filter2.ApplyInPlace(bitmap);
-                    filter.ApplyInPlace(bitmap);
+                    //filter2.ApplyInPlace(bitmap);
+                    //filter.ApplyInPlace(bitmap);
                     pictureBox1.Image = bitmap;
                 }
             }
@@ -114,14 +121,24 @@ namespace Bitmap_Test1_Schmid
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
 
-                        Xlinks.Text = lf_distance_x.ToString("###.##");
-                        Ylinks.Text = lf_distance_y.ToString("###.##");
+                        Xlinks.Text = lf_distance_x.ToString("###");
+                        Ylinks.Text = lf_distance_y.ToString("###");
                         Zlinks.Text = lf_distance_z.ToString("#.##");
 
-                        Xrechts.Text = rf_distance_x.ToString("###.##");
-                        Yrechts.Text = rf_distance_y.ToString("###.##");
+                        Xrechts.Text = rf_distance_x.ToString("###");
+                        Yrechts.Text = rf_distance_y.ToString("###");
                         Zrechts.Text = rf_distance_z.ToString("#.##");
 
+                        zw_tracker_xrechts[count] = Convert.ToDouble(Xrechts.Text);
+                        zw_tracker_xlinks[count] = Convert.ToDouble(Xlinks.Text);
+                        for(int i = 0; i < 10; i++)
+                        {
+                            tracker_xrechts[i+1] = zw_tracker_xrechts[i];
+                            tracker_xlinks[i+1] = zw_tracker_xlinks[i];
+                        }
+                        
+
+                        //count++;
                     }
 
                 }

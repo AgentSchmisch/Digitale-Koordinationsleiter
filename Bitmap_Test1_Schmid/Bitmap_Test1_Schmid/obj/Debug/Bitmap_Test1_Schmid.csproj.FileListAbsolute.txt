@@ -45,7 +45,6 @@ C:\Users\Flori\Source\Repos\AgentSchmisch\Virtual-Walkway\Bitmap_Test1_Schmid\Bi
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\Bitmap_Test1_Schmid.exe.config
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\Bitmap_Test1_Schmid.exe
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\Bitmap_Test1_Schmid.pdb
-C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.csprojAssemblyReference.cache
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.Form1.resources
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.Form2.resources
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.Patientendatenbank.resources
@@ -95,3 +94,11 @@ C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Te
 C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.xml
 C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Imaging.xml
 C:\Users\Flori\Source\Repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Math.xml
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.dll
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Imaging.dll
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Math.dll
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.xml
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Imaging.xml
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\AForge.Math.xml
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.csproj.AssemblyReference.cache
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.KinectMonitor.resources
