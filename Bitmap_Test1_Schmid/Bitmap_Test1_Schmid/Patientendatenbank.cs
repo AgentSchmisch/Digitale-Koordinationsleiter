@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid
@@ -18,17 +18,10 @@ namespace Bitmap_Test1_Schmid
         /* TODO: erstellen der Tabellen nach Schema: Patientennummer_Vorname_Nachname
         * TODO: überarbeiten aller SQL Queries um fehler auszuschließen die von vorherigen versionen übrig sind
         * TODO: Felder mit der eigenschaft not null schon im hauptprogramm abfragen
-         */
+        */
 
-        //Variablen für die verschiedenen Verbindungszeichenfolgen auf verschiedenen PC's, so können alle die dieses Programm bearbeiten alle Programmfunktionen verwenden
-        string connString_Christoph = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\CS-Projekte\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
-        string pfadCHP = @"C:\CS-Projekte\Virtual-Walkway\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\";
+        string SQLServer = "server = koordinationsleiter.ddns.net; user id =Klinikum;password=koordinationsleiter; database=Patienten; sslmode=None;port=3306; persistsecurityinfo=True";
 
-        string connString_SchmischLaptop = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security = True; Connect Timeout = 30";
-        string pfadSchmischLaptop = @"C:\Users\Florian\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
-        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Flori\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
-        string pfadSchmisch = @"C:\Users\Flori\source\repos\AgentSchmisch\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Database";
-       
         string query1;
         string query2;
         string query3;
@@ -46,39 +39,17 @@ namespace Bitmap_Test1_Schmid
         int[] tabs=new int[5];
 
         //Parameter für die Datenbank
-        SqlConnection conn;
-        SqlCommand cmd;
-        SqlDataAdapter da;
+        MySqlConnection conn = new MySqlConnection();
+        
+        MySqlCommand cmd;
+        MySqlDataAdapter da;
         DataTable tbl;  //datatable für Abfragenergebnisse aus der Patientensuche
         public Patientendatenbank() //constructuor
         {
             InitializeComponent();
-            conns();
+            conn.ConnectionString=SQLServer;
         }
-        #region conditions for creating the right Connectionstring for the current PC
-        private void conns()
-        {
-            if (Directory.Exists(pfadSchmisch))
-            {
-                conn = new SqlConnection(connString);
-            }
-
-            else if (Directory.Exists(pfadCHP))
-            {
-                conn = new SqlConnection(connString_Christoph);
-            }
-
-            else if (Directory.Exists(pfadSchmischLaptop))
-            {
-                conn = new SqlConnection(connString_SchmischLaptop);
-            }
-
-            else
-            {
-                MessageBox.Show("fehler");
-            }
-        }
-        #endregion
+       
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
             try
@@ -86,13 +57,12 @@ namespace Bitmap_Test1_Schmid
                 conn.Open();
                 labelHinweis.Text = "Verbindung zur Datenbank hergestellt";
                 
-                lblEditStatus.ForeColor = Color.Lime;
+                lblEditStatus.BackColor = Color.Lime;
             }
             catch
             {
                 labelHinweis.Text = "Verbindung zur Datenbank fehlgeschlagen";
-
-                lblEditStatus.ForeColor = Color.Red;
+                lblEditStatus.BackColor = Color.Red;
 
             }
             finally
@@ -111,13 +81,13 @@ namespace Bitmap_Test1_Schmid
 
             try
             {
-                cmd = new SqlCommand(query1, conn);
+                cmd = new MySqlCommand(query1, conn);
                 conn.Open();
-                da = new SqlDataAdapter(cmd);
+                da = new MySqlDataAdapter(cmd);
                 tbl = new DataTable();
                 da.Fill(tbl);
             }
-            catch (SqlException ex )
+            catch (MySqlException ex )
             {
                 labelHinweis.Text = "Abfrage fehlgeschlagen "+ex;
                 return;
@@ -218,13 +188,13 @@ namespace Bitmap_Test1_Schmid
             query3 = "select Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite from "+ Patientenname.Replace(" ","_")+"_"+PatNr_aktuell+";"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
             try
             {
-                cmd = new SqlCommand(query3, conn);
+                cmd = new MySqlCommand(query3, conn);
                 conn.Open();
-                da = new SqlDataAdapter(cmd);
+                da = new MySqlDataAdapter(cmd);
                 tbl2 = new DataTable();
                 da.Fill(tbl2);
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 labelHinweis.Text = "Abfrage fehlgeschlagen " + ex;
                 return;
@@ -435,7 +405,7 @@ namespace Bitmap_Test1_Schmid
                     + DateTime.Now.ToString("yyyy-mm-dd") + "," + value +";";
                 try
                 {
-                    cmd = new SqlCommand(query3, conn);
+                    cmd = new MySqlCommand(query3, conn);
                     conn.Open();
 
                 }
@@ -465,14 +435,14 @@ namespace Bitmap_Test1_Schmid
             #region SQL Verbindung um die höchste Patientennummer abzurufen
                 try
                 {
-                    cmd = new SqlCommand("select Max(Patientennummer) from Patientenliste", conn);
+                    cmd = new MySqlCommand("select Max(Patientennummer) from Patientenliste", conn);
                     conn.Open();
-                    da = new SqlDataAdapter(cmd);
+                    da = new MySqlDataAdapter(cmd);
                     tbl = new DataTable();
                     da.Fill(tbl);
 
                 }
-                catch ( SqlException ex)
+                catch ( MySqlException ex)
                 {
                     MessageBox.Show("Fehler"+ex);
                 }
@@ -600,6 +570,7 @@ namespace Bitmap_Test1_Schmid
             Patientenname = TbName.Text.ToString();
             PatName_ = Patientenname.Split('_');
             //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
+            //TODO: Anpassen der Abfrage an den MySQL Syntax
             query2 = "create Table " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "( [FK_Patientennummer] INT NULL ,[Behandlungsnummer] INT IDENTITY (1, 1) NOT NULL, [Vorname] NVARCHAR(50) NOT NULL," +
                 " [Nachname] NVARCHAR(50) NOT NULL, [Schrittweite] INT NULL, [Behandlungsdatum] DATE NULL, PRIMARY KEY CLUSTERED([Behandlungsnummer] ASC));" +
                 "insert into Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname + "','" +
@@ -610,7 +581,7 @@ namespace Bitmap_Test1_Schmid
             {
                 conn.Open();
 
-                cmd = new SqlCommand(query2, conn);
+                cmd = new MySqlCommand(query2, conn);
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Patient erfolgreich hinzugefügt!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -627,7 +598,7 @@ namespace Bitmap_Test1_Schmid
                 NeuSpeichernBtn.Visible = false;
 
             }
-            catch (SqlException ex)
+            catch (MySqlException ex)
             {
                 MessageBox.Show("Fehler" + ex);
             }
@@ -638,7 +609,7 @@ namespace Bitmap_Test1_Schmid
                 conn.Close();
             }
         
-    }
+        }
     }
 
 }
