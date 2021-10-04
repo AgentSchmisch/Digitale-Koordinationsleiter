@@ -571,9 +571,9 @@ namespace Bitmap_Test1_Schmid
             PatName_ = Patientenname.Split('_');
             //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
             //TODO: Anpassen der Abfrage an den MySQL Syntax
-            query2 = "create Table " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "( [FK_Patientennummer] INT NULL ,[Behandlungsnummer] INT IDENTITY (1, 1) NOT NULL, [Vorname] NVARCHAR(50) NOT NULL," +
-                " [Nachname] NVARCHAR(50) NOT NULL, [Schrittweite] INT NULL, [Behandlungsdatum] DATE NULL, PRIMARY KEY CLUSTERED([Behandlungsnummer] ASC));" +
-                "insert into Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname + "','" +
+            query2 = "create Table " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer INT AUTO_INCREMENT NOT NULL, Vorname VARCHAR(50) NOT NULL," +
+                "Nachname VARCHAR(50) NOT NULL, Schrittweite INT NULL, Behandlungsdatum DATE NULL, PRIMARY KEY(Behandlungsnummer);" +
+                "insert into Patientenliste (Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname + "','" +
                  TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "') ;";
 
 
