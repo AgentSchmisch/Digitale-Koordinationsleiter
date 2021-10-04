@@ -365,7 +365,7 @@ namespace Bitmap_Test1_Schmid
 
 
 
-                Array.Clear(schrittlänge,0,schrittlänge.Length);
+                //Array.Clear(schrittlänge,0,schrittlänge.Length);
                 pictureBox1.Image = image1;
             }
             catch (ArgumentException)

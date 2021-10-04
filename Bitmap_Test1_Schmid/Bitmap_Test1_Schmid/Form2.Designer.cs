@@ -53,6 +53,7 @@ namespace Bitmap_Test1_Schmid
             this.left_five = new System.Windows.Forms.PictureBox();
             this.right_six = new System.Windows.Forms.PictureBox();
             this.left_six = new System.Windows.Forms.PictureBox();
+            this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -208,20 +209,21 @@ namespace Bitmap_Test1_Schmid
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.Location = new System.Drawing.Point(0, -2);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 1);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1920, 1081);
+            this.pictureBox1.Size = new System.Drawing.Size(1920, 1078);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // left_one
             // 
-            this.left_one.BackColor = System.Drawing.Color.Black;
-            this.left_one.Image = ((System.Drawing.Image)(resources.GetObject("left_one.Image")));
-            this.left_one.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_one.InitialImage")));
+            this.left_one.BackColor = System.Drawing.Color.Transparent;
+            this.left_one.Cursor = System.Windows.Forms.Cursors.Default;
+            this.left_one.Image = global::Bitmap_Test1_Schmid.Properties.Resources.left;
+            this.left_one.InitialImage = null;
             this.left_one.Location = new System.Drawing.Point(25, 148);
             this.left_one.Name = "left_one";
             this.left_one.Size = new System.Drawing.Size(155, 73);
@@ -366,7 +368,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.DimGray;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1455, 894);
             this.Controls.Add(this.right_six);
             this.Controls.Add(this.left_six);
@@ -391,6 +393,7 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.label1);
             this.Controls.Add(this.steps);
             this.Controls.Add(this.pictureBox1);
+            this.ForeColor = System.Drawing.Color.Transparent;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form2";
             this.ShowIcon = false;
@@ -443,5 +446,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.PictureBox left_five;
         private System.Windows.Forms.PictureBox right_six;
         private System.Windows.Forms.PictureBox left_six;
+        private System.DirectoryServices.DirectoryEntry directoryEntry1;
     }
 }
