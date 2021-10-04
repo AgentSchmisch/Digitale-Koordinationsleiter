@@ -137,7 +137,7 @@ namespace Bitmap_Test1_Schmid
 
                         for (int i = 0; i < 9; i++)
                         {
-                            tracker_xrechts[i + 1] = zw_tracker_xrechts[i];
+                            tracker_xrechts[i + 1] = zw_tracker_xrechts[i];         //zwischenvariable für Werte -- beginnt array bei 0
                             tracker_xlinks[i + 1] = zw_tracker_xlinks[i];
                         }
                         /*
@@ -161,6 +161,7 @@ namespace Bitmap_Test1_Schmid
                         if (count == 0)
                             ix = 0;
                         *///Bsp Code
+
                         double durchschnitt=(tracker_xrechts[0] + tracker_xrechts[1] + tracker_xrechts[2])/3;
                         text.Text = (tracker_xrechts[0] + " " + tracker_xrechts[1] +" "+ tracker_xrechts[2] +" ="+durchschnitt).ToString();
                         //Hier Code schreiben. Mit tracker_xrechts[] Arbeiten
@@ -170,6 +171,11 @@ namespace Bitmap_Test1_Schmid
                             zw_tracker_xrechts[i] = tracker_xrechts[i];
                             zw_tracker_xlinks[i] = tracker_xlinks[i];
                         }
+
+
+                        //Schritterkennung Array mit druchschnittswerten
+
+
                     }
 
                 }
