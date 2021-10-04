@@ -19,6 +19,10 @@ namespace Bitmap_Test1_Schmid
         public int waagrechtoben = 280;
         public int waagrechtunten = 880;
 
+        public int color_r = 255;
+        public int color_g = 0;
+        public int color_b = 0;
+
         public int zähler = 0;
         public int dicke = 5;//dicke der Roten Linien
         public static int sendvar = 0;
@@ -74,7 +78,7 @@ namespace Bitmap_Test1_Schmid
                     for (y = waagrechtunten - dicke; y < waagrechtunten + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(255, 0, 0);
+                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
                         image1.SetPixel(x, y, newColor);
                     }
                 }//waagrachte unten
@@ -84,7 +88,7 @@ namespace Bitmap_Test1_Schmid
                     for (y = waagrechtoben - dicke; y < waagrechtoben + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(255, 0, 0);
+                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
                         image1.SetPixel(x, y, newColor);
                     }
                 }//waagrechte oben
@@ -183,7 +187,7 @@ namespace Bitmap_Test1_Schmid
                         for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
                         {
                             Color pixelColor = image1.GetPixel(x, y);
-                            Color newColor = Color.FromArgb(0, 0, 0, 0);
+                            Color newColor = Color.FromArgb(0,0,0, 0);
                             image1.SetPixel(x, y, newColor);
                         }
                     } //box
@@ -192,7 +196,7 @@ namespace Bitmap_Test1_Schmid
                         for (y = waagrechtunten - dicke; y < waagrechtunten + 5; y++)
                         {
                             Color pixelColor = image1.GetPixel(x, y);
-                            Color newColor = Color.FromArgb(255, 0, 0);
+                            Color newColor = Color.FromArgb(color_r, color_g, color_b);
                             image1.SetPixel(x, y, newColor);
                         }
                     } //waagrecht unten sektion
@@ -201,7 +205,7 @@ namespace Bitmap_Test1_Schmid
                         for (y = waagrechtoben - dicke; y < waagrechtoben + 5; y++)
                         {
                             Color pixelColor = image1.GetPixel(x, y);
-                            Color newColor = Color.FromArgb(255, 0, 0);
+                            Color newColor = Color.FromArgb(color_r, color_g, color_b);
                             image1.SetPixel(x, y, newColor);
                         }
                     } //waagrecht oben sektion
@@ -216,7 +220,7 @@ namespace Bitmap_Test1_Schmid
                             for (y = waagrechtoben; y < waagrechtunten; y++)
                             {
                                 Color pixelColor = image1.GetPixel(x, y);
-                                Color newColor = Color.FromArgb(255, 0, 0);
+                                Color newColor = Color.FromArgb(color_r, color_g, color_b);
                                 image1.SetPixel(x, y, newColor);
                             }
                         }

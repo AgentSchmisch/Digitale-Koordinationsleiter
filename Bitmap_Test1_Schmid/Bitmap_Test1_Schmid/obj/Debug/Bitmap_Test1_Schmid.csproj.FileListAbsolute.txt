@@ -340,3 +340,4 @@ C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Sch
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.exe.config
 C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.Einstellungen.resources
+C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\obj\Debug\Bitmap_Test1_Schmid.csproj.AssemblyReference.cache
