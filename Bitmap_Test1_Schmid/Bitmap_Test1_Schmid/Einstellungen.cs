@@ -21,13 +21,12 @@ namespace Bitmap_Test1_Schmid
         private void Einstellungen_Load(object sender, EventArgs e)
         {
             ColorDialog colorpicker = new ColorDialog();
-            
+
         }
 
         private void but_dicke_Click(object sender, EventArgs e)
         {
-            int breite = bar_dicke.Value;
-            screen.dicke = breite;
+            screen.dicke = bar_dicke.Value;
         }
 
         private void bar_dicke_ValueChanged(object sender, EventArgs e)
@@ -37,10 +36,23 @@ namespace Bitmap_Test1_Schmid
 
         private void button1_Click(object sender, EventArgs e)
         {
-            colorpicker.ShowDialog();          
+            colorpicker.ShowDialog();
+        }
+
+        private void Einstellungen_FormClosed(object sender, FormClosedEventArgs e)
+        {
             screen.color_r = colorpicker.Color.R;
             screen.color_g = colorpicker.Color.G;
             screen.color_b = colorpicker.Color.B;
+
+            screen.color_box_r = colorpicker2.Color.R;
+            screen.color_box_g = colorpicker2.Color.G;
+            screen.color_box_b = colorpicker2.Color.B;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            colorpicker2.ShowDialog();
         }
     }
 }

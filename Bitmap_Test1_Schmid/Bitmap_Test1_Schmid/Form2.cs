@@ -23,6 +23,10 @@ namespace Bitmap_Test1_Schmid
         public int color_g = 0;
         public int color_b = 0;
 
+        public int color_box_r = 180;
+        public int color_box_g = 150;
+        public int color_box_b = 0;
+
         public int zähler = 0;
         public int dicke = 5;//dicke der Roten Linien
         public static int sendvar = 0;
@@ -39,6 +43,7 @@ namespace Bitmap_Test1_Schmid
 
         private void Form2_Load(object sender, EventArgs e)
         {
+
             int rightfoot = waagrechtunten - 250;
             int leftfoot = waagrechtoben + 150;
 
@@ -178,8 +183,6 @@ namespace Bitmap_Test1_Schmid
                                             image1.SetPixel(x, y, newColor);
                                         }
                                     }//senkrechte am schluss automatisch*/ //nicht gebraucht
-
-
                 if (count == 1) //entfernt nur die bisherige Box und erneuert die waagrechte oben und unten
                 {
                     for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++)                 //fläche
@@ -234,7 +237,7 @@ namespace Bitmap_Test1_Schmid
                         for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
                         {
                             Color pixelColor = image1.GetPixel(x, y);
-                            Color newColor = Color.FromArgb(150, 150, 20, 255);
+                            Color newColor = Color.FromArgb(color_box_r, color_box_g, color_box_b, 255);
                             image1.SetPixel(x, y, newColor);
                         }
                     } //box
@@ -304,7 +307,7 @@ namespace Bitmap_Test1_Schmid
                     for (y = waagrechtunten - dicke; y < waagrechtunten + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(255, 0, 0);
+                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
                         image1.SetPixel(x, y, newColor);
                     }
                 }//waagrecht unten
@@ -314,7 +317,7 @@ namespace Bitmap_Test1_Schmid
                     for (y = waagrechtoben - dicke; y < waagrechtoben + 5; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(255, 0, 0);
+                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
                         image1.SetPixel(x, y, newColor);
                     }
                 }//waagrecht oben
@@ -325,7 +328,7 @@ namespace Bitmap_Test1_Schmid
                         for (y = waagrechtoben; y < waagrechtunten; y++)
                         {
                             Color pixelColor = image1.GetPixel(x, y);
-                            Color newColor = Color.FromArgb(255, 0, 0);
+                            Color newColor = Color.FromArgb(color_r, color_g, color_b);
                             image1.SetPixel(x, y, newColor);
                         }
                     }
@@ -336,7 +339,7 @@ namespace Bitmap_Test1_Schmid
                     for (y = waagrechtoben; y < waagrechtunten; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(255, 0, 0);
+                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
                         image1.SetPixel(x, y, newColor);
                     }
                 }//senkrechte am schluss automatisch

@@ -23,11 +23,17 @@ namespace Bitmap_Test1_Schmid
 
         double[] tracker_xrechts = new double[10];
         double[] tracker_xlinks = new double[10];
-
         double[] zw_tracker_xrechts = new double[10];
         double[] zw_tracker_xlinks = new double[10];
+
+        double[] schritt_rechts = new double[10];
+        double[] schritt_links = new double[10];
+        double[] zw_schritt_rechts = new double[10];
+        double[] zw_schritt_links = new double[10];
+
         int count = 0;
-        int ix = 0;
+        double durchschnitt;
+
         public KinectMonitor()
         {
             InitializeComponent();
@@ -131,8 +137,6 @@ namespace Bitmap_Test1_Schmid
 
                         tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
                         tracker_xlinks[0] = Convert.ToDouble(Xlinks.Text);
-                        //tracker_xrechts[0] = count;
-                        //tracker_xlinks[0] = count;
 
 
                         for (int i = 0; i < 9; i++)
@@ -162,22 +166,41 @@ namespace Bitmap_Test1_Schmid
                             ix = 0;
                         *///Bsp Code
 
-                        double durchschnitt=(tracker_xrechts[0] + tracker_xrechts[1] + tracker_xrechts[2])/3;
-                        text.Text = (tracker_xrechts[0] + " " + tracker_xrechts[1] +" "+ tracker_xrechts[2] +" ="+durchschnitt).ToString();
-                        //Hier Code schreiben. Mit tracker_xrechts[] Arbeiten
+                            schritt_rechts[0]= Math.Round((tracker_xrechts[0] + tracker_xrechts[1] + tracker_xrechts[2])/3);
+                            schritt_links[0] = Math.Round((tracker_xlinks[0] + tracker_xlinks[1] + tracker_xlinks[2]) / 3);
+
+                            //text.Text = (tracker_xrechts[0] + " " + tracker_xrechts[1] +" "+ tracker_xrechts[2] +" ="+schritt_rechts[0]);
+
+                            for (int i = 0; i < 9; i++)
+                            {
+                                schritt_rechts[i + 1] = zw_schritt_rechts[i];
+                                schritt_links[i + 1] = zw_schritt_links[i];
+                            }
+
+                                if (count == 1 && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) > durchschnitt + 100 && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) < durchschnitt - 100)
+                                {
+                                    MessageBox.Show("bewegt");//das funkt ned
+                                }
+                                if (Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= 15 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= 15 && count == 0)
+                                {
+                                    durchschnitt = (schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3;
+                                    count = 1;
+                                }
+
+
+                            for (int i = 0; i < 10; i++)
+                            {
+                                zw_schritt_rechts[i] = schritt_rechts[i];
+                                zw_schritt_links[i] = schritt_links[i];
+                            }
+
 
                         for (int i = 0; i < 10; i++)
                         {
                             zw_tracker_xrechts[i] = tracker_xrechts[i];
                             zw_tracker_xlinks[i] = tracker_xlinks[i];
                         }
-
-
-                        //Schritterkennung Array mit druchschnittswerten
-
-
                     }
-
                 }
             }
         }
