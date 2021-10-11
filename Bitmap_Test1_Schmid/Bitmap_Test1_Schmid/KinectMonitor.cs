@@ -32,14 +32,13 @@ namespace Bitmap_Test1_Schmid
         double[] zw_schritt_links = new double[10];
 
         int count = 0;
-        double durchschnitt;
+        int i = 0;
+        double[] durchschnitt=new double[99];
 
         public KinectMonitor()
         {
             InitializeComponent();
         }
-
-
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
             mySensor = KinectSensor.GetDefault();
@@ -166,7 +165,7 @@ namespace Bitmap_Test1_Schmid
                             ix = 0;
                         *///Bsp Code
 
-                            schritt_rechts[0]= Math.Round((tracker_xrechts[0] + tracker_xrechts[1] + tracker_xrechts[2])/3);
+                            schritt_rechts[0] = Math.Round((tracker_xrechts[0] + tracker_xrechts[1] + tracker_xrechts[2]) / 3);
                             schritt_links[0] = Math.Round((tracker_xlinks[0] + tracker_xlinks[1] + tracker_xlinks[2]) / 3);
 
                             //text.Text = (tracker_xrechts[0] + " " + tracker_xrechts[1] +" "+ tracker_xrechts[2] +" ="+schritt_rechts[0]);
@@ -176,19 +175,36 @@ namespace Bitmap_Test1_Schmid
                                 schritt_rechts[i + 1] = zw_schritt_rechts[i];
                                 schritt_links[i + 1] = zw_schritt_links[i];
                             }
-
-                                if (count == 1 && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) > durchschnitt + 100 && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) < durchschnitt - 100)
+                                if(schritt_rechts[2]!=0)
                                 {
-                                    MessageBox.Show("bewegt");//das funkt ned
-                                }
-                                if (Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= 15 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= 15 && count == 0)
-                                {
-                                    durchschnitt = (schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3;
-                                    count = 1;
+                                        if (count == 1 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) >= 50 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) >= 50 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) >= 50)
+                                        {
+                                            text.Text = "bewegt";
+                                            // MessageBox.Show(schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2]);
+                                            count = 0;
+                                        }
+
+                                        if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= 50 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= 50 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= 5)
+                                        {
+                                            durchschnitt[i] = Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3);
+                                            //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
+                                            text.Text= "Stehen: " + durchschnitt[i].ToString() + "   Schrittnummer: " + i.ToString();
+                                                for (int i = 0; i < 1000; i++) { }
+                                            count = 1;
+                                            i++;
+                                        }
+                                        if (i == 99)
+                                            text.Text = "Ende Gelände";
+                                    /*
+                                    else if (count == 1 && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) > (durchschnitt + 30) && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) < (durchschnitt - 30))
+                                    {
+                                        text.Text = "bewegt";
+                                        count = 0;
+                                    }*/
                                 }
 
 
-                            for (int i = 0; i < 10; i++)
+                        for (int i = 0; i < 10; i++)
                             {
                                 zw_schritt_rechts[i] = schritt_rechts[i];
                                 zw_schritt_links[i] = schritt_links[i];
