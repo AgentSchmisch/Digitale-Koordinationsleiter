@@ -47,32 +47,13 @@ namespace Bitmap_Test1_Schmid
 
         private void Einstellungen_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this._form1.screen.dicke = bar_dicke.Value;
-            if (colorpicker.Color.R == 0 && colorpicker.Color.G == 0 && colorpicker.Color.B == 0)
-            {
-                this._form1.screen.color_r = 255;
-                this._form1.screen.color_g = 0;
-                this._form1.screen.color_b = 0;
-            }
-            else
-            {
-                this._form1.screen.color_r = colorpicker.Color.R;
-                this._form1.screen.color_g = colorpicker.Color.G;
-                this._form1.screen.color_b = colorpicker.Color.B;
-            }
-            if(this._form1.screen.color_box_r==0 && this._form1.screen.color_box_g==0 && this._form1.screen.color_box_b == 0)
-            {
-                this._form1.screen.color_box_r = 180;
-                this._form1.screen.color_box_g = 150;
-                this._form1.screen.color_box_b = 0;
-            }
-            else
-            {
-                this._form1.screen.color_box_r = colorpicker2.Color.R;
-                this._form1.screen.color_box_g = colorpicker2.Color.G;
-                this._form1.screen.color_box_b = colorpicker2.Color.B;
-            }
-            this.Hide();
+            screen.color_r = colorpicker.Color.R;
+            screen.color_g = colorpicker.Color.G;
+            screen.color_b = colorpicker.Color.B;
+
+            screen.color_box_r = colorpicker2.Color.R;
+            screen.color_box_g = colorpicker2.Color.G;
+            screen.color_box_b = colorpicker2.Color.B;
         }
 
         private void button1_Click_1(object sender, EventArgs e)

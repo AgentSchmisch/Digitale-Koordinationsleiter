@@ -16,6 +16,7 @@ namespace Bitmap_Test1_Schmid
         Einstellungen einstellungen = new Einstellungen();
         Patientendatenbank Patientendatenbank = new Patientendatenbank();
         retrieve_Kinect kinect = new retrieve_Kinect();
+        Einstellungen einstellungen = new Einstellungen();
 
 
         public static int schritt = 0;
@@ -187,12 +188,6 @@ namespace Bitmap_Test1_Schmid
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             einstellungen.Show();
-            einstellungen.form1 = this;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            menuStrip1.ForeColor = Color.White;
         }
     }
 }
