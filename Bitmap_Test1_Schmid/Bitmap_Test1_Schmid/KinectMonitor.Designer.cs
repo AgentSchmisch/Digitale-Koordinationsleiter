@@ -155,10 +155,10 @@ namespace Bitmap_Test1_Schmid
             // text
             // 
             this.text.AutoSize = true;
-            this.text.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.text.Location = new System.Drawing.Point(413, 418);
+            this.text.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.text.Location = new System.Drawing.Point(12, 406);
             this.text.Name = "text";
-            this.text.Size = new System.Drawing.Size(70, 26);
+            this.text.Size = new System.Drawing.Size(102, 37);
             this.text.TabIndex = 19;
             this.text.Text = "label3";
             // 

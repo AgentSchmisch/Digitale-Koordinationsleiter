@@ -23,17 +23,22 @@ namespace Bitmap_Test1_Schmid
 
         double[] tracker_xrechts = new double[10];
         double[] tracker_xlinks = new double[10];
-
         double[] zw_tracker_xrechts = new double[10];
         double[] zw_tracker_xlinks = new double[10];
+
+        double[] schritt_rechts = new double[10];
+        double[] schritt_links = new double[10];
+        double[] zw_schritt_rechts = new double[10];
+        double[] zw_schritt_links = new double[10];
+
         int count = 0;
-        int ix = 0;
+        int i = 0;
+        double[] durchschnitt=new double[99];
+
         public KinectMonitor()
         {
             InitializeComponent();
         }
-
-
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
             mySensor = KinectSensor.GetDefault();
@@ -128,8 +133,6 @@ namespace Bitmap_Test1_Schmid
 
                         tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
                         tracker_xlinks[0] = Convert.ToDouble(Xlinks.Text);
-                        //tracker_xrechts[0] = count;
-                        //tracker_xlinks[0] = count;
 
 
                         for (int i = 0; i < 9; i++)
@@ -159,22 +162,58 @@ namespace Bitmap_Test1_Schmid
                             ix = 0;
                         *///Bsp Code
 
-                        double durchschnitt=(tracker_xrechts[0] + tracker_xrechts[1] + tracker_xrechts[2])/3;
-                        text.Text = (tracker_xrechts[0] + " " + tracker_xrechts[1] +" "+ tracker_xrechts[2] +" ="+durchschnitt).ToString();
-                        //Hier Code schreiben. Mit tracker_xrechts[] Arbeiten
+                            schritt_rechts[0] = Math.Round((tracker_xrechts[0] + tracker_xrechts[1] + tracker_xrechts[2]) / 3);
+                            schritt_links[0] = Math.Round((tracker_xlinks[0] + tracker_xlinks[1] + tracker_xlinks[2]) / 3);
+
+                            //text.Text = (tracker_xrechts[0] + " " + tracker_xrechts[1] +" "+ tracker_xrechts[2] +" ="+schritt_rechts[0]);
+
+                            for (int i = 0; i < 9; i++)
+                            {
+                                schritt_rechts[i + 1] = zw_schritt_rechts[i];
+                                schritt_links[i + 1] = zw_schritt_links[i];
+                            }
+                                if(schritt_rechts[2]!=0)
+                                {
+                                        if (count == 1 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) >= 50 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) >= 50 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) >= 50)
+                                        {
+                                            text.Text = "bewegt";
+                                            // MessageBox.Show(schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2]);
+                                            count = 0;
+                                        }
+
+                                        if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= 50 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= 50 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= 5)
+                                        {
+                                            durchschnitt[i] = Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3);
+                                            //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
+                                            text.Text= "Stehen: " + durchschnitt[i].ToString() + "   Schrittnummer: " + i.ToString();
+                                                for (int i = 0; i < 1000; i++) { }
+                                            count = 1;
+                                            i++;
+                                        }
+                                        if (i == 99)
+                                            text.Text = "Ende Gelände";
+                                    /*
+                                    else if (count == 1 && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) > (durchschnitt + 30) && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) < (durchschnitt - 30))
+                                    {
+                                        text.Text = "bewegt";
+                                        count = 0;
+                                    }*/
+                                }
+
+
+                        for (int i = 0; i < 10; i++)
+                            {
+                                zw_schritt_rechts[i] = schritt_rechts[i];
+                                zw_schritt_links[i] = schritt_links[i];
+                            }
+
 
                         for (int i = 0; i < 10; i++)
                         {
                             zw_tracker_xrechts[i] = tracker_xrechts[i];
                             zw_tracker_xlinks[i] = tracker_xlinks[i];
                         }
-
-
-                        //Schritterkennung Array mit druchschnittswerten
-
-
                     }
-
                 }
             }
         }

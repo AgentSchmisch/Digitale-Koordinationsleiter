@@ -34,8 +34,9 @@ namespace Bitmap_Test1_Schmid
             this.label1 = new System.Windows.Forms.Label();
             this.but_dicke = new System.Windows.Forms.Button();
             this.anzeige = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.but_ändern = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.colorpicker2 = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.bar_dicke)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,44 +87,47 @@ namespace Bitmap_Test1_Schmid
             this.anzeige.TabIndex = 3;
             this.anzeige.Text = "3";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(260, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(175, 26);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Farbe der Linien:";
-            // 
             // but_ändern
             // 
             this.but_ändern.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.but_ändern.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.but_ändern.ForeColor = System.Drawing.Color.White;
-            this.but_ändern.Location = new System.Drawing.Point(286, 71);
+            this.but_ändern.Location = new System.Drawing.Point(247, 45);
             this.but_ändern.Name = "but_ändern";
-            this.but_ändern.Size = new System.Drawing.Size(116, 46);
+            this.but_ändern.Size = new System.Drawing.Size(234, 46);
             this.but_ändern.TabIndex = 5;
-            this.but_ändern.Text = "Ändern";
+            this.but_ändern.Text = "Farbe der Linie ändern";
             this.but_ändern.UseVisualStyleBackColor = true;
             this.but_ändern.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(247, 107);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(234, 46);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Farbe der Box ändern";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Einstellungen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(468, 197);
+            this.ClientSize = new System.Drawing.Size(504, 183);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.but_ändern);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.anzeige);
             this.Controls.Add(this.but_dicke);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bar_dicke);
             this.Name = "Einstellungen";
             this.Text = "Einstellungen";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Einstellungen_FormClosed);
             this.Load += new System.EventHandler(this.Einstellungen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bar_dicke)).EndInit();
             this.ResumeLayout(false);
@@ -138,7 +142,8 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button but_dicke;
         private System.Windows.Forms.Label anzeige;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button but_ändern;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ColorDialog colorpicker2;
     }
 }
