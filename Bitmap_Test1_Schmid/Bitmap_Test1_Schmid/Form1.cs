@@ -10,15 +10,12 @@ using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid
 {
-    //Todo: Farben auswählen für Linien
     public partial class Form1 : Form
     {
         public Form2 screen = new Form2();
         Einstellungen einstellungen = new Einstellungen();
         Patientendatenbank Patientendatenbank = new Patientendatenbank();
         retrieve_Kinect kinect = new retrieve_Kinect();
-        Einstellungen einstellungen = new Einstellungen();
-
 
         public static int schritt = 0;
 
@@ -146,22 +143,22 @@ namespace Bitmap_Test1_Schmid
 
         private void patientToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Size = new Size(1139, 409);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen     
             try
             {
-                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
-                Size = new Size(1139, 409);
                 //öffnen der Form für die Patientendatenbank, 
                 //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
                // Patientendatenbank p = new Patientendatenbank(); 
                //BUG: aufgrund der neuinstanzierung wird das Closing event nicht mehr ausgelöst so können die werte nicht übergeben werden
                //BUG: beim schließen und wiederöffnen der form
-                Patientendatenbank.Show();
-                Patientendatenbank.FormClosing += Patientendatenbank_Closing;
+                Patientendatenbank.ShowDialog(); 
+                Patientendatenbank.FormClosing += Patientendatenbank_Closing;    //TODO: Flo bitte hau mich nicht aber das geht nimma        
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Fehlgeschlagen" +ex);
             }
+
         }
 
 
@@ -191,6 +188,11 @@ namespace Bitmap_Test1_Schmid
         {
             einstellungen.Show();
             einstellungen.form1 = this;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            menuStrip1.ForeColor = Color.White;
         }
     }
 }

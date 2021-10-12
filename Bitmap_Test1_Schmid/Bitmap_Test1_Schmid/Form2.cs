@@ -238,7 +238,7 @@ namespace Bitmap_Test1_Schmid
                         for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
                         {
                             Color pixelColor = image1.GetPixel(x, y);
-                            Color newColor = Color.FromArgb(color_box_r, color_box_g, color_box_b, 255);
+                            Color newColor = Color.FromArgb(color_box_r, color_box_g, color_box_b);
                             image1.SetPixel(x, y, newColor);
                         }
                     } //box

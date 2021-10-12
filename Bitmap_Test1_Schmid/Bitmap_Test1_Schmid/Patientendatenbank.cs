@@ -52,6 +52,7 @@ namespace Bitmap_Test1_Schmid
        
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
+            menuStrip1.ForeColor = Color.White;
             try
             {
                 conn.Open();
@@ -257,6 +258,7 @@ namespace Bitmap_Test1_Schmid
                 }
 
             #endregion
+            this.Close();
         }
 
 
@@ -265,7 +267,11 @@ namespace Bitmap_Test1_Schmid
         //TODO: funktioniert nur wenn man in die Textbox klickt und nicht wenn man "hineintabbt"
         //TODO: Konzept DatenbankEdit: wenn man die Daten editieren will wird auch ein Click Event aufgerufen
         private void TbName_Click(object sender, EventArgs e)
-     {
+        {
+
+        }
+        private void TbName_Enter(object sender, EventArgs e)
+        {
             if (TbName.Text == "Vorname")
             {
                 TbName.Text = "";
@@ -273,6 +279,10 @@ namespace Bitmap_Test1_Schmid
             }
         }
         private void TbAdresse_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void TbAdresse_Enter(object sender, EventArgs e)
         {
             if (TbAdresse.Text == "Adresse")
             {
@@ -282,6 +292,10 @@ namespace Bitmap_Test1_Schmid
         }
         private void TbGeburtsdatum_Click(object sender, EventArgs e)
         {
+
+        }
+        private void TbGeburtsdatum_Enter(object sender, EventArgs e)
+        {
             if (TbGeburtsdatum.Text == "Geburtsdatum")
             {
                 TbGeburtsdatum.Text = "";
@@ -289,6 +303,10 @@ namespace Bitmap_Test1_Schmid
             }
         }
         private void TbOrt_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void TbOrt_Enter(object sender, EventArgs e)
         {
             if (TbOrt.Text == "Ort")
             {
@@ -298,6 +316,10 @@ namespace Bitmap_Test1_Schmid
         }
         private void TbPLZ_Click(object sender, EventArgs e)
         {
+
+        }
+        private void TbPLZ_Enter(object sender, EventArgs e)
+        {
             if (TbPLZ.Text == "PLZ")
             {
                 TbPLZ.Text = "";
@@ -305,6 +327,10 @@ namespace Bitmap_Test1_Schmid
             }
         }
         private void TbTelefonnummer_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void TbTelefonnummer_Enter(object sender, EventArgs e)
         {
             if (TbTelefonnummer.Text == "Telefonnummer")
             {
@@ -314,14 +340,21 @@ namespace Bitmap_Test1_Schmid
         }
         private void TbNachname_Click(object sender, EventArgs e)
         {
+
+        }
+        private void TbNachname_Enter(object sender, EventArgs e)
+        {
             if (TbNachname.Text == "Nachname")
             {
                 TbNachname.Text = "";
                 TbNachname.ForeColor = Color.Black;
             }
         }
-
         private void TbPatNr_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void TbPatNr_Enter(object sender, EventArgs e)
         {
             if (TbPatNr.Text == "Patientennr.")
             {
@@ -392,6 +425,70 @@ namespace Bitmap_Test1_Schmid
             {
                 TbPatNr.ForeColor = Color.Gray;
                 TbPatNr.Text = "Patientennr.";
+            }
+        }
+        //-----------------------------------------------------------------------------------------------
+        private void TbName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                sucheBtn.PerformClick();
+            }
+        }
+
+        private void TbNachname_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                sucheBtn.PerformClick();
+            }
+        }
+
+        private void TbPatNr_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                sucheBtn.PerformClick();
+            }
+        }
+
+        private void TbGeburtsdatum_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                sucheBtn.PerformClick();
+            }
+        }
+
+        private void TbAdresse_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                sucheBtn.PerformClick();
+            }
+        }
+
+        private void TbOrt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                sucheBtn.PerformClick();
+            }
+        }
+
+        private void TbPLZ_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                sucheBtn.PerformClick();
+            }
+        }
+
+        private void TbTelefonnummer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                sucheBtn.PerformClick();
             }
         }
         #endregion
@@ -576,7 +673,6 @@ namespace Bitmap_Test1_Schmid
             Patientenname = TbName.Text.ToString();
             PatName_ = Patientenname.Split('_');
             //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
-            //TODO: Anpassen der Abfrage an den MySQL Syntax
             query2 = "create Table " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int(11) not null auto_increment," +
                                                                                                     "Vorname varchar(50)not null," +
                                                                                                     "Nachname varchar(50)not null," +

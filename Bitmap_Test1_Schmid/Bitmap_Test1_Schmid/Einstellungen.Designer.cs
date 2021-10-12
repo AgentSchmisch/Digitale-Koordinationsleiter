@@ -116,7 +116,7 @@ namespace Bitmap_Test1_Schmid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(475, 143);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.but_ändern);
@@ -125,6 +125,7 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.bar_dicke);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Einstellungen";
+            this.ShowInTaskbar = false;
             this.Text = "Einstellungen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Einstellungen_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Einstellungen_FormClosed);

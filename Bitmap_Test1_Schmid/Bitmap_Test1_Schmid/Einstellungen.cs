@@ -73,7 +73,7 @@ namespace Bitmap_Test1_Schmid
                 this._form1.screen.color_box_b = colorpicker2.Color.B;
             }
 
-            this.Close();
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
