@@ -20,7 +20,7 @@ namespace Bitmap_Test1_Schmid
         * TODO: Felder mit der eigenschaft not null schon im hauptprogramm abfragen
         */
 
-        string SQLServer = "server = koordinationsleiter.ddns.net; user id =Klinikum;password=koordinationsleiter; database=Patienten; sslmode=None;port=3306; persistsecurityinfo=True";
+        string SQLServer = "server = koordinationsleiter.ddns.net; user id = Klinikum;password=koordinationsleiter; database=Patienten; sslmode=None;port=3306; persistsecurityinfo=True";
 
         string query1;
         string query2;
@@ -77,7 +77,7 @@ namespace Bitmap_Test1_Schmid
 
             query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where " +
                 "(Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"')) " +
-                "or (PLZ in('"+TbPLZ.Text+"')) or (Ort in('"+TbOrt.Text+ "'));"; //TODO:  or (Patientennummer in('" + TbPatNr.Text + "')) einbauen Fehler Abfrage Schlägt fehl weil leeres feld auch als text in int abgefragt wird -> Patientennr. ist hier kein string
+                "or (PLZ in('"+TbPLZ.Text+"')) or (Ort in('"+TbOrt.Text+ "'));"; //TODO:  or (Patientennummer in('" + Convert.ToInt32(TbPatNr.Text) + "')) einbauen Fehler Abfrage Schlägt fehl weil leeres feld auch als text in int abgefragt wird -> Patientennr. ist hier kein string
 
             try
             {
@@ -263,6 +263,7 @@ namespace Bitmap_Test1_Schmid
         #region leeren der Textbox beim anklicken, Text schwarz färben wenn hinengeschrieben wird
 
         //TODO: funktioniert nur wenn man in die Textbox klickt und nicht wenn man "hineintabbt"
+        //TODO: Konzept DatenbankEdit: wenn man die Daten editieren will wird auch ein Click Event aufgerufen
         private void TbName_Click(object sender, EventArgs e)
      {
             if (TbName.Text == "Vorname")
@@ -553,6 +554,7 @@ namespace Bitmap_Test1_Schmid
 
         private void NeuSpeichernBtn_Click(object sender, EventArgs e)
         {
+            string geburtsdat;
             //überprüfen ob die Felder Vorname und Nachname ausgefüllt wurden
             //ansonsten die Messagebox anzeigen
             if (TbName.Text == "Vorname" || TbName.Text == "")
@@ -565,15 +567,23 @@ namespace Bitmap_Test1_Schmid
                 messagebox_leerfeld();
                 return;
             }
+            if (TbGeburtsdatum.Text=="Geburtsdatum")
+            {
+                TbGeburtsdatum.Text = "";
+            }
 
             string[] PatName_ = new string[2];
             Patientenname = TbName.Text.ToString();
             PatName_ = Patientenname.Split('_');
             //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
             //TODO: Anpassen der Abfrage an den MySQL Syntax
-            query2 = "create Table " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "( [FK_Patientennummer] INT NULL ,[Behandlungsnummer] INT IDENTITY (1, 1) NOT NULL, [Vorname] NVARCHAR(50) NOT NULL," +
-                " [Nachname] NVARCHAR(50) NOT NULL, [Schrittweite] INT NULL, [Behandlungsdatum] DATE NULL, PRIMARY KEY CLUSTERED([Behandlungsnummer] ASC));" +
-                "insert into Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname + "','" +
+            query2 = "create Table " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int(11) not null auto_increment," +
+                                                                                                    "Vorname varchar(50)not null," +
+                                                                                                    "Nachname varchar(50)not null," +
+                                                                                                    "Schrittweite int(50)not null," +
+                                                                                                    "Behandlungsdatum varchar(10) not null," +
+                                                                                                    "Primary Key(Behandlungsnummer)); " +
+                "insert into Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname.Text + "','" +
                  TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "') ;";
 
 
@@ -601,6 +611,7 @@ namespace Bitmap_Test1_Schmid
             catch (MySqlException ex)
             {
                 MessageBox.Show("Fehler" + ex);
+
             }
 
             finally

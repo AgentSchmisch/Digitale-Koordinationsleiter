@@ -70,9 +70,6 @@ namespace Bitmap_Test1_Schmid
                     bitmap.UnlockBits(bitmapData);
                     bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
 
-
-
-
                     ColorFiltering filter = new ColorFiltering();
                     BrightnessCorrection filter2 = new BrightnessCorrection(+50);
 
