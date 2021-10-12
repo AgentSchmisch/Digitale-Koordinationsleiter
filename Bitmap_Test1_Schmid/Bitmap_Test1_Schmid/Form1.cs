@@ -17,6 +17,7 @@ namespace Bitmap_Test1_Schmid
         Einstellungen einstellungen = new Einstellungen();
         Patientendatenbank Patientendatenbank = new Patientendatenbank();
         retrieve_Kinect kinect = new retrieve_Kinect();
+        Einstellungen einstellungen = new Einstellungen();
 
 
         public static int schritt = 0;
