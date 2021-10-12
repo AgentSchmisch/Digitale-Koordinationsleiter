@@ -12,7 +12,7 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Form2 : Form
     {
-        Einstellungen settings = new Einstellungen();
+        //Einstellungen einstellungen = new Einstellungen();
 
         public double[] schrittlänge = new double[500];
         public double schrittlängealt = 100;
@@ -238,7 +238,7 @@ namespace Bitmap_Test1_Schmid
                         for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
                         {
                             Color pixelColor = image1.GetPixel(x, y);
-                            Color newColor = Color.FromArgb(color_box_r, color_box_g, color_box_b, 255);
+                            Color newColor = Color.FromArgb(color_box_r, color_box_g, color_box_b);
                             image1.SetPixel(x, y, newColor);
                         }
                     } //box
@@ -383,7 +383,6 @@ namespace Bitmap_Test1_Schmid
         }
         public class Ex1 : Exception // für personalisierte Fehlermeldungen
         {
-
             public override string Message
             {
                 get

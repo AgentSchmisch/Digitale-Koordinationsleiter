@@ -60,10 +60,11 @@
             // steps
             // 
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.steps.Location = new System.Drawing.Point(154, 120);
+            this.steps.Location = new System.Drawing.Point(167, 124);
+            this.steps.Margin = new System.Windows.Forms.Padding(0);
             this.steps.MaxLength = 2;
             this.steps.Name = "steps";
-            this.steps.Size = new System.Drawing.Size(71, 38);
+            this.steps.Size = new System.Drawing.Size(44, 38);
             this.steps.TabIndex = 1;
             this.steps.Text = "10";
             this.steps.TextChanged += new System.EventHandler(this.steps_TextChanged);
@@ -74,7 +75,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(33, 127);
+            this.label1.Location = new System.Drawing.Point(49, 127);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(115, 31);
@@ -97,10 +98,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.DimGray;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(343, 161);
+            this.label2.Location = new System.Drawing.Point(344, 145);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(211, 26);
             this.label2.TabIndex = 20;
@@ -116,10 +117,10 @@
             // 
             // längebox
             // 
-            this.längebox.BackColor = System.Drawing.Color.DimGray;
+            this.längebox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.längebox.Enabled = false;
             this.längebox.LargeChange = 2;
-            this.längebox.Location = new System.Drawing.Point(305, 190);
+            this.längebox.Location = new System.Drawing.Point(306, 174);
             this.längebox.Minimum = 1;
             this.längebox.Name = "längebox";
             this.längebox.Size = new System.Drawing.Size(273, 45);
@@ -130,12 +131,12 @@
             // 
             // fläche
             // 
-            this.fläche.BackColor = System.Drawing.Color.DimGray;
+            this.fläche.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.fläche.Enabled = false;
             this.fläche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fläche.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.fläche.ForeColor = System.Drawing.Color.White;
-            this.fläche.Location = new System.Drawing.Point(365, 271);
+            this.fläche.Location = new System.Drawing.Point(366, 255);
             this.fläche.Name = "fläche";
             this.fläche.Size = new System.Drawing.Size(156, 70);
             this.fläche.TabIndex = 17;
@@ -146,7 +147,7 @@
             // reglertext
             // 
             this.reglertext.AutoSize = true;
-            this.reglertext.BackColor = System.Drawing.Color.DimGray;
+            this.reglertext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.reglertext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.reglertext.ForeColor = System.Drawing.Color.Gray;
             this.reglertext.Location = new System.Drawing.Point(427, 87);
@@ -157,7 +158,7 @@
             // 
             // regler
             // 
-            this.regler.BackColor = System.Drawing.Color.DimGray;
+            this.regler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.regler.Enabled = false;
             this.regler.LargeChange = 2;
             this.regler.Location = new System.Drawing.Point(305, 39);
@@ -170,10 +171,10 @@
             // länge
             // 
             this.länge.AutoSize = true;
-            this.länge.BackColor = System.Drawing.Color.DimGray;
+            this.länge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.länge.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.länge.ForeColor = System.Drawing.Color.Gray;
-            this.länge.Location = new System.Drawing.Point(427, 228);
+            this.länge.Location = new System.Drawing.Point(428, 212);
             this.länge.Name = "länge";
             this.länge.Size = new System.Drawing.Size(24, 26);
             this.länge.TabIndex = 22;
@@ -181,7 +182,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.DimGray;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.button1.ForeColor = System.Drawing.Color.Silver;
@@ -195,11 +196,11 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.DimGray;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.button2.ForeColor = System.Drawing.Color.Silver;
-            this.button2.Location = new System.Drawing.Point(584, 179);
+            this.button2.Location = new System.Drawing.Point(585, 163);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(32, 40);
             this.button2.TabIndex = 25;
@@ -209,7 +210,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuStrip1.BackColor = System.Drawing.Color.Black;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.patientToolStripMenuItem,
@@ -245,8 +246,7 @@
             // 
             // BtnSitzungBeenden
             // 
-            this.BtnSitzungBeenden.BackColor = System.Drawing.Color.DimGray;
-            this.BtnSitzungBeenden.Enabled = false;
+            this.BtnSitzungBeenden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BtnSitzungBeenden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSitzungBeenden.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.BtnSitzungBeenden.ForeColor = System.Drawing.Color.White;
@@ -334,9 +334,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(644, 370);
+            this.ClientSize = new System.Drawing.Size(644, 350);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblLezteTherapie);
             this.Controls.Add(this.label6);
@@ -367,6 +367,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Digitale Koordinationsleiter";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).EndInit();
             this.menuStrip1.ResumeLayout(false);

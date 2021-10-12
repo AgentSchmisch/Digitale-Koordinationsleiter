@@ -54,7 +54,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuStrip1.BackColor = System.Drawing.Color.Black;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.patientToolStripMenuItem});
@@ -73,18 +73,19 @@ namespace Bitmap_Test1_Schmid
             this.patientToolStripMenuItem.Name = "patientToolStripMenuItem";
             this.patientToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.patientToolStripMenuItem.Text = "Patient";
+            this.patientToolStripMenuItem.Click += new System.EventHandler(this.patientToolStripMenuItem_Click);
             // 
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // eintragungLöschenToolStripMenuItem
             // 
             this.eintragungLöschenToolStripMenuItem.Name = "eintragungLöschenToolStripMenuItem";
-            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eintragungLöschenToolStripMenuItem.Text = "Eintragung löschen";
             this.eintragungLöschenToolStripMenuItem.Click += new System.EventHandler(this.eintragungLöschenToolStripMenuItem_Click);
             // 
@@ -95,7 +96,7 @@ namespace Bitmap_Test1_Schmid
             this.sucheBtn.ForeColor = System.Drawing.SystemColors.Control;
             this.sucheBtn.Location = new System.Drawing.Point(12, 214);
             this.sucheBtn.Name = "sucheBtn";
-            this.sucheBtn.Size = new System.Drawing.Size(90, 32);
+            this.sucheBtn.Size = new System.Drawing.Size(153, 43);
             this.sucheBtn.TabIndex = 0;
             this.sucheBtn.Text = "Suchen";
             this.sucheBtn.UseVisualStyleBackColor = true;
@@ -136,7 +137,7 @@ namespace Bitmap_Test1_Schmid
             this.TbName.Size = new System.Drawing.Size(161, 27);
             this.TbName.TabIndex = 1;
             this.TbName.Text = "Vorname";
-            this.TbName.Click += new System.EventHandler(this.TbName_Click);
+            this.TbName.Enter += new System.EventHandler(this.TbName_Enter);
             this.TbName.Leave += new System.EventHandler(this.TbName_Leave);
             // 
             // TbAdresse
@@ -148,7 +149,7 @@ namespace Bitmap_Test1_Schmid
             this.TbAdresse.Size = new System.Drawing.Size(161, 27);
             this.TbAdresse.TabIndex = 5;
             this.TbAdresse.Text = "Adresse";
-            this.TbAdresse.Click += new System.EventHandler(this.TbAdresse_Click);
+            this.TbAdresse.Click += new System.EventHandler(this.TbAdresse_Enter);
             this.TbAdresse.Leave += new System.EventHandler(this.TbAdresse_Leave);
             // 
             // TbPLZ
@@ -160,7 +161,7 @@ namespace Bitmap_Test1_Schmid
             this.TbPLZ.Size = new System.Drawing.Size(119, 27);
             this.TbPLZ.TabIndex = 7;
             this.TbPLZ.Text = "PLZ";
-            this.TbPLZ.Click += new System.EventHandler(this.TbPLZ_Click);
+            this.TbPLZ.Click += new System.EventHandler(this.TbPLZ_Enter);
             this.TbPLZ.Leave += new System.EventHandler(this.TbPLZ_Leave);
             // 
             // TbOrt
@@ -172,7 +173,7 @@ namespace Bitmap_Test1_Schmid
             this.TbOrt.Size = new System.Drawing.Size(141, 27);
             this.TbOrt.TabIndex = 6;
             this.TbOrt.Text = "Ort";
-            this.TbOrt.Click += new System.EventHandler(this.TbOrt_Click);
+            this.TbOrt.Click += new System.EventHandler(this.TbOrt_Enter);
             this.TbOrt.Leave += new System.EventHandler(this.TbOrt_Leave);
             // 
             // TbGeburtsdatum
@@ -184,7 +185,7 @@ namespace Bitmap_Test1_Schmid
             this.TbGeburtsdatum.Size = new System.Drawing.Size(119, 27);
             this.TbGeburtsdatum.TabIndex = 4;
             this.TbGeburtsdatum.Text = "Geburtsdatum";
-            this.TbGeburtsdatum.Click += new System.EventHandler(this.TbGeburtsdatum_Click);
+            this.TbGeburtsdatum.Click += new System.EventHandler(this.TbGeburtsdatum_Enter);
             this.TbGeburtsdatum.Leave += new System.EventHandler(this.TbGeburtsdatum_Leave);
             // 
             // TbTelefonnummer
@@ -196,15 +197,15 @@ namespace Bitmap_Test1_Schmid
             this.TbTelefonnummer.Size = new System.Drawing.Size(161, 27);
             this.TbTelefonnummer.TabIndex = 8;
             this.TbTelefonnummer.Text = "Telefonnummer";
-            this.TbTelefonnummer.Click += new System.EventHandler(this.TbTelefonnummer_Click);
+            this.TbTelefonnummer.Click += new System.EventHandler(this.TbTelefonnummer_Enter);
             this.TbTelefonnummer.Leave += new System.EventHandler(this.TbTelefonnummer_Leave);
             // 
             // labelHinweis
             // 
             this.labelHinweis.AutoSize = true;
-            this.labelHinweis.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.labelHinweis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.labelHinweis.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHinweis.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelHinweis.ForeColor = System.Drawing.Color.White;
             this.labelHinweis.Location = new System.Drawing.Point(12, 42);
             this.labelHinweis.Name = "labelHinweis";
             this.labelHinweis.Size = new System.Drawing.Size(204, 18);
@@ -220,7 +221,7 @@ namespace Bitmap_Test1_Schmid
             this.TbNachname.Size = new System.Drawing.Size(141, 27);
             this.TbNachname.TabIndex = 2;
             this.TbNachname.Text = "Nachname";
-            this.TbNachname.Click += new System.EventHandler(this.TbNachname_Click);
+            this.TbNachname.Click += new System.EventHandler(this.TbNachname_Enter);
             this.TbNachname.Leave += new System.EventHandler(this.TbNachname_Leave);
             // 
             // TbPatNr
@@ -232,7 +233,7 @@ namespace Bitmap_Test1_Schmid
             this.TbPatNr.Size = new System.Drawing.Size(118, 27);
             this.TbPatNr.TabIndex = 3;
             this.TbPatNr.Text = "Patientennr.";
-            this.TbPatNr.Click += new System.EventHandler(this.TbPatNr_Click);
+            this.TbPatNr.Click += new System.EventHandler(this.TbPatNr_Enter);
             this.TbPatNr.Leave += new System.EventHandler(this.TbPatNr_Leave);
             // 
             // lblEditStatus
@@ -251,9 +252,9 @@ namespace Bitmap_Test1_Schmid
             this.NeuAbbrechenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NeuAbbrechenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.NeuAbbrechenBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.NeuAbbrechenBtn.Location = new System.Drawing.Point(293, 214);
+            this.NeuAbbrechenBtn.Location = new System.Drawing.Point(316, 214);
             this.NeuAbbrechenBtn.Name = "NeuAbbrechenBtn";
-            this.NeuAbbrechenBtn.Size = new System.Drawing.Size(150, 32);
+            this.NeuAbbrechenBtn.Size = new System.Drawing.Size(127, 43);
             this.NeuAbbrechenBtn.TabIndex = 12;
             this.NeuAbbrechenBtn.Text = "Abbrechen";
             this.NeuAbbrechenBtn.UseVisualStyleBackColor = true;
@@ -265,9 +266,9 @@ namespace Bitmap_Test1_Schmid
             this.NeuSpeichernBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NeuSpeichernBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.NeuSpeichernBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.NeuSpeichernBtn.Location = new System.Drawing.Point(12, 214);
+            this.NeuSpeichernBtn.Location = new System.Drawing.Point(15, 209);
             this.NeuSpeichernBtn.Name = "NeuSpeichernBtn";
-            this.NeuSpeichernBtn.Size = new System.Drawing.Size(150, 32);
+            this.NeuSpeichernBtn.Size = new System.Drawing.Size(150, 43);
             this.NeuSpeichernBtn.TabIndex = 13;
             this.NeuSpeichernBtn.Text = "Speichern";
             this.NeuSpeichernBtn.UseVisualStyleBackColor = true;
@@ -278,7 +279,7 @@ namespace Bitmap_Test1_Schmid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(455, 432);
             this.Controls.Add(this.NeuSpeichernBtn);
             this.Controls.Add(this.NeuAbbrechenBtn);

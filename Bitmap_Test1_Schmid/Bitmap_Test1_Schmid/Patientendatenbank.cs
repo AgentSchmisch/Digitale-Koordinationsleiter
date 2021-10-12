@@ -36,27 +36,28 @@ namespace Bitmap_Test1_Schmid
         public string BehandlungsnummerMax;
 
         //variablen die aus verschiedenen gründen global sind
-        int[] tabs=new int[5];
+        int[] tabs = new int[5];
 
         //Parameter für die Datenbank
         MySqlConnection conn = new MySqlConnection();
-        
+
         MySqlCommand cmd;
         MySqlDataAdapter da;
         DataTable tbl;  //datatable für Abfragenergebnisse aus der Patientensuche
         public Patientendatenbank() //constructuor
         {
             InitializeComponent();
-            conn.ConnectionString=SQLServer;
+            conn.ConnectionString = SQLServer;
         }
-       
+
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
+            menuStrip1.ForeColor = Color.White;
             try
             {
                 conn.Open();
                 labelHinweis.Text = "Verbindung zur Datenbank hergestellt";
-                
+
                 lblEditStatus.BackColor = Color.Lime;
             }
             catch
@@ -76,8 +77,8 @@ namespace Bitmap_Test1_Schmid
         {
 
             query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where " +
-                "(Vorname in ('" + TbName.Text + "') and Nachname in ('"+TbNachname.Text+"')) " +
-                "or (PLZ in('"+TbPLZ.Text+"')) or (Ort in('"+TbOrt.Text+ "'));"; //TODO:  or (Patientennummer in('" + Convert.ToInt32(TbPatNr.Text) + "')) einbauen Fehler Abfrage Schlägt fehl weil leeres feld auch als text in int abgefragt wird -> Patientennr. ist hier kein string
+                "(Vorname in ('" + TbName.Text + "') and Nachname in ('" + TbNachname.Text + "')) " +
+                "or (PLZ in('" + TbPLZ.Text + "')) or (Ort in('" + TbOrt.Text + "'));"; //TODO:  or (Patientennummer in('" + Convert.ToInt32(TbPatNr.Text) + "')) einbauen Fehler Abfrage Schlägt fehl weil leeres feld auch als text in int abgefragt wird -> Patientennr. ist hier kein string
 
             try
             {
@@ -87,9 +88,9 @@ namespace Bitmap_Test1_Schmid
                 tbl = new DataTable();
                 da.Fill(tbl);
             }
-            catch (MySqlException ex )
+            catch (MySqlException ex)
             {
-                labelHinweis.Text = "Abfrage fehlgeschlagen "+ex;
+                labelHinweis.Text = "Abfrage fehlgeschlagen " + ex;
                 return;
             }
             finally
@@ -117,7 +118,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[j].ColumnName == "Vorname")
                     {
-                        
+
                         record += row[j] + ";";
                         continue;
                     }
@@ -161,8 +162,8 @@ namespace Bitmap_Test1_Schmid
                 //Alle übereinstimmenden Patienten in der ListBox anzeigen um dem Betreuer die Auswahl zu ermöglichen
                 //Uhzeit die ans Geburtsdatum bei der Abfrage angehängt wird entfernen
                 record = record.Replace(" 00:00:00", "");
-                Patienten.Items.Add(record.Replace(";","\t"));
-               
+                Patienten.Items.Add(record.Replace(";", "\t"));
+
 
             }
             #endregion
@@ -170,6 +171,7 @@ namespace Bitmap_Test1_Schmid
 
         private void button1_Click(object sender, EventArgs e) //auswahlBtn
         {
+            //TODO: wenn kein Patient ausgewählt = Fehler
             string s = Patienten.SelectedItem.ToString();
             for (int i = tabs[0]; i < tabs[2]; i++)
             {
@@ -177,15 +179,13 @@ namespace Bitmap_Test1_Schmid
                 {
                     Patientenname += " ";
                 }
-
                 Patientenname += s[i];
-                
             }
 
             DataTable tbl2;
             labelHinweis.Text = PatNr_aktuell + " " + Patientenname;
-            Patientenname=Patientenname.Replace("\t", "");
-            query3 = "select Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite from "+ Patientenname.Replace(" ","_")+"_"+PatNr_aktuell+";"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
+            Patientenname = Patientenname.Replace("\t", "");
+            query3 = "select Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite from " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + ";"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
             try
             {
                 cmd = new MySqlCommand(query3, conn);
@@ -205,74 +205,75 @@ namespace Bitmap_Test1_Schmid
                 conn.Close();
             }
 
-                record = "";
-                //Daten nur aus der Letzten Zeile auslesen um so das aktuellste Behandlungsdatum zu bekommen
-                DataRow row = tbl2.Rows[tbl2.Rows.Count-1];
+            record = "";
+            //Daten nur aus der Letzten Zeile auslesen um so das aktuellste Behandlungsdatum zu bekommen
+            DataRow row = tbl2.Rows[tbl2.Rows.Count - 1];
             #region Befüllen der Variablen mit den Patientendaten
             for (int j = 0; j < tbl2.Columns.Count; j++)
+            {
+                if (tbl2.Columns[j].ColumnName == "Vorname")
                 {
-                    if (tbl2.Columns[j].ColumnName == "Vorname")
-                    {
 
-                        Nameaktuell += row[j] + " ";
-                        continue;
-                    }
+                    Nameaktuell += row[j] + " ";
+                    continue;
                 }
-                for (int j = 0; j < tbl2.Columns.Count; j++)
+            }
+            for (int j = 0; j < tbl2.Columns.Count; j++)
+            {
+                if (tbl2.Columns[j].ColumnName == "Nachname")
                 {
-                    if (tbl2.Columns[j].ColumnName == "Nachname")
-                    {
 
-                        Nameaktuell += row[j];
-                        continue;
-                    }
+                    Nameaktuell += row[j];
+                    continue;
                 }
+            }
 
-                for (int k = 0; k < tbl2.Columns.Count; k++)
+            for (int k = 0; k < tbl2.Columns.Count; k++)
+            {
+                if (tbl2.Columns[k].ColumnName == "Behandlungsdatum")
                 {
-                    if (tbl2.Columns[k].ColumnName == "Behandlungsdatum")
-                    {
-                        letzteBehandlung += row[k];
+                    letzteBehandlung += row[k];
                     letzteBehandlung = letzteBehandlung.Replace(" 00:00:00", "");
-                        continue;
-                    }
+                    continue;
                 }
+            }
 
-                for (int l = 0; l < tbl2.Columns.Count; l++)
+            for (int l = 0; l < tbl2.Columns.Count; l++)
+            {
+                if (tbl2.Columns[l].ColumnName == "Schrittweite")
                 {
-                    if (tbl2.Columns[l].ColumnName == "Schrittweite")
-                    {
-                        letzteSchrittanzahl += row[l];
-                        continue;
-                    }
+                    letzteSchrittanzahl += row[l];
+                    continue;
                 }
+            }
 
-                for (int l = 0; l < tbl2.Columns.Count; l++)
+            for (int l = 0; l < tbl2.Columns.Count; l++)
+            {
+                if (tbl2.Columns[l].ColumnName == "Behandlungsnummer")
                 {
-                    if (tbl2.Columns[l].ColumnName == "Behandlungsnummer")
-                    {
-                        BehandlungsnummerMax += row[l];
-                        continue;
-                    }
+                    BehandlungsnummerMax += row[l];
+                    continue;
                 }
+            }
 
             #endregion
+            this.Close();
         }
 
 
         #region leeren der Textbox beim anklicken, Text schwarz färben wenn hinengeschrieben wird
 
-        //TODO: funktioniert nur wenn man in die Textbox klickt und nicht wenn man "hineintabbt"
         //TODO: Konzept DatenbankEdit: wenn man die Daten editieren will wird auch ein Click Event aufgerufen
-        private void TbName_Click(object sender, EventArgs e)
-     {
+
+        private void TbName_Enter(object sender, EventArgs e)
+        {
             if (TbName.Text == "Vorname")
             {
                 TbName.Text = "";
                 TbName.ForeColor = Color.Black;
             }
         }
-        private void TbAdresse_Click(object sender, EventArgs e)
+        private void TbAdresse_Enter(object sender, EventArgs e)
         {
             if (TbAdresse.Text == "Adresse")
             {
@@ -280,7 +281,7 @@ namespace Bitmap_Test1_Schmid
                 TbAdresse.ForeColor = Color.Black;
             }
         }
-        private void TbGeburtsdatum_Click(object sender, EventArgs e)
+        private void TbGeburtsdatum_Enter(object sender, EventArgs e)
         {
             if (TbGeburtsdatum.Text == "Geburtsdatum")
             {
@@ -288,7 +289,7 @@ namespace Bitmap_Test1_Schmid
                 TbGeburtsdatum.ForeColor = Color.Black;
             }
         }
-        private void TbOrt_Click(object sender, EventArgs e)
+        private void TbOrt_Enter(object sender, EventArgs e)
         {
             if (TbOrt.Text == "Ort")
             {
@@ -296,7 +297,7 @@ namespace Bitmap_Test1_Schmid
                 TbOrt.ForeColor = Color.Black;
             }
         }
-        private void TbPLZ_Click(object sender, EventArgs e)
+        private void TbPLZ_Enter(object sender, EventArgs e)
         {
             if (TbPLZ.Text == "PLZ")
             {
@@ -304,7 +305,7 @@ namespace Bitmap_Test1_Schmid
                 TbPLZ.ForeColor = Color.Black;
             }
         }
-        private void TbTelefonnummer_Click(object sender, EventArgs e)
+        private void TbTelefonnummer_Enter(object sender, EventArgs e)
         {
             if (TbTelefonnummer.Text == "Telefonnummer")
             {
@@ -312,7 +313,7 @@ namespace Bitmap_Test1_Schmid
                 TbTelefonnummer.ForeColor = Color.Black;
             }
         }
-        private void TbNachname_Click(object sender, EventArgs e)
+        private void TbNachname_Enter(object sender, EventArgs e)
         {
             if (TbNachname.Text == "Nachname")
             {
@@ -321,7 +322,7 @@ namespace Bitmap_Test1_Schmid
             }
         }
 
-        private void TbPatNr_Click(object sender, EventArgs e)
+        private void TbPatNr_Enter(object sender, EventArgs e)
         {
             if (TbPatNr.Text == "Patientennr.")
             {
@@ -340,7 +341,7 @@ namespace Bitmap_Test1_Schmid
         }
         private void TbNachname_Leave(object sender, EventArgs e)
         {
-            if(TbNachname.Text=="")
+            if (TbNachname.Text == "")
             {
                 TbNachname.ForeColor = Color.Gray;
                 TbNachname.Text = "Nachname";
@@ -397,13 +398,14 @@ namespace Bitmap_Test1_Schmid
         #endregion
 
         // Methode für die Übertragung der Daten aus der UI beim schließen der Sitzung
-        public string wertuebergabe {
+        public string wertuebergabe
+        {
             set
             {
-               
+
                 Nameaktuell = Nameaktuell.Replace(" ", "_");
                 query3 = "Insert Into " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + "(Vorname,Nachname,Behandlungsdatum,Schrittweite,Geburtsdatum) Values" + Nameaktuell + ","
-                    + DateTime.Now.ToString("yyyy-mm-dd") + "," + value +";";
+                    + DateTime.Now.ToString("yyyy-mm-dd") + "," + value + ";";
                 try
                 {
                     cmd = new MySqlCommand(query3, conn);
@@ -423,7 +425,7 @@ namespace Bitmap_Test1_Schmid
             //TODO: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
             //TODO: überarbeiten dieser Abfrage
         }
-       
+
 
 
 
@@ -434,35 +436,35 @@ namespace Bitmap_Test1_Schmid
             //BUG: Autoincrement erhöht den wert auch wenn die Position danach wieder gelöscht wird
             //-> Autoincrement daher möglicherweise höher als Max(Patientennummer)
             #region SQL Verbindung um die höchste Patientennummer abzurufen
-                try
-                {
-                    cmd = new MySqlCommand("select Max(Patientennummer) from Patientenliste", conn);
-                    conn.Open();
-                    da = new MySqlDataAdapter(cmd);
-                    tbl = new DataTable();
-                    da.Fill(tbl);
+            try
+            {
+                cmd = new MySqlCommand("select Max(Patientennummer) from Patientenliste", conn);
+                conn.Open();
+                da = new MySqlDataAdapter(cmd);
+                tbl = new DataTable();
+                da.Fill(tbl);
 
-                }
-                catch ( MySqlException ex)
-                {
-                    MessageBox.Show("Fehler"+ex);
-                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Fehler" + ex);
+            }
 
-                finally
+            finally
+            {
+                conn.Close();
+            }
+            for (int i = 0; i < tbl.Rows.Count; i++)
+            {
+                DataRow row = tbl.Rows[i];
+                for (int j = 0; j < tbl.Columns.Count; j++)
                 {
-                    conn.Close();
+                    patientennummer += row[j];
                 }
-                for (int i = 0; i < tbl.Rows.Count; i++)
-                {
-                    DataRow row = tbl.Rows[i];
-                    for (int j = 0; j < tbl.Columns.Count; j++)
-                    {
-                        patientennummer += row[j];
-                    }
-                }
+            }
 
-                int patientennummer_ = Convert.ToInt32(patientennummer);
-                 patientennummer_++;
+            int patientennummer_ = Convert.ToInt32(patientennummer);
+            patientennummer_++;
 
 
             #endregion
@@ -495,7 +497,7 @@ namespace Bitmap_Test1_Schmid
             string query4 = " drop Table " + Patientenname;
 
             //TODO: löschen von angelegten Patienten
-            labelHinweis.Text=Patienten.SelectedItem.ToString();
+            labelHinweis.Text = Patienten.SelectedItem.ToString();
         }
 
         private void Patienten_SelectedIndexChanged(object sender, EventArgs e)
@@ -515,12 +517,12 @@ namespace Bitmap_Test1_Schmid
             int x = 0;
             for (int i = 0; i < s_.Length; i++)
             {
-                
+
                 if (s_[i].ToString() == "\t")
                 {
                     // schreiben der index der tabs in ein array um sie später wieder abrufen zu können
                     //einführen einer 2.Variable "x" um so das Array so klein wie möglich zu halten
-                    tabs [x] = i;
+                    tabs[x] = i;
                     x++;
                 }
             }
@@ -538,11 +540,11 @@ namespace Bitmap_Test1_Schmid
 
         private void NeuAbbrechenBtn_Click(object sender, EventArgs e)
         {
-            
+
             TbPatNr.Text = "Patientennr.";
             TbPatNr.ForeColor = Color.Gray;
             TbPatNr.ReadOnly = false;
-            
+
 
             NeuAbbrechenBtn.Visible = false;
             sucheBtn.Visible = true;
@@ -567,7 +569,7 @@ namespace Bitmap_Test1_Schmid
                 messagebox_leerfeld();
                 return;
             }
-            if (TbGeburtsdatum.Text=="Geburtsdatum")
+            if (TbGeburtsdatum.Text == "Geburtsdatum")
             {
                 TbGeburtsdatum.Text = "";
             }
@@ -576,7 +578,6 @@ namespace Bitmap_Test1_Schmid
             Patientenname = TbName.Text.ToString();
             PatName_ = Patientenname.Split('_');
             //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
-            //TODO: Anpassen der Abfrage an den MySQL Syntax
             query2 = "create Table " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int(11) not null auto_increment," +
                                                                                                     "Vorname varchar(50)not null," +
                                                                                                     "Nachname varchar(50)not null," +
@@ -619,7 +620,12 @@ namespace Bitmap_Test1_Schmid
 
                 conn.Close();
             }
-        
+
+        }
+
+        private void patientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
