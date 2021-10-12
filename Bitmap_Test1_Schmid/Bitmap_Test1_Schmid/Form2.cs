@@ -12,7 +12,7 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Form2 : Form
     {
-        Einstellungen settings = new Einstellungen();
+        //Einstellungen einstellungen = new Einstellungen();
 
         public double[] schrittlänge = new double[500];
         public double schrittlängealt = 100;

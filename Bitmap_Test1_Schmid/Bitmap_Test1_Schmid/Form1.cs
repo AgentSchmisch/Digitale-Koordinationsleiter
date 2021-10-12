@@ -13,10 +13,11 @@ namespace Bitmap_Test1_Schmid
     //Todo: Farben auswählen für Linien
     public partial class Form1 : Form
     {
-        Form2 screen = new Form2();
+        public Form2 screen = new Form2();
+        Einstellungen einstellungen = new Einstellungen();
         Patientendatenbank Patientendatenbank = new Patientendatenbank();
         retrieve_Kinect kinect = new retrieve_Kinect();
-        Einstellungen einstellungen = new Einstellungen();
+
 
         public static int schritt = 0;
 
@@ -188,6 +189,7 @@ namespace Bitmap_Test1_Schmid
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             einstellungen.Show();
+            einstellungen.form1 = this;
         }
     }
 }
