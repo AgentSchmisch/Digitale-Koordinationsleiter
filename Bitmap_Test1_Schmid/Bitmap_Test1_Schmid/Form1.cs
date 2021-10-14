@@ -143,16 +143,18 @@ namespace Bitmap_Test1_Schmid
 
         private void patientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(1139, 409);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen     
+            
             try
             {
                 //öffnen der Form für die Patientendatenbank, 
                 //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
                // Patientendatenbank p = new Patientendatenbank(); 
-               //BUG: aufgrund der neuinstanzierung wird das Closing event nicht mehr ausgelöst so können die werte nicht übergeben werden
-               //BUG: beim schließen und wiederöffnen der form
-                Patientendatenbank.ShowDialog(); 
-                Patientendatenbank.FormClosing += Patientendatenbank_Closing;    //TODO: Flo bitte hau mich nicht aber das geht nimma        
+                Patientendatenbank.ShowDialog();
+                lblName.Text = Patientendatenbank.Patientenname;
+                lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
+                lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
+
+                Size = new Size(1139, 409);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen  
             }
             catch(Exception ex)
             {
