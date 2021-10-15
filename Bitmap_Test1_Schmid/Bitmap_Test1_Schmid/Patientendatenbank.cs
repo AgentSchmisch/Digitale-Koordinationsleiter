@@ -32,7 +32,7 @@ namespace Bitmap_Test1_Schmid
         #endregion
         string record;
         bool bearbeitung = false;
-        string patnr = "", vorname = "", nachname = "", geburtsdatum = "", adresse = "", plz = "", ort = "", telNr = "";
+        public bool auswahl = false;
         //Variablen für die verschiedenen Patientendaten die später von der UI geholt werden
         public string Patientenname;
         string PatNr_aktuell;
@@ -43,6 +43,7 @@ namespace Bitmap_Test1_Schmid
 
         //variablen die aus verschiedenen gründen global sind
         int[] tabs=new int[5];
+        string patnr = "", vorname = "", nachname = "", geburtsdatum = "", adresse = "", plz = "", ort = "", telNr = "";
 
         //Parameter für die Datenbank
         MySqlConnection conn = new MySqlConnection();
@@ -264,6 +265,7 @@ namespace Bitmap_Test1_Schmid
 
             #endregion
             //this.Close();
+            auswahl = true;
         }
 
 
@@ -632,56 +634,56 @@ namespace Bitmap_Test1_Schmid
                     if (tbl3.Columns[j].ColumnName == "Patientennummer")
                     {
                         record += row[j];
-                        patnr += row[j];
+                        patnr = row[j].ToString();
                         continue;
                     }
 
                     if (tbl3.Columns[j].ColumnName == "Vorname")
                     {
                         record += row[j];
-                        vorname += row[j];
+                        vorname = row[j].ToString();
                         continue;
                     }
 
                     if (tbl3.Columns[j].ColumnName == "Nachname")
                     {
                         record += row[j];
-                        nachname += row[j];
+                        nachname = row[j].ToString();
                         continue;
                     }
 
                     if (tbl3.Columns[j].ColumnName == "Geburtsdatum")
                     {
                         record += row[j];
-                        geburtsdatum += row[j];
+                        geburtsdatum = row[j].ToString();
                         continue;
                     }
 
                     if (tbl3.Columns[j].ColumnName == "Adresse")
                     {
                         record += row[j];
-                        adresse += row[j];
+                        adresse = row[j].ToString();
                         continue;
                     }
 
                     if (tbl3.Columns[j].ColumnName == "PLZ")
                     {
                         record += row[j];
-                        plz += row[j];
+                        plz = row[j].ToString();
                         continue;
                     }
 
                     if (tbl3.Columns[j].ColumnName == "Ort")
                     {
                         record += row[j];
-                        ort += row[j];
+                        ort = row[j].ToString();
                         continue;
                     }
 
                     if (tbl3.Columns[j].ColumnName == "Telefonnummer")
                     {
                         record += row[j];
-                        telNr += row[j];
+                        telNr = row[j].ToString();
                         continue;
                     }
                 }
@@ -813,6 +815,8 @@ namespace Bitmap_Test1_Schmid
                     conn.Close();
                 }
             }
+
+
             if (bearbeitung)
             {
                 //überprüfen ob die Felder Vorname und Nachname ausgefüllt wurden
@@ -831,9 +835,35 @@ namespace Bitmap_Test1_Schmid
                 {
                     TbGeburtsdatum.Text = "";
                 }
-                //TODO:aktualisieren aller datenbankdaten (Masterliste,Tabellenname,patientenname in spezifischer tabelle)
-                query2 = "UPDATE "+vorname+"_"+nachname+"_"+patnr+" Set";
+                //TODO:aktualisieren aller datenbankdaten (Masterliste,Tabellenname,patientenname in spezifischer tabelle) if conditions zur überprüfung welche dinge verändert wurden
+                if (TbName.Text==vorname&&TbNachname.Text==nachname) //falls sich vor-und Nachname nicht verändert haben, nur die Masterliste Updaten
+                {
+                    if (TbTelefonnummer.Text=="Telefonnmmer"||TbTelefonnummer.Text=="")
+                    {
+                        TbTelefonnummer.Text = "";
+                    }
+                    query2 ="UPDATE Patienten.Patientenliste Set Geburtsdatum='"+TbGeburtsdatum.Text.Replace(" ","-")+"'," +
+                                                                "Adresse='"+TbAdresse.Text+"'," +
+                                                                "PLZ='"+TbPLZ.Text+"'," +
+                                                                "Ort='"+TbOrt.Text+"'," +
+                                                                "Telefonnummer='"+TbTelefonnummer.Text+"' " +
+                                                                "where Patientennummer='"+patnr+"';";
+                }
+                if (TbName.Text!=vorname||TbNachname.Text!=nachname)//falls einer der beiden namensteile geändert wurde, alle datensätze außer der Patientennummer updaten
+                {
+                    query2 = "UPDATE Patienten.Patientenliste Set Vorname='"+TbName.Text+"," +
+                                            "Nachname='"+TbNachname.Text+"'," +
+                                            "Geburtsdatum='" + TbGeburtsdatum.Text.Replace(" ", "-") + "'," +
+                                            "Adresse='" + TbAdresse.Text + "'," +
+                                            "PLZ='" + TbPLZ.Text + "'," +
+                                            "Ort='" + TbOrt.Text + "'," +
+                                            "Telefonnnummer='" + TbTelefonnummer.Text + "' " +
+                                            "where Patientennummer='" + patnr + "';";
+                    query2 += "UPDATE " + vorname + "_" + nachname + "_" + patnr + " Set Vorname ='"+TbName.Text+"'," +
+                                                                                        "Nachname='"+TbNachname.Text+"' where Vorname='"+vorname+"'AND Nachname='"+nachname+"';";
+                    query2 += "ALTER TABLE"+vorname+"_"+nachname+"_"+patnr+"RENAME TO"+TbName.Text+"_"+TbNachname.Text+"_"+patnr+";";
 
+                }
 
                 try
                 {
@@ -844,9 +874,33 @@ namespace Bitmap_Test1_Schmid
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Patient erfolgreich aktualisiert!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    #region zurücksetzen der Oberflächenelemente zur Suchmaske
+
+                    TbName.Text = "Vorname";
+                    TbName.ForeColor = Color.Gray;
+
+                    TbNachname.Text = "Nachname";
+                    TbNachname.ForeColor = Color.Gray;
+
                     TbPatNr.Text = "Patientennr.";
                     TbPatNr.ForeColor = Color.Gray;
                     TbPatNr.ReadOnly = false;
+
+                    TbGeburtsdatum.Text = "Geburtsdatum";
+                    TbGeburtsdatum.ForeColor = Color.Gray;
+
+                    TbAdresse.Text = "Adresse";
+                    TbAdresse.ForeColor = Color.Gray;
+
+                    TbPLZ.Text = "PLZ";
+                    TbPLZ.ForeColor = Color.Gray;
+
+                    TbOrt.Text = "Ort";
+                    TbOrt.ForeColor = Color.Gray;
+
+                    TbTelefonnummer.Text = "Telefonnummer";
+                    TbTelefonnummer.ForeColor = Color.Gray;
+
                     lblEditStatus.BackColor = Color.Lime;
 
                     NeuAbbrechenBtn.Visible = false;
@@ -855,16 +909,18 @@ namespace Bitmap_Test1_Schmid
                     auswahlBtn.Visible = true;
                     NeuSpeichernBtn.Visible = false;
 
+                    Size = new Size(471, 449);
+                    auswahlBtn.Location = new Point(166, 349);
+
+                    #endregion;
                 }
                 catch (MySqlException ex)
                 {
                     exception(ex.ToString());
-
                 }
 
                 finally
                 {
-
                     conn.Close();
                 }
             }

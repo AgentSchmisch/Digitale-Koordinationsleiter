@@ -154,7 +154,9 @@ namespace Bitmap_Test1_Schmid
                 lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
                 lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
 
-                Size = new Size(1139, 409);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen  
+                if (Patientendatenbank.auswahl) {
+                    Size = new Size(1139, 409);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
+                }
             }
             catch(Exception ex)
             {
