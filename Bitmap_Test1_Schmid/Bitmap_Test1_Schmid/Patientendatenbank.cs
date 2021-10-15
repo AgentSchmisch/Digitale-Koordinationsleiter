@@ -737,7 +737,25 @@ namespace Bitmap_Test1_Schmid
             TbPatNr.Text = "Patientennr.";
             TbPatNr.ForeColor = Color.Gray;
             TbPatNr.ReadOnly = false;
-            
+
+            TbPatNr.Text = "Patientennr.";
+            TbPatNr.ForeColor = Color.Gray;
+            TbPatNr.ReadOnly = false;
+
+            TbGeburtsdatum.Text = "Geburtsdatum";
+            TbGeburtsdatum.ForeColor = Color.Gray;
+
+            TbAdresse.Text = "Adresse";
+            TbAdresse.ForeColor = Color.Gray;
+
+            TbPLZ.Text = "PLZ";
+            TbPLZ.ForeColor = Color.Gray;
+
+            TbOrt.Text = "Ort";
+            TbOrt.ForeColor = Color.Gray;
+
+            TbTelefonnummer.Text = "Telefonnummer";
+            TbTelefonnummer.ForeColor = Color.Gray;
 
             NeuAbbrechenBtn.Visible = false;
             sucheBtn.Visible = true;
@@ -851,17 +869,17 @@ namespace Bitmap_Test1_Schmid
                 }
                 if (TbName.Text!=vorname||TbNachname.Text!=nachname)//falls einer der beiden namensteile geändert wurde, alle datensätze außer der Patientennummer updaten
                 {
-                    query2 = "UPDATE Patienten.Patientenliste Set Vorname='"+TbName.Text+"," +
+                    query2 = "UPDATE Patienten.Patientenliste Set Vorname='"+TbName.Text+"'," +
                                             "Nachname='"+TbNachname.Text+"'," +
                                             "Geburtsdatum='" + TbGeburtsdatum.Text.Replace(" ", "-") + "'," +
                                             "Adresse='" + TbAdresse.Text + "'," +
                                             "PLZ='" + TbPLZ.Text + "'," +
                                             "Ort='" + TbOrt.Text + "'," +
-                                            "Telefonnnummer='" + TbTelefonnummer.Text + "' " +
+                                            "Telefonnummer='" + TbTelefonnummer.Text + "' " +
                                             "where Patientennummer='" + patnr + "';";
                     query2 += "UPDATE " + vorname + "_" + nachname + "_" + patnr + " Set Vorname ='"+TbName.Text+"'," +
                                                                                         "Nachname='"+TbNachname.Text+"' where Vorname='"+vorname+"'AND Nachname='"+nachname+"';";
-                    query2 += "ALTER TABLE"+vorname+"_"+nachname+"_"+patnr+"RENAME TO"+TbName.Text+"_"+TbNachname.Text+"_"+patnr+";";
+                    query2 += "ALTER TABLE "+vorname+"_"+nachname+"_"+patnr+" RENAME TO "+TbName.Text+"_"+TbNachname.Text+"_"+patnr+";";
 
                 }
 
@@ -911,7 +929,7 @@ namespace Bitmap_Test1_Schmid
 
                     Size = new Size(471, 449);
                     auswahlBtn.Location = new Point(166, 349);
-
+                    Patienten.Items.Clear();
                     #endregion;
                 }
                 catch (MySqlException ex)
