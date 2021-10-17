@@ -557,18 +557,32 @@ namespace Bitmap_Test1_Schmid
 
         private void eintragungLöschenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string s = Patienten.SelectedItem.ToString();
-            for (int i = tabs[0]; i < tabs[2]; i++)
+            if (bearbeitung)
             {
-                if (i == tabs[1])
+                string query4 = " drop Table " + vorname+"_"+nachname+"_"+patnr+";";
+                query4 += "Delete From Patienten.Patientenliste where Patientennummer='"+ patnr+"';";
+                try
                 {
-                    Patientenname += "_";
+                    conn.Open();
+
+                    cmd = new MySqlCommand(query2, conn);
+
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch(MySqlException ex)
+                {
+                    exception(ex.ToString());
+                }
+                finally
+                {
+                    conn.Close();
                 }
 
-                Patientenname += s[i];
-
             }
-            string query4 = " drop Table " + Patientenname;
+            else
+                MessageBox.Show("Bitte zuerst einen Patienten auswählen", "Fehler");
+            
 
             //TODO: löschen von angelegten Patienten
         }
@@ -732,6 +746,7 @@ namespace Bitmap_Test1_Schmid
 
         private void NeuAbbrechenBtn_Click(object sender, EventArgs e)
         {
+            #region zurücksetzen der Formelemente
             Size = new Size(471, 449);
             auswahlBtn.Location = new Point(166, 349);
             TbPatNr.Text = "Patientennr.";
@@ -756,6 +771,8 @@ namespace Bitmap_Test1_Schmid
 
             TbTelefonnummer.Text = "Telefonnummer";
             TbTelefonnummer.ForeColor = Color.Gray;
+
+            #endregion
 
             NeuAbbrechenBtn.Visible = false;
             sucheBtn.Visible = true;
