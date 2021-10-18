@@ -246,7 +246,6 @@
             // BtnSitzungBeenden
             // 
             this.BtnSitzungBeenden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.BtnSitzungBeenden.Enabled = false;
             this.BtnSitzungBeenden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSitzungBeenden.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.BtnSitzungBeenden.ForeColor = System.Drawing.Color.White;

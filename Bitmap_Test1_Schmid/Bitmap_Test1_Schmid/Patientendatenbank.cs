@@ -264,7 +264,7 @@ namespace Bitmap_Test1_Schmid
                 }
 
             #endregion
-            //this.Close();
+            this.Close();
             auswahl = true;
         }
 
@@ -503,14 +503,53 @@ namespace Bitmap_Test1_Schmid
        
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)//Neu im ToolstripMenu
         {
+            Size = new Size(471, 270);
             string patientennummer = "";
             //BUG: Autoincrement erhöht den wert auch wenn die Position danach wieder gelöscht wird
             //-> Autoincrement daher möglicherweise höher als Max(Patientennummer)
             //egal weil so jeder Patient eine individuelle Nummer bekommt
             #region SQL Verbindung um die höchste Patientennummer abzurufen
             //verwendung von query4
-                try
-                {
+            #region zurücksetzen der Oberflächenelemente zur Suchmaske
+
+            TbName.Text = "Vorname";
+            TbName.ForeColor = Color.Gray;
+
+            TbNachname.Text = "Nachname";
+            TbNachname.ForeColor = Color.Gray;
+
+            TbPatNr.Text = "Patientennr.";
+            TbPatNr.ForeColor = Color.Gray;
+            TbPatNr.ReadOnly = false;
+
+            TbGeburtsdatum.Text = "Geburtsdatum";
+            TbGeburtsdatum.ForeColor = Color.Gray;
+
+            TbAdresse.Text = "Adresse";
+            TbAdresse.ForeColor = Color.Gray;
+
+            TbPLZ.Text = "PLZ";
+            TbPLZ.ForeColor = Color.Gray;
+
+            TbOrt.Text = "Ort";
+            TbOrt.ForeColor = Color.Gray;
+
+            TbTelefonnummer.Text = "Telefonnummer";
+            TbTelefonnummer.ForeColor = Color.Gray;
+
+            lblEditStatus.BackColor = Color.Lime;
+
+            NeuAbbrechenBtn.Visible = false;
+            sucheBtn.Visible = true;
+            Patienten.Visible = true;
+            auswahlBtn.Visible = true;
+            NeuSpeichernBtn.Visible = false;
+
+            auswahlBtn.Location = new Point(166, 349);
+            Patienten.Items.Clear();
+            #endregion;
+            try
+            {
                     cmd = new MySqlCommand(query4, conn);
                     conn.Open();
                     da = new MySqlDataAdapter(cmd);
@@ -720,7 +759,7 @@ namespace Bitmap_Test1_Schmid
             NeuAbbrechenBtn.Visible = true;
 
             //Verkleinern des Datenbankfensters
-            Size = new Size(471, 348);          
+            this.Size = new Size(471, 348);          
             auswahlBtn.Location=new Point(167, 244);
         }
 
@@ -833,7 +872,7 @@ namespace Bitmap_Test1_Schmid
                     conn.Close();
                 }
             }
-
+            Size = new Size(471, 449);
 
             if (bearbeitung)
             {

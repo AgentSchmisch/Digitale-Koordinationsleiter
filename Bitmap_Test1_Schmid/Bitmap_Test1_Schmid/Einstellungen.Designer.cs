@@ -127,6 +127,7 @@ namespace Bitmap_Test1_Schmid
             this.Name = "Einstellungen";
             this.ShowInTaskbar = false;
             this.Text = "Einstellungen";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Einstellungen_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Einstellungen_FormClosed);
             this.Load += new System.EventHandler(this.Einstellungen_Load);

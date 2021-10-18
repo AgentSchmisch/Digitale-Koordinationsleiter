@@ -184,6 +184,7 @@ namespace Bitmap_Test1_Schmid
                                         if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= 50 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= 50 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= 5)
                                         {
                                             durchschnitt[i] = Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3);
+                                            for(int i = 0; i < 10000; i++) { } //delay
                                             //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
                                             text.Text= "Stehen: " + durchschnitt[i].ToString() + "   Schrittnummer: " + i.ToString();
                                                 for (int i = 0; i < 1000; i++) { }

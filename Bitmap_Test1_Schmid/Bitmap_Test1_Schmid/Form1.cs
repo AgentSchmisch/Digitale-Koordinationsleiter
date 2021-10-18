@@ -148,7 +148,8 @@ namespace Bitmap_Test1_Schmid
             {
                 //öffnen der Form für die Patientendatenbank, 
                 //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
-               // Patientendatenbank p = new Patientendatenbank(); 
+                // Patientendatenbank p = new Patientendatenbank();
+                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 Patientendatenbank.ShowDialog();
                 lblName.Text = Patientendatenbank.Patientenname;
                 lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
@@ -190,8 +191,8 @@ namespace Bitmap_Test1_Schmid
 
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            einstellungen.Show();
             einstellungen.form1 = this;
+            einstellungen.ShowDialog();
         }
 
         private void Form1_Load(object sender, EventArgs e)
