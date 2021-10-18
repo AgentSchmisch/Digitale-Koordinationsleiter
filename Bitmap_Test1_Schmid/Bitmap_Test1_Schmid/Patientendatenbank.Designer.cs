@@ -76,14 +76,14 @@ namespace Bitmap_Test1_Schmid
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // eintragungLöschenToolStripMenuItem
             // 
             this.eintragungLöschenToolStripMenuItem.Name = "eintragungLöschenToolStripMenuItem";
-            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.eintragungLöschenToolStripMenuItem.Text = "Eintragung löschen";
             this.eintragungLöschenToolStripMenuItem.Click += new System.EventHandler(this.eintragungLöschenToolStripMenuItem_Click);
             // 
@@ -202,6 +202,7 @@ namespace Bitmap_Test1_Schmid
             this.TbTelefonnummer.Text = "Telefonnummer";
             this.TbTelefonnummer.Enter += new System.EventHandler(this.TbTelefonnummer_Enter);
             this.TbTelefonnummer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbTelefonnummer_KeyDown);
+            this.TbTelefonnummer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbTelefonnummer_KeyPress);
             this.TbTelefonnummer.Leave += new System.EventHandler(this.TbTelefonnummer_Leave);
             // 
             // TbNachname

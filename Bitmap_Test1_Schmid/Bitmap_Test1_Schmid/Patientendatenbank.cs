@@ -18,6 +18,7 @@ namespace Bitmap_Test1_Schmid
         /* TODO: erstellen der Tabellen nach Schema: Patientennummer_Vorname_Nachname
         * TODO: überarbeiten aller SQL Queries um fehler auszuschließen die von vorherigen versionen übrig sind
         * TODO: Felder mit der eigenschaft not null schon im hauptprogramm abfragen
+        * TODO UI: auswahlbtn im suchfenster ausblenden und erst wieder nach der auswahl einblenden
         */
 
         string SQLServer = "server = koordinationsleiter.ddns.net; user id = Klinikum;password=koordinationsleiter; database=Patienten; sslmode=None;port=3306; persistsecurityinfo=True";
@@ -44,6 +45,7 @@ namespace Bitmap_Test1_Schmid
         //variablen die aus verschiedenen gründen global sind
         int[] tabs=new int[5];
         string patnr = "", vorname = "", nachname = "", geburtsdatum = "", adresse = "", plz = "", ort = "", telNr = "";
+        int telnummerlength = 0;
 
         //Parameter für die Datenbank
         MySqlConnection conn = new MySqlConnection();
@@ -79,7 +81,7 @@ namespace Bitmap_Test1_Schmid
         }
 
         private void sucheBtn_Click(object sender, EventArgs e)
-        {
+        {//TODO UI: alle felder die nicht befüllt wurden vor der suche leeren
             query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where " +
                "(Vorname in ('" + TbName.Text + "') and Nachname in ('" + TbNachname.Text + "')) " +
                "or (PLZ in('" + TbPLZ.Text + "')) or (Ort in('" + TbOrt.Text + "'));"; //TODO:  or (Patientennummer in('" + Convert.ToInt32(TbPatNr.Text) + "')) einbauen Fehler Abfrage Schlägt fehl weil leeres feld auch als text in int abgefragt wird -> Patientennr. ist hier kein string
@@ -202,6 +204,7 @@ namespace Bitmap_Test1_Schmid
                 da = new MySqlDataAdapter(cmd);
                 tbl2 = new DataTable();
                 da.Fill(tbl2);
+
             }
             catch (MySqlException ex)
             {
@@ -215,10 +218,23 @@ namespace Bitmap_Test1_Schmid
             }
 
                 record = "";
-                //Daten nur aus der letzten Zeile auslesen um so das aktuellste Behandlungsdatum zu erhalten
-                DataRow row = tbl2.Rows[tbl2.Rows.Count-1];
-            #region Befüllen der Variablen mit den Patientendaten
-            for (int j = 0; j < tbl2.Columns.Count; j++)
+            //Daten nur aus der letzten Zeile auslesen um so das aktuellste Behandlungsdatum zu erhalten
+            if (tbl2.Rows.Count == 0)
+            {
+
+                Nameaktuell = vorname + " " + nachname;
+                letzteBehandlung = "keine Sitzungen vorhanden";
+                letzteSchrittanzahl = "keine Daten vorhanden";
+                this.Close();
+                auswahl = true;
+                return;
+            }
+            else
+            {
+                DataRow row = tbl2.Rows[tbl2.Rows.Count - 1];
+
+                #region Befüllen der Variablen mit den Patientendaten
+                for (int j = 0; j < tbl2.Columns.Count; j++)
                 {
                     if (tbl2.Columns[j].ColumnName == "Vorname")
                     {
@@ -263,9 +279,10 @@ namespace Bitmap_Test1_Schmid
                     }
                 }
 
-            #endregion
-            this.Close();
-            auswahl = true;
+                #endregion
+                this.Close();
+                auswahl = true;
+            }
         }
 
 
@@ -471,6 +488,7 @@ namespace Bitmap_Test1_Schmid
             {
                 sucheBtn.PerformClick();
             }
+
         }
         #endregion
 
@@ -500,7 +518,28 @@ namespace Bitmap_Test1_Schmid
             //TODO: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
             //TODO: überarbeiten dieser Abfrage
         }
-       
+
+        private void TbTelefonnummer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)&&(e.KeyChar!='+'))
+            {
+                e.Handled = true;
+
+            } //nur zahlen in der Textbox zulassen
+
+            else //TODO UI: überprüfen ob telefonnummer länger als 14 zeichen ist
+            {
+                telnummerlength++;
+                if (telnummerlength == 14)
+                {
+                   MessageBox.Show("Die Telefonnummer darf nicht länger als 14 Zeichen sein", "Achtung!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    TbTelefonnummer.Clear();
+                    telnummerlength = 0;
+                }
+            }
+        }
+
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)//Neu im ToolstripMenu
         {
             Size = new Size(471, 270);
@@ -600,6 +639,7 @@ namespace Bitmap_Test1_Schmid
             {
                 string query4 = " drop Table " + vorname+"_"+nachname+"_"+patnr+";";
                 query4 += "Delete From Patienten.Patientenliste where Patientennummer='"+ patnr+"';";
+
                 try
                 {
                     conn.Open();
