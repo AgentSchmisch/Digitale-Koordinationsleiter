@@ -580,6 +580,7 @@ namespace Bitmap_Test1_Schmid
                 }
 
             }
+
             else
                 MessageBox.Show("Bitte zuerst einen Patienten auswählen", "Fehler");
             
