@@ -39,6 +39,11 @@ namespace Bitmap_Test1_Schmid
         {
             InitializeComponent();
         }
+        private Form2 _form2;
+        public Form2 form2
+        {
+            set { this._form2 = value; }
+        }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
             mySensor = KinectSensor.GetDefault();
@@ -187,11 +192,62 @@ namespace Bitmap_Test1_Schmid
                                             for(int i = 0; i < 10000; i++) { } //delay
                                             //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
                                             text.Text= "Stehen: " + durchschnitt[i].ToString() + "   Schrittnummer: " + i.ToString();
-                                                for (int i = 0; i < 1000; i++) { }
+                                            //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
+                                            #region Fußabdruck zeichnen
+                                            if (durchschnitt[0] != null && _form2.sendvar >= 1)
+                                            {
+                                                _form2.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form2.right_one.Size.Width / 2); _form2.right_one.Show();
+                                            }
+                                            if (durchschnitt[1] != null && _form2.sendvar >= 2)
+                                            {
+                                                _form2.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form2.left_one.Size.Width / 2); _form2.left_one.Show();
+                                            }
+                                            if (durchschnitt[2] != null && _form2.sendvar >= 3)
+                                            {
+                                                _form2.right_two.Left = Convert.ToInt32(durchschnitt[2]) - (_form2.right_one.Size.Width / 2); _form2.right_two.Show();
+                                            }
+                                            if (durchschnitt[3] != null && _form2.sendvar >= 4)
+                                            {
+                                                _form2.left_two.Left = Convert.ToInt32(durchschnitt[3]) - (_form2.left_one.Size.Width / 2); _form2.left_two.Show();
+                                            }
+                                            if (durchschnitt[4] != null && _form2.sendvar >= 5)
+                                            {
+                                                _form2.right_three.Left = Convert.ToInt32(durchschnitt[4]) - (_form2.right_one.Size.Width / 2); _form2.right_three.Show();
+                                            }
+                                            if (durchschnitt[5] != null && _form2.sendvar >= 6)
+                                            {
+                                                _form2.left_three.Left = Convert.ToInt32(durchschnitt[5]) - (_form2.left_one.Size.Width / 2); _form2.left_three.Show();
+                                            }
+                                            if (durchschnitt[6] != null && _form2.sendvar >= 7)
+                                            {
+                                                _form2.right_four.Left = Convert.ToInt32(durchschnitt[6]) - (_form2.right_one.Size.Width / 2); _form2.right_four.Show();
+                                            }
+                                            if (durchschnitt[7] != null && _form2.sendvar >= 8)
+                                            {
+                                                _form2.left_four.Left = Convert.ToInt32(durchschnitt[7]) - (_form2.left_one.Size.Width / 2); _form2.left_four.Show();
+                                            }
+                                            if (durchschnitt[8] != null && _form2.sendvar >= 9)
+                                            {
+                                                _form2.right_five.Left = Convert.ToInt32(durchschnitt[8]) - (_form2.right_one.Size.Width / 2); _form2.right_five.Show();
+                                            }
+                                            if (durchschnitt[9] != null && _form2.sendvar >= 10)
+                                            {
+                                                _form2.left_five.Left = Convert.ToInt32(durchschnitt[9]) - (_form2.left_one.Size.Width / 2); _form2.left_five.Show();
+                                            }
+                                            if (durchschnitt[10] != null && _form2.sendvar >= 11)
+                                            {
+                                                _form2.right_six.Left = Convert.ToInt32(durchschnitt[10]) - (_form2.right_one.Size.Width / 2); _form2.right_six.Show();
+                                            }
+                                            if (durchschnitt[11] != null && _form2.sendvar >= 12)
+                                            {
+                                                _form2.left_six.Left = Convert.ToInt32(durchschnitt[11]) - (_form2.left_one.Size.Width / 2); _form2.left_six.Show();
+                                            }
+                                            #endregion
+                                            for (int i = 0; i < 10000; i++) { }
                                             count = 1;
                                             i++;
                                         }
-                                        if (i == 99)
+                                        if (i >= 99)
                                             text.Text = "Ende Gelände";
                                     /*
                                     else if (count == 1 && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) > (durchschnitt + 30) && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) < (durchschnitt - 30))

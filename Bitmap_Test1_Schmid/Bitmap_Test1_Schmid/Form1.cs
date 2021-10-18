@@ -30,7 +30,7 @@ namespace Bitmap_Test1_Schmid
             try
             {
                 //schritt=Convert.ToInt32(steps.Text);
-                Form2.sendvar = Convert.ToInt32(steps.Text);
+                screen.sendvar = Convert.ToInt32(steps.Text);
                 regler.Maximum = Convert.ToInt32(steps.Text)-1;
                 screen.regler.Maximum = Convert.ToInt32(steps.Text)-1;
                 längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
@@ -165,8 +165,6 @@ namespace Bitmap_Test1_Schmid
             }
 
         }
-
-
         private void Patientendatenbank_Closing(object sender, FormClosingEventArgs e)
         {
             //wenn die Form geschlossen wird die Werte aus der Patientendatenbank übernehmen und im Label anzeigen

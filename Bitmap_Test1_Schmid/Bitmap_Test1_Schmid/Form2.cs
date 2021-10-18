@@ -24,13 +24,13 @@ namespace Bitmap_Test1_Schmid
         public int color_g = 0;
         public int color_b = 0;
 
-        public int color_box_r = 180;
-        public int color_box_g = 150;
-        public int color_box_b = 0;
+        public int color_box_r = 150;
+        public int color_box_g = 0;
+        public int color_box_b = 180;
 
         public int zähler = 0;
         public int dicke = 5;//dicke der Roten Linien
-        public static int sendvar = 0;
+        public int sendvar = 0;
         public int count = 0;
         public int count2 = 0;
         public string reglerwertalt;
@@ -346,6 +346,8 @@ namespace Bitmap_Test1_Schmid
                 }//senkrechte am schluss automatisch
 
                 //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
+                /*
+                #region Fußabdruck zeichnen
                 if (schrittlänge[1] != null && sendvar >= 1)
                 {
                     right_one.Left = Convert.ToInt32(schrittlänge[1]) - (right_one.Size.Width / 2); right_one.Show();
@@ -366,37 +368,36 @@ namespace Bitmap_Test1_Schmid
                 {
                     right_three.Left = Convert.ToInt32(schrittlänge[5]) - (right_one.Size.Width / 2); right_three.Show();
                 }
-                if (schrittlänge[6] != null && sendvar >= 5)
+                if (schrittlänge[6] != null && sendvar >= 6)
                 {
                     left_three.Left = Convert.ToInt32(schrittlänge[6]) - (left_one.Size.Width / 2); left_three.Show();
                 }
-                if (schrittlänge[7] != null && sendvar >= 6)
+                if (schrittlänge[7] != null && sendvar >= 7)
                 {
                     right_four.Left = Convert.ToInt32(schrittlänge[7]) - (right_one.Size.Width / 2); right_four.Show();
                 }
-                if (schrittlänge[8] != null && sendvar >= 7)
+                if (schrittlänge[8] != null && sendvar >= 8)
                 {
                     left_four.Left = Convert.ToInt32(schrittlänge[8]) - (left_one.Size.Width / 2); left_four.Show();
                 }
-                if (schrittlänge[9] != null && sendvar >= 8)
+                if (schrittlänge[9] != null && sendvar >= 9)
                 {
                     right_five.Left = Convert.ToInt32(schrittlänge[9]) - (right_one.Size.Width / 2); right_five.Show();
                 }
-                if (schrittlänge[10] != null && sendvar >= 9)
+                if (schrittlänge[10] != null && sendvar >= 10)
                 {
                     left_five.Left = Convert.ToInt32(schrittlänge[10]) - (left_one.Size.Width / 2); left_five.Show();
                 }
-                if (schrittlänge[11] != null && sendvar >= 10)
+                if (schrittlänge[11] != null && sendvar >= 11)
                 {
                     right_six.Left = Convert.ToInt32(schrittlänge[11]) - (right_one.Size.Width / 2); right_six.Show();
                 }
-                if (schrittlänge[12] != null && sendvar >= 11)
+                if (schrittlänge[12] != null && sendvar >= 12)
                 {
                     left_six.Left = Convert.ToInt32(schrittlänge[12]) - (left_one.Size.Width / 2); left_six.Show();
                 }
-
-
-
+                #endregion
+                */
                 //Array.Clear(schrittlänge,0,schrittlänge.Length);
                 pictureBox1.Image = image1;
             }

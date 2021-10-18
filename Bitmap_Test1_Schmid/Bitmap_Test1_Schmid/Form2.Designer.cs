@@ -434,18 +434,18 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.Label reglertext;
         public System.Windows.Forms.Label längelabel;
         public System.Windows.Forms.Button bestätigen;
-        private System.Windows.Forms.PictureBox left_one;
-        private System.Windows.Forms.PictureBox right_one;
-        private System.Windows.Forms.PictureBox right_two;
-        private System.Windows.Forms.PictureBox left_two;
-        private System.Windows.Forms.PictureBox right_three;
-        private System.Windows.Forms.PictureBox left_three;
-        private System.Windows.Forms.PictureBox right_four;
-        private System.Windows.Forms.PictureBox left_four;
-        private System.Windows.Forms.PictureBox right_five;
-        private System.Windows.Forms.PictureBox left_five;
-        private System.Windows.Forms.PictureBox right_six;
-        private System.Windows.Forms.PictureBox left_six;
         private System.DirectoryServices.DirectoryEntry directoryEntry1;
+        public System.Windows.Forms.PictureBox left_one;
+        public System.Windows.Forms.PictureBox right_one;
+        public System.Windows.Forms.PictureBox right_two;
+        public System.Windows.Forms.PictureBox left_two;
+        public System.Windows.Forms.PictureBox right_three;
+        public System.Windows.Forms.PictureBox left_three;
+        public System.Windows.Forms.PictureBox right_four;
+        public System.Windows.Forms.PictureBox left_four;
+        public System.Windows.Forms.PictureBox right_five;
+        public System.Windows.Forms.PictureBox left_five;
+        public System.Windows.Forms.PictureBox right_six;
+        public System.Windows.Forms.PictureBox left_six;
     }
 }
