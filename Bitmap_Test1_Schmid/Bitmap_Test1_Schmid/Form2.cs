@@ -36,7 +36,6 @@ namespace Bitmap_Test1_Schmid
         public string reglerwertalt;
         public int längewertalt;
         Bitmap image1 = null;
-
         public Form2()
         {
             InitializeComponent();
@@ -405,6 +404,7 @@ namespace Bitmap_Test1_Schmid
             {
                 MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
             }
+
         }
         public class Ex1 : Exception // für personalisierte Fehlermeldungen
         {

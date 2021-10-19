@@ -14,8 +14,9 @@ namespace Bitmap_Test1_Schmid
     {
         public Form2 screen = new Form2();
         Einstellungen einstellungen = new Einstellungen();
-        Patientendatenbank Patientendatenbank = new Patientendatenbank();
+        public Patientendatenbank Patientendatenbank = new Patientendatenbank();
         retrieve_Kinect kinect = new retrieve_Kinect();
+        public KinectMonitor kinectM = new KinectMonitor();
 
         public static int schritt = 0;
 
@@ -24,7 +25,6 @@ namespace Bitmap_Test1_Schmid
             InitializeComponent();
             screen.Show();
         }
-
         private void bestätigen_Click(object sender, EventArgs e)
         {
             try
@@ -182,9 +182,8 @@ namespace Bitmap_Test1_Schmid
 
         private void kinectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            KinectMonitor kinectM = new KinectMonitor();
-
             kinectM.Show();
+            kinectM.steps_kinect = Convert.ToInt32(steps.Text);
         }
 
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
