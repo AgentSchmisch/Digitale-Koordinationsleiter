@@ -36,7 +36,7 @@ namespace Bitmap_Test1_Schmid
         public string reglerwertalt;
         public int längewertalt;
         Bitmap image1 = null;
-
+        private KinectMonitor _Kinect;
         public Form2()
         {
             InitializeComponent();
@@ -269,18 +269,6 @@ namespace Bitmap_Test1_Schmid
 
         private void bestätigen_Click(object sender, EventArgs e)
         {
-            right_one.Hide();
-            right_two.Hide();
-            right_three.Hide();
-            right_four.Hide();
-            right_five.Hide();
-            right_six.Hide();
-            left_one.Hide();
-            left_two.Hide();
-            left_three.Hide();
-            left_four.Hide();
-            left_five.Hide();
-            left_six.Hide();
 
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;//warte cursor für visuelles Feedback
             try
@@ -405,6 +393,7 @@ namespace Bitmap_Test1_Schmid
             {
                 MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
             }
+
         }
         public class Ex1 : Exception // für personalisierte Fehlermeldungen
         {

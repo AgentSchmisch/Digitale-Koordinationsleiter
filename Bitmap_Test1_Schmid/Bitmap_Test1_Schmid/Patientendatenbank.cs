@@ -80,7 +80,7 @@ namespace Bitmap_Test1_Schmid
         }
 
         private void sucheBtn_Click(object sender, EventArgs e)
-        {//TODO UI: alle felder die nicht befüllt wurden vor der suche leeren
+        {
             Patienten.Items.Clear();
             int ix = 0;
             query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where ";

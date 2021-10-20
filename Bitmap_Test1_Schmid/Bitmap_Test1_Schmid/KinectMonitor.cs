@@ -31,18 +31,20 @@ namespace Bitmap_Test1_Schmid
         double[] zw_schritt_rechts = new double[10];
         double[] zw_schritt_links = new double[10];
 
+        public int steps_kinect = 0; // schritte von form1
         int count = 0;
         int i = 0;
         double[] durchschnitt=new double[99];
 
-        public KinectMonitor()
-        {
-            InitializeComponent();
-        }
         private Form2 _form2;
         public Form2 form2
         {
             set { this._form2 = value; }
+        }
+
+        public KinectMonitor()
+        {
+            InitializeComponent();
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
@@ -139,7 +141,7 @@ namespace Bitmap_Test1_Schmid
                         tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
                         tracker_xlinks[0] = Convert.ToDouble(Xlinks.Text);
 
-
+                     
                         for (int i = 0; i < 9; i++)
                         {
                             tracker_xrechts[i + 1] = zw_tracker_xrechts[i];         //zwischenvariable für Werte -- beginnt array bei 0
@@ -177,7 +179,7 @@ namespace Bitmap_Test1_Schmid
                                 schritt_rechts[i + 1] = zw_schritt_rechts[i];
                                 schritt_links[i + 1] = zw_schritt_links[i];
                             }
-                                if(schritt_rechts[2]!=0)
+                                if(schritt_rechts[2]!=0)//wartet bis 3 werte vorhanden sind
                                 {
                                         if (count == 1 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) >= 50 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) >= 50 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) >= 50)
                                         {
@@ -189,61 +191,60 @@ namespace Bitmap_Test1_Schmid
                                         if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= 50 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= 50 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= 5)
                                         {
                                             durchschnitt[i] = Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3);
-                                            for(int i = 0; i < 10000; i++) { } //delay
                                             //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
                                             text.Text= "Stehen: " + durchschnitt[i].ToString() + "   Schrittnummer: " + i.ToString();
-                                            //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
-                                            #region Fußabdruck zeichnen
-                                            if (durchschnitt[0] != null && _form2.sendvar >= 1)
-                                            {
-                                                _form2.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form2.right_one.Size.Width / 2); _form2.right_one.Show();
-                                            }
-                                            if (durchschnitt[1] != null && _form2.sendvar >= 2)
-                                            {
-                                                _form2.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form2.left_one.Size.Width / 2); _form2.left_one.Show();
-                                            }
-                                            if (durchschnitt[2] != null && _form2.sendvar >= 3)
-                                            {
-                                                _form2.right_two.Left = Convert.ToInt32(durchschnitt[2]) - (_form2.right_one.Size.Width / 2); _form2.right_two.Show();
-                                            }
-                                            if (durchschnitt[3] != null && _form2.sendvar >= 4)
-                                            {
-                                                _form2.left_two.Left = Convert.ToInt32(durchschnitt[3]) - (_form2.left_one.Size.Width / 2); _form2.left_two.Show();
-                                            }
-                                            if (durchschnitt[4] != null && _form2.sendvar >= 5)
-                                            {
-                                                _form2.right_three.Left = Convert.ToInt32(durchschnitt[4]) - (_form2.right_one.Size.Width / 2); _form2.right_three.Show();
-                                            }
-                                            if (durchschnitt[5] != null && _form2.sendvar >= 6)
-                                            {
-                                                _form2.left_three.Left = Convert.ToInt32(durchschnitt[5]) - (_form2.left_one.Size.Width / 2); _form2.left_three.Show();
-                                            }
-                                            if (durchschnitt[6] != null && _form2.sendvar >= 7)
-                                            {
-                                                _form2.right_four.Left = Convert.ToInt32(durchschnitt[6]) - (_form2.right_one.Size.Width / 2); _form2.right_four.Show();
-                                            }
-                                            if (durchschnitt[7] != null && _form2.sendvar >= 8)
-                                            {
-                                                _form2.left_four.Left = Convert.ToInt32(durchschnitt[7]) - (_form2.left_one.Size.Width / 2); _form2.left_four.Show();
-                                            }
-                                            if (durchschnitt[8] != null && _form2.sendvar >= 9)
-                                            {
-                                                _form2.right_five.Left = Convert.ToInt32(durchschnitt[8]) - (_form2.right_one.Size.Width / 2); _form2.right_five.Show();
-                                            }
-                                            if (durchschnitt[9] != null && _form2.sendvar >= 10)
-                                            {
-                                                _form2.left_five.Left = Convert.ToInt32(durchschnitt[9]) - (_form2.left_one.Size.Width / 2); _form2.left_five.Show();
-                                            }
-                                            if (durchschnitt[10] != null && _form2.sendvar >= 11)
-                                            {
-                                                _form2.right_six.Left = Convert.ToInt32(durchschnitt[10]) - (_form2.right_one.Size.Width / 2); _form2.right_six.Show();
-                                            }
-                                            if (durchschnitt[11] != null && _form2.sendvar >= 12)
-                                            {
-                                                _form2.left_six.Left = Convert.ToInt32(durchschnitt[11]) - (_form2.left_one.Size.Width / 2); _form2.left_six.Show();
-                                            }
-                                            #endregion
-                                            for (int i = 0; i < 10000; i++) { }
+                                        //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
+                                        #region Fußabdruck zeichnen
+                                        if (durchschnitt[0] != 0 && steps_kinect >= 1)
+                                        {
+                                            _form2.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form2.right_one.Size.Width / 2); _form2.right_one.Show();
+                                        }
+                                        if (durchschnitt[1] != 0 && steps_kinect >= 2)
+                                        {
+                                            _form2.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form2.left_one.Size.Width / 2); _form2.left_one.Show();
+                                        }
+                                        if (durchschnitt[2] != 0 && steps_kinect >= 3)
+                                        {
+                                            _form2.right_two.Left = Convert.ToInt32(durchschnitt[2]) - (_form2.right_one.Size.Width / 2); _form2.right_two.Show();
+                                        }
+                                        if (durchschnitt[3] != 0 && steps_kinect >= 4)
+                                        {
+                                            _form2.left_two.Left = Convert.ToInt32(durchschnitt[3]) - (_form2.left_one.Size.Width / 2); _form2.left_two.Show();
+                                        }
+                                        if (durchschnitt[4] != 0 && steps_kinect >= 5)
+                                        {
+                                            _form2.right_three.Left = Convert.ToInt32(durchschnitt[4]) - (_form2.right_one.Size.Width / 2); _form2.right_three.Show();
+                                        }
+                                        if (durchschnitt[5] != 0 && steps_kinect >= 6)
+                                        {
+                                            _form2.left_three.Left = Convert.ToInt32(durchschnitt[5]) - (_form2.left_one.Size.Width / 2); _form2.left_three.Show();
+                                        }
+                                        if (durchschnitt[6] != 0 && steps_kinect >= 7)
+                                        {
+                                            _form2.right_four.Left = Convert.ToInt32(durchschnitt[6]) - (_form2.right_one.Size.Width / 2); _form2.right_four.Show();
+                                        }
+                                        if (durchschnitt[7] != 0 && steps_kinect >= 8)
+                                        {
+                                            _form2.left_four.Left = Convert.ToInt32(durchschnitt[7]) - (_form2.left_one.Size.Width / 2); _form2.left_four.Show();
+                                        }
+                                        if (durchschnitt[8] != 0 && steps_kinect >= 9)
+                                        {
+                                            _form2.right_five.Left = Convert.ToInt32(durchschnitt[8]) - (_form2.right_one.Size.Width / 2); _form2.right_five.Show();
+                                        }
+                                        if (durchschnitt[9] != 0 && steps_kinect >= 10)
+                                        {
+                                            _form2.left_five.Left = Convert.ToInt32(durchschnitt[9]) - (_form2.left_one.Size.Width / 2); _form2.left_five.Show();
+                                        }
+                                        if (durchschnitt[10] != 0 && steps_kinect >= 11)
+                                        {
+                                            _form2.right_six.Left = Convert.ToInt32(durchschnitt[10]) - (_form2.right_one.Size.Width / 2); _form2.right_six.Show();
+                                        }
+                                        if (durchschnitt[11] != 0 && steps_kinect >= 12)
+                                        {
+                                            _form2.left_six.Left = Convert.ToInt32(durchschnitt[11]) - (_form2.left_one.Size.Width / 2); _form2.left_six.Show();
+                                        }
+                                        #endregion
+                                        for (int i = 0; i < 10000; i++) { }
                                             count = 1;
                                             i++;
                                         }
