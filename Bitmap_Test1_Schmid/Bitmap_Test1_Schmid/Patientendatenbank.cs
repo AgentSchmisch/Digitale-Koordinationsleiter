@@ -83,12 +83,11 @@ namespace Bitmap_Test1_Schmid
         {//TODO UI: alle felder die nicht befüllt wurden vor der suche leeren
             Patienten.Items.Clear();
             int ix = 0;
-            query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where ";// +
-            //"(Vorname in ('" + TbName.Text + "') and Nachname in ('" + TbNachname.Text + "')) " +
-            //"or (PLZ in('" + TbPLZ.Text + "')) or (Ort in('" + TbOrt.Text + "'));"; //TODO:  or (Patientennummer in('" + Convert.ToInt32(TbPatNr.Text) + "')) einbauen Fehler Abfrage Schlägt fehl weil leeres feld auch als text in int abgefragt wird -> Patientennr. ist hier kein string
+            query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where ";
+           
 
             # region durchsuchen der Db
-            if (TbName.Text != "Vorname")
+            if (TbName.Text != "Vorname")   
             {
                 if (ix == 1)
                     query1 += "or ";
@@ -1012,7 +1011,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     TbGeburtsdatum.Text = "";
                 }
-                //TODO:aktualisieren aller datenbankdaten (Masterliste,Tabellenname,patientenname in spezifischer tabelle) if conditions zur überprüfung welche dinge verändert wurden
+                //aktualisieren aller datenbankdaten (Masterliste,Tabellenname,patientenname in spezifischer tabelle) if conditions zur überprüfung welche dinge verändert wurden
                 if (TbName.Text == vorname && TbNachname.Text == nachname) //falls sich vor-und Nachname nicht verändert haben, nur die Masterliste Updaten
                 {
                     if (TbTelefonnummer.Text == "Telefonnmmer" || TbTelefonnummer.Text == "")

@@ -59,8 +59,8 @@ namespace Bitmap_Test1_Schmid
             this.patientToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(455, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(607, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,20 +70,20 @@ namespace Bitmap_Test1_Schmid
             this.neuToolStripMenuItem,
             this.eintragungLöschenToolStripMenuItem});
             this.patientToolStripMenuItem.Name = "patientToolStripMenuItem";
-            this.patientToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.patientToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
             this.patientToolStripMenuItem.Text = "Patient";
             // 
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // eintragungLöschenToolStripMenuItem
             // 
             this.eintragungLöschenToolStripMenuItem.Name = "eintragungLöschenToolStripMenuItem";
-            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.eintragungLöschenToolStripMenuItem.Text = "Eintragung löschen";
             this.eintragungLöschenToolStripMenuItem.Click += new System.EventHandler(this.eintragungLöschenToolStripMenuItem_Click);
             // 
@@ -92,9 +92,10 @@ namespace Bitmap_Test1_Schmid
             this.sucheBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sucheBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.sucheBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.sucheBtn.Location = new System.Drawing.Point(12, 184);
+            this.sucheBtn.Location = new System.Drawing.Point(16, 226);
+            this.sucheBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sucheBtn.Name = "sucheBtn";
-            this.sucheBtn.Size = new System.Drawing.Size(161, 38);
+            this.sucheBtn.Size = new System.Drawing.Size(215, 47);
             this.sucheBtn.TabIndex = 0;
             this.sucheBtn.Text = "Suchen";
             this.sucheBtn.UseVisualStyleBackColor = true;
@@ -106,10 +107,11 @@ namespace Bitmap_Test1_Schmid
             this.Patienten.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Patienten.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Patienten.FormattingEnabled = true;
-            this.Patienten.ItemHeight = 20;
-            this.Patienten.Location = new System.Drawing.Point(12, 233);
+            this.Patienten.ItemHeight = 26;
+            this.Patienten.Location = new System.Drawing.Point(16, 287);
+            this.Patienten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Patienten.Name = "Patienten";
-            this.Patienten.Size = new System.Drawing.Size(435, 100);
+            this.Patienten.Size = new System.Drawing.Size(580, 104);
             this.Patienten.TabIndex = 9;
             this.Patienten.SelectedIndexChanged += new System.EventHandler(this.Patienten_SelectedIndexChanged);
             // 
@@ -118,9 +120,10 @@ namespace Bitmap_Test1_Schmid
             this.auswahlBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.auswahlBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.auswahlBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.auswahlBtn.Location = new System.Drawing.Point(166, 349);
+            this.auswahlBtn.Location = new System.Drawing.Point(221, 430);
+            this.auswahlBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.auswahlBtn.Name = "auswahlBtn";
-            this.auswahlBtn.Size = new System.Drawing.Size(133, 41);
+            this.auswahlBtn.Size = new System.Drawing.Size(177, 50);
             this.auswahlBtn.TabIndex = 10;
             this.auswahlBtn.Text = "Auswählen";
             this.auswahlBtn.UseVisualStyleBackColor = true;
@@ -130,9 +133,10 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbName.ForeColor = System.Drawing.Color.Gray;
-            this.TbName.Location = new System.Drawing.Point(12, 45);
+            this.TbName.Location = new System.Drawing.Point(16, 55);
+            this.TbName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbName.Name = "TbName";
-            this.TbName.Size = new System.Drawing.Size(161, 27);
+            this.TbName.Size = new System.Drawing.Size(213, 32);
             this.TbName.TabIndex = 1;
             this.TbName.Text = "Vorname";
             this.TbName.Enter += new System.EventHandler(this.TbName_Enter);
@@ -143,9 +147,10 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbAdresse.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbAdresse.ForeColor = System.Drawing.Color.Gray;
-            this.TbAdresse.Location = new System.Drawing.Point(12, 110);
+            this.TbAdresse.Location = new System.Drawing.Point(16, 135);
+            this.TbAdresse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbAdresse.Name = "TbAdresse";
-            this.TbAdresse.Size = new System.Drawing.Size(161, 27);
+            this.TbAdresse.Size = new System.Drawing.Size(213, 32);
             this.TbAdresse.TabIndex = 5;
             this.TbAdresse.Text = "Adresse";
             this.TbAdresse.Enter += new System.EventHandler(this.TbAdresse_Enter);
@@ -156,9 +161,10 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbPLZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbPLZ.ForeColor = System.Drawing.Color.Gray;
-            this.TbPLZ.Location = new System.Drawing.Point(328, 110);
+            this.TbPLZ.Location = new System.Drawing.Point(437, 135);
+            this.TbPLZ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbPLZ.Name = "TbPLZ";
-            this.TbPLZ.Size = new System.Drawing.Size(119, 27);
+            this.TbPLZ.Size = new System.Drawing.Size(157, 32);
             this.TbPLZ.TabIndex = 7;
             this.TbPLZ.Text = "PLZ";
             this.TbPLZ.Enter += new System.EventHandler(this.TbPLZ_Enter);
@@ -169,9 +175,10 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbOrt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbOrt.ForeColor = System.Drawing.Color.Gray;
-            this.TbOrt.Location = new System.Drawing.Point(178, 110);
+            this.TbOrt.Location = new System.Drawing.Point(237, 135);
+            this.TbOrt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbOrt.Name = "TbOrt";
-            this.TbOrt.Size = new System.Drawing.Size(141, 27);
+            this.TbOrt.Size = new System.Drawing.Size(187, 32);
             this.TbOrt.TabIndex = 6;
             this.TbOrt.Text = "Ort";
             this.TbOrt.Enter += new System.EventHandler(this.TbOrt_Enter);
@@ -182,9 +189,10 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbGeburtsdatum.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbGeburtsdatum.ForeColor = System.Drawing.Color.Gray;
-            this.TbGeburtsdatum.Location = new System.Drawing.Point(12, 77);
+            this.TbGeburtsdatum.Location = new System.Drawing.Point(16, 95);
+            this.TbGeburtsdatum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbGeburtsdatum.Name = "TbGeburtsdatum";
-            this.TbGeburtsdatum.Size = new System.Drawing.Size(119, 27);
+            this.TbGeburtsdatum.Size = new System.Drawing.Size(157, 32);
             this.TbGeburtsdatum.TabIndex = 4;
             this.TbGeburtsdatum.Text = "Geburtsdatum";
             this.TbGeburtsdatum.Enter += new System.EventHandler(this.TbGeburtsdatum_Enter);
@@ -195,9 +203,10 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbTelefonnummer.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbTelefonnummer.ForeColor = System.Drawing.Color.Gray;
-            this.TbTelefonnummer.Location = new System.Drawing.Point(12, 142);
+            this.TbTelefonnummer.Location = new System.Drawing.Point(16, 175);
+            this.TbTelefonnummer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbTelefonnummer.Name = "TbTelefonnummer";
-            this.TbTelefonnummer.Size = new System.Drawing.Size(161, 27);
+            this.TbTelefonnummer.Size = new System.Drawing.Size(213, 32);
             this.TbTelefonnummer.TabIndex = 8;
             this.TbTelefonnummer.Text = "Telefonnummer";
             this.TbTelefonnummer.Enter += new System.EventHandler(this.TbTelefonnummer_Enter);
@@ -209,9 +218,10 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbNachname.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbNachname.ForeColor = System.Drawing.Color.Gray;
-            this.TbNachname.Location = new System.Drawing.Point(178, 45);
+            this.TbNachname.Location = new System.Drawing.Point(237, 55);
+            this.TbNachname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbNachname.Name = "TbNachname";
-            this.TbNachname.Size = new System.Drawing.Size(141, 27);
+            this.TbNachname.Size = new System.Drawing.Size(187, 32);
             this.TbNachname.TabIndex = 2;
             this.TbNachname.Text = "Nachname";
             this.TbNachname.Enter += new System.EventHandler(this.TbNachname_Enter);
@@ -222,9 +232,10 @@ namespace Bitmap_Test1_Schmid
             // 
             this.TbPatNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbPatNr.ForeColor = System.Drawing.Color.Gray;
-            this.TbPatNr.Location = new System.Drawing.Point(328, 45);
+            this.TbPatNr.Location = new System.Drawing.Point(437, 55);
+            this.TbPatNr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbPatNr.Name = "TbPatNr";
-            this.TbPatNr.Size = new System.Drawing.Size(118, 27);
+            this.TbPatNr.Size = new System.Drawing.Size(156, 32);
             this.TbPatNr.TabIndex = 3;
             this.TbPatNr.Text = "Patientennr.";
             this.TbPatNr.Enter += new System.EventHandler(this.TbPatNr_Enter);
@@ -236,9 +247,10 @@ namespace Bitmap_Test1_Schmid
             this.lblEditStatus.AutoSize = true;
             this.lblEditStatus.BackColor = System.Drawing.Color.Lime;
             this.lblEditStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditStatus.Location = new System.Drawing.Point(-3, 24);
+            this.lblEditStatus.Location = new System.Drawing.Point(-4, 30);
+            this.lblEditStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEditStatus.Name = "lblEditStatus";
-            this.lblEditStatus.Size = new System.Drawing.Size(458, 4);
+            this.lblEditStatus.Size = new System.Drawing.Size(458, 5);
             this.lblEditStatus.TabIndex = 11;
             this.lblEditStatus.Text = resources.GetString("lblEditStatus.Text");
             // 
@@ -247,9 +259,10 @@ namespace Bitmap_Test1_Schmid
             this.NeuAbbrechenBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NeuAbbrechenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.NeuAbbrechenBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.NeuAbbrechenBtn.Location = new System.Drawing.Point(293, 184);
+            this.NeuAbbrechenBtn.Location = new System.Drawing.Point(391, 226);
+            this.NeuAbbrechenBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NeuAbbrechenBtn.Name = "NeuAbbrechenBtn";
-            this.NeuAbbrechenBtn.Size = new System.Drawing.Size(150, 38);
+            this.NeuAbbrechenBtn.Size = new System.Drawing.Size(200, 47);
             this.NeuAbbrechenBtn.TabIndex = 12;
             this.NeuAbbrechenBtn.Text = "Abbrechen";
             this.NeuAbbrechenBtn.UseVisualStyleBackColor = true;
@@ -261,9 +274,10 @@ namespace Bitmap_Test1_Schmid
             this.NeuSpeichernBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NeuSpeichernBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.NeuSpeichernBtn.ForeColor = System.Drawing.SystemColors.Control;
-            this.NeuSpeichernBtn.Location = new System.Drawing.Point(12, 184);
+            this.NeuSpeichernBtn.Location = new System.Drawing.Point(16, 226);
+            this.NeuSpeichernBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NeuSpeichernBtn.Name = "NeuSpeichernBtn";
-            this.NeuSpeichernBtn.Size = new System.Drawing.Size(161, 38);
+            this.NeuSpeichernBtn.Size = new System.Drawing.Size(215, 47);
             this.NeuSpeichernBtn.TabIndex = 13;
             this.NeuSpeichernBtn.Text = "Speichern";
             this.NeuSpeichernBtn.UseVisualStyleBackColor = true;
@@ -272,10 +286,10 @@ namespace Bitmap_Test1_Schmid
             // 
             // Patientendatenbank
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(455, 344);
+            this.ClientSize = new System.Drawing.Size(607, 419);
             this.Controls.Add(this.NeuSpeichernBtn);
             this.Controls.Add(this.NeuAbbrechenBtn);
             this.Controls.Add(this.lblEditStatus);
@@ -294,6 +308,7 @@ namespace Bitmap_Test1_Schmid
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Patientendatenbank";

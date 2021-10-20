@@ -17,7 +17,7 @@ namespace KinectIR
     {
         KinectSensor sensor = null;
         MultiSourceFrameReader reader = null;
-
+        int[] possibleTracker;
         public Form1()
         {
             InitializeComponent();
@@ -39,13 +39,15 @@ namespace KinectIR
         {
             var reference = e.FrameReference.AcquireFrame();
             using (InfraredFrame frame = reference.InfraredFrameReference.AcquireFrame())
-            {
+            { byte threshhold=200;
                 if (frame != null)
                 {
                     int width = frame.FrameDescription.Width;
                     int height = frame.FrameDescription.Height;
                     ushort[] data = new ushort[width * height];
                     byte[] pixelData = new byte[width * height*4];
+                    possibleTracker = new int[width * height * 4];
+                    int xcoord=0;
 
                     frame.CopyFrameDataToArray(data);
 
@@ -58,7 +60,18 @@ namespace KinectIR
                         pixelData[infraredIndex * 4] = intensity; // Blue
                         pixelData[infraredIndex * 4 + 1] = intensity; // Green   
                         pixelData[infraredIndex * 4 + 2] = intensity; // Red
-                        pixelData[infraredIndex * 4 + 3] = 255;
+                        pixelData[infraredIndex * 4 + 3] = 255;//Brightness
+
+                        if(pixelData[infraredIndex*4]>=threshhold && pixelData[infraredIndex * 4] <= 255 && pixelData[infraredIndex * 4+1] >= threshhold && pixelData[infraredIndex * 4+1] <= 255&& pixelData[infraredIndex * 4+2] >= threshhold && pixelData[infraredIndex * 4+2] <= 255)
+                        {
+                            possibleTracker[infraredIndex] = xcoord.ToString() + (infraredIndex / 4).ToString();
+                        }
+                        xcoord++;
+                        if (xcoord == 512 * 4)
+                        {
+                            xcoord = 0;
+                        }
+
                     }
 
                     var bitmapdata = bitmap.LockBits(
