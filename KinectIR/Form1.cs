@@ -17,7 +17,7 @@ namespace KinectIR
     {
         KinectSensor sensor = null;
         MultiSourceFrameReader reader = null;
-        int[] possibleTracker;
+        string[] possibleTracker;
         public Form1()
         {
             InitializeComponent();
@@ -39,18 +39,18 @@ namespace KinectIR
         {
             var reference = e.FrameReference.AcquireFrame();
             using (InfraredFrame frame = reference.InfraredFrameReference.AcquireFrame())
-            { byte threshhold=200;
+            { byte threshold=200;
                 if (frame != null)
                 {
                     int width = frame.FrameDescription.Width;
                     int height = frame.FrameDescription.Height;
                     ushort[] data = new ushort[width * height];
                     byte[] pixelData = new byte[width * height*4];
-                    possibleTracker = new int[width * height * 4];
+                    possibleTracker = new string[width * height * 4];
                     int xcoord=0;
 
                     frame.CopyFrameDataToArray(data);
-
+                    int schleife = 0;
                     Bitmap bitmap = new Bitmap(width, height, PixelFormat.Format32bppRgb);
                     for (int infraredIndex = 0; infraredIndex < data.Length; infraredIndex++)
                     {
@@ -62,9 +62,12 @@ namespace KinectIR
                         pixelData[infraredIndex * 4 + 2] = intensity; // Red
                         pixelData[infraredIndex * 4 + 3] = 255;//Brightness
 
-                        if(pixelData[infraredIndex*4]>=threshhold && pixelData[infraredIndex * 4] <= 255 && pixelData[infraredIndex * 4+1] >= threshhold && pixelData[infraredIndex * 4+1] <= 255&& pixelData[infraredIndex * 4+2] >= threshhold && pixelData[infraredIndex * 4+2] <= 255)
+                        //während des einlesens alle pixel die einen RGB wert zwischen 200 und 255 in ein Array schreiben und 
+                        if(pixelData[infraredIndex*4]>=threshold && pixelData[infraredIndex * 4] <= 255 && pixelData[infraredIndex * 4+1] >= threshold && pixelData[infraredIndex * 4+1] <= 255&& pixelData[infraredIndex * 4+2] >= threshold && pixelData[infraredIndex * 4+2] <= 255)
                         {
-                            possibleTracker[infraredIndex] = xcoord.ToString() + (infraredIndex / 4).ToString();
+
+                            schleife++;
+                            possibleTracker[schleife] = xcoord.ToString() + (infraredIndex / 4).ToString();
                         }
                         xcoord++;
                         if (xcoord == 512 * 4)
