@@ -63,7 +63,7 @@ namespace KinectIR
                         pixelData[infraredIndex * 4 + 3] = 255;//Brightness
 
                         //während des einlesens alle pixel die einen RGB wert zwischen 200 und 255 in ein Array schreiben und 
-                        if(pixelData[infraredIndex*4]>=threshold && pixelData[infraredIndex * 4] <= 255 && pixelData[infraredIndex * 4+1] >= threshold && pixelData[infraredIndex * 4+1] <= 255&& pixelData[infraredIndex * 4+2] >= threshold && pixelData[infraredIndex * 4+2] <= 255)
+                        if(pixelData[infraredIndex*4]>=threshold && pixelData[infraredIndex * 4] <= 255 && pixelData[infraredIndex * 4+1] >= threshold && pixelData[infraredIndex * 4+1] <= 255 && pixelData[infraredIndex * 4+2] >= threshold && pixelData[infraredIndex * 4+2] <= 255)
                         {
 
                             schleife++;
@@ -74,9 +74,7 @@ namespace KinectIR
                         {
                             xcoord = 0;
                         }
-                         bitmap.SetPixel(xcoord,infraredIndex/4,Color.Red);
-
-
+                        bitmap.SetPixel(xcoord,infraredIndex / 4 , Color.Red);
                     }
 
                     var bitmapdata = bitmap.LockBits(

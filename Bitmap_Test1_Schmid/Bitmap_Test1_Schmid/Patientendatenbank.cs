@@ -293,53 +293,53 @@ namespace Bitmap_Test1_Schmid
             {
                 DataRow row = tbl2.Rows[tbl2.Rows.Count - 1];
 
-#region Befüllen der Variablen mit den Patientendaten
-                for (int j = 0; j < tbl2.Columns.Count; j++)
-                {
-                    if (tbl2.Columns[j].ColumnName == "Vorname")
-                    {
-                        Nameaktuell += row[j] + " ";
-                        continue;
-                    }
-                }
-                for (int j = 0; j < tbl2.Columns.Count; j++)
-                {
-                    if (tbl2.Columns[j].ColumnName == "Nachname")
-                    {
-                        Nameaktuell += row[j];
-                        continue;
-                    }
-                }
+            #region Befüllen der Variablen mit den Patientendaten
+                            for (int j = 0; j < tbl2.Columns.Count; j++)
+                            {
+                                if (tbl2.Columns[j].ColumnName == "Vorname")
+                                {
+                                    Nameaktuell += row[j] + " ";
+                                    continue;
+                                }
+                            }
+                            for (int j = 0; j < tbl2.Columns.Count; j++)
+                            {
+                                if (tbl2.Columns[j].ColumnName == "Nachname")
+                                {
+                                    Nameaktuell += row[j];
+                                    continue;
+                                }
+                            }
 
-                for (int k = 0; k < tbl2.Columns.Count; k++)
-                {
-                    if (tbl2.Columns[k].ColumnName == "Behandlungsdatum")
-                    {
-                        letzteBehandlung += row[k];
-                        letzteBehandlung = letzteBehandlung.Replace(" 00:00:00", "");
-                        continue;
-                    }
-                }
+                            for (int k = 0; k < tbl2.Columns.Count; k++)
+                            {
+                                if (tbl2.Columns[k].ColumnName == "Behandlungsdatum")
+                                {
+                                    letzteBehandlung += row[k];
+                                    letzteBehandlung = letzteBehandlung.Replace(" 00:00:00", "");
+                                    continue;
+                                }
+                            }
 
-                for (int l = 0; l < tbl2.Columns.Count; l++)
-                {
-                    if (tbl2.Columns[l].ColumnName == "Schrittweite")
-                    {
-                        letzteSchrittanzahl += row[l];
-                        continue;
-                    }
-                }
+                            for (int l = 0; l < tbl2.Columns.Count; l++)
+                            {
+                                if (tbl2.Columns[l].ColumnName == "Schrittweite")
+                                {
+                                    letzteSchrittanzahl += row[l];
+                                    continue;
+                                }
+                            }
 
-                for (int l = 0; l < tbl2.Columns.Count; l++)
-                {
-                    if (tbl2.Columns[l].ColumnName == "Behandlungsnummer")
-                    {
-                        BehandlungsnummerMax += row[l];
-                        continue;
-                    }
-                }
+                            for (int l = 0; l < tbl2.Columns.Count; l++)
+                            {
+                                if (tbl2.Columns[l].ColumnName == "Behandlungsnummer")
+                                {
+                                    BehandlungsnummerMax += row[l];
+                                    continue;
+                                }
+                            }
 
-#endregion
+            #endregion
                 this.Close();
                 auswahl = true;
             }
