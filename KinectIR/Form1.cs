@@ -54,6 +54,7 @@ namespace KinectIR
                     Bitmap bitmap = new Bitmap(width, height, PixelFormat.Format32bppRgb);
                     for (int infraredIndex = 0; infraredIndex < data.Length; infraredIndex++)
                     {
+                        possibleTracker = new string[width*height*4];
                         ushort ir = data[infraredIndex];
                         byte intensity = (byte)(ir >> 8);
 
@@ -70,11 +71,11 @@ namespace KinectIR
                             possibleTracker[schleife] = xcoord.ToString() + (infraredIndex / 4).ToString();
                         }
                         xcoord++;
-                        if (xcoord == 512 * 4)
+                        if (xcoord == 511 * 4)
                         {
                             xcoord = 0;
                         }
-                        bitmap.SetPixel(xcoord,infraredIndex / 4 , Color.Red);
+                        //bitmap.SetPixel(xcoord,infraredIndex / 4 , Color.Red);
                     }
 
                     var bitmapdata = bitmap.LockBits(
