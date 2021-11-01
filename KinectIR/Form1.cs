@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using AForge.Imaging.Filters;
+using AForge;
 using System.Drawing.Imaging;
 using Microsoft.Kinect;
 
@@ -48,13 +50,13 @@ namespace KinectIR
                     byte[] pixelData = new byte[width * height*4];
                     possibleTracker = new string[width * height * 4];
                     int xcoord=0;
+                    int ycoord = 0;
 
                     frame.CopyFrameDataToArray(data);
                     int schleife = 0;
                     Bitmap bitmap = new Bitmap(width, height, PixelFormat.Format32bppRgb);
                     for (int infraredIndex = 0; infraredIndex < data.Length; infraredIndex++)
                     {
-                        possibleTracker = new string[width*height*4];
                         ushort ir = data[infraredIndex];
                         byte intensity = (byte)(ir >> 8);
 
@@ -63,19 +65,8 @@ namespace KinectIR
                         pixelData[infraredIndex * 4 + 2] = intensity; // Red
                         pixelData[infraredIndex * 4 + 3] = 255;//Brightness
 
-                        //während des einlesens alle pixel die einen RGB wert zwischen 200 und 255 in ein Array schreiben und 
-                        if(pixelData[infraredIndex*4]>=threshold && pixelData[infraredIndex * 4] <= 255 && pixelData[infraredIndex * 4+1] >= threshold && pixelData[infraredIndex * 4+1] <= 255 && pixelData[infraredIndex * 4+2] >= threshold && pixelData[infraredIndex * 4+2] <= 255)
-                        {
 
-                            schleife++;
-                            possibleTracker[schleife] = xcoord.ToString() + (infraredIndex / 4).ToString();
-                        }
-                        xcoord++;
-                        if (xcoord == 511 * 4)
-                        {
-                            xcoord = 0;
-                        }
-                        //bitmap.SetPixel(xcoord,infraredIndex / 4 , Color.Red);
+
                     }
 
                     var bitmapdata = bitmap.LockBits(
@@ -87,7 +78,20 @@ namespace KinectIR
 
                     Marshal.Copy(pixelData, 0, ptr, pixelData.Length);
                     bitmap.UnlockBits(bitmapdata);
-                    pictureBox1.Image = bitmap;
+
+                    EuclideanColorFiltering filter = new EuclideanColorFiltering();
+                    ResizeNearestNeighbor filter2 = new ResizeNearestNeighbor(1920, 1080);
+                    filter.CenterColor = new AForge.Imaging.RGB(Color.White); //Pure White
+                    filter.Radius = 0; //Increase this to allow off-whites
+                    filter.FillOutside = false;
+                    filter.FillColor = new AForge.Imaging.RGB(Color.Red); //Replacement Colour
+                    
+
+                   Bitmap bmp = filter2.Apply(bitmap);
+                   filter.ApplyInPlace(bmp);
+
+                    pictureBox1.Image = bmp;
+
                 }
             }
         }
