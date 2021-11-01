@@ -582,22 +582,26 @@ namespace Bitmap_Test1_Schmid
 
         private void TbTelefonnummer_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '+'))
             {
                 e.Handled = true;
-
             } //nur zahlen in der Textbox zulassen
-
+            
             else
             {
+                if (e.KeyChar != (char)Keys.Back)
+                    telnummerlength++;
+
+                if (e.KeyChar == (char)Keys.Back && telnummerlength>0)
+                    telnummerlength--;
+
                 if (telnummerlength >= 14)
                 {
                     MessageBox.Show("Die Telefonnummer darf nicht länger als 14 Zeichen sein", "Achtung!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    TbTelefonnummer.Clear();
-                    telnummerlength = 0;                   
+                    //TbTelefonnummer.Text = TbTelefonnummer.Text.Remove(telnummerlength - 1);
+                    telnummerlength = 14;
+                    e.Handled = true;
                 }
-                telnummerlength++;
             }
         }
 
