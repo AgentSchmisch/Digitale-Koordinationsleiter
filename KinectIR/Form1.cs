@@ -82,11 +82,10 @@ namespace KinectIR
                     EuclideanColorFiltering filter = new EuclideanColorFiltering();
                     ResizeNearestNeighbor filter2 = new ResizeNearestNeighbor(1920, 1080);
                     filter.CenterColor = new AForge.Imaging.RGB(Color.White); //Pure White
-                    filter.Radius = 0; //Increase this to allow off-whites
+                    filter.Radius = (short)trackBar1.Value; //Increase this to allow off-whites
                     filter.FillOutside = false;
-                    filter.FillColor = new AForge.Imaging.RGB(Color.Red); //Replacement Colour
+                    filter.FillColor = new AForge.Imaging.RGB(Color.Red); //Replacement Color
                     
-
                    Bitmap bmp = filter2.Apply(bitmap);
                    filter.ApplyInPlace(bmp);
 
