@@ -9,16 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using AForge.Imaging.Filters;
-using AForge;
+using AForge.Imaging;
 using System.Drawing.Imaging;
 using Microsoft.Kinect;
+using AForge;
+using AForge.Math.Geometry;
 
 namespace KinectIR
 {
     public partial class Form1 : Form
     {
+        
         KinectSensor sensor = null;
         MultiSourceFrameReader reader = null;
+        BlobCounter counter = null;
         string[] possibleTracker;
         public Form1()
         {
@@ -41,7 +45,7 @@ namespace KinectIR
         {
             var reference = e.FrameReference.AcquireFrame();
             using (InfraredFrame frame = reference.InfraredFrameReference.AcquireFrame())
-            { byte threshold=200;
+            { 
                 if (frame != null)
                 {
                     int width = frame.FrameDescription.Width;
@@ -65,8 +69,6 @@ namespace KinectIR
                         pixelData[infraredIndex * 4 + 2] = intensity; // Red
                         pixelData[infraredIndex * 4 + 3] = 255;//Brightness
 
-
-
                     }
 
                     var bitmapdata = bitmap.LockBits(
@@ -79,16 +81,49 @@ namespace KinectIR
                     Marshal.Copy(pixelData, 0, ptr, pixelData.Length);
                     bitmap.UnlockBits(bitmapdata);
 
+
+                    counter = new BlobCounter();
                     EuclideanColorFiltering filter = new EuclideanColorFiltering();
                     ResizeNearestNeighbor filter2 = new ResizeNearestNeighbor(1920, 1080);
-                    filter.CenterColor = new AForge.Imaging.RGB(Color.White); //Pure White
+                    filter.CenterColor = new RGB(Color.White); //Pure White
                     filter.Radius = (short)trackBar1.Value; //Increase this to allow off-whites
                     filter.FillOutside = false;
-                    filter.FillColor = new AForge.Imaging.RGB(Color.Red); //Replacement Color
+                    filter.FillColor = new RGB(Color.Green); //Replacement Color
                     
-                   Bitmap bmp = filter2.Apply(bitmap);
-                   filter.ApplyInPlace(bmp);
+                    Bitmap bmp = filter.Apply(bitmap);
+                    //filter2.ApplyInPlace(bmp);
+                    //filter.CenterColor = new RGB(0, 0, 0);
+                    //filter.Radius = 100;
+                    //filter.ApplyInPlace(bmp);
+                    //counter.MinWidth = 10;
+                    //counter.MinHeight = 10;
+                    //counter.FilterBlobs = true;
+                    counter.BackgroundThreshold = Color.Black;
+                   counter.ProcessImage(bmp);
+                    Blob[] blobs = counter.GetObjectsInformation( );
+                    Pen redPen = new Pen(Color.Red, 20);
+                    Graphics g = Graphics.FromImage(bmp);
+                    SimpleShapeChecker shapeChecker = new SimpleShapeChecker();
+                    for (int i = 0; i < blobs.Length; i++)
+                    {
+                        List<IntPoint> edgePoints = counter.GetBlobsEdgePoints(blobs[i]);
 
+                        AForge.Point center;
+                        float radius;
+
+                        if (shapeChecker.IsCircle(edgePoints, out center, out radius))
+                        {
+                            g.DrawEllipse(redPen,
+                                (int)(center.X - radius),
+                                (int)(center.Y - radius),
+                                (int)(radius * 2),
+                                (int)(radius * 2));
+                        }
+                    }
+
+
+
+                    
                     pictureBox1.Image = bmp;
 
                 }
