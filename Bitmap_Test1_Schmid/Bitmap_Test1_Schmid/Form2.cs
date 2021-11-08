@@ -36,10 +36,11 @@ namespace Bitmap_Test1_Schmid
         public string reglerwertalt;
         public int längewertalt;
         Bitmap image1 = null;
-        private KinectMonitor _Kinect;
+        public KinectMonitor _Kinect;
         public Form2()
         {
             InitializeComponent();
+
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -397,7 +398,6 @@ namespace Bitmap_Test1_Schmid
         }
         public class Ex1 : Exception // für personalisierte Fehlermeldungen
         {
-
             public override string Message
             {
                 get
@@ -415,6 +415,10 @@ namespace Bitmap_Test1_Schmid
                 right_one.Top = waagrechtoben + 20;
                 right_one.Show();
             }
+        }
+        public void übertragung()
+        {
+            _Kinect.form2=this;
         }
     }
 }

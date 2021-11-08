@@ -182,6 +182,7 @@ namespace Bitmap_Test1_Schmid
 
         private void kinectToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            kinectM.form1 = this;
             kinectM.Show();
             kinectM.steps_kinect = Convert.ToInt32(steps.Text);
         }

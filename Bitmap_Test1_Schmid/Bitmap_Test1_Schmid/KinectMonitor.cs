@@ -41,7 +41,11 @@ namespace Bitmap_Test1_Schmid
         {
             set { this._form2 = value; }
         }
-
+        private Form1 _form1;
+        public Form1 form1
+        {
+            set { this._form1 = value; }
+        }
         public KinectMonitor()
         {
             InitializeComponent();
@@ -197,53 +201,54 @@ namespace Bitmap_Test1_Schmid
                                         #region Fußabdruck zeichnen
                                         if (durchschnitt[0] != 0 && steps_kinect >= 1)
                                         {
-                                            _form2.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form2.right_one.Size.Width / 2); _form2.right_one.Show();
+                                            _form1.screen.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form1.screen.right_one.Size.Width / 2); _form1.screen.right_one.Show();
                                         }
                                         if (durchschnitt[1] != 0 && steps_kinect >= 2)
                                         {
-                                            _form2.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form2.left_one.Size.Width / 2); _form2.left_one.Show();
+                                            _form1.screen.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form1.screen.left_one.Size.Width / 2); _form1.screen.left_one.Show();
                                         }
                                         if (durchschnitt[2] != 0 && steps_kinect >= 3)
                                         {
-                                            _form2.right_two.Left = Convert.ToInt32(durchschnitt[2]) - (_form2.right_one.Size.Width / 2); _form2.right_two.Show();
+                                            _form1.screen.right_two.Left = Convert.ToInt32(durchschnitt[2]) - (_form1.screen.right_one.Size.Width / 2); _form1.screen.right_two.Show();
                                         }
                                         if (durchschnitt[3] != 0 && steps_kinect >= 4)
                                         {
-                                            _form2.left_two.Left = Convert.ToInt32(durchschnitt[3]) - (_form2.left_one.Size.Width / 2); _form2.left_two.Show();
+                                            _form1.screen.left_two.Left = Convert.ToInt32(durchschnitt[3]) - (_form1.screen.left_one.Size.Width / 2); _form1.screen.left_two.Show();
                                         }
                                         if (durchschnitt[4] != 0 && steps_kinect >= 5)
                                         {
-                                            _form2.right_three.Left = Convert.ToInt32(durchschnitt[4]) - (_form2.right_one.Size.Width / 2); _form2.right_three.Show();
+                                            _form1.screen.right_three.Left = Convert.ToInt32(durchschnitt[4]) - (_form1.screen.right_one.Size.Width / 2); _form1.screen.right_three.Show();
                                         }
                                         if (durchschnitt[5] != 0 && steps_kinect >= 6)
                                         {
-                                            _form2.left_three.Left = Convert.ToInt32(durchschnitt[5]) - (_form2.left_one.Size.Width / 2); _form2.left_three.Show();
+                                            _form1.screen.left_three.Left = Convert.ToInt32(durchschnitt[5]) - (_form1.screen.left_one.Size.Width / 2); _form1.screen.left_three.Show();
                                         }
                                         if (durchschnitt[6] != 0 && steps_kinect >= 7)
                                         {
-                                            _form2.right_four.Left = Convert.ToInt32(durchschnitt[6]) - (_form2.right_one.Size.Width / 2); _form2.right_four.Show();
+                                            _form1.screen.right_four.Left = Convert.ToInt32(durchschnitt[6]) - (_form1.screen.right_one.Size.Width / 2); _form1.screen.right_four.Show();
                                         }
                                         if (durchschnitt[7] != 0 && steps_kinect >= 8)
                                         {
-                                            _form2.left_four.Left = Convert.ToInt32(durchschnitt[7]) - (_form2.left_one.Size.Width / 2); _form2.left_four.Show();
+                                            _form1.screen.left_four.Left = Convert.ToInt32(durchschnitt[7]) - (_form1.screen.left_one.Size.Width / 2); _form1.screen.left_four.Show();
                                         }
                                         if (durchschnitt[8] != 0 && steps_kinect >= 9)
                                         {
-                                            _form2.right_five.Left = Convert.ToInt32(durchschnitt[8]) - (_form2.right_one.Size.Width / 2); _form2.right_five.Show();
+                                            _form1.screen.right_five.Left = Convert.ToInt32(durchschnitt[8]) - (_form1.screen.right_one.Size.Width / 2); _form1.screen.right_five.Show();
                                         }
                                         if (durchschnitt[9] != 0 && steps_kinect >= 10)
                                         {
-                                            _form2.left_five.Left = Convert.ToInt32(durchschnitt[9]) - (_form2.left_one.Size.Width / 2); _form2.left_five.Show();
+                                            _form1.screen.left_five.Left = Convert.ToInt32(durchschnitt[9]) - (_form1.screen.left_one.Size.Width / 2); _form1.screen.left_five.Show();
                                         }
                                         if (durchschnitt[10] != 0 && steps_kinect >= 11)
                                         {
-                                            _form2.right_six.Left = Convert.ToInt32(durchschnitt[10]) - (_form2.right_one.Size.Width / 2); _form2.right_six.Show();
+                                            _form1.screen.right_six.Left = Convert.ToInt32(durchschnitt[10]) - (_form1.screen.right_one.Size.Width / 2); _form1.screen.right_six.Show();
                                         }
                                         if (durchschnitt[11] != 0 && steps_kinect >= 12)
                                         {
-                                            _form2.left_six.Left = Convert.ToInt32(durchschnitt[11]) - (_form2.left_one.Size.Width / 2); _form2.left_six.Show();
+                                            _form1.screen.left_six.Left = Convert.ToInt32(durchschnitt[11]) - (_form1.screen.left_one.Size.Width / 2); _form1.screen.left_six.Show();
                                         }
                                         #endregion
+                                        //_form2.übertragung();
                                         for (int i = 0; i < 10000; i++) { }
                                             count = 1;
                                             i++;
