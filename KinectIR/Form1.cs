@@ -131,11 +131,6 @@ namespace KinectIR
                                 (int)(radius * 2),
                                 (int)(radius * 2));
 
-                            //label1.Left = (int)center.X;
-                            //label1.Top = (int)center.Y+100;
-
-                            //label1.Text = center.ToString();
-
                             if (i == 1)
                             {
                                 ecken1_x = (int)center.X;
@@ -167,7 +162,8 @@ namespace KinectIR
                 }
             }
         }
-
+        public int[] erg_x = new int[4];
+        public int[] erg_y = new int[4];
         private void kal_Click(object sender, EventArgs e)
         {
             label2.Text = "Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
@@ -175,8 +171,6 @@ namespace KinectIR
             int[] vergleich_x = new int[4];
             int[] vergleich2_x = new int[4];
             int[] vergleich_y = new int[4];//y=0 == oben; y=max == unten
-
-            //MessageBox.Show("Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y);
 
             vergleich_x[0] = ecken1_x;
             vergleich_x[1] = ecken2_x;
@@ -196,6 +190,41 @@ namespace KinectIR
 
             int h1 = 5;
             int h2 = 5;
+            #region rechts oben
+            for (int i = 0; i < 4; i++)//die zwei punkte die am weitesten rechts sind
+            {
+                if (vergleich2_x[3] == vergleich_x[i])//überprüft auf welcher stelle die höchste Zahl im Original array ist.
+                {
+                    h1 = i;
+                    break;
+                }
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                if (vergleich2_x[2] == vergleich_x[i])
+                {
+                    h2 = i;
+                    break;
+                }
+            }
+            //MessageBox.Show(vergleich_x[h1] + "[" + h1 + "]" + "  " + vergleich_x[h2] + "[" + h2 + "]");
+            if (vergleich_y[h1] > vergleich_y[h2])//rechts oben berechnen
+            {
+                erg_x[0] = vergleich_x[h2];
+                erg_y[0] = vergleich_y[h2];
+                //MessageBox.Show(vergleich_x[h2] + " " + vergleich_y[h2]);
+            }
+            if (vergleich_y[h1] < vergleich_y[h2])
+            {
+                erg_x[0] = vergleich_x[h1];
+                erg_y[0] = vergleich_y[h1];
+                //MessageBox.Show(vergleich_x[h1] + " " + vergleich_y[h1]);
+            }
+            #endregion
+            
+            #region rechts unten        
+            h1 = 5;
+            h2 = 5;
 
             for (int i = 0; i < 4; i++)//die zwei punkte die am weitesten rechts sind
             {
@@ -213,15 +242,111 @@ namespace KinectIR
                     break;
                 }
             }
-            MessageBox.Show(vergleich_x[h1] + "[" + h1 + "]" + "  " + vergleich_x[h2] + "[" + h2 + "]");
-            if (vergleich_y[h1] > vergleich_y[h2])//rechts oben berechnen
+            //MessageBox.Show(vergleich_x[h1] + "[" + h1 + "]" + "  " + vergleich_x[h2] + "[" + h2 + "]");
+            if (vergleich_y[h1] > vergleich_y[h2])//rechts unten berechnen
             {
-                MessageBox.Show(vergleich_x[h2] + " " + vergleich_y[h2]);
+                erg_x[1] = vergleich_x[h1];
+                erg_y[1] = vergleich_y[h1];
+                //MessageBox.Show(vergleich_x[h1] + " " + vergleich_y[h1]);
             }
             if (vergleich_y[h1] < vergleich_y[h2])
             {
-                MessageBox.Show(vergleich_x[h1] + " " + vergleich_y[h1]);
+                erg_x[1] = vergleich_x[h2];
+                erg_y[1] = vergleich_y[h2];
+                //MessageBox.Show(vergleich_x[h2] + " " + vergleich_y[h2]);
             }
+            #endregion
+
+            #region links unten        
+            h1 = 5;
+            h2 = 5;
+
+            for (int i = 0; i < 4; i++)//die zwei punkte die am weitesten rechts sind
+            {
+                if (vergleich2_x[0] == vergleich_x[i])//überprüft auf welcher stelle die höchste Zahl im Original array ist.
+                {
+                    h1 = i;
+                    break;
+                }
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                if (vergleich2_x[1] == vergleich_x[i])
+                {
+                    h2 = i;
+                    break;
+                }
+            }
+            //MessageBox.Show(vergleich_x[h1] + "[" + h1 + "]" + "  " + vergleich_x[h2] + "[" + h2 + "]");
+            if (vergleich_y[h1] > vergleich_y[h2])//links unten berechnen
+            {
+                erg_x[2] = vergleich_x[h1];
+                erg_y[2] = vergleich_y[h1];
+                //MessageBox.Show(vergleich_x[h1] + " " + vergleich_y[h1]);
+            }
+            if (vergleich_y[h1] < vergleich_y[h2])
+            {
+                erg_x[2] = vergleich_x[h2];
+                erg_y[2] = vergleich_y[h2];
+                //MessageBox.Show(vergleich_x[h2] + " " + vergleich_y[h2]);
+            }
+            #endregion
+
+            #region links oben        
+            h1 = 5;
+            h2 = 5;
+
+            for (int i = 0; i < 4; i++)//die zwei punkte die am weitesten rechts sind
+            {
+                if (vergleich2_x[0] == vergleich_x[i])//überprüft auf welcher stelle die höchste Zahl im Original array ist.
+                {
+                    h1 = i;
+                    break;
+                }
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                if (vergleich2_x[1] == vergleich_x[i])
+                {
+                    h2 = i;
+                    break;
+                }
+            }
+            //MessageBox.Show(vergleich_x[h1] + "[" + h1 + "]" + "  " + vergleich_x[h2] + "[" + h2 + "]");
+            if (vergleich_y[h1] > vergleich_y[h2])//links unten berechnen
+            {
+                erg_x[3] = vergleich_x[h2];
+                erg_y[3] = vergleich_y[h2];
+                //MessageBox.Show(vergleich_x[h2] + " " + vergleich_y[h2]);
+            }
+            if (vergleich_y[h1] < vergleich_y[h2])
+            {
+                erg_x[3] = vergleich_x[h1];
+                erg_y[3] = vergleich_y[h1];
+                //MessageBox.Show(vergleich_x[h1] + " " + vergleich_y[h1]);
+            }
+            #endregion
+
+            //MessageBox.Show("rechts oben: " + erg_x[0] + " " + erg_y[0] + "\n" + 
+            //                "rechts unten: " + erg_x[1] + " " + erg_y[1] + "\n" + 
+            //                "links unten: " + erg_x[2] + " " + erg_y[2] + "\n" + 
+            //                "links oben: " + erg_x[3] + " " + erg_y[3]);
+            
+            k1.Left = erg_x[0];
+            k1.Top = erg_y[0];
+            k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];
+
+            k2.Left = erg_x[1];
+            k2.Top = erg_y[1];
+            k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];
+
+            k3.Left = erg_x[2];
+            k3.Top = erg_y[2];
+            k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];
+
+            k4.Left = erg_x[3];
+            k4.Top = erg_y[3];
+            k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];
         }
     }
 }

@@ -33,8 +33,11 @@ namespace KinectIR
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.anzeige = new System.Windows.Forms.Label();
             this.kal = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.k1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.k2 = new System.Windows.Forms.Label();
+            this.k3 = new System.Windows.Forms.Label();
+            this.k4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -78,16 +81,16 @@ namespace KinectIR
             this.kal.UseWaitCursor = true;
             this.kal.Click += new System.EventHandler(this.kal_Click);
             // 
-            // label1
+            // k1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(869, 90);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
+            this.k1.AutoSize = true;
+            this.k1.BackColor = System.Drawing.Color.Transparent;
+            this.k1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.k1.Location = new System.Drawing.Point(869, 34);
+            this.k1.Name = "k1";
+            this.k1.Size = new System.Drawing.Size(51, 20);
+            this.k1.TabIndex = 4;
+            this.k1.Text = "label1";
             // 
             // label2
             // 
@@ -99,13 +102,49 @@ namespace KinectIR
             this.label2.TabIndex = 5;
             this.label2.Text = "-";
             // 
+            // k2
+            // 
+            this.k2.AutoSize = true;
+            this.k2.BackColor = System.Drawing.Color.Transparent;
+            this.k2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.k2.Location = new System.Drawing.Point(869, 54);
+            this.k2.Name = "k2";
+            this.k2.Size = new System.Drawing.Size(51, 20);
+            this.k2.TabIndex = 6;
+            this.k2.Text = "label1";
+            // 
+            // k3
+            // 
+            this.k3.AutoSize = true;
+            this.k3.BackColor = System.Drawing.Color.Transparent;
+            this.k3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.k3.Location = new System.Drawing.Point(869, 74);
+            this.k3.Name = "k3";
+            this.k3.Size = new System.Drawing.Size(51, 20);
+            this.k3.TabIndex = 7;
+            this.k3.Text = "label1";
+            // 
+            // k4
+            // 
+            this.k4.AutoSize = true;
+            this.k4.BackColor = System.Drawing.Color.Transparent;
+            this.k4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.k4.Location = new System.Drawing.Point(869, 94);
+            this.k4.Name = "k4";
+            this.k4.Size = new System.Drawing.Size(51, 20);
+            this.k4.TabIndex = 8;
+            this.k4.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(978, 704);
+            this.Controls.Add(this.k4);
+            this.Controls.Add(this.k3);
+            this.Controls.Add(this.k2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.k1);
             this.Controls.Add(this.kal);
             this.Controls.Add(this.anzeige);
             this.Controls.Add(this.trackBar1);
@@ -126,8 +165,11 @@ namespace KinectIR
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label anzeige;
         private System.Windows.Forms.Button kal;
-        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Label k1;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label k2;
+        public System.Windows.Forms.Label k3;
+        public System.Windows.Forms.Label k4;
     }
 }
 
