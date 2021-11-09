@@ -34,22 +34,23 @@ namespace KinectIR
             this.anzeige = new System.Windows.Forms.Label();
             this.kal = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(2, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(-5, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(903, 608);
+            this.pictureBox1.Size = new System.Drawing.Size(822, 646);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(53, 622);
+            this.trackBar1.Location = new System.Drawing.Point(71, 654);
             this.trackBar1.Maximum = 500;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(193, 45);
@@ -58,10 +59,10 @@ namespace KinectIR
             // anzeige
             // 
             this.anzeige.AutoSize = true;
-            this.anzeige.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.anzeige.Location = new System.Drawing.Point(313, 622);
+            this.anzeige.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.anzeige.Location = new System.Drawing.Point(823, 187);
             this.anzeige.Name = "anzeige";
-            this.anzeige.Size = new System.Drawing.Size(19, 26);
+            this.anzeige.Size = new System.Drawing.Size(16, 24);
             this.anzeige.TabIndex = 2;
             this.anzeige.Text = "-";
             // 
@@ -81,18 +82,29 @@ namespace KinectIR
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label1.Location = new System.Drawing.Point(869, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 26);
+            this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label2.Location = new System.Drawing.Point(819, 389);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(16, 24);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "-";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 670);
+            this.ClientSize = new System.Drawing.Size(978, 704);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.kal);
             this.Controls.Add(this.anzeige);
@@ -115,6 +127,7 @@ namespace KinectIR
         private System.Windows.Forms.Label anzeige;
         private System.Windows.Forms.Button kal;
         public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

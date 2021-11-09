@@ -87,7 +87,7 @@ namespace KinectIR
 
                     Marshal.Copy(pixelData, 0, ptr, pixelData.Length);
                     bitmap.UnlockBits(bitmapdata);
-
+                    bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
 
                     counter = new BlobCounter();
                     EuclideanColorFiltering filter = new EuclideanColorFiltering();
@@ -98,7 +98,10 @@ namespace KinectIR
                     filter.FillColor = new RGB(Color.White); //Replacement Color
 
                     Bitmap bmp = filter.Apply(bitmap);
+
                     filter2.Apply(bmp);
+                    //filter3.Apply(bmp);
+
                     //filter.CenterColor = new RGB(0, 0, 0);
                     //filter.Radius = 100;
                     //filter.ApplyInPlace(bmp);
@@ -108,7 +111,7 @@ namespace KinectIR
                     counter.BackgroundThreshold = Color.Gray;
                     counter.ProcessImage(bmp);
                     Blob[] blobs = counter.GetObjectsInformation();
-                    Pen redPen = new Pen(Color.Red, 10);//Kreisradius
+                    Pen redPen = new Pen(Color.Red, 20);//Kreisradius
                     Graphics g = Graphics.FromImage(bmp);
                     SimpleShapeChecker shapeChecker = new SimpleShapeChecker();
 
@@ -128,17 +131,17 @@ namespace KinectIR
                                 (int)(radius * 2),
                                 (int)(radius * 2));
 
-                            label1.Left = (int)center.X;
-                            label1.Top = (int)center.Y;
+                            //label1.Left = (int)center.X;
+                            //label1.Top = (int)center.Y+100;
 
-                            label1.Text = center.ToString();
+                            //label1.Text = center.ToString();
 
-                            if (i == 0)
+                            if (i == 1)
                             {
                                 ecken1_x = (int)center.X;
                                 ecken1_y = (int)center.Y;
                             }
-                            if (i == 1)
+                            if (i == 2)
                             {
                                 ecken2_x = (int)center.X;
                                 ecken2_y = (int)center.Y;
@@ -154,10 +157,10 @@ namespace KinectIR
                                 ecken4_y = (int)center.Y;
                             }
                         }
-                        
+
                         //anzeige.Text = center.X.ToString() + " " + center.Y.ToString();
                         //anzeige.Text = ecken_x[z].ToString() + " " + ecken_x[z].ToString();
-                        anzeige.Text = center.ToString();
+                        anzeige.Text = "Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
 
                     }
                     pictureBox1.Image = bmp;
@@ -167,7 +170,58 @@ namespace KinectIR
 
         private void kal_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y);
+            label2.Text = "Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
+
+            int[] vergleich_x = new int[4];
+            int[] vergleich2_x = new int[4];
+            int[] vergleich_y = new int[4];//y=0 == oben; y=max == unten
+
+            //MessageBox.Show("Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y);
+
+            vergleich_x[0] = ecken1_x;
+            vergleich_x[1] = ecken2_x;
+            vergleich_x[2] = ecken3_x;
+            vergleich_x[3] = ecken4_x;
+
+            vergleich_y[0] = ecken1_y;
+            vergleich_y[1] = ecken2_y;
+            vergleich_y[2] = ecken3_y;
+            vergleich_y[3] = ecken4_y;
+
+            vergleich2_x[0] = vergleich_x[0];
+            vergleich2_x[1] = vergleich_x[1];
+            vergleich2_x[2] = vergleich_x[2];
+            vergleich2_x[3] = vergleich_x[3];
+            Array.Sort(vergleich2_x);
+
+            int h1 = 5;
+            int h2 = 5;
+
+            for (int i = 0; i < 4; i++)//die zwei punkte die am weitesten rechts sind
+            {
+                if (vergleich2_x[3] == vergleich_x[i])//überprüft auf welcher stelle die höchste Zahl im Original array ist.
+                {
+                    h1 = i;
+                    break;
+                }
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                if (vergleich2_x[2] == vergleich_x[i])
+                {
+                    h2 = i;
+                    break;
+                }
+            }
+            MessageBox.Show(vergleich_x[h1] + "[" + h1 + "]" + "  " + vergleich_x[h2] + "[" + h2 + "]");
+            if (vergleich_y[h1] > vergleich_y[h2])//rechts oben berechnen
+            {
+                MessageBox.Show(vergleich_x[h2] + " " + vergleich_y[h2]);
+            }
+            if (vergleich_y[h1] < vergleich_y[h2])
+            {
+                MessageBox.Show(vergleich_x[h1] + " " + vergleich_y[h1]);
+            }
         }
     }
 }
