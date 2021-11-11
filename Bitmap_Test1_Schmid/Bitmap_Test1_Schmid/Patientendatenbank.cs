@@ -559,12 +559,15 @@ namespace Bitmap_Test1_Schmid
             set
             {
                 Nameaktuell = Nameaktuell.Replace(" ", "_");
-                query3 = "Insert Into " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + "(Vorname,Nachname,Behandlungsdatum,Schrittweite,Geburtsdatum) Values" + Nameaktuell + ","
+                query3 = "Insert Into " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite,Geburtsdatum) Values " + Nameaktuell.Replace("_", ",") + ","
                     + DateTime.Now.ToString("yyyy-MM-dd") + "," + value + ";";
+
+                //"Insert Into Florian_Schmid_1(Vorname,Nachname,Behandlungsdatum,Schrittweite,Geburtsdatum) ValuesFlorian_Schmid,2021-11-11,10;"
                 try
                 {
                     cmd = new MySqlCommand(query3, conn);
                     conn.Open();
+                    MessageBox.Show("Sitzung erfolgreich beendet", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                 }
                 catch

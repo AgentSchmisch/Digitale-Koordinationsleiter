@@ -130,27 +130,28 @@ namespace KinectIR
                                 (int)(center.Y - radius),
                                 (int)(radius * 2),
                                 (int)(radius * 2));
-
-                            if (i == 1)
-                            {
-                                ecken1_x = (int)center.X;
-                                ecken1_y = (int)center.Y;
-                            }
-                            if (i == 2)
-                            {
-                                ecken2_x = (int)center.X;
-                                ecken2_y = (int)center.Y;
-                            }
-                            if (i == 3)
-                            {
-                                ecken3_x = (int)center.X;
-                                ecken3_y = (int)center.Y;
-                            }
-                            if (i == 4)
-                            {
-                                ecken4_x = (int)center.X;
-                                ecken4_y = (int)center.Y;
-                            }
+                            //TODO: überprüfen ob mehr als 4 punkte sichtbar sind
+                                if (i == 1)
+                                {
+                                    ecken1_x = (int)center.X;
+                                    ecken1_y = (int)center.Y;
+                                }
+                                if (i == 2)
+                                {
+                                    ecken2_x = (int)center.X;
+                                    ecken2_y = (int)center.Y;
+                                }
+                                if (i == 3)
+                                {
+                                    ecken3_x = (int)center.X;
+                                    ecken3_y = (int)center.Y;
+                                }
+                                if (i == 4)
+                                {
+                                    ecken4_x = (int)center.X;
+                                    ecken4_y = (int)center.Y;
+                                }
+                            
                         }
 
                         //anzeige.Text = center.X.ToString() + " " + center.Y.ToString();
