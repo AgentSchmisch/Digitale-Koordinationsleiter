@@ -86,7 +86,7 @@ namespace KinectIR
             this.k1.AutoSize = true;
             this.k1.BackColor = System.Drawing.Color.Transparent;
             this.k1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.k1.Location = new System.Drawing.Point(869, 34);
+            this.k1.Location = new System.Drawing.Point(986, 33);
             this.k1.Name = "k1";
             this.k1.Size = new System.Drawing.Size(51, 20);
             this.k1.TabIndex = 4;
@@ -107,7 +107,7 @@ namespace KinectIR
             this.k2.AutoSize = true;
             this.k2.BackColor = System.Drawing.Color.Transparent;
             this.k2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.k2.Location = new System.Drawing.Point(869, 54);
+            this.k2.Location = new System.Drawing.Point(986, 53);
             this.k2.Name = "k2";
             this.k2.Size = new System.Drawing.Size(51, 20);
             this.k2.TabIndex = 6;
@@ -118,7 +118,7 @@ namespace KinectIR
             this.k3.AutoSize = true;
             this.k3.BackColor = System.Drawing.Color.Transparent;
             this.k3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.k3.Location = new System.Drawing.Point(869, 74);
+            this.k3.Location = new System.Drawing.Point(986, 73);
             this.k3.Name = "k3";
             this.k3.Size = new System.Drawing.Size(51, 20);
             this.k3.TabIndex = 7;
@@ -129,7 +129,7 @@ namespace KinectIR
             this.k4.AutoSize = true;
             this.k4.BackColor = System.Drawing.Color.Transparent;
             this.k4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.k4.Location = new System.Drawing.Point(869, 94);
+            this.k4.Location = new System.Drawing.Point(986, 93);
             this.k4.Name = "k4";
             this.k4.Size = new System.Drawing.Size(51, 20);
             this.k4.TabIndex = 8;
@@ -139,7 +139,7 @@ namespace KinectIR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(978, 704);
+            this.ClientSize = new System.Drawing.Size(989, 704);
             this.Controls.Add(this.k4);
             this.Controls.Add(this.k3);
             this.Controls.Add(this.k2);
