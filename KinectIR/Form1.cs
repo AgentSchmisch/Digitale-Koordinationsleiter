@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using AForge.Imaging.Filters;
+﻿using AForge;
 using AForge.Imaging;
-using System.Drawing.Imaging;
-using Microsoft.Kinect;
-using AForge;
+using AForge.Imaging.Filters;
 using AForge.Math.Geometry;
+using Microsoft.Kinect;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace KinectIR
 {
@@ -167,11 +162,11 @@ namespace KinectIR
         public int[] erg_y = new int[4];
         private void kal_Click(object sender, EventArgs e)
         {
-            label2.Text = "Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
-
             int[] vergleich_x = new int[4];
             int[] vergleich2_x = new int[4];
             int[] vergleich_y = new int[4];//y=0 == oben; y=max == unten
+            int rechts_max = 0;
+            int links_max = 0;
 
             vergleich_x[0] = ecken1_x;
             vergleich_x[1] = ecken2_x;
@@ -182,6 +177,13 @@ namespace KinectIR
             vergleich_y[1] = ecken2_y;
             vergleich_y[2] = ecken3_y;
             vergleich_y[3] = ecken4_y;
+            if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
+            {
+                MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            label2.Text = "Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
 
             vergleich2_x[0] = vergleich_x[0];
             vergleich2_x[1] = vergleich_x[1];
@@ -208,6 +210,7 @@ namespace KinectIR
                     break;
                 }
             }
+            rechts_max = vergleich_x[h1];
             //MessageBox.Show(vergleich_x[h1] + "[" + h1 + "]" + "  " + vergleich_x[h2] + "[" + h2 + "]");
             if (vergleich_y[h1] > vergleich_y[h2])//rechts oben berechnen
             {
@@ -278,6 +281,7 @@ namespace KinectIR
                     break;
                 }
             }
+            links_max = vergleich_x[h1];
             //MessageBox.Show(vergleich_x[h1] + "[" + h1 + "]" + "  " + vergleich_x[h2] + "[" + h2 + "]");
             if (vergleich_y[h1] > vergleich_y[h2])//links unten berechnen
             {
@@ -348,6 +352,15 @@ namespace KinectIR
             k4.Left = erg_x[3];
             k4.Top = erg_y[3];
             k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];
+
+            //skalierung auf 1920; linker punkt=0; rechter punkt=1920
+            int zw_var;
+            int multiplikator;
+            zw_var=rechts_max - links_max;
+            multiplikator = 1920 / zw_var;
+            // jetzt werden alle schritte die die Kamera vom benutzer erkennt -"links_max" gerechnet und dann mal "multipplikator"
+            //bsp.: (schrittlänge[0]-links_max)*multiplikator
+
         }
     }
 }
