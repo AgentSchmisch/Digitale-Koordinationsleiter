@@ -560,16 +560,18 @@ namespace Bitmap_Test1_Schmid
             {
                 Nameaktuell = Nameaktuell.Replace(" ", "_");
                 query3 = "Insert Into " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite) Values ('" + Nameaktuell.Replace("_", "','") + "','"
-                    + DateTime.Now.ToString("yyyy-MM-dd") + "','" + value + "');";
+                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + value + "');";
 
                 try
                 {
                     cmd = new MySqlCommand(query3, conn);
                     conn.Open();
+                    cmd.ExecuteNonQuery();
                     MessageBox.Show("Sitzung erfolgreich beendet", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
-                catch
+                catch(MySqlException ex)
                 {
+                    MessageBox.Show(""+ex);
                     return;
                 }
                 finally

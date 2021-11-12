@@ -197,5 +197,10 @@ namespace Bitmap_Test1_Schmid
         {
             menuStrip1.ForeColor = Color.White;
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }
