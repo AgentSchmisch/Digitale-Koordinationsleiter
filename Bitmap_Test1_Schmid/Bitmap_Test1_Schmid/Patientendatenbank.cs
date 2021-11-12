@@ -346,7 +346,7 @@ namespace Bitmap_Test1_Schmid
         }
 
 
-#region leeren der Textbox beim anklicken, Text schwarz färben wenn hinengeschrieben wird
+        #region leeren der Textbox beim anklicken, Text schwarz färben wenn hinengeschrieben wird
 
 
         private void TbName_Enter(object sender, EventArgs e)
@@ -954,13 +954,13 @@ namespace Bitmap_Test1_Schmid
                 Patientenname = TbName.Text.ToString();
                 PatName_ = Patientenname.Split('_');
                 //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
-                query2 = "create Table " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int(11) not null auto_increment," +
+                query2 = "CREATE TABLE " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int(11) not null auto_increment," +
                                                                                                         "Vorname varchar(50)not null," +
                                                                                                         "Nachname varchar(50)not null," +
                                                                                                         "Schrittweite int(50)not null," +
                                                                                                         "Behandlungsdatum varchar(10) not null," +
                                                                                                         "Primary Key(Behandlungsnummer)); " +
-                    "insert into Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname.Text + "','" +
+                    "INSERT INTO Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname.Text + "','" +
                      TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "') ;";
 
 
@@ -1033,7 +1033,7 @@ namespace Bitmap_Test1_Schmid
                 }
                 if (TbName.Text != vorname || TbNachname.Text != nachname)//falls einer der beiden namensteile geändert wurde, alle datensätze außer der Patientennummer updaten
                 {
-                    query2 = "UPDATE Patienten.Patientenliste Set Vorname='" + TbName.Text + "'," +
+                    query2 = "UPDATE Patienten.Patientenliste SET Vorname='" + TbName.Text + "'," +
                                             "Nachname='" + TbNachname.Text + "'," +
                                             "Geburtsdatum='" + TbGeburtsdatum.Text.Replace(" ", "-") + "'," +
                                             "Adresse='" + TbAdresse.Text + "'," +
@@ -1041,8 +1041,8 @@ namespace Bitmap_Test1_Schmid
                                             "Ort='" + TbOrt.Text + "'," +
                                             "Telefonnummer='" + TbTelefonnummer.Text + "' " +
                                             "where Patientennummer='" + patnr + "';";
-                    query2 += "UPDATE " + vorname + "_" + nachname + "_" + patnr + " Set Vorname ='" + TbName.Text + "'," +
-                                                                                        "Nachname='" + TbNachname.Text + "' where Vorname='" + vorname + "'AND Nachname='" + nachname + "';";
+                    query2 += "UPDATE " + vorname + "_" + nachname + "_" + patnr + " SET Vorname ='" + TbName.Text + "'," +
+                                                                                        "Nachname='" + TbNachname.Text + "' WHERE Vorname='" + vorname + "'AND Nachname='" + nachname + "';";
                     query2 += "ALTER TABLE " + vorname + "_" + nachname + "_" + patnr + " RENAME TO " + TbName.Text + "_" + TbNachname.Text + "_" + patnr + ";";
 
                 }
