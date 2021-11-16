@@ -46,14 +46,14 @@ namespace KinectIR
             // 
             this.pictureBox1.Location = new System.Drawing.Point(-5, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(822, 646);
+            this.pictureBox1.Size = new System.Drawing.Size(512, 424);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(71, 654);
+            this.trackBar1.Location = new System.Drawing.Point(24, 444);
             this.trackBar1.Maximum = 500;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(193, 45);
@@ -63,7 +63,7 @@ namespace KinectIR
             // 
             this.anzeige.AutoSize = true;
             this.anzeige.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.anzeige.Location = new System.Drawing.Point(823, 187);
+            this.anzeige.Location = new System.Drawing.Point(524, 41);
             this.anzeige.Name = "anzeige";
             this.anzeige.Size = new System.Drawing.Size(16, 24);
             this.anzeige.TabIndex = 2;
@@ -72,7 +72,7 @@ namespace KinectIR
             // kal
             // 
             this.kal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.kal.Location = new System.Drawing.Point(823, 616);
+            this.kal.Location = new System.Drawing.Point(380, 444);
             this.kal.Name = "kal";
             this.kal.Size = new System.Drawing.Size(127, 42);
             this.kal.TabIndex = 3;
@@ -86,7 +86,7 @@ namespace KinectIR
             this.k1.AutoSize = true;
             this.k1.BackColor = System.Drawing.Color.Transparent;
             this.k1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.k1.Location = new System.Drawing.Point(986, 33);
+            this.k1.Location = new System.Drawing.Point(733, 24);
             this.k1.Name = "k1";
             this.k1.Size = new System.Drawing.Size(51, 20);
             this.k1.TabIndex = 4;
@@ -96,7 +96,7 @@ namespace KinectIR
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label2.Location = new System.Drawing.Point(819, 389);
+            this.label2.Location = new System.Drawing.Point(520, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(16, 24);
             this.label2.TabIndex = 5;
@@ -107,7 +107,7 @@ namespace KinectIR
             this.k2.AutoSize = true;
             this.k2.BackColor = System.Drawing.Color.Transparent;
             this.k2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.k2.Location = new System.Drawing.Point(986, 53);
+            this.k2.Location = new System.Drawing.Point(733, 44);
             this.k2.Name = "k2";
             this.k2.Size = new System.Drawing.Size(51, 20);
             this.k2.TabIndex = 6;
@@ -118,7 +118,7 @@ namespace KinectIR
             this.k3.AutoSize = true;
             this.k3.BackColor = System.Drawing.Color.Transparent;
             this.k3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.k3.Location = new System.Drawing.Point(986, 73);
+            this.k3.Location = new System.Drawing.Point(733, 64);
             this.k3.Name = "k3";
             this.k3.Size = new System.Drawing.Size(51, 20);
             this.k3.TabIndex = 7;
@@ -129,7 +129,7 @@ namespace KinectIR
             this.k4.AutoSize = true;
             this.k4.BackColor = System.Drawing.Color.Transparent;
             this.k4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.k4.Location = new System.Drawing.Point(986, 93);
+            this.k4.Location = new System.Drawing.Point(733, 84);
             this.k4.Name = "k4";
             this.k4.Size = new System.Drawing.Size(51, 20);
             this.k4.TabIndex = 8;
@@ -139,7 +139,7 @@ namespace KinectIR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 704);
+            this.ClientSize = new System.Drawing.Size(707, 492);
             this.Controls.Add(this.k4);
             this.Controls.Add(this.k3);
             this.Controls.Add(this.k2);

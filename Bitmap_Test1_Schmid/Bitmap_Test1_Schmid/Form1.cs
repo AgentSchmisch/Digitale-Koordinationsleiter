@@ -202,5 +202,10 @@ namespace Bitmap_Test1_Schmid
         {
 
         }
+
+        private void kantenerkennungToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            screen.Kantenerkennung();
+        }
     }
 }

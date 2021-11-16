@@ -43,6 +43,8 @@ namespace Bitmap_Test1_Schmid
 
         }
 
+        IR ir = new IR();
+
         private void Form2_Load(object sender, EventArgs e)
         {
 
@@ -419,6 +421,10 @@ namespace Bitmap_Test1_Schmid
         public void übertragung()
         {
             _Kinect.form2=this;
+        }
+        public void Kantenerkennung()
+        {
+            ir.Show();
         }
     }
 }

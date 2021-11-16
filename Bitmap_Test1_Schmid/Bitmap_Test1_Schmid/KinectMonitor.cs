@@ -126,11 +126,11 @@ namespace Bitmap_Test1_Schmid
                         Joint FootRight = joints[JointType.FootRight];
                         Joint FootLeft = joints[JointType.FootLeft];
 
-                        float rf_distance_x = FootRight.Position.X * 1000;
+                        float rf_distance_x = ((FootRight.Position.X * -100) +256) * (375/100);
                         float rf_distance_y = FootRight.Position.Y * 1000;
                         float rf_distance_z = FootRight.Position.Z;
 
-                        float lf_distance_x = FootLeft.Position.X * 1000;
+                        float lf_distance_x = ((FootLeft.Position.X * -100) +256)*(375/100);
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
 
@@ -144,8 +144,7 @@ namespace Bitmap_Test1_Schmid
 
                         tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
                         tracker_xlinks[0] = Convert.ToDouble(Xlinks.Text);
-
-                     
+             
                         for (int i = 0; i < 9; i++)
                         {
                             tracker_xrechts[i + 1] = zw_tracker_xrechts[i];         //zwischenvariable für Werte -- beginnt array bei 0
@@ -180,8 +179,8 @@ namespace Bitmap_Test1_Schmid
 
                             for (int i = 0; i < 9; i++)
                             {
-                                schritt_rechts[i + 1] = zw_schritt_rechts[i];
-                                schritt_links[i + 1] = zw_schritt_links[i];
+                                schritt_rechts[i + 1] = zw_schritt_rechts[i]+960;
+                                schritt_links[i + 1] = zw_schritt_links[i]+960;
                             }
                                 if(schritt_rechts[2]!=0)//wartet bis 3 werte vorhanden sind
                                 {
@@ -196,7 +195,7 @@ namespace Bitmap_Test1_Schmid
                                         {
                                             durchschnitt[i] = Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3);
                                             //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
-                                            text.Text= "Stehen: " + durchschnitt[i].ToString() + "   Schrittnummer: " + i.ToString();
+                                            text.Text= "Stehen: " + durchschnitt[i] + "   Schrittnummer: " + i.ToString();
                                         //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
                                         #region Fußabdruck zeichnen
                                         if (durchschnitt[0] != 0 && steps_kinect >= 1)

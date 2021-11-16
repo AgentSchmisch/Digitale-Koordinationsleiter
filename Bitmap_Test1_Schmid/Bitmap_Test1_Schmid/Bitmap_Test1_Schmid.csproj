@@ -167,6 +167,12 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="IR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IR.Designer.cs">
+      <DependentUpon>IR.cs</DependentUpon>
+    </Compile>
     <Compile Include="KinectMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IR.resx">
+      <DependentUpon>IR.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KinectMonitor.resx">
       <DependentUpon>KinectMonitor.cs</DependentUpon>

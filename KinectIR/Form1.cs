@@ -354,10 +354,10 @@ namespace KinectIR
             k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];
 
             //skalierung auf 1920; linker punkt=0; rechter punkt=1920
-            int zw_var;
+            int länge;
             int multiplikator;
-            zw_var=rechts_max - links_max;
-            multiplikator = 1920 / zw_var;
+            länge=rechts_max - links_max;
+            multiplikator = 1920 / 512;
             // jetzt werden alle schritte die die Kamera vom benutzer erkennt -"links_max" gerechnet und dann mal "multipplikator"
             //bsp.: (schrittlänge[0]-links_max)*multiplikator
 
