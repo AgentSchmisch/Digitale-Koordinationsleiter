@@ -17,6 +17,7 @@ namespace Bitmap_Test1_Schmid
         public Patientendatenbank Patientendatenbank = new Patientendatenbank();
         retrieve_Kinect kinect = new retrieve_Kinect();
         public KinectMonitor kinectM = new KinectMonitor();
+        public IR ir = new IR();
 
         public static int schritt = 0;
 
@@ -205,7 +206,7 @@ namespace Bitmap_Test1_Schmid
 
         private void kantenerkennungToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            screen.Kantenerkennung();
+            ir.ShowDialog();
         }
     }
 }

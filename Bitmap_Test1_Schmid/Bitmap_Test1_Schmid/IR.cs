@@ -31,6 +31,7 @@ namespace Bitmap_Test1_Schmid
         int ecken4_x;
         int ecken4_y;
 
+        public double multiplikator;
         private void IR_Load_1(object sender, EventArgs e)
         {
             sensor = KinectSensor.GetDefault();
@@ -175,11 +176,11 @@ namespace Bitmap_Test1_Schmid
             vergleich_y[1] = ecken2_y;
             vergleich_y[2] = ecken3_y;
             vergleich_y[3] = ecken4_y;
-            if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
-            {
-                MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
+            //{
+            //    MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
             label2.Text = "Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
 
@@ -351,14 +352,7 @@ namespace Bitmap_Test1_Schmid
             k4.Top = erg_y[3];
             k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];
 
-            //skalierung auf 1920; linker punkt=0; rechter punkt=1920
-            int länge;
-            int multiplikator;
-            länge = rechts_max - links_max;
-            multiplikator = 1920 / 512;
-            // jetzt werden alle schritte die die Kamera vom benutzer erkennt -"links_max" gerechnet und dann mal "multipplikator"
-            //bsp.: (schrittlänge[0]-links_max)*multiplikator
-
+            multiplikator = Math.Round(1920.0/(erg_x[3] - erg_x[0]) * 100) / 100;
         }
 
         private void IR_FormClosing(object sender, FormClosingEventArgs e)

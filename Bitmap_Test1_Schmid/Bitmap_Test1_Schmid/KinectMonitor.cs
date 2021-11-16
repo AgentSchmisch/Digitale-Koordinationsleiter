@@ -36,6 +36,8 @@ namespace Bitmap_Test1_Schmid
         int i = 0;
         double[] durchschnitt=new double[99];
 
+        
+
         private Form2 _form2;
         public Form2 form2
         {
@@ -126,11 +128,11 @@ namespace Bitmap_Test1_Schmid
                         Joint FootRight = joints[JointType.FootRight];
                         Joint FootLeft = joints[JointType.FootLeft];
 
-                        float rf_distance_x = ((FootRight.Position.X * -100) +256) * (375/100);
+                        float rf_distance_x = (((FootRight.Position.X * 100) +256) - _form1.ir.erg_x[0]) * (float)_form1.ir.multiplikator; //- dem niedrigsten wert von dem kalibrierten reflektor
                         float rf_distance_y = FootRight.Position.Y * 1000;
                         float rf_distance_z = FootRight.Position.Z;
 
-                        float lf_distance_x = ((FootLeft.Position.X * -100) +256)*(375/100);
+                        float lf_distance_x = (((FootLeft.Position.X * 100) + 256) - _form1.ir.erg_x[0]) * (float)_form1.ir.multiplikator; //multipliziert das ende bei 1920 ist
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
 
@@ -150,28 +152,6 @@ namespace Bitmap_Test1_Schmid
                             tracker_xrechts[i + 1] = zw_tracker_xrechts[i];         //zwischenvariable für Werte -- beginnt array bei 0
                             tracker_xlinks[i + 1] = zw_tracker_xlinks[i];
                         }
-                        /*
-                        text.Text = "";
-                        for (int i = 0; i < 10; i++)
-                        {
-                            text.Text += zw_tracker_xrechts[i] + ",";
-                        }
-                        text.Text += "\n";
-                        for (int i = 0; i < 10; i++)
-                        {
-                            text.Text += tracker_xrechts[i] + ",";
-                        }
-
-                        if (count<10&&ix==0)
-                            count++;
-                        if (count == 10)
-                            ix = 1;
-                        if (count > 0 && ix==1)
-                            count--;
-                        if (count == 0)
-                            ix = 0;
-                        *///Bsp Code
-
                             schritt_rechts[0] = Math.Round((tracker_xrechts[0] + tracker_xrechts[1] + tracker_xrechts[2]) / 3);
                             schritt_links[0] = Math.Round((tracker_xlinks[0] + tracker_xlinks[1] + tracker_xlinks[2]) / 3);
 
@@ -263,7 +243,7 @@ namespace Bitmap_Test1_Schmid
                                 }
 
 
-                        for (int i = 0; i < 10; i++)
+                            for (int i = 0; i < 10; i++)
                             {
                                 zw_schritt_rechts[i] = schritt_rechts[i];
                                 zw_schritt_links[i] = schritt_links[i];
