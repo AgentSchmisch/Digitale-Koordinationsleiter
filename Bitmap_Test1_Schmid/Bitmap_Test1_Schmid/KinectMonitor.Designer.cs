@@ -40,12 +40,17 @@ namespace Bitmap_Test1_Schmid
             this.Xlinks = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.text = new System.Windows.Forms.Label();
+            this.k4 = new System.Windows.Forms.Label();
+            this.k3 = new System.Windows.Forms.Label();
+            this.k2 = new System.Windows.Forms.Label();
+            this.k1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Location = new System.Drawing.Point(11, 11);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
@@ -153,10 +158,10 @@ namespace Bitmap_Test1_Schmid
             // trackBar1
             // 
             this.trackBar1.LargeChange = 10;
-            this.trackBar1.Location = new System.Drawing.Point(617, 556);
+            this.trackBar1.Location = new System.Drawing.Point(987, 487);
             this.trackBar1.Maximum = 255;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(354, 45);
+            this.trackBar1.Size = new System.Drawing.Size(299, 45);
             this.trackBar1.SmallChange = 10;
             this.trackBar1.TabIndex = 18;
             // 
@@ -166,18 +171,69 @@ namespace Bitmap_Test1_Schmid
             this.text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.text.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.text.ForeColor = System.Drawing.Color.White;
-            this.text.Location = new System.Drawing.Point(12, 556);
+            this.text.Location = new System.Drawing.Point(31, 553);
             this.text.Name = "text";
-            this.text.Size = new System.Drawing.Size(102, 37);
+            this.text.Size = new System.Drawing.Size(0, 37);
             this.text.TabIndex = 19;
-            this.text.Text = "label3";
+            // 
+            // k4
+            // 
+            this.k4.AutoSize = true;
+            this.k4.BackColor = System.Drawing.Color.Black;
+            this.k4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.k4.ForeColor = System.Drawing.Color.White;
+            this.k4.Location = new System.Drawing.Point(1313, 71);
+            this.k4.Name = "k4";
+            this.k4.Size = new System.Drawing.Size(51, 20);
+            this.k4.TabIndex = 23;
+            this.k4.Text = "label1";
+            // 
+            // k3
+            // 
+            this.k3.AutoSize = true;
+            this.k3.BackColor = System.Drawing.Color.Black;
+            this.k3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.k3.ForeColor = System.Drawing.Color.White;
+            this.k3.Location = new System.Drawing.Point(1313, 51);
+            this.k3.Name = "k3";
+            this.k3.Size = new System.Drawing.Size(51, 20);
+            this.k3.TabIndex = 22;
+            this.k3.Text = "label1";
+            // 
+            // k2
+            // 
+            this.k2.AutoSize = true;
+            this.k2.BackColor = System.Drawing.Color.Black;
+            this.k2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.k2.ForeColor = System.Drawing.Color.White;
+            this.k2.Location = new System.Drawing.Point(1313, 31);
+            this.k2.Name = "k2";
+            this.k2.Size = new System.Drawing.Size(51, 20);
+            this.k2.TabIndex = 21;
+            this.k2.Text = "label1";
+            // 
+            // k1
+            // 
+            this.k1.AutoSize = true;
+            this.k1.BackColor = System.Drawing.Color.Black;
+            this.k1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.k1.ForeColor = System.Drawing.Color.White;
+            this.k1.Location = new System.Drawing.Point(1313, 11);
+            this.k1.Name = "k1";
+            this.k1.Size = new System.Drawing.Size(51, 20);
+            this.k1.TabIndex = 20;
+            this.k1.Text = "label1";
             // 
             // KinectMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(1273, 604);
+            this.ClientSize = new System.Drawing.Size(1298, 604);
+            this.Controls.Add(this.k4);
+            this.Controls.Add(this.k3);
+            this.Controls.Add(this.k2);
+            this.Controls.Add(this.k1);
             this.Controls.Add(this.text);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.Zrechts);
@@ -213,5 +269,9 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Label Xlinks;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label text;
+        public System.Windows.Forms.Label k4;
+        public System.Windows.Forms.Label k3;
+        public System.Windows.Forms.Label k2;
+        public System.Windows.Forms.Label k1;
     }
 }
