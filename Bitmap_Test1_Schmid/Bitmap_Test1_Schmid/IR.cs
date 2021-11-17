@@ -156,31 +156,42 @@ namespace Bitmap_Test1_Schmid
                 }
             }
         }
-        public int[] erg_x = new int[4];
-        public int[] erg_y = new int[4];
+        public double[] erg_x = new double[4];
+        public double[] erg_y = new double[4];
 
         private void kal_Click_1(object sender, EventArgs e)
         {
-            int[] vergleich_x = new int[4];
-            int[] vergleich2_x = new int[4];
-            int[] vergleich_y = new int[4];//y=0 == oben; y=max == unten
-            int rechts_max = 0;
-            int links_max = 0;
+            double[] vergleich_x = new double[4];
+            double[] vergleich2_x = new double[4];
+            double[] vergleich_y = new double[4];//y=0 == oben; y=max == unten
+            double rechts_max = 0;
+            double links_max = 0;
 
-            vergleich_x[0] = ecken1_x;
-            vergleich_x[1] = ecken2_x;
-            vergleich_x[2] = ecken3_x;
-            vergleich_x[3] = ecken4_x;
+            ecken1_x = 50;//testzwecke
+            ecken2_x = 70 ;
+            ecken3_x = 250 ;
+            ecken4_x = 270 ;
 
-            vergleich_y[0] = ecken1_y;
-            vergleich_y[1] = ecken2_y;
-            vergleich_y[2] = ecken3_y;
-            vergleich_y[3] = ecken4_y;
-            //if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
-            //{
-            //    MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            ecken1_y = 80;
+            ecken2_y = 200 ;
+            ecken3_y = 90 ;
+            ecken4_y = 210;
+
+            vergleich_x[0] = ecken1_x * 3.75;//upscaling
+            vergleich_x[1] = ecken2_x * 3.75;
+            vergleich_x[2] = ecken3_x * 3.75;
+            vergleich_x[3] = ecken4_x * 3.75;
+
+            vergleich_y[0] = ecken1_y * 2.54;
+            vergleich_y[1] = ecken2_y * 2.54;
+            vergleich_y[2] = ecken3_y * 2.54;
+            vergleich_y[3] = ecken4_y * 2.54;
+
+            if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
+            {
+                MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             label2.Text = "Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
 
@@ -336,25 +347,24 @@ namespace Bitmap_Test1_Schmid
             //                "links unten: " + erg_x[2] + " " + erg_y[2] + "\n" + 
             //                "links oben: " + erg_x[3] + " " + erg_y[3]);
 
-            k1.Left = erg_x[0];
-            k1.Top = erg_y[0];
+            k1.Left = (int)(erg_x[0] / 3.75);
+            k1.Top = (int)(erg_y[0] / 2.54);
             k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];
 
-            k2.Left = erg_x[1];
-            k2.Top = erg_y[1];
+            k2.Left = (int)(erg_x[1] / 3.75);
+            k2.Top = (int)(erg_y[1] / 2.54);
             k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];
 
-            k3.Left = erg_x[2];
-            k3.Top = erg_y[2];
+            k3.Left = (int)(erg_x[2] / 3.75);
+            k3.Top = (int)(erg_y[2] / 2.54);
             k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];
 
-            k4.Left = erg_x[3];
-            k4.Top = erg_y[3];
+            k4.Left = (int)(erg_x[3] / 3.75);
+            k4.Top = (int)(erg_y[3] / 2.54);
             k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];
 
             multiplikator = Math.Round(1920.0/(erg_x[3] - erg_x[0]) * 100) / 100;
         }
-
         private void IR_FormClosing(object sender, FormClosingEventArgs e)
         {           
         }

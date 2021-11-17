@@ -106,7 +106,7 @@ namespace Bitmap_Test1_Schmid
             this.kal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.kal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.kal.Location = new System.Drawing.Point(391, 414);
+            this.kal.Location = new System.Drawing.Point(391, 442);
             this.kal.Name = "kal";
             this.kal.Size = new System.Drawing.Size(127, 42);
             this.kal.TabIndex = 12;
@@ -128,7 +128,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(35, 424);
+            this.trackBar1.Location = new System.Drawing.Point(35, 439);
             this.trackBar1.Maximum = 500;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(193, 45);
@@ -136,7 +136,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, -18);
+            this.pictureBox1.Location = new System.Drawing.Point(-4, -2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(512, 424);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -149,7 +149,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(739, 468);
+            this.ClientSize = new System.Drawing.Size(734, 496);
             this.Controls.Add(this.k4);
             this.Controls.Add(this.k3);
             this.Controls.Add(this.k2);
