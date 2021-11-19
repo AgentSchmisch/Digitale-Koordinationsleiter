@@ -21,8 +21,8 @@ namespace Bitmap_Test1_Schmid
         public int waagrechtunten = 880;
 
         public int color_r = 255;
-        public int color_g = 0;
-        public int color_b = 0;
+        public int color_g = 255;
+        public int color_b = 255;
 
         public int color_box_r = 150;
         public int color_box_g = 0;
@@ -45,7 +45,6 @@ namespace Bitmap_Test1_Schmid
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
             int rightfoot = waagrechtunten - 250;
             int leftfoot = waagrechtoben + 150;
 

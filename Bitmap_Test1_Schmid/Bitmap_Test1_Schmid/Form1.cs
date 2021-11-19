@@ -21,9 +21,19 @@ namespace Bitmap_Test1_Schmid
 
         public static int schritt = 0;
 
+        public int defaultsize_f1_x = 660; //fenstergröße
+        public int defaultsize_f1_y = 409;
         public Form1()
         {
             InitializeComponent();
+            try
+            {
+                screen.Location = Screen.AllScreens[1].WorkingArea.Location; //startet auf 2tem monitor wenn möglich
+                screen.StartPosition = FormStartPosition.Manual;
+            }
+            catch
+            {
+            }
             screen.Show();
         }
         private void bestätigen_Click(object sender, EventArgs e)
@@ -152,12 +162,20 @@ namespace Bitmap_Test1_Schmid
                 // Patientendatenbank p = new Patientendatenbank();
                 System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
                 Patientendatenbank.ShowDialog();
-                lblName.Text = Patientendatenbank.Patientenname;
-                lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
-                lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
+                if (Patientendatenbank.Patientenname != null && Patientendatenbank.letzteBehandlung != null) {
+                    lblName.Text = Patientendatenbank.Patientenname;
+                    lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
+                    lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
 
-                if (Patientendatenbank.auswahl) {
-                    Size = new Size(1139, 409);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
+                    if (Patientendatenbank.letzteSchrittanzahl.All(char.IsDigit))
+                        steps.Text = Patientendatenbank.letzteSchrittanzahl;
+
+                    if (Patientendatenbank.auswahl)
+                    {
+                        Size = new Size(defaultsize_f1_x + 500 , defaultsize_f1_y);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
+                        this.CenterToScreen();
+                    }
+                    bestätigen.PerformClick();
                 }
             }
             catch(Exception ex)
@@ -178,13 +196,17 @@ namespace Bitmap_Test1_Schmid
         {
             //übergabe der aktuellen schrittweite nach abschließen der Behandlungssitzung
             Patientendatenbank.wertuebergabe = steps.Text.ToString();
+            Size = new Size(defaultsize_f1_x, defaultsize_f1_y);
+            this.CenterToScreen();
             //TODO: einfügen der daten in die Datenbank über die Form "Patientendatenbank"
         }
 
         private void kinectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             kinectM.form1 = this;
-            kinectM.Show();
+            this.Hide();
+            kinectM.ShowDialog();//kürzlich geändert --> mögliche fehlerquelle
+            this.Show();
             kinectM.steps_kinect = Convert.ToInt32(steps.Text);
         }
 
@@ -206,7 +228,9 @@ namespace Bitmap_Test1_Schmid
 
         private void kantenerkennungToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             ir.ShowDialog();
+            this.Show();
         }
     }
 }

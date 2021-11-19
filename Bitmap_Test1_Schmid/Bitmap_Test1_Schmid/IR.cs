@@ -34,6 +34,7 @@ namespace Bitmap_Test1_Schmid
         public double multiplikator;
         private void IR_Load_1(object sender, EventArgs e)
         {
+
             sensor = KinectSensor.GetDefault();
 
             if (sensor != null)
@@ -168,13 +169,13 @@ namespace Bitmap_Test1_Schmid
             double links_max = 0;
 
             //ecken1_x = 50;//testzwecke
-            //ecken2_x = 70 ;
-            //ecken3_x = 250 ;
-            //ecken4_x = 270 ;
+            //ecken2_x = 70;
+            //ecken3_x = 250;
+            //ecken4_x = 270;
 
             //ecken1_y = 80;
-            //ecken2_y = 200 ;
-            //ecken3_y = 90 ;
+            //ecken2_y = 200;
+            //ecken3_y = 90;
             //ecken4_y = 210;
 
             vergleich_x[0] = ecken1_x * 3.75;//upscaling

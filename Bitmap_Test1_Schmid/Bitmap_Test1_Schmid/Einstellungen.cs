@@ -51,8 +51,8 @@ namespace Bitmap_Test1_Schmid
             if (colorpicker.Color.R == 0 && colorpicker.Color.G == 0 && colorpicker.Color.B == 0)
             {
                 this._form1.screen.color_r = 255;
-                this._form1.screen.color_g = 0;
-                this._form1.screen.color_b = 0;
+                this._form1.screen.color_g = 255;
+                this._form1.screen.color_b = 255;
             }
             else
             {

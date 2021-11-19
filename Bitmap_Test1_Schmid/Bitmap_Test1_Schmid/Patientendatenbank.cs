@@ -60,6 +60,44 @@ namespace Bitmap_Test1_Schmid
 
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
+            #region zurücksetzen der Formelemente
+            Size = new Size(471, 383);
+            auswahlBtn.Location = new Point(166, 349);
+            TbName.Text = "Vorname";
+            TbName.ForeColor = Color.Gray;
+            TbName.ReadOnly = false;
+
+            TbNachname.Text = "Nachname";
+            TbNachname.ForeColor = Color.Gray;
+            TbNachname.ReadOnly = false;
+
+            TbPatNr.Text = "Patientennr.";
+            TbPatNr.ForeColor = Color.Gray;
+            TbPatNr.ReadOnly = false;
+
+            TbGeburtsdatum.Text = "Geburtsdatum";
+            TbGeburtsdatum.ForeColor = Color.Gray;
+
+            TbAdresse.Text = "Adresse";
+            TbAdresse.ForeColor = Color.Gray;
+
+            TbPLZ.Text = "PLZ";
+            TbPLZ.ForeColor = Color.Gray;
+
+            TbOrt.Text = "Ort";
+            TbOrt.ForeColor = Color.Gray;
+
+            TbTelefonnummer.Text = "Telefonnummer";
+            TbTelefonnummer.ForeColor = Color.Gray;
+
+            #endregion
+
+            NeuAbbrechenBtn.Visible = false;
+            sucheBtn.Visible = true;
+            Patienten.Visible = true;
+            auswahlBtn.Visible = true;
+            NeuSpeichernBtn.Visible = false;
+
             menuStrip1.ForeColor = Color.White;
             try
             {
@@ -898,9 +936,13 @@ namespace Bitmap_Test1_Schmid
 #region zurücksetzen der Formelemente
             Size = new Size(471, 383);
             auswahlBtn.Location = new Point(166, 349);
-            TbPatNr.Text = "Patientennr.";
-            TbPatNr.ForeColor = Color.Gray;
-            TbPatNr.ReadOnly = false;
+            TbName.Text = "Vorname";
+            TbName.ForeColor = Color.Gray;
+            TbName.ReadOnly = false;
+
+            TbNachname.Text = "Nachname";
+            TbNachname.ForeColor = Color.Gray;
+            TbNachname.ReadOnly = false;
 
             TbPatNr.Text = "Patientennr.";
             TbPatNr.ForeColor = Color.Gray;

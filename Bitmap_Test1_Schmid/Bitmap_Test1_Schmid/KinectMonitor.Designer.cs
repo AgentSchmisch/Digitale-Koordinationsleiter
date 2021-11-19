@@ -247,6 +247,7 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "KinectMonitor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Kinect Monitor";
             this.Load += new System.EventHandler(this.KinectMonitor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

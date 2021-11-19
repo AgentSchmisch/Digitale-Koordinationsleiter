@@ -44,6 +44,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kinectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kantenerkennungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnSitzungBeenden = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblLezteTherapie = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.kantenerkennungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -238,6 +238,13 @@
             this.kinectToolStripMenuItem.Text = "Kinect";
             this.kinectToolStripMenuItem.Click += new System.EventHandler(this.kinectToolStripMenuItem_Click);
             // 
+            // kantenerkennungToolStripMenuItem
+            // 
+            this.kantenerkennungToolStripMenuItem.Name = "kantenerkennungToolStripMenuItem";
+            this.kantenerkennungToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.kantenerkennungToolStripMenuItem.Text = "Kantenerkennung";
+            this.kantenerkennungToolStripMenuItem.Click += new System.EventHandler(this.kantenerkennungToolStripMenuItem_Click);
+            // 
             // einstellungenToolStripMenuItem
             // 
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
@@ -330,13 +337,6 @@
             this.lblName.TabIndex = 35;
             this.lblName.Text = "Max Mustermann";
             // 
-            // kantenerkennungToolStripMenuItem
-            // 
-            this.kantenerkennungToolStripMenuItem.Name = "kantenerkennungToolStripMenuItem";
-            this.kantenerkennungToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
-            this.kantenerkennungToolStripMenuItem.Text = "Kantenerkennung";
-            this.kantenerkennungToolStripMenuItem.Click += new System.EventHandler(this.kantenerkennungToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -368,7 +368,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
