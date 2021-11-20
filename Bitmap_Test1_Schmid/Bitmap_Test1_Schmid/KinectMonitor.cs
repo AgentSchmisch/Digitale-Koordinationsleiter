@@ -64,21 +64,21 @@ namespace Bitmap_Test1_Schmid
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
             #region kalibrierungspunkte einzeichnen
-            k1.Left = (int)_form1.ir.erg_x[0]/2;
-            k1.Top = (int)_form1.ir.erg_y[0] / 2;
-            k1.Text = "ro:" + _form1.ir.erg_x[0] + " " + _form1.ir.erg_y[0];
+            //k1.Left = (int)_form1.ir.erg_x[0] / 2;
+            //k1.Top = (int)_form1.ir.erg_y[0] / 2;
+            //k1.Text = "ro:" + _form1.ir.erg_x[0] + " " + _form1.ir.erg_y[0];
 
-            k2.Left = (int)_form1.ir.erg_x[1] / 2;
-            k2.Top = (int)_form1.ir.erg_y[1] / 2;
-            k2.Text = "ru:" + _form1.ir.erg_x[1] + " " + _form1.ir.erg_y[1];
+            //k2.Left = (int)_form1.ir.erg_x[1] / 2;
+            //k2.Top = (int)_form1.ir.erg_y[1] / 2;
+            //k2.Text = "ru:" + _form1.ir.erg_x[1] + " " + _form1.ir.erg_y[1];
 
-            k3.Left = (int)_form1.ir.erg_x[2] / 2;
-            k3.Top = (int)_form1.ir.erg_y[2] / 2;
-            k3.Text = "lu:" + _form1.ir.erg_x[2] + " " + _form1.ir.erg_y[2];
+            //k3.Left = (int)_form1.ir.erg_x[2] / 2;
+            //k3.Top = (int)_form1.ir.erg_y[2] / 2;
+            //k3.Text = "lu:" + _form1.ir.erg_x[2] + " " + _form1.ir.erg_y[2];
 
-            k4.Left = (int)_form1.ir.erg_x[3] / 2;
-            k4.Top = (int)_form1.ir.erg_y[3] / 2;
-            k4.Text = "lo:" + _form1.ir.erg_x[3] + " " + _form1.ir.erg_y[3];
+            //k4.Left = (int)_form1.ir.erg_x[3] / 2;
+            //k4.Top = (int)_form1.ir.erg_y[3] / 2;
+            //k4.Text = "lo:" + _form1.ir.erg_x[3] + " " + _form1.ir.erg_y[3];
 
             pictureBox1.Paint += DrawLineFloat;
             #endregion

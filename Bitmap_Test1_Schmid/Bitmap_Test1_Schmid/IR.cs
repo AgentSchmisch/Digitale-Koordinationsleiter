@@ -19,7 +19,9 @@ namespace Bitmap_Test1_Schmid
             InitializeComponent();
         }
         KinectSensor sensor = null;
+        KinectSensor rgbsensor = null;
         MultiSourceFrameReader reader = null;
+        MultiSourceFrameReader rgb = null;
         BlobCounter counter = null;
         string[] possibleTracker;
         int ecken1_x;
@@ -36,6 +38,7 @@ namespace Bitmap_Test1_Schmid
         {
 
             sensor = KinectSensor.GetDefault();
+            rgbsensor = KinectSensor.GetDefault();
 
             if (sensor != null)
             {
@@ -364,10 +367,82 @@ namespace Bitmap_Test1_Schmid
             k4.Top = (int)(erg_y[3] / 2.54);
             k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];
 
-            multiplikator = Math.Round(1920.0/(erg_x[3] - erg_x[0]) * 100) / 100;
+            multiplikator = Math.Round(1920.0 / (erg_x[3] - erg_x[0]) * 100) / 100;
         }
         private void IR_FormClosing(object sender, FormClosingEventArgs e)
-        {           
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            rgb = rgbsensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
+            rgb.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
+        }
+        void myReader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
+        {
+            var reference = e.FrameReference.AcquireFrame();
+            using (var frame = reference.ColorFrameReference.AcquireFrame())
+            {
+                if (frame != null)
+                {
+                    var width = frame.FrameDescription.Width;
+                    var height = frame.FrameDescription.Height;
+                    var data = new byte[width * height * 32 / 8];
+                    frame.CopyConvertedFrameDataToArray(data, ColorImageFormat.Bgra);
+
+                    var bitmap = new Bitmap(width, height, PixelFormat.Format32bppRgb);
+                    var bitmapData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.WriteOnly, bitmap.PixelFormat);
+
+
+                    Marshal.Copy(data, 0, bitmapData.Scan0, data.Length);
+                    bitmap.UnlockBits(bitmapData);
+                    bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
+
+                    ColorFiltering filter = new ColorFiltering();
+                    BrightnessCorrection filter2 = new BrightnessCorrection(+50);
+                    Graphics g = Graphics.FromImage(bitmap);
+
+                    filter.Red = new AForge.IntRange(0, 255);
+                    filter.Green = new AForge.IntRange(0, 75);
+                    filter.Blue = new AForge.IntRange(0, 75);
+                    //filter2.ApplyInPlace(bitmap);
+                    //filter.ApplyInPlace(bitmap);
+
+                    pictureBox1.Image = bitmap;
+                }
+            }
+        }
+        int klickanzahl = 0;
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            klickanzahl++;
+            if (klickanzahl == 1)
+            {
+                ecken1_x = e.X;
+                ecken1_y = e.Y;
+                r1.Location = new System.Drawing.Point(e.X-4, e.Y-4);
+            }
+            if (klickanzahl == 2)
+            {
+                ecken2_x = e.X;
+                ecken2_y = e.Y;
+                r2.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
+            }
+            if (klickanzahl == 3)
+            {
+                ecken3_x = e.X;
+                ecken3_y = e.Y;
+                r3.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
+            }
+            if (klickanzahl == 4)
+            {
+                ecken4_x = e.X;
+                ecken4_y = e.Y;
+                r4.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
+                kal.PerformClick();
+                klickanzahl = 0;
+            }
         }
     }
 }
