@@ -67,7 +67,6 @@ namespace Bitmap_Test1_Schmid
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
 
-
             #region kalibrierungspunkte einzeichnen
             //k1.Left = (int)_form1.ir.erg_x[0] / 2;
             //k1.Top = (int)_form1.ir.erg_y[0] / 2;
@@ -87,29 +86,23 @@ namespace Bitmap_Test1_Schmid
 
             pictureBox1.Paint += DrawLineFloat;
             #endregion
-            //Task thread = Task.Run(()=>
-            //{
-            //    kinect.InitializeKinect();
-            //    kinect.RGBFrameReader();
-            //    pictureBox1.Image = kinect.bitmap;
-            
-            //});
-
-            //Bitmap bitmap = thread.Result;
-
-            mySensor = KinectSensor.GetDefault();
+            Task thread = Task.Run(() =>
+            {  
+             mySensor = KinectSensor.GetDefault();
 
             if (mySensor != null)
             {
                 mySensor.Open();
             }
-            myReader = mySensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
-            myReader.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
-            bodyFrameReader = mySensor.BodyFrameSource.OpenReader();
-            if (bodyFrameReader != null)
-            {
-                bodyFrameReader.FrameArrived += reader_FrameArrived;
-            }
+                myReader = mySensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
+                myReader.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
+                bodyFrameReader = mySensor.BodyFrameSource.OpenReader();
+                if (bodyFrameReader != null)
+                {
+                    bodyFrameReader.FrameArrived += reader_FrameArrived;
+                }
+
+            });
         }
 
         void myReader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
@@ -135,7 +128,7 @@ namespace Bitmap_Test1_Schmid
                     ColorFiltering filter = new ColorFiltering();
                     BrightnessCorrection filter2 = new BrightnessCorrection(+50);
 
-                    filter.Red = new AForge.IntRange(trackBar1.Value, 255);
+                    filter.Red = new AForge.IntRange(0, 255);
                     filter.Green = new AForge.IntRange(0, 75);
                     filter.Blue = new AForge.IntRange(0, 75);
                     //filter2.ApplyInPlace(bitmap);
@@ -144,6 +137,7 @@ namespace Bitmap_Test1_Schmid
                 }
             }
         }
+
         private void reader_FrameArrived(object sender, BodyFrameArrivedEventArgs e)
         {
             bool dataRecieved = false;
