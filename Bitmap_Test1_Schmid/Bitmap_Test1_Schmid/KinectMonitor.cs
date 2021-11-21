@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Kinect;
 using System.Runtime.InteropServices;
@@ -16,6 +17,7 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class KinectMonitor : Form
     {
+
         KinectSensor mySensor = null;
         MultiSourceFrameReader myReader = null;
         BodyFrameReader bodyFrameReader = null;
@@ -36,7 +38,7 @@ namespace Bitmap_Test1_Schmid
         int i = 0;
         double[] durchschnitt=new double[99];
 
-        
+        retrieve_Kinect kinect = new retrieve_Kinect();
 
         private Form2 _form2;
         public Form2 form2
@@ -51,6 +53,7 @@ namespace Bitmap_Test1_Schmid
         public KinectMonitor()
         {
             InitializeComponent();
+
         }
         public void DrawLineFloat(object sender, PaintEventArgs e)
         {
@@ -63,6 +66,8 @@ namespace Bitmap_Test1_Schmid
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
+
+
             #region kalibrierungspunkte einzeichnen
             //k1.Left = (int)_form1.ir.erg_x[0] / 2;
             //k1.Top = (int)_form1.ir.erg_y[0] / 2;
@@ -82,6 +87,15 @@ namespace Bitmap_Test1_Schmid
 
             pictureBox1.Paint += DrawLineFloat;
             #endregion
+            //Task thread = Task.Run(()=>
+            //{
+            //    kinect.InitializeKinect();
+            //    kinect.RGBFrameReader();
+            //    pictureBox1.Image = kinect.bitmap;
+            
+            //});
+
+            //Bitmap bitmap = thread.Result;
 
             mySensor = KinectSensor.GetDefault();
 
@@ -97,6 +111,7 @@ namespace Bitmap_Test1_Schmid
                 bodyFrameReader.FrameArrived += reader_FrameArrived;
             }
         }
+
         void myReader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
         {
             var reference = e.FrameReference.AcquireFrame();
