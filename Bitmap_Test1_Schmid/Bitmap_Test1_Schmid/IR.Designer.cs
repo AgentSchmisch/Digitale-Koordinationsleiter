@@ -43,6 +43,7 @@ namespace Bitmap_Test1_Schmid
             this.r2 = new System.Windows.Forms.RadioButton();
             this.r3 = new System.Windows.Forms.RadioButton();
             this.r4 = new System.Windows.Forms.RadioButton();
+            this.reset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -111,7 +112,7 @@ namespace Bitmap_Test1_Schmid
             this.kal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.kal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.kal.Location = new System.Drawing.Point(391, 442);
+            this.kal.Location = new System.Drawing.Point(385, 442);
             this.kal.Name = "kal";
             this.kal.Size = new System.Drawing.Size(127, 42);
             this.kal.TabIndex = 12;
@@ -145,21 +146,22 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(512, 424);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             // 
             // mankal
             // 
+            this.mankal.Enabled = false;
             this.mankal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mankal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.mankal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.mankal.Location = new System.Drawing.Point(535, 442);
+            this.mankal.Location = new System.Drawing.Point(524, 421);
             this.mankal.Name = "mankal";
-            this.mankal.Size = new System.Drawing.Size(187, 42);
+            this.mankal.Size = new System.Drawing.Size(198, 63);
             this.mankal.TabIndex = 18;
-            this.mankal.Text = "Manuell Kalibrieren";
+            this.mankal.Text = "Manuell/automatisch Kalibrieren";
             this.mankal.UseVisualStyleBackColor = true;
             this.mankal.UseWaitCursor = true;
             this.mankal.Click += new System.EventHandler(this.button1_Click);
@@ -220,6 +222,20 @@ namespace Bitmap_Test1_Schmid
             this.r4.TabStop = true;
             this.r4.UseVisualStyleBackColor = false;
             // 
+            // reset
+            // 
+            this.reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.reset.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.reset.Location = new System.Drawing.Point(252, 442);
+            this.reset.Name = "reset";
+            this.reset.Size = new System.Drawing.Size(127, 42);
+            this.reset.TabIndex = 23;
+            this.reset.Text = "reset";
+            this.reset.UseVisualStyleBackColor = true;
+            this.reset.UseWaitCursor = true;
+            this.reset.Click += new System.EventHandler(this.reset_Click);
+            // 
             // IR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,6 +243,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(738, 496);
+            this.Controls.Add(this.reset);
             this.Controls.Add(this.r4);
             this.Controls.Add(this.r3);
             this.Controls.Add(this.r2);
@@ -269,5 +286,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.RadioButton r2;
         private System.Windows.Forms.RadioButton r3;
         private System.Windows.Forms.RadioButton r4;
+        private System.Windows.Forms.Button reset;
     }
 }

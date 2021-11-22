@@ -33,6 +33,8 @@ namespace Bitmap_Test1_Schmid
         int ecken4_x;
         int ecken4_y;
 
+        int mode = 0;
+        int mode2 = 0;
         public double multiplikator;
         private void IR_Load_1(object sender, EventArgs e)
         {
@@ -49,6 +51,11 @@ namespace Bitmap_Test1_Schmid
         }
         void reader_IRFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
         {
+            if (mode == 1)
+            {
+                return;
+            }
+
             var reference = e.FrameReference.AcquireFrame();
             using (InfraredFrame frame = reference.InfraredFrameReference.AcquireFrame())
             {
@@ -102,8 +109,8 @@ namespace Bitmap_Test1_Schmid
                     //filter.CenterColor = new RGB(0, 0, 0);
                     //filter.Radius = 100;
                     //filter.ApplyInPlace(bmp);
-                    //counter.MinWidth = 100;
-                    //counter.MinHeight = 100;
+                    counter.MinWidth = 100;
+                    counter.MinHeight = 100;
                     //counter.FilterBlobs = true;
                     counter.BackgroundThreshold = Color.Gray;
                     counter.ProcessImage(bmp);
@@ -375,11 +382,30 @@ namespace Bitmap_Test1_Schmid
 
         private void button1_Click(object sender, EventArgs e)
         {
-            rgb = rgbsensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
-            rgb.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
+            if (mode == 1)
+            {
+                mode = 0;
+                mode2 = 1;
+                reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
+                reader.MultiSourceFrameArrived += reader_IRFrameArrived;
+            }
+            if (mode == 0 && mode2==0)//TODO: geht nich wirklich
+            {
+                mode = 1;
+                reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
+                reader.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
+            }
+            mode2 =0;
+            //rgb = rgbsensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
+            //rgb.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
+
         }
         void myReader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
         {
+            if (mode == 0)
+            {
+                return;
+            }
             var reference = e.FrameReference.AcquireFrame();
             using (var frame = reference.ColorFrameReference.AcquireFrame())
             {
@@ -393,7 +419,6 @@ namespace Bitmap_Test1_Schmid
                     var bitmap = new Bitmap(width, height, PixelFormat.Format32bppRgb);
                     var bitmapData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.WriteOnly, bitmap.PixelFormat);
 
-
                     Marshal.Copy(data, 0, bitmapData.Scan0, data.Length);
                     bitmap.UnlockBits(bitmapData);
                     bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
@@ -402,13 +427,16 @@ namespace Bitmap_Test1_Schmid
                     BrightnessCorrection filter2 = new BrightnessCorrection(+50);
                     Graphics g = Graphics.FromImage(bitmap);
 
+                    ResizeNearestNeighbor filter3 = new ResizeNearestNeighbor(512, 424);
+                    Bitmap newImage = filter3.Apply(bitmap);
+
                     filter.Red = new AForge.IntRange(0, 255);
                     filter.Green = new AForge.IntRange(0, 75);
                     filter.Blue = new AForge.IntRange(0, 75);
                     //filter2.ApplyInPlace(bitmap);
                     //filter.ApplyInPlace(bitmap);
 
-                    pictureBox1.Image = bitmap;
+                    pictureBox1.Image = newImage;
                 }
             }
         }
@@ -443,6 +471,19 @@ namespace Bitmap_Test1_Schmid
                 kal.PerformClick();
                 klickanzahl = 0;
             }
+        }
+
+        private void reset_Click(object sender, EventArgs e)
+        {
+            ecken1_x = 0;
+            ecken2_x = 0;
+            ecken3_x = 0;
+            ecken4_x = 0;
+
+            ecken1_y = 0;
+            ecken2_y = 0;
+            ecken3_y = 0;
+            ecken4_y = 0;
         }
     }
 }

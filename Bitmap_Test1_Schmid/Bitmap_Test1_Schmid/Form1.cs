@@ -205,7 +205,7 @@ namespace Bitmap_Test1_Schmid
         {
             kinectM.form1 = this;
             this.Hide();
-            kinectM.ShowDialog();//kürzlich geändert --> mögliche fehlerquelle
+            kinectM.Show();//kürzlich geändert --> mögliche fehlerquelle
             this.Show();
             kinectM.steps_kinect = Convert.ToInt32(steps.Text);
         }
@@ -228,6 +228,12 @@ namespace Bitmap_Test1_Schmid
 
         private void kantenerkennungToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            //Task t = Task.Run(() => { ir.ShowDialog(); });
+            //if (ir != null)
+            //{
+            //    this.Hide();
+            //}
             this.Hide();
             ir.ShowDialog();
             this.Show();
