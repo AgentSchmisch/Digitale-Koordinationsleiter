@@ -59,10 +59,10 @@ namespace Bitmap_Test1_Schmid
         {
             Pen blackPen = new Pen(Color.Red, 3);
 
-            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[0] / 2), (int)(_form1.ir.erg_y[0] / 2), (int)(_form1.ir.erg_x[1] / 2), (int)(_form1.ir.erg_y[1] / 2));// ro ru
-            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[0] / 2), (int)(_form1.ir.erg_y[0] / 2), (int)(_form1.ir.erg_x[3] / 2), (int)(_form1.ir.erg_y[3] / 2));// ro lo
-            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[2] / 2), (int)(_form1.ir.erg_y[2] / 2), (int)(_form1.ir.erg_x[3] / 2), (int)(_form1.ir.erg_y[3] / 2));// lu lo
-            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[2] / 2), (int)(_form1.ir.erg_y[2] / 2), (int)(_form1.ir.erg_x[1] / 2), (int)(_form1.ir.erg_y[1] / 2));// lu ru
+            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[0]), (int)(_form1.ir.erg_y[0]), (int)(_form1.ir.erg_x[1]), (int)(_form1.ir.erg_y[1]));// ro ru
+            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[0]), (int)(_form1.ir.erg_y[0]), (int)(_form1.ir.erg_x[3]), (int)(_form1.ir.erg_y[3]));// ro lo
+            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[2]), (int)(_form1.ir.erg_y[2]), (int)(_form1.ir.erg_x[3]), (int)(_form1.ir.erg_y[3]));// lu lo
+            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[2]), (int)(_form1.ir.erg_y[2]), (int)(_form1.ir.erg_x[1]), (int)(_form1.ir.erg_y[1]));// lu ru
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
@@ -95,7 +95,7 @@ namespace Bitmap_Test1_Schmid
             //    mySensor.Open();
             //}
             //    myReader = mySensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
-            //    myReader.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
+            //    myReader.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;         //TODO: extra Thread geht ned
             //    bodyFrameReader = mySensor.BodyFrameSource.OpenReader();
             //    if (bodyFrameReader != null)
             //    {
@@ -179,11 +179,11 @@ namespace Bitmap_Test1_Schmid
                         Joint FootRight = joints[JointType.FootRight];
                         Joint FootLeft = joints[JointType.FootLeft];
 
-                        float rf_distance_x = ((FootRight.Position.X * 100) +256) * (375 / 100);
+                        float rf_distance_x = ((FootRight.Position.X * 100) + 256);// * (375 / 100);
                         float rf_distance_y = FootRight.Position.Y * 1000;
                         float rf_distance_z = FootRight.Position.Z;
 
-                        float lf_distance_x = ((FootLeft.Position.X * 100) + 256) * (375 / 100);
+                        float lf_distance_x = ((FootLeft.Position.X * 100) + 256);// * (375 / 100);
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
 
@@ -194,8 +194,8 @@ namespace Bitmap_Test1_Schmid
                         Xrechts.Text = rf_distance_x.ToString("###");
                         Yrechts.Text = rf_distance_y.ToString("###");
                         Zrechts.Text = rf_distance_z.ToString("#.##");
-                        //if (Convert.ToInt32(Xlinks.Text) >= _form1.ir.erg_x[0] && Convert.ToInt32(Xlinks.Text) <= _form1.ir.erg_x[3])
-                        //{// erst wenns innerhalb vom anzeigefeld ist soll er tracken
+                        if (Convert.ToInt32(Xlinks.Text) >= _form1.ir.erg_x[0] && Convert.ToInt32(Xlinks.Text) <= _form1.ir.erg_x[3])
+                        {// erst wenns innerhalb vom anzeigefeld ist soll er tracken
                             #region tracking
                             tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
                             tracker_xlinks[0] = Convert.ToDouble(Xlinks.Text);
@@ -228,7 +228,7 @@ namespace Bitmap_Test1_Schmid
                                     {
                                         durchschnitt[i] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - _form1.ir.erg_x[0]);// * _form1.ir.multiplikator;
                                         //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
-                                        text.Text = "Position: " + durchschnitt[i] + "   Schrittnummer: " + i.ToString();
+                                        text.Text = "Position: " + durchschnitt[i]*2.54 + " (" + durchschnitt[i] + ")" + "   Schrittnummer: " + i.ToString();
                                         //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
                                         #region Fußabdruck zeichnen
                                         if (durchschnitt[0] != 0 && steps_kinect >= 1)
@@ -309,7 +309,7 @@ namespace Bitmap_Test1_Schmid
                                 zw_tracker_xlinks[i] = tracker_xlinks[i];
                             }
                         #endregion
-                        //}
+                        }
                     }
                 }
             }

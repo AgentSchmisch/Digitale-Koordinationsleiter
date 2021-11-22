@@ -179,24 +179,24 @@ namespace Bitmap_Test1_Schmid
             double links_max = 0;
 
             //ecken1_x = 50;//testzwecke
-            //ecken2_x = 70;
-            //ecken3_x = 250;
-            //ecken4_x = 270;
+            //ecken2_x = 400;
+            //ecken3_x = 420;
+            //ecken4_x = 70;
 
-            //ecken1_y = 80;
-            //ecken2_y = 200;
-            //ecken3_y = 90;
-            //ecken4_y = 210;
+            //ecken1_y = 20;
+            //ecken2_y = 30;
+            //ecken3_y = 360;
+            //ecken4_y = 380;
 
-            vergleich_x[0] = ecken1_x * 3.75;//upscaling
-            vergleich_x[1] = ecken2_x * 3.75;
-            vergleich_x[2] = ecken3_x * 3.75;
-            vergleich_x[3] = ecken4_x * 3.75;
+            vergleich_x[0] = ecken1_x;// * 3.75;//upscaling
+            vergleich_x[1] = ecken2_x;// * 3.75;
+            vergleich_x[2] = ecken3_x;// * 3.75;
+            vergleich_x[3] = ecken4_x;// * 3.75;
 
-            vergleich_y[0] = ecken1_y * 2.54;
-            vergleich_y[1] = ecken2_y * 2.54;
-            vergleich_y[2] = ecken3_y * 2.54;
-            vergleich_y[3] = ecken4_y * 2.54;
+            vergleich_y[0] = ecken1_y;// * 2.54;
+            vergleich_y[1] = ecken2_y;// * 2.54;
+            vergleich_y[2] = ecken3_y;// * 2.54;
+            vergleich_y[3] = ecken4_y;// * 2.54;
 
             if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
             {
@@ -358,23 +358,23 @@ namespace Bitmap_Test1_Schmid
             //                "links unten: " + erg_x[2] + " " + erg_y[2] + "\n" + 
             //                "links oben: " + erg_x[3] + " " + erg_y[3]);
 
-            k1.Left = (int)(erg_x[0] / 3.75);
-            k1.Top = (int)(erg_y[0] / 2.54);
+            k1.Left = (int)(erg_x[0]);
+            k1.Top = (int)(erg_y[0]);
             k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];
 
-            k2.Left = (int)(erg_x[1] / 3.75);
-            k2.Top = (int)(erg_y[1] / 2.54);
+            k2.Left = (int)(erg_x[1]);
+            k2.Top = (int)(erg_y[1]);
             k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];
 
-            k3.Left = (int)(erg_x[2] / 3.75);
-            k3.Top = (int)(erg_y[2] / 2.54);
+            k3.Left = (int)(erg_x[2]);
+            k3.Top = (int)(erg_y[2]);
             k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];
 
-            k4.Left = (int)(erg_x[3] / 3.75);
-            k4.Top = (int)(erg_y[3] / 2.54);
+            k4.Left = (int)(erg_x[3]);
+            k4.Top = (int)(erg_y[3]);
             k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];
 
-            multiplikator = Math.Round(1920.0 / (erg_x[3] - erg_x[0]) * 100) / 100;
+            multiplikator = Math.Round(1920.0 / (erg_x[3] - erg_x[0]) * 100) / 100; //unwichtig
         }
         private void IR_FormClosing(object sender, FormClosingEventArgs e)
         {
