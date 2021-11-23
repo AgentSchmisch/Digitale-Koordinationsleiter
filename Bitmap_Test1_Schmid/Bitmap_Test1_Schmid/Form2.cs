@@ -266,13 +266,27 @@ namespace Bitmap_Test1_Schmid
         {
 
         }
-
+        string stepsalt;
         private void bestätigen_Click(object sender, EventArgs e)
         {
 
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;//warte cursor für visuelles Feedback
             try
             {
+                for (zähler = 0; zähler < Convert.ToDouble(stepsalt); zähler++)
+                {
+                    for (x = Convert.ToInt32(schrittlänge[zähler]); x < schrittlänge[zähler] + dicke + 5; x++) //senkrecht
+                    {
+                        for (y = waagrechtoben; y < waagrechtunten; y++)
+                        {
+                            Color pixelColor = image1.GetPixel(x, y);
+                            Color newColor = Color.FromArgb(0, 0, 0);
+                            image1.SetPixel(x, y, newColor);
+                        }
+                    }
+                    schrittlänge[zähler + 1] = schrittlänge[zähler] + schrittlängealt;
+                }//senkrecht löschen
+
                 steps.Text = sendvar.ToString();
                 regler.Maximum = Convert.ToInt32(steps.Text) - 1;
                 schrittlänge[1] = image1.Width / Convert.ToDouble(steps.Text);
@@ -280,16 +294,28 @@ namespace Bitmap_Test1_Schmid
                 schrittlängealt = schrittlänge[1];
                 schrittlänge[0] = 0;
 
-
-                for (x = 0; x < image1.Width; x++) //alles löschen
+                if (count == 1) //entfernt nur die bisherige Box und erneuert die waagrechte oben und unten
                 {
-                    for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
+                    for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++)                 //fläche
                     {
-                        Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(0, 0, 0);
-                        image1.SetPixel(x, y, newColor);
-                    }
-                }//Alles löschen
+                        for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
+                        {
+                            Color pixelColor = image1.GetPixel(x, y);
+                            Color newColor = Color.FromArgb(0, 0, 0, 0);
+                            image1.SetPixel(x, y, newColor);
+                        }
+                    } //box löschen
+                }
+                //for (x = 0; x < image1.Width; x++) //alles löschen
+                //{
+                //    for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
+                //    {
+                //        Color pixelColor = image1.GetPixel(x, y);
+                //        Color newColor = Color.FromArgb(0, 0, 0);
+                //        image1.SetPixel(x, y, newColor);
+                //    }
+                //}//Alles löschen
+
                 for (x = 0; x < image1.Width; x++)               //waagrecht oben
                 {
 
@@ -388,6 +414,7 @@ namespace Bitmap_Test1_Schmid
                 */
                 //Array.Clear(schrittlänge,0,schrittlänge.Length);
                 pictureBox1.Image = image1;
+                stepsalt = steps.Text;// für löschvorgang
             }
             catch (ArgumentException)
             {
@@ -417,7 +444,7 @@ namespace Bitmap_Test1_Schmid
         }
         public void übertragung()
         {
-            _Kinect.form2=this;
+            _Kinect.form2 = this;
         }
         public void Kantenerkennung()
         {

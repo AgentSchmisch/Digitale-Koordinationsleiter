@@ -62,9 +62,9 @@ namespace Bitmap_Test1_Schmid
             }
             if(this._form1.screen.color_box_r==0 && this._form1.screen.color_box_g==0 && this._form1.screen.color_box_b == 0)
             {
-                this._form1.screen.color_box_r = 180;
-                this._form1.screen.color_box_g = 150;
-                this._form1.screen.color_box_b = 0;
+                this._form1.screen.color_box_r = 150;
+                this._form1.screen.color_box_g = 0;
+                this._form1.screen.color_box_b = 180;
             }
             else
             {

@@ -153,7 +153,6 @@ namespace Bitmap_Test1_Schmid
             // 
             // mankal
             // 
-            this.mankal.Enabled = false;
             this.mankal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mankal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.mankal.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -259,6 +258,8 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "IR";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "IR";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IR_FormClosing);

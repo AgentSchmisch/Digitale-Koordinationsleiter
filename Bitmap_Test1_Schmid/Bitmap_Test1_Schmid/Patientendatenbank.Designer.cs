@@ -133,7 +133,7 @@ namespace Bitmap_Test1_Schmid
             this.TbName.Location = new System.Drawing.Point(12, 45);
             this.TbName.Name = "TbName";
             this.TbName.Size = new System.Drawing.Size(161, 27);
-            this.TbName.TabIndex = 1;
+            this.TbName.TabIndex = 0;
             this.TbName.Text = "Vorname";
             this.TbName.Enter += new System.EventHandler(this.TbName_Enter);
             this.TbName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbName_KeyDown);

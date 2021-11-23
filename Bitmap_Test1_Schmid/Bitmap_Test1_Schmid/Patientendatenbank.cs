@@ -119,11 +119,12 @@ namespace Bitmap_Test1_Schmid
 
         private void sucheBtn_Click(object sender, EventArgs e)
         {
-            Patienten.Items.Clear();
+            try
+            {
+                Patienten.Items.Clear();
             int ix = 0;
             query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where ";
            
-
             # region durchsuchen der Db
             if (TbName.Text != "Vorname")   
             {
@@ -184,8 +185,6 @@ namespace Bitmap_Test1_Schmid
             query1 += ";";
             #endregion  
             // nicht fragen was das ist ... aber das funkt wie a ansa
-            try
-            {
                 cmd = new MySqlCommand(query1, conn);
                 conn.Open();
                 da = new MySqlDataAdapter(cmd);
@@ -194,7 +193,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (MySqlException ex)
             {
-                exception(ex.ToString());
+                MessageBox.Show("Bitte Daten eingeben!", "Eingabefehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             finally
@@ -1006,7 +1005,6 @@ namespace Bitmap_Test1_Schmid
                                                                                                         "Primary Key(Behandlungsnummer)); " +
                     "INSERT INTO Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname.Text + "','" +
                      TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "') ;";
-
 
                 try
                 {

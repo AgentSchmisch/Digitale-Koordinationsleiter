@@ -53,6 +53,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblLezteTherapie = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -150,7 +151,7 @@
             this.reglertext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.reglertext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.reglertext.ForeColor = System.Drawing.Color.Gray;
-            this.reglertext.Location = new System.Drawing.Point(427, 87);
+            this.reglertext.Location = new System.Drawing.Point(427, 119);
             this.reglertext.Name = "reglertext";
             this.reglertext.Size = new System.Drawing.Size(24, 26);
             this.reglertext.TabIndex = 16;
@@ -161,7 +162,7 @@
             this.regler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.regler.Enabled = false;
             this.regler.LargeChange = 2;
-            this.regler.Location = new System.Drawing.Point(305, 39);
+            this.regler.Location = new System.Drawing.Point(305, 71);
             this.regler.Name = "regler";
             this.regler.Size = new System.Drawing.Size(273, 45);
             this.regler.TabIndex = 15;
@@ -186,7 +187,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.button1.ForeColor = System.Drawing.Color.Silver;
-            this.button1.Location = new System.Drawing.Point(584, 39);
+            this.button1.Location = new System.Drawing.Point(584, 71);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 40);
             this.button1.TabIndex = 24;
@@ -337,6 +338,18 @@
             this.lblName.TabIndex = 35;
             this.lblName.Text = "Max Mustermann";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(343, 30);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(229, 26);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Position des Objektes:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,6 +357,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(644, 370);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblLezteTherapie);
             this.Controls.Add(this.label6);
@@ -411,6 +425,7 @@
         private System.Windows.Forms.ToolStripMenuItem kinectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem einstellungenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kantenerkennungToolStripMenuItem;
+        private System.Windows.Forms.Label label4;
     }
 }
 

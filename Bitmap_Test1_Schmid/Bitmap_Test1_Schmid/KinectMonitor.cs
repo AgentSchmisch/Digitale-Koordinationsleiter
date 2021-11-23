@@ -66,6 +66,10 @@ namespace Bitmap_Test1_Schmid
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
+            _form1.ir.erg_x[0] = _form1.ir.erg_x[0] - 15;
+            _form1.ir.erg_x[1] = _form1.ir.erg_x[1] - 15;
+            _form1.ir.erg_x[2] = _form1.ir.erg_x[2] - 10;
+            _form1.ir.erg_x[3] = _form1.ir.erg_x[3] - 10;
 
             #region kalibrierungspunkte einzeichnen
             //k1.Left = (int)_form1.ir.erg_x[0] / 2;
@@ -125,8 +129,8 @@ namespace Bitmap_Test1_Schmid
             {
                 if (frame != null)
                 {
-                    var width = frame.FrameDescription.Width;
-                    var height = frame.FrameDescription.Height;
+                    var width =  frame.FrameDescription.Width;
+                    var height =  frame.FrameDescription.Height;
                     var data = new byte[width * height * 32 / 8];
                     frame.CopyConvertedFrameDataToArray(data, ColorImageFormat.Bgra);
 
@@ -141,12 +145,15 @@ namespace Bitmap_Test1_Schmid
                     ColorFiltering filter = new ColorFiltering();
                     BrightnessCorrection filter2 = new BrightnessCorrection(+50);
 
+                    ResizeNearestNeighbor filter3 = new ResizeNearestNeighbor(635, 350);//passt so hoffentlich
+                    Bitmap newImage = filter3.Apply(bitmap);
+
                     filter.Red = new AForge.IntRange(0, 255);
                     filter.Green = new AForge.IntRange(0, 75);
                     filter.Blue = new AForge.IntRange(0, 75);
                     //filter2.ApplyInPlace(bitmap);
                     //filter.ApplyInPlace(bitmap);
-                    pictureBox1.Image = bitmap;
+                    pictureBox1.Image = newImage;
                 }
             }
         }
@@ -281,7 +288,7 @@ namespace Bitmap_Test1_Schmid
                                         }
                                         #endregion
                                         //_form2.übertragung();
-                                        for (int i = 0; i < 10000; i++) { }
+                                        for (int i = 0; i < 1000; i++) { }
                                         count = 1;
                                         i++;
                                     }
@@ -313,6 +320,11 @@ namespace Bitmap_Test1_Schmid
                     }
                 }
             }
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show(e.X + "\n" + e.Y);
         }
     }
 }

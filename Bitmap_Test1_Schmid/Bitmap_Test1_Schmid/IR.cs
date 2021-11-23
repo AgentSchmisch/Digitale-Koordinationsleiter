@@ -427,7 +427,7 @@ namespace Bitmap_Test1_Schmid
                     BrightnessCorrection filter2 = new BrightnessCorrection(+50);
                     Graphics g = Graphics.FromImage(bitmap);
 
-                    ResizeNearestNeighbor filter3 = new ResizeNearestNeighbor(512, 424);
+                    ResizeNearestNeighbor filter3 = new ResizeNearestNeighbor(578, 350);//passt so hoffentlich
                     Bitmap newImage = filter3.Apply(bitmap);
 
                     filter.Red = new AForge.IntRange(0, 255);
@@ -443,7 +443,6 @@ namespace Bitmap_Test1_Schmid
         int klickanzahl = 0;
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-
             klickanzahl++;
             if (klickanzahl == 1)
             {
