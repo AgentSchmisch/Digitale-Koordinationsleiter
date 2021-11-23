@@ -192,7 +192,6 @@ namespace Bitmap_Test1_Schmid
             Patientendatenbank.wertuebergabe = steps.Text.ToString();
             Size = new Size(defaultsize_f1_x, defaultsize_f1_y);
             this.CenterToScreen();
-            //TODO: einfügen der daten in die Datenbank über die Form "Patientendatenbank"
         }
 
         private void kinectToolStripMenuItem_Click(object sender, EventArgs e)

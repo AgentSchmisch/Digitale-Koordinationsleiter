@@ -15,11 +15,11 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Patientendatenbank : Form
     {
-        /* TODO: erstellen der Tabellen nach Schema: Patientennummer_Vorname_Nachname
-        * TODO: überarbeiten aller SQL Queries um fehler auszuschließen die von vorherigen versionen übrig sind
-        * TODO: Felder mit der eigenschaft not null schon im hauptprogramm abfragen
+        /*Alle Patientenspezifischen Tabellen nach dem Schema: Patientennummer_Vorname_Nachname
+        *
         */
-
+         
+        //Connectionstring für die Verbindung zum Mysql Server
         string SQLServer = "server = koordinationsleiter.ddns.net; user id = Klinikum;password=koordinationsleiter; database=Patienten; sslmode=None;port=3306; persistsecurityinfo=True";
 
         #region alle mySQL Abfragen
@@ -48,10 +48,10 @@ namespace Bitmap_Test1_Schmid
 
         //Parameter für die Datenbank
         MySqlConnection conn = new MySqlConnection();
-
         MySqlCommand cmd;
         MySqlDataAdapter da;
         DataTable tbl;  //datatable für Abfragenergebnisse aus der Patientensuche
+
         public Patientendatenbank() //constructuor
         {
             InitializeComponent();
@@ -99,6 +99,8 @@ namespace Bitmap_Test1_Schmid
             NeuSpeichernBtn.Visible = false;
 
             menuStrip1.ForeColor = Color.White;
+            //überprüfen ob eine Verbindung zur datenbank hergestellt werden kann, wenn dies erfolgreich ist, den Balken in der UI
+            //grün färben, falls keine Verbindung hergestellt werden konnte, wird der Balken rot gefärbt
             try
             {
                 conn.Open();
@@ -184,7 +186,7 @@ namespace Bitmap_Test1_Schmid
             }
             query1 += ";";
             #endregion  
-            // nicht fragen was das ist ... aber das funkt wie a ansa
+            
                 cmd = new MySqlCommand(query1, conn);
                 conn.Open();
                 da = new MySqlDataAdapter(cmd);
@@ -596,7 +598,7 @@ namespace Bitmap_Test1_Schmid
             set
             {
                 Nameaktuell = Nameaktuell.Replace(" ", "_");
-                query3 = "Insert Into " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite) Values ('" + Nameaktuell.Replace("_", "','") + "','"
+                query3 = "Insert Into " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite) Values ('" +vorname+ "','"+nachname + "','"
                     + DateTime.Now.ToString("dd.MM.yyyy") + "','" + value + "');";
 
                 try
@@ -616,8 +618,7 @@ namespace Bitmap_Test1_Schmid
                     conn.Close();
                 }
             }
-            //TODO: Werte für Name,Schrittweite und letzte Behandlung in die UI übergeben um sie dort anzeigen zu lassen
-            //TODO: überarbeiten dieser Abfrage
+
         }
 
         private void TbTelefonnummer_KeyPress(object sender, KeyPressEventArgs e) //TODO: wenn man die Telefonnummer löscht und davor schon eigegeben hat kann keine neue mehr eingegeben werden!
@@ -649,9 +650,10 @@ namespace Bitmap_Test1_Schmid
         {
             Size = new Size(471, 270);
             string patientennummer = "";
-            //BUG: Autoincrement erhöht den wert auch wenn die Position danach wieder gelöscht wird
+            //Autoincrement erhöht den wert auch wenn die Position danach wieder gelöscht wird
             //-> Autoincrement daher möglicherweise höher als Max(Patientennummer)
             //egal weil so jeder Patient eine individuelle Nummer bekommt
+            //falls patienten gelöscht werden wird die alte Patientennummer nicht mehr vergeben
 #region SQL Verbindung um die höchste Patientennummer abzurufen
             //verwendung von query4
 #region zurücksetzen der Oberflächenelemente zur Suchmaske
@@ -770,7 +772,6 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show("Bitte zuerst einen Patienten auswählen", "Fehler");
 
 
-            //TODO: löschen von angelegten Patienten
         }
 
         private void Patienten_SelectedIndexChanged(object sender, EventArgs e)
