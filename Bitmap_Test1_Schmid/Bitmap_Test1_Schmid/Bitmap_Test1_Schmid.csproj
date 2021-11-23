@@ -236,6 +236,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\left.png" />
+    <None Include="Resources\klammer.png" />
     <Content Include="Resources\walking_man.ico" />
   </ItemGroup>
   <ItemGroup>

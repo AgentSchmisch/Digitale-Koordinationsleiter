@@ -216,7 +216,6 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1.Size = new System.Drawing.Size(1920, 1078);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // left_one
             // 

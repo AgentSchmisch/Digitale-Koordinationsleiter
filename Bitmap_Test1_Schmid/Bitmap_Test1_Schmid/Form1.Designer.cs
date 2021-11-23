@@ -54,6 +54,9 @@
             this.lblLezteTherapie = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.delsteps = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -61,11 +64,12 @@
             // 
             // steps
             // 
+            this.steps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.steps.Location = new System.Drawing.Point(154, 120);
+            this.steps.Location = new System.Drawing.Point(154, 125);
             this.steps.MaxLength = 2;
             this.steps.Name = "steps";
-            this.steps.Size = new System.Drawing.Size(71, 38);
+            this.steps.Size = new System.Drawing.Size(57, 38);
             this.steps.TabIndex = 1;
             this.steps.Text = "10";
             this.steps.TextChanged += new System.EventHandler(this.steps_TextChanged);
@@ -107,7 +111,6 @@
             this.label2.Size = new System.Drawing.Size(211, 26);
             this.label2.TabIndex = 20;
             this.label2.Text = "Länge des Objektes:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // längelabel
             // 
@@ -120,7 +123,7 @@
             // 
             this.längebox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.längebox.Enabled = false;
-            this.längebox.LargeChange = 2;
+            this.längebox.LargeChange = 1;
             this.längebox.Location = new System.Drawing.Point(305, 190);
             this.längebox.Minimum = 1;
             this.längebox.Name = "längebox";
@@ -161,7 +164,7 @@
             // 
             this.regler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.regler.Enabled = false;
-            this.regler.LargeChange = 2;
+            this.regler.LargeChange = 1;
             this.regler.Location = new System.Drawing.Point(305, 71);
             this.regler.Name = "regler";
             this.regler.Size = new System.Drawing.Size(273, 45);
@@ -227,6 +230,7 @@
             // 
             // patientToolStripMenuItem
             // 
+            this.patientToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.patientToolStripMenuItem.Name = "patientToolStripMenuItem";
             this.patientToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
             this.patientToolStripMenuItem.Text = "Patient auswählen";
@@ -234,6 +238,7 @@
             // 
             // kinectToolStripMenuItem
             // 
+            this.kinectToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.kinectToolStripMenuItem.Name = "kinectToolStripMenuItem";
             this.kinectToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.kinectToolStripMenuItem.Text = "Kinect";
@@ -241,6 +246,7 @@
             // 
             // kantenerkennungToolStripMenuItem
             // 
+            this.kantenerkennungToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.kantenerkennungToolStripMenuItem.Name = "kantenerkennungToolStripMenuItem";
             this.kantenerkennungToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
             this.kantenerkennungToolStripMenuItem.Text = "Kantenerkennung";
@@ -248,6 +254,7 @@
             // 
             // einstellungenToolStripMenuItem
             // 
+            this.einstellungenToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.einstellungenToolStripMenuItem.Name = "einstellungenToolStripMenuItem";
             this.einstellungenToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.einstellungenToolStripMenuItem.Text = "Einstellungen";
@@ -350,13 +357,53 @@
             this.label4.TabIndex = 36;
             this.label4.Text = "Position des Objektes:";
             // 
+            // delsteps
+            // 
+            this.delsteps.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delsteps.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.delsteps.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.delsteps.Location = new System.Drawing.Point(51, 251);
+            this.delsteps.Name = "delsteps";
+            this.delsteps.Size = new System.Drawing.Size(160, 68);
+            this.delsteps.TabIndex = 37;
+            this.delsteps.Text = "Fußabdrücke zurücksetzen";
+            this.delsteps.UseVisualStyleBackColor = true;
+            this.delsteps.Visible = false;
+            this.delsteps.Click += new System.EventHandler(this.delsteps_Click);
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label7.ForeColor = System.Drawing.Color.Transparent;
+            this.label7.Location = new System.Drawing.Point(266, 30);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(2, 330);
+            this.label7.TabIndex = 38;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label8.ForeColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(645, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(2, 330);
+            this.label8.TabIndex = 39;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(644, 370);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.delsteps);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblLezteTherapie);
@@ -380,6 +427,7 @@
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -389,8 +437,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Digitale Koordinationsleiter";
             this.TopMost = true;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -426,6 +473,9 @@
         private System.Windows.Forms.ToolStripMenuItem einstellungenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kantenerkennungToolStripMenuItem;
         private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Button delsteps;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
 

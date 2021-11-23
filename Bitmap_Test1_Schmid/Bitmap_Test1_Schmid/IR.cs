@@ -376,10 +376,6 @@ namespace Bitmap_Test1_Schmid
 
             multiplikator = Math.Round(1920.0 / (erg_x[3] - erg_x[0]) * 100) / 100; //unwichtig
         }
-        private void IR_FormClosing(object sender, FormClosingEventArgs e)
-        {
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (mode == 1)
@@ -471,7 +467,6 @@ namespace Bitmap_Test1_Schmid
                 klickanzahl = 0;
             }
         }
-
         private void reset_Click(object sender, EventArgs e)
         {
             ecken1_x = 0;

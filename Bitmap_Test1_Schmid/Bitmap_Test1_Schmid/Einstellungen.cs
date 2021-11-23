@@ -27,7 +27,7 @@ namespace Bitmap_Test1_Schmid
         private void Einstellungen_Load(object sender, EventArgs e)
         {
             ColorDialog colorpicker = new ColorDialog();
-
+            ColorDialog colorpicker2 = new ColorDialog();
         }
 
         private void but_dicke_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace Bitmap_Test1_Schmid
                 this._form1.screen.color_g = colorpicker.Color.G;
                 this._form1.screen.color_b = colorpicker.Color.B;
             }
-            if(this._form1.screen.color_box_r==0 && this._form1.screen.color_box_g==0 && this._form1.screen.color_box_b == 0)
+            if(colorpicker2.Color.R == 0 && colorpicker2.Color.G == 0 && colorpicker2.Color.B == 0)
             {
                 this._form1.screen.color_box_r = 150;
                 this._form1.screen.color_box_g = 0;

@@ -147,15 +147,8 @@ namespace Bitmap_Test1_Schmid
                 steps.Clear();
             }
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void patientToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
+        {   
             try
             {
                 //öffnen der Form für die Patientendatenbank, 
@@ -205,10 +198,10 @@ namespace Bitmap_Test1_Schmid
         private void kinectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             kinectM.form1 = this;
-            this.Hide();
+            //this.Hide();
             Task kinectmon = Task.Run(() => kinectM.ShowDialog());
             //kinectM.Show();//kürzlich geändert --> mögliche fehlerquelle
-            this.Show();
+            //this.Show();
             kinectM.steps_kinect = Convert.ToInt32(steps.Text);
         }
 
@@ -217,27 +210,38 @@ namespace Bitmap_Test1_Schmid
             einstellungen.form1 = this;
             einstellungen.ShowDialog();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            menuStrip1.ForeColor = Color.White;
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
-        }
-
         private void kantenerkennungToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             Task infrared = Task.Run(() => ir.ShowDialog());
             //if (ir != null)
             //{
             //    this.Hide();
             //}
             //ir.ShowDialog();
-            this.Show();
+            //this.Show();
+        }
+
+        private void delsteps_Click(object sender, EventArgs e)
+        {
+            screen.right_one.Hide();
+            screen.right_two.Hide();
+            screen.right_three.Hide();
+            screen.right_four.Hide();
+            screen.right_five.Hide();
+            screen.right_six.Hide();
+            screen.left_one.Hide();
+            screen.left_two.Hide();
+            screen.left_three.Hide();
+            screen.left_four.Hide();
+            screen.left_five.Hide();
+            screen.left_six.Hide();
+            kinectM.i = 0;
+        }
+        private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            if (MessageBox.Show("Wollen Sie wirklich neustarten?", "neustart", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                Application.Restart();
         }
     }
 }

@@ -40,7 +40,6 @@ namespace Bitmap_Test1_Schmid
         public Form2()
         {
             InitializeComponent();
-
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -107,12 +106,6 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
             }
         }
-
-        private void pictureBox1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Environment.Exit(1);
@@ -266,7 +259,7 @@ namespace Bitmap_Test1_Schmid
         {
 
         }
-        string stepsalt;
+        string stepsalt = "0";
         private void bestätigen_Click(object sender, EventArgs e)
         {
 
@@ -294,7 +287,7 @@ namespace Bitmap_Test1_Schmid
                 schrittlängealt = schrittlänge[1];
                 schrittlänge[0] = 0;
 
-                if (count == 1) //entfernt nur die bisherige Box und erneuert die waagrechte oben und unten
+                if (count == 1) //entfernt nur die bisherige Box 
                 {
                     for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++)                 //fläche
                     {
@@ -445,10 +438,6 @@ namespace Bitmap_Test1_Schmid
         public void übertragung()
         {
             _Kinect.form2 = this;
-        }
-        public void Kantenerkennung()
-        {
-
         }
     }
 }

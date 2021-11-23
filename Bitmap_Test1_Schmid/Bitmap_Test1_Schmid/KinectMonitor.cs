@@ -35,7 +35,7 @@ namespace Bitmap_Test1_Schmid
 
         public int steps_kinect = 0; // schritte von form1
         int count = 0;
-        int i = 0;
+        public int i = 0;//schrittezähler
         double[] durchschnitt=new double[99];
 
         retrieve_Kinect kinect = new retrieve_Kinect();
@@ -224,14 +224,14 @@ namespace Bitmap_Test1_Schmid
                                 }
                                 if (schritt_rechts[2] != 0)//wartet bis 3 werte vorhanden sind
                                 {
-                                    if (count == 1 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) >= 50 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) >= 50 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) >= 50)
+                                    if (count == 1 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) >= 30 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) >= 30 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) >= 30)
                                     {
                                         text.Text = "bewegt";
                                         // MessageBox.Show(schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2]);
                                         count = 0;
                                     }
 
-                                    if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= 50 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= 50 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= 5)
+                                    if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= 30 && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= 30 && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= 30)
                                     {
                                         durchschnitt[i] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - _form1.ir.erg_x[0]);// * _form1.ir.multiplikator;
                                         //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
@@ -241,6 +241,7 @@ namespace Bitmap_Test1_Schmid
                                         if (durchschnitt[0] != 0 && steps_kinect >= 1)
                                         {
                                             _form1.screen.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form1.screen.right_one.Size.Width / 2); _form1.screen.right_one.Show();
+                                            _form1.delsteps.Visible = true;
                                         }
                                         if (durchschnitt[1] != 0 && steps_kinect >= 2)
                                         {
@@ -324,7 +325,7 @@ namespace Bitmap_Test1_Schmid
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(e.X + "\n" + e.Y);
+            //MessageBox.Show(e.X + "\n" + e.Y);
         }
     }
 }
