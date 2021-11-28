@@ -134,7 +134,6 @@ namespace Bitmap_Test1_Schmid
                                 (int)(center.Y - radius),
                                 (int)(radius * 2),
                                 (int)(radius * 2));
-                            //TODO: überprüfen ob mehr als 4 punkte sichtbar sind
                             if (i == 1)
                             {
                                 ecken1_x = (int)center.X;
@@ -385,7 +384,7 @@ namespace Bitmap_Test1_Schmid
                 reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
                 reader.MultiSourceFrameArrived += reader_IRFrameArrived;
             }
-            if (mode == 0 && mode2==0)//TODO: geht nich wirklich
+            if (mode == 0 && mode2==0)//TODO: geht nich wirklich --> unwichtig!
             {
                 mode = 1;
                 reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);

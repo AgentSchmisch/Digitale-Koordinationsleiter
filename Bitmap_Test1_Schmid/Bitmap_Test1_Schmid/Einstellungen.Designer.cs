@@ -37,13 +37,12 @@ namespace Bitmap_Test1_Schmid
             this.but_ändern = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.colorpicker2 = new System.Windows.Forms.ColorDialog();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bar_dicke)).BeginInit();
             this.SuspendLayout();
             // 
             // colorpicker
             // 
-            this.colorpicker.AllowFullOpen = false;
-            this.colorpicker.AnyColor = true;
             this.colorpicker.SolidColorOnly = true;
             // 
             // bar_dicke
@@ -87,7 +86,7 @@ namespace Bitmap_Test1_Schmid
             this.but_ändern.ForeColor = System.Drawing.Color.White;
             this.but_ändern.Location = new System.Drawing.Point(225, 16);
             this.but_ändern.Name = "but_ändern";
-            this.but_ändern.Size = new System.Drawing.Size(234, 46);
+            this.but_ändern.Size = new System.Drawing.Size(217, 46);
             this.but_ändern.TabIndex = 5;
             this.but_ändern.Text = "Farbe der Linie ändern";
             this.but_ändern.UseVisualStyleBackColor = true;
@@ -100,7 +99,7 @@ namespace Bitmap_Test1_Schmid
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(225, 78);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(234, 46);
+            this.button1.Size = new System.Drawing.Size(217, 46);
             this.button1.TabIndex = 6;
             this.button1.Text = "Farbe der Box ändern";
             this.button1.UseVisualStyleBackColor = true;
@@ -112,13 +111,27 @@ namespace Bitmap_Test1_Schmid
             this.colorpicker2.AnyColor = true;
             this.colorpicker2.SolidColorOnly = true;
             // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.button2.ForeColor = System.Drawing.Color.Transparent;
+            this.button2.Location = new System.Drawing.Point(276, 135);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(93, 32);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Farb-Reset";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Einstellungen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(475, 143);
+            this.ClientSize = new System.Drawing.Size(461, 179);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.but_ändern);
             this.Controls.Add(this.anzeige);
@@ -147,5 +160,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.ColorDialog colorpicker;
         public System.Windows.Forms.ColorDialog colorpicker2;
+        private System.Windows.Forms.Button button2;
     }
 }

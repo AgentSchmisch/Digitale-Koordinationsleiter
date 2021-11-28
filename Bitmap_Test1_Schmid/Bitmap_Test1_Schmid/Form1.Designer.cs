@@ -438,6 +438,7 @@
             this.Text = "Digitale Koordinationsleiter";
             this.TopMost = true;
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).EndInit();
             this.menuStrip1.ResumeLayout(false);

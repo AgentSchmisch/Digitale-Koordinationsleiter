@@ -44,6 +44,13 @@ namespace Bitmap_Test1_Schmid
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            color_box_r=Properties.Settings.Default.colorbox_r;
+            color_box_g=Properties.Settings.Default.colorbox_g;
+            color_box_b=Properties.Settings.Default.colorbox_b;
+            color_r=Properties.Settings.Default.color_r;
+            color_g=Properties.Settings.Default.color_g;//ruft Farbwerte ab
+            color_b=Properties.Settings.Default.color_b;
+
             int rightfoot = waagrechtunten - 250;
             int leftfoot = waagrechtoben + 150;
 
@@ -435,6 +442,7 @@ namespace Bitmap_Test1_Schmid
                 right_one.Show();
             }
         }
+
         public void übertragung()
         {
             _Kinect.form2 = this;

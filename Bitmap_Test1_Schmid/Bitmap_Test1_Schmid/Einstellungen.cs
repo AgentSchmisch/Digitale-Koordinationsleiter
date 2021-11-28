@@ -50,9 +50,9 @@ namespace Bitmap_Test1_Schmid
             this._form1.screen.dicke = bar_dicke.Value;
             if (colorpicker.Color.R == 0 && colorpicker.Color.G == 0 && colorpicker.Color.B == 0)
             {
-                this._form1.screen.color_r = 255;
-                this._form1.screen.color_g = 255;
-                this._form1.screen.color_b = 255;
+                this._form1.screen.color_r = Properties.Settings.Default.color_r;
+                this._form1.screen.color_g = Properties.Settings.Default.color_g;
+                this._form1.screen.color_b = Properties.Settings.Default.color_b;
             }
             else
             {
@@ -62,9 +62,9 @@ namespace Bitmap_Test1_Schmid
             }
             if(colorpicker2.Color.R == 0 && colorpicker2.Color.G == 0 && colorpicker2.Color.B == 0)
             {
-                this._form1.screen.color_box_r = 150;
-                this._form1.screen.color_box_g = 0;
-                this._form1.screen.color_box_b = 180;
+                this._form1.screen.color_box_r = Properties.Settings.Default.colorbox_r;
+                this._form1.screen.color_box_g = Properties.Settings.Default.colorbox_g;
+                this._form1.screen.color_box_b = Properties.Settings.Default.colorbox_b;
             }
             else
             {
@@ -87,6 +87,25 @@ namespace Bitmap_Test1_Schmid
         private void Speichern_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this._form1.screen.color_box_r = 150;
+            this._form1.screen.color_box_g = 0;
+            this._form1.screen.color_box_b = 180;
+
+            this._form1.screen.color_r = 255;
+            this._form1.screen.color_g = 255;
+            this._form1.screen.color_b = 255;
+
+            Properties.Settings.Default.colorbox_r = 150;
+            Properties.Settings.Default.colorbox_g =0;
+            Properties.Settings.Default.colorbox_b =180;
+            Properties.Settings.Default.color_r =255;
+            Properties.Settings.Default.color_g = 255;//speichert Farbwerte
+            Properties.Settings.Default.color_b = 255;
+            Properties.Settings.Default.Save();
         }
     }
 }

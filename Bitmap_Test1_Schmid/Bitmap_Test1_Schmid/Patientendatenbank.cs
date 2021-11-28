@@ -621,7 +621,7 @@ namespace Bitmap_Test1_Schmid
 
         }
 
-        private void TbTelefonnummer_KeyPress(object sender, KeyPressEventArgs e) //TODO: wenn man die Telefonnummer löscht und davor schon eigegeben hat kann keine neue mehr eingegeben werden!
+        private void TbTelefonnummer_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '+'))
             {

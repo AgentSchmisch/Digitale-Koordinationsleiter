@@ -239,8 +239,19 @@ namespace Bitmap_Test1_Schmid
         }
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            if (MessageBox.Show("Wollen Sie wirklich neustarten?", "neustart", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show("Wollen Sie wirklich neustarten?", "neustart", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 Application.Restart();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.colorbox_r = screen.color_box_r;
+            Properties.Settings.Default.colorbox_g = screen.color_box_g;
+            Properties.Settings.Default.colorbox_b = screen.color_box_b;
+            Properties.Settings.Default.color_r = screen.color_r;
+            Properties.Settings.Default.color_g = screen.color_g;//speichert Farbwerte
+            Properties.Settings.Default.color_b = screen.color_b;
+            Properties.Settings.Default.Save();
         }
     }
 }
