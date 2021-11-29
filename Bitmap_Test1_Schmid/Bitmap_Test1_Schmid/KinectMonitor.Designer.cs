@@ -44,6 +44,7 @@ namespace Bitmap_Test1_Schmid
             this.k3 = new System.Windows.Forms.Label();
             this.k2 = new System.Windows.Forms.Label();
             this.k1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -172,7 +173,7 @@ namespace Bitmap_Test1_Schmid
             this.text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.text.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
             this.text.ForeColor = System.Drawing.Color.White;
-            this.text.Location = new System.Drawing.Point(12, 456);
+            this.text.Location = new System.Drawing.Point(12, 442);
             this.text.Name = "text";
             this.text.Size = new System.Drawing.Size(0, 37);
             this.text.TabIndex = 19;
@@ -225,6 +226,18 @@ namespace Bitmap_Test1_Schmid
             this.k1.TabIndex = 20;
             this.k1.Text = "label1";
             // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(729, 442);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "verlauf";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // KinectMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,6 +245,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(872, 488);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.k4);
             this.Controls.Add(this.k3);
             this.Controls.Add(this.k2);
@@ -247,6 +261,7 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "KinectMonitor";
             this.ShowIcon = false;
@@ -278,5 +293,6 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.Label k3;
         public System.Windows.Forms.Label k2;
         public System.Windows.Forms.Label k1;
+        private System.Windows.Forms.Button button1;
     }
 }

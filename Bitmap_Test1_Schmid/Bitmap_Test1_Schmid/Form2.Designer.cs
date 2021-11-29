@@ -54,6 +54,16 @@ namespace Bitmap_Test1_Schmid
             this.right_six = new System.Windows.Forms.PictureBox();
             this.left_six = new System.Windows.Forms.PictureBox();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.right_nine = new System.Windows.Forms.PictureBox();
+            this.left_nine = new System.Windows.Forms.PictureBox();
+            this.right_eight = new System.Windows.Forms.PictureBox();
+            this.left_eight = new System.Windows.Forms.PictureBox();
+            this.right_seven = new System.Windows.Forms.PictureBox();
+            this.left_seven = new System.Windows.Forms.PictureBox();
+            this.right_ten = new System.Windows.Forms.PictureBox();
+            this.left_ten = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,6 +79,16 @@ namespace Bitmap_Test1_Schmid
             ((System.ComponentModel.ISupportInitialize)(this.left_five)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.right_six)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_six)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.right_nine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.left_nine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.right_eight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.left_eight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.right_seven)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.left_seven)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.right_ten)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.left_ten)).BeginInit();
             this.SuspendLayout();
             // 
             // bestätigen
@@ -362,6 +382,126 @@ namespace Bitmap_Test1_Schmid
             this.left_six.TabIndex = 25;
             this.left_six.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Black;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(1474, 227);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(155, 73);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 34;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Black;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
+            this.pictureBox3.Location = new System.Drawing.Point(1474, 148);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(155, 73);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 33;
+            this.pictureBox3.TabStop = false;
+            // 
+            // right_nine
+            // 
+            this.right_nine.BackColor = System.Drawing.Color.Black;
+            this.right_nine.Image = ((System.Drawing.Image)(resources.GetObject("right_nine.Image")));
+            this.right_nine.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_nine.InitialImage")));
+            this.right_nine.Location = new System.Drawing.Point(1313, 227);
+            this.right_nine.Name = "right_nine";
+            this.right_nine.Size = new System.Drawing.Size(155, 73);
+            this.right_nine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.right_nine.TabIndex = 32;
+            this.right_nine.TabStop = false;
+            // 
+            // left_nine
+            // 
+            this.left_nine.BackColor = System.Drawing.Color.Black;
+            this.left_nine.Image = ((System.Drawing.Image)(resources.GetObject("left_nine.Image")));
+            this.left_nine.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_nine.InitialImage")));
+            this.left_nine.Location = new System.Drawing.Point(1313, 148);
+            this.left_nine.Name = "left_nine";
+            this.left_nine.Size = new System.Drawing.Size(155, 73);
+            this.left_nine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.left_nine.TabIndex = 31;
+            this.left_nine.TabStop = false;
+            // 
+            // right_eight
+            // 
+            this.right_eight.BackColor = System.Drawing.Color.Black;
+            this.right_eight.Image = ((System.Drawing.Image)(resources.GetObject("right_eight.Image")));
+            this.right_eight.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_eight.InitialImage")));
+            this.right_eight.Location = new System.Drawing.Point(1152, 227);
+            this.right_eight.Name = "right_eight";
+            this.right_eight.Size = new System.Drawing.Size(155, 73);
+            this.right_eight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.right_eight.TabIndex = 30;
+            this.right_eight.TabStop = false;
+            // 
+            // left_eight
+            // 
+            this.left_eight.BackColor = System.Drawing.Color.Black;
+            this.left_eight.Image = ((System.Drawing.Image)(resources.GetObject("left_eight.Image")));
+            this.left_eight.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_eight.InitialImage")));
+            this.left_eight.Location = new System.Drawing.Point(1152, 148);
+            this.left_eight.Name = "left_eight";
+            this.left_eight.Size = new System.Drawing.Size(155, 73);
+            this.left_eight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.left_eight.TabIndex = 29;
+            this.left_eight.TabStop = false;
+            // 
+            // right_seven
+            // 
+            this.right_seven.BackColor = System.Drawing.Color.Black;
+            this.right_seven.Image = ((System.Drawing.Image)(resources.GetObject("right_seven.Image")));
+            this.right_seven.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_seven.InitialImage")));
+            this.right_seven.Location = new System.Drawing.Point(991, 227);
+            this.right_seven.Name = "right_seven";
+            this.right_seven.Size = new System.Drawing.Size(155, 73);
+            this.right_seven.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.right_seven.TabIndex = 28;
+            this.right_seven.TabStop = false;
+            // 
+            // left_seven
+            // 
+            this.left_seven.BackColor = System.Drawing.Color.Black;
+            this.left_seven.Image = ((System.Drawing.Image)(resources.GetObject("left_seven.Image")));
+            this.left_seven.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_seven.InitialImage")));
+            this.left_seven.Location = new System.Drawing.Point(991, 148);
+            this.left_seven.Name = "left_seven";
+            this.left_seven.Size = new System.Drawing.Size(155, 73);
+            this.left_seven.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.left_seven.TabIndex = 27;
+            this.left_seven.TabStop = false;
+            // 
+            // right_ten
+            // 
+            this.right_ten.BackColor = System.Drawing.Color.Black;
+            this.right_ten.Image = ((System.Drawing.Image)(resources.GetObject("right_ten.Image")));
+            this.right_ten.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_ten.InitialImage")));
+            this.right_ten.Location = new System.Drawing.Point(1313, 385);
+            this.right_ten.Name = "right_ten";
+            this.right_ten.Size = new System.Drawing.Size(155, 73);
+            this.right_ten.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.right_ten.TabIndex = 36;
+            this.right_ten.TabStop = false;
+            // 
+            // left_ten
+            // 
+            this.left_ten.BackColor = System.Drawing.Color.Black;
+            this.left_ten.Image = ((System.Drawing.Image)(resources.GetObject("left_ten.Image")));
+            this.left_ten.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_ten.InitialImage")));
+            this.left_ten.Location = new System.Drawing.Point(1313, 306);
+            this.left_ten.Name = "left_ten";
+            this.left_ten.Size = new System.Drawing.Size(155, 73);
+            this.left_ten.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.left_ten.TabIndex = 35;
+            this.left_ten.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,6 +509,16 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1455, 894);
+            this.Controls.Add(this.right_ten);
+            this.Controls.Add(this.left_ten);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.right_nine);
+            this.Controls.Add(this.left_nine);
+            this.Controls.Add(this.right_eight);
+            this.Controls.Add(this.left_eight);
+            this.Controls.Add(this.right_seven);
+            this.Controls.Add(this.left_seven);
             this.Controls.Add(this.right_six);
             this.Controls.Add(this.left_six);
             this.Controls.Add(this.right_five);
@@ -415,6 +565,16 @@ namespace Bitmap_Test1_Schmid
             ((System.ComponentModel.ISupportInitialize)(this.left_five)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.right_six)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_six)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.right_nine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.left_nine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.right_eight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.left_eight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.right_seven)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.left_seven)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.right_ten)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.left_ten)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,5 +606,15 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.PictureBox left_five;
         public System.Windows.Forms.PictureBox right_six;
         public System.Windows.Forms.PictureBox left_six;
+        public System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.PictureBox pictureBox3;
+        public System.Windows.Forms.PictureBox right_nine;
+        public System.Windows.Forms.PictureBox left_nine;
+        public System.Windows.Forms.PictureBox right_eight;
+        public System.Windows.Forms.PictureBox left_eight;
+        public System.Windows.Forms.PictureBox right_seven;
+        public System.Windows.Forms.PictureBox left_seven;
+        public System.Windows.Forms.PictureBox right_ten;
+        public System.Windows.Forms.PictureBox left_ten;
     }
 }

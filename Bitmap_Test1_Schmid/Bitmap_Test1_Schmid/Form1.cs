@@ -197,11 +197,11 @@ namespace Bitmap_Test1_Schmid
         private void kinectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             kinectM.form1 = this;
-            //this.Hide();
-            Task kinectmon = Task.Run(() => kinectM.ShowDialog());
-            //kinectM.Show();//kürzlich geändert --> mögliche fehlerquelle
-            //this.Show();
             kinectM.steps_kinect = Convert.ToInt32(steps.Text);
+            //this.Hide();
+            //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
+            kinectM.Show();//kürzlich geändert --> mögliche fehlerquelle
+            //this.Show();
         }
 
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -235,7 +235,7 @@ namespace Bitmap_Test1_Schmid
             screen.left_four.Hide();
             screen.left_five.Hide();
             screen.left_six.Hide();
-            kinectM.i = 0;
+            kinectM.schrittzähler = 0;
         }
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
         {
