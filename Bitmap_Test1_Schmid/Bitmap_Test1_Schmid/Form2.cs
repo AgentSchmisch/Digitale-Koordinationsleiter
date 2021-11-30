@@ -54,18 +54,27 @@ namespace Bitmap_Test1_Schmid
             int rightfoot = waagrechtunten - 250;
             int leftfoot = waagrechtoben + 150;
 
-            right_one.Hide();
-            right_two.Hide();
-            right_three.Hide();
-            right_four.Hide();
-            right_five.Hide();
-            right_six.Hide();
-            left_one.Hide();
-            left_two.Hide();
-            left_three.Hide();
-            left_four.Hide();
-            left_five.Hide();
-            left_six.Hide();
+            //right_one.Hide();
+            //right_two.Hide();
+            //right_three.Hide();
+            //right_four.Hide();
+            //right_five.Hide();
+            //right_six.Hide();
+            //right_seven.Hide();
+            //right_eight.Hide();
+            //right_nine.Hide();
+            //right_ten.Hide();
+
+            //left_one.Hide();
+            //left_two.Hide();
+            //left_three.Hide();
+            //left_four.Hide();
+            //left_five.Hide();
+            //left_six.Hide();
+            //left_seven.Hide();
+            //left_eight.Hide();
+            //left_nine.Hide();
+            //left_ten.Hide();
 
             right_one.Top = rightfoot;
             right_two.Top = rightfoot;
@@ -73,6 +82,10 @@ namespace Bitmap_Test1_Schmid
             right_four.Top = rightfoot;
             right_five.Top = rightfoot;
             right_six.Top = rightfoot;
+            right_seven.Top = rightfoot;
+            right_eight.Top = rightfoot;
+            right_nine.Top = rightfoot;
+            right_ten.Top = rightfoot;
 
             left_one.Top = leftfoot;
             left_two.Top = leftfoot;
@@ -80,6 +93,10 @@ namespace Bitmap_Test1_Schmid
             left_four.Top = leftfoot;
             left_five.Top = leftfoot;
             left_six.Top = leftfoot;
+            left_seven.Top = leftfoot;
+            left_eight.Top = leftfoot;
+            left_nine.Top = leftfoot;
+            left_ten.Top = leftfoot;
 
             image1 = new Bitmap(1920, 1080); //1920 entspricht 5m = 500cm
             try

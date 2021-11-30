@@ -45,6 +45,7 @@ namespace Bitmap_Test1_Schmid
             this.k2 = new System.Windows.Forms.Label();
             this.k1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -64,96 +65,96 @@ namespace Bitmap_Test1_Schmid
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(550, 19);
+            this.label1.Location = new System.Drawing.Point(531, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 25);
+            this.label1.Size = new System.Drawing.Size(135, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "linker Fuß";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(724, 19);
+            this.label2.Location = new System.Drawing.Point(705, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 25);
+            this.label2.Size = new System.Drawing.Size(155, 31);
             this.label2.TabIndex = 2;
             this.label2.Text = "rechter Fuß";
             // 
             // Zrechts
             // 
             this.Zrechts.AutoSize = true;
-            this.Zrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Zrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.Zrechts.ForeColor = System.Drawing.Color.White;
-            this.Zrechts.Location = new System.Drawing.Point(724, 218);
+            this.Zrechts.Location = new System.Drawing.Point(746, 212);
             this.Zrechts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Zrechts.Name = "Zrechts";
-            this.Zrechts.Size = new System.Drawing.Size(24, 25);
+            this.Zrechts.Size = new System.Drawing.Size(31, 31);
             this.Zrechts.TabIndex = 17;
             this.Zrechts.Text = "Z";
             // 
             // Yrechts
             // 
             this.Yrechts.AutoSize = true;
-            this.Yrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Yrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.Yrechts.ForeColor = System.Drawing.Color.White;
-            this.Yrechts.Location = new System.Drawing.Point(724, 143);
+            this.Yrechts.Location = new System.Drawing.Point(746, 137);
             this.Yrechts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Yrechts.Name = "Yrechts";
-            this.Yrechts.Size = new System.Drawing.Size(25, 25);
+            this.Yrechts.Size = new System.Drawing.Size(32, 31);
             this.Yrechts.TabIndex = 16;
             this.Yrechts.Text = "Y";
             // 
             // Xrechts
             // 
             this.Xrechts.AutoSize = true;
-            this.Xrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Xrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.Xrechts.ForeColor = System.Drawing.Color.White;
-            this.Xrechts.Location = new System.Drawing.Point(724, 69);
+            this.Xrechts.Location = new System.Drawing.Point(746, 63);
             this.Xrechts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Xrechts.Name = "Xrechts";
-            this.Xrechts.Size = new System.Drawing.Size(26, 25);
+            this.Xrechts.Size = new System.Drawing.Size(32, 31);
             this.Xrechts.TabIndex = 15;
             this.Xrechts.Text = "X";
             // 
             // Zlinks
             // 
             this.Zlinks.AutoSize = true;
-            this.Zlinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Zlinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.Zlinks.ForeColor = System.Drawing.Color.White;
-            this.Zlinks.Location = new System.Drawing.Point(550, 218);
+            this.Zlinks.Location = new System.Drawing.Point(572, 212);
             this.Zlinks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Zlinks.Name = "Zlinks";
-            this.Zlinks.Size = new System.Drawing.Size(24, 25);
+            this.Zlinks.Size = new System.Drawing.Size(31, 31);
             this.Zlinks.TabIndex = 14;
             this.Zlinks.Text = "Z";
             // 
             // Ylinks
             // 
             this.Ylinks.AutoSize = true;
-            this.Ylinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Ylinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.Ylinks.ForeColor = System.Drawing.Color.White;
-            this.Ylinks.Location = new System.Drawing.Point(550, 143);
+            this.Ylinks.Location = new System.Drawing.Point(572, 137);
             this.Ylinks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Ylinks.Name = "Ylinks";
-            this.Ylinks.Size = new System.Drawing.Size(25, 25);
+            this.Ylinks.Size = new System.Drawing.Size(32, 31);
             this.Ylinks.TabIndex = 13;
             this.Ylinks.Text = "Y";
             // 
             // Xlinks
             // 
             this.Xlinks.AutoSize = true;
-            this.Xlinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Xlinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.Xlinks.ForeColor = System.Drawing.Color.White;
-            this.Xlinks.Location = new System.Drawing.Point(550, 69);
+            this.Xlinks.Location = new System.Drawing.Point(572, 63);
             this.Xlinks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Xlinks.Name = "Xlinks";
-            this.Xlinks.Size = new System.Drawing.Size(26, 25);
+            this.Xlinks.Size = new System.Drawing.Size(32, 31);
             this.Xlinks.TabIndex = 12;
             this.Xlinks.Text = "X";
             // 
@@ -238,6 +239,18 @@ namespace Bitmap_Test1_Schmid
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(553, 300);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 37);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "-";
+            // 
             // KinectMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,6 +258,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(872, 488);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.k4);
             this.Controls.Add(this.k3);
@@ -294,5 +308,6 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.Label k2;
         public System.Windows.Forms.Label k1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
     }
 }

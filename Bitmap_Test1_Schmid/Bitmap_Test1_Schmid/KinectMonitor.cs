@@ -37,7 +37,7 @@ namespace Bitmap_Test1_Schmid
         int count = 0;
         public int schrittzähler = 0;//schrittezähler
         double[] durchschnitt=new double[99];
-        int schritterkennungabstand = 15;
+        int schritterkennungabstand = 12;
 
         retrieve_Kinect kinect = new retrieve_Kinect();
 
@@ -60,17 +60,17 @@ namespace Bitmap_Test1_Schmid
         {
             Pen blackPen = new Pen(Color.Red, 3);
 
-            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[0]), (int)(_form1.ir.erg_y[0]), (int)(_form1.ir.erg_x[1]), (int)(_form1.ir.erg_y[1]));// ro ru
-            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[0]), (int)(_form1.ir.erg_y[0]), (int)(_form1.ir.erg_x[3]), (int)(_form1.ir.erg_y[3]));// ro lo
-            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[2]), (int)(_form1.ir.erg_y[2]), (int)(_form1.ir.erg_x[3]), (int)(_form1.ir.erg_y[3]));// lu lo
-            e.Graphics.DrawLine(blackPen, (int)(_form1.ir.erg_x[2]), (int)(_form1.ir.erg_y[2]), (int)(_form1.ir.erg_x[1]), (int)(_form1.ir.erg_y[1]));// lu ru
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[0] * 1.706)), (int)(_form1.ir.erg_y[0]), (int)(Math.Round(_form1.ir.erg_x[1] * 1.706)), (int)(_form1.ir.erg_y[1]));// ro ru
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[0] * 1.706)), (int)(_form1.ir.erg_y[0]), (int)(Math.Round(_form1.ir.erg_x[3] * 1.706)), (int)(_form1.ir.erg_y[3]));// ro lo
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[2] * 1.706)), (int)(_form1.ir.erg_y[2]), (int)(Math.Round(_form1.ir.erg_x[3] * 1.706)), (int)(_form1.ir.erg_y[3]));// lu lo
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[2] * 1.706)), (int)(_form1.ir.erg_y[2]), (int)(Math.Round(_form1.ir.erg_x[1] * 1.706)), (int)(_form1.ir.erg_y[1]));// lu ru
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
-            _form1.ir.erg_x[0] = _form1.ir.erg_x[0] - 15;
-            _form1.ir.erg_x[1] = _form1.ir.erg_x[1] - 15;
-            _form1.ir.erg_x[2] = _form1.ir.erg_x[2] - 10;
-            _form1.ir.erg_x[3] = _form1.ir.erg_x[3] - 10;
+            //_form1.ir.erg_x[0] = _form1.ir.erg_x[0] - 15;
+            //_form1.ir.erg_x[1] = _form1.ir.erg_x[1] - 15;
+            //_form1.ir.erg_x[2] = _form1.ir.erg_x[2] - 10;
+            //_form1.ir.erg_x[3] = _form1.ir.erg_x[3] - 10;
 
             #region kalibrierungspunkte einzeichnen
             //k1.Left = (int)_form1.ir.erg_x[0] / 2;
@@ -199,7 +199,7 @@ namespace Bitmap_Test1_Schmid
                     ColorFiltering filter = new ColorFiltering();
                     BrightnessCorrection filter2 = new BrightnessCorrection(+50);
 
-                    ResizeNearestNeighbor filter3 = new ResizeNearestNeighbor(635, 350);//passt so hoffentlich
+                    ResizeNearestNeighbor filter3 = new ResizeNearestNeighbor(512, 424);//passt so hoffentlich
                     Bitmap newImage = filter3.Apply(bitmap);
 
                     filter.Red = new AForge.IntRange(0, 255);
@@ -240,13 +240,15 @@ namespace Bitmap_Test1_Schmid
                         Joint FootRight = joints[JointType.FootRight];
                         Joint FootLeft = joints[JointType.FootLeft];
 
-                        float rf_distance_x = ((FootRight.Position.X * -100) + 256);// * (375 / 100);
+                        float rf_distance_x = ((FootRight.Position.X * 100) + 150);// * (375 / 100);
                         float rf_distance_y = FootRight.Position.Y * 1000;
                         float rf_distance_z = FootRight.Position.Z;
 
-                        float lf_distance_x = ((FootLeft.Position.X * -100) + 256);// * (375 / 100);
+                        float lf_distance_x = ((FootLeft.Position.X * 100) + 150);// * (375 / 100);
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
+
+                        //label3.Text = Math.Round(lf_distance_x) + "     " + Math.Round(rf_distance_x);
 
                         Xlinks.Text = lf_distance_x.ToString("###");
                         Ylinks.Text = lf_distance_y.ToString("###");
@@ -256,10 +258,12 @@ namespace Bitmap_Test1_Schmid
                         Yrechts.Text = rf_distance_y.ToString("###");//TODO: spiegeln                                                               
                         Zrechts.Text = rf_distance_z.ToString("#.##");//Todo: farb ungleich infrarot (0. usw.)
 
-                        //if (Convert.ToInt32(Xlinks.Text) >= _form1.ir.erg_x[0] && Convert.ToInt32(Xlinks.Text) <= _form1.ir.erg_x[3])
-                        //{// erst wenns innerhalb vom anzeigefeld ist soll er tracken
-                        #region tracking
-                        tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
+                        //label3.Text = Xrechts.Text + "   " + _form1.ir.erg_x[1] + "\n" + Xlinks.Text + "   " + _form1.ir.erg_x[2];
+
+                        if (Convert.ToInt32(lf_distance_x) >= _form1.ir.erg_x[2] && Convert.ToInt32(lf_distance_x) <= _form1.ir.erg_x[1] || Convert.ToInt32(rf_distance_x) >= _form1.ir.erg_x[2] && Convert.ToInt32(rf_distance_x) <= _form1.ir.erg_x[1])
+                        {// erst wenns innerhalb vom anzeigefeld ist soll er tracken
+                            #region tracking
+                            tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
                             tracker_xlinks[0] = Convert.ToDouble(Xlinks.Text);
 
                                 for (int i = 0; i < 9; i++)
@@ -288,15 +292,14 @@ namespace Bitmap_Test1_Schmid
 
                                     if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= schritterkennungabstand && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= schritterkennungabstand && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= schritterkennungabstand)
                                     {
-                                        durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - _form1.ir.erg_x[0]) * 3.75;// * _form1.ir.multiplikator;
+                                        durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - _form1.ir.erg_x[2]) * 6.4;// * _form1.ir.multiplikator;
                                         //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
-                                        text.Text = "Position rechts: " + durchschnitt[schrittzähler] + " (" + durchschnitt[schrittzähler] / 3.75 + ")" + "   Schrittnummer: " + schrittzähler.ToString();
+                                        text.Text = "Position rechts: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
                                         //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
                                         #region Fußabdruck zeichnen rechts
                                         if (durchschnitt[0] != 0 && schrittzähler == 0)
                                         {
                                             _form1.screen.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form1.screen.right_one.Size.Width / 2); _form1.screen.right_one.Show();
-                                            _form1.delsteps.Visible = true;
                                         }
                                         if (durchschnitt[2] != 0 && schrittzähler == 2)
                                         {
@@ -337,10 +340,11 @@ namespace Bitmap_Test1_Schmid
 
                                 #endregion
                                 //_form2.übertragung();
-                                for (int i = 0; i < 1000; i++) { }
+                                //for (int i = 0; i < 100; i++) { }
                                         count = 1;
                                         schrittzähler++;
-                                    }
+                                    _form1.delsteps.Visible = true;
+                                }
                                     /*
                                     else if (count == 1 && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) > (durchschnitt + 30) && ((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) < (durchschnitt - 30))
                                     {
@@ -360,9 +364,9 @@ namespace Bitmap_Test1_Schmid
 
                                     if (count == 0 && Math.Abs(schritt_links[0] - schritt_links[1]) <= schritterkennungabstand && Math.Abs(schritt_links[1] - schritt_links[2]) <= schritterkennungabstand && Math.Abs(schritt_links[0] - schritt_links[2]) <= schritterkennungabstand)
                                     {
-                                        durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - _form1.ir.erg_x[0]) * 3.75;// * _form1.ir.multiplikator;
+                                        durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - _form1.ir.erg_x[2]) * 6.4;
                                                                                                                                                              //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
-                                        text.Text = "Position links: " + durchschnitt[schrittzähler] + " (" + durchschnitt[schrittzähler] / 3.75 + ")" + "   Schrittnummer: " + schrittzähler.ToString();
+                                        text.Text = "Position links: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
                                         //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
                                         #region Fußabdruck zeichnen links
                                         if (durchschnitt[1] != 0 && schrittzähler == 1)
@@ -407,8 +411,8 @@ namespace Bitmap_Test1_Schmid
                                         }
 
                                 #endregion
-                                //_form2.übertragung();
-                                for (int i = 0; i < 1000; i++) { }
+                                    //_form2.übertragung();
+                                    //for (int i = 0; i < 1000; i++) { }
                                         count = 1;
                                         schrittzähler++;
                                     }
@@ -426,7 +430,7 @@ namespace Bitmap_Test1_Schmid
                                 zw_tracker_xlinks[i] = tracker_xlinks[i];
                             }
                         #endregion
-                        //}
+                        }
                     }
                 }
             }

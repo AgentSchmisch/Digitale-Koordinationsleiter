@@ -95,7 +95,7 @@ namespace Bitmap_Test1_Schmid
 
                     counter = new BlobCounter();
                     EuclideanColorFiltering filter = new EuclideanColorFiltering();
-                    ResizeNearestNeighbor filter2 = new ResizeNearestNeighbor(1920, 1080);
+                    //ResizeNearestNeighbor filter2 = new ResizeNearestNeighbor(1920, 1080);
                     filter.CenterColor = new RGB(Color.White); //Pure White
                     filter.Radius = (short)trackBar1.Value; //Increase this to allow off-whites
                     filter.FillOutside = false;
@@ -103,7 +103,7 @@ namespace Bitmap_Test1_Schmid
 
                     Bitmap bmp = filter.Apply(bitmap);
 
-                    filter2.Apply(bmp);
+                    //filter2.Apply(bmp);
                     //filter3.Apply(bmp);
 
                     //filter.CenterColor = new RGB(0, 0, 0);
@@ -187,10 +187,10 @@ namespace Bitmap_Test1_Schmid
             //ecken3_y = 360;
             //ecken4_y = 380;
 
-            vergleich_x[0] = ecken1_x;// * 3.75;//upscaling
-            vergleich_x[1] = ecken2_x;// * 3.75;
-            vergleich_x[2] = ecken3_x;// * 3.75;
-            vergleich_x[3] = ecken4_x;// * 3.75;
+            vergleich_x[0] = Math.Round(ecken1_x * 0.5859375);//scaling auf 300
+            vergleich_x[1] = Math.Round(ecken2_x * 0.5859375);
+            vergleich_x[2] = Math.Round(ecken3_x * 0.5859375);
+            vergleich_x[3] = Math.Round(ecken4_x * 0.5859375);
 
             vergleich_y[0] = ecken1_y;// * 2.54;
             vergleich_y[1] = ecken2_y;// * 2.54;
@@ -203,7 +203,7 @@ namespace Bitmap_Test1_Schmid
                 return;
             }
 
-            label2.Text = "Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
+            label2.Text = "Punkt 1: " + vergleich_x[0] + " " + ecken1_y + "\n" + "Punkt 2: " + vergleich_x[1] + " " + ecken2_y + "\n" + "Punkt 3: " + vergleich_x[2] + " " + vergleich_x[3] + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
 
             vergleich2_x[0] = vergleich_x[0];
             vergleich2_x[1] = vergleich_x[1];
@@ -357,23 +357,23 @@ namespace Bitmap_Test1_Schmid
             //                "links unten: " + erg_x[2] + " " + erg_y[2] + "\n" + 
             //                "links oben: " + erg_x[3] + " " + erg_y[3]);
 
-            k1.Left = (int)(erg_x[0]);
+            k1.Left = (int)Math.Round(erg_x[0] * 1.706);
             k1.Top = (int)(erg_y[0]);
             k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];
 
-            k2.Left = (int)(erg_x[1]);
+            k2.Left = (int)Math.Round(erg_x[1] * 1.706);
             k2.Top = (int)(erg_y[1]);
             k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];
 
-            k3.Left = (int)(erg_x[2]);
+            k3.Left = (int)Math.Round(erg_x[2] * 1.706);
             k3.Top = (int)(erg_y[2]);
             k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];
 
-            k4.Left = (int)(erg_x[3]);
+            k4.Left = (int)Math.Round(erg_x[3] * 1.706);
             k4.Top = (int)(erg_y[3]);
             k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];
 
-            multiplikator = Math.Round(1920.0 / (erg_x[3] - erg_x[0]) * 100) / 100; //unwichtig
+            //multiplikator = Math.Round(1920.0 / (erg_x[3] - erg_x[0]) * 100) / 100; //unwichtig
         }
         private void button1_Click(object sender, EventArgs e)
         {
