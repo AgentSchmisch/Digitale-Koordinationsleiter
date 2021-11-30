@@ -247,9 +247,8 @@ namespace Bitmap_Test1_Schmid
             this.label3.Location = new System.Drawing.Point(553, 300);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 37);
+            this.label3.Size = new System.Drawing.Size(0, 37);
             this.label3.TabIndex = 25;
-            this.label3.Text = "-";
             // 
             // KinectMonitor
             // 
