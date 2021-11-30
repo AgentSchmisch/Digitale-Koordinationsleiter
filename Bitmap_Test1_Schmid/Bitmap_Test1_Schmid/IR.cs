@@ -177,15 +177,15 @@ namespace Bitmap_Test1_Schmid
             double rechts_max = 0;
             double links_max = 0;
 
-            //ecken1_x = 50;//testzwecke
-            //ecken2_x = 400;
-            //ecken3_x = 420;
-            //ecken4_x = 70;
+            ecken1_x = 50;//testzwecke
+            ecken2_x = 440;
+            ecken3_x = 470;
+            ecken4_x = 30;
 
-            //ecken1_y = 20;
-            //ecken2_y = 30;
-            //ecken3_y = 360;
-            //ecken4_y = 380;
+            ecken1_y = 100;
+            ecken2_y = 100;
+            ecken3_y = 310;
+            ecken4_y = 310;
 
             vergleich_x[0] = Math.Round(ecken1_x * 0.5859375);//scaling auf 300
             vergleich_x[1] = Math.Round(ecken2_x * 0.5859375);
@@ -384,7 +384,7 @@ namespace Bitmap_Test1_Schmid
                 reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
                 reader.MultiSourceFrameArrived += reader_IRFrameArrived;
             }
-            if (mode == 0 && mode2==0)//TODO: geht nich wirklich --> unwichtig!
+            if (mode == 0 && mode2==0)//unwichtig: geht nich wirklich --> unwichtig!
             {
                 mode = 1;
                 reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
