@@ -234,11 +234,11 @@ namespace Bitmap_Test1_Schmid
                         Joint FootRight = joints[JointType.FootRight];
                         Joint FootLeft = joints[JointType.FootLeft];
 
-                        float rf_distance_x = ((FootRight.Position.X * 100) + 150);// * (375 / 100);
+                        float rf_distance_x = ((FootRight.Position.X * 100) + 150);//todo: werte ziemlich sicher gespiegelt
                         float rf_distance_y = FootRight.Position.Y * 1000;
                         float rf_distance_z = FootRight.Position.Z;
 
-                        float lf_distance_x = ((FootLeft.Position.X * 100) + 150);// * (375 / 100);
+                        float lf_distance_x = ((FootLeft.Position.X * 100) + 150);//
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
 
@@ -285,7 +285,7 @@ namespace Bitmap_Test1_Schmid
 
                                         if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= schritterkennungabstand && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= schritterkennungabstand && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= schritterkennungabstand)
                                         {
-                                            durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - _form1.ir.erg_x[2]) * 6.4;
+                                            durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * 6.4;
                                             text.Text = "Position rechts: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
                                             //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
                                             #region Fußabdruck zeichnen rechts
@@ -346,11 +346,11 @@ namespace Bitmap_Test1_Schmid
                                             text.Text = "bewegt";
                                             // MessageBox.Show(schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2]);
                                             count = 0;
-                                        }
+                                        } 
 
                                         if (count == 0 && Math.Abs(schritt_links[0] - schritt_links[1]) <= schritterkennungabstand && Math.Abs(schritt_links[1] - schritt_links[2]) <= schritterkennungabstand && Math.Abs(schritt_links[0] - schritt_links[2]) <= schritterkennungabstand)
                                         {
-                                            durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - _form1.ir.erg_x[2]) * 6.4;
+                                            durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * 6.4;
                                                                                                                                                                  //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
                                             text.Text = "Position links: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
                                             //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
