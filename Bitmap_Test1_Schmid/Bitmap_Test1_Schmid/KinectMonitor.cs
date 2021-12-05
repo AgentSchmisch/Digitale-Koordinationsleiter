@@ -36,13 +36,9 @@ namespace Bitmap_Test1_Schmid
         public int steps_kinect = 0; // schritte von form1
         int count = 0;
         public int schrittzähler = 0;//schrittezähler
-        double[] durchschnitt=new double[99];
+        public double[] durchschnitt=new double[99];
         int schritterkennungabstand = 10;
 
-        double mittelpunkt_links = 0;
-        double mittelpunkt_rechts = 300;
-        double mittelpunkt_links_y = 0;
-        double mittelpunkt_rechts_y = 300;
 
         retrieve_Kinect kinect = new retrieve_Kinect();
 
@@ -70,15 +66,14 @@ namespace Bitmap_Test1_Schmid
             e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[2] * 1.706)), (int)(_form1.ir.erg_y[2]), (int)(Math.Round(_form1.ir.erg_x[3] * 1.706)), (int)(_form1.ir.erg_y[3]));// lu lo
             e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[2] * 1.706)), (int)(_form1.ir.erg_y[2]), (int)(Math.Round(_form1.ir.erg_x[1] * 1.706)), (int)(_form1.ir.erg_y[1]));// lu ru
 
-            e.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * 1.706), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts * 1.706), (int)mittelpunkt_rechts_y);
+            e.Graphics.DrawLine(blackPen, (int)Math.Round(_form1.ir.mittelpunkt_links * 1.706), (int)_form1.ir.mittelpunkt_links_y, (int)Math.Round(_form1.ir.mittelpunkt_rechts * 1.706), (int)_form1.ir.mittelpunkt_rechts_y);
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
-
-            mittelpunkt_links = _form1.ir.erg_x[2] + ((_form1.ir.erg_x[3] - _form1.ir.erg_x[2]) / 2); //"linkster" punkt plus hälfte der beiden
-            mittelpunkt_rechts = _form1.ir.erg_x[1] + ((_form1.ir.erg_x[0] - _form1.ir.erg_x[1]) / 2); //"rechtster" punkt plus hälfte der beiden
-            mittelpunkt_links_y = _form1.ir.erg_y[2] + ((_form1.ir.erg_y[3] - _form1.ir.erg_y[2]) / 2); //"linkster" punkt plus hälfte der beiden
-            mittelpunkt_rechts_y = _form1.ir.erg_y[1] + ((_form1.ir.erg_y[0] - _form1.ir.erg_y[1]) / 2); //"rechtster" punkt plus hälfte der beiden
+            _form1.ir.mittelpunkt_links = Properties.Settings.Default.mittelpunkt_links;
+            _form1.ir.mittelpunkt_rechts = Properties.Settings.Default.mittelpunkt_rechts;
+            _form1.ir.mittelpunkt_links_y = Properties.Settings.Default.mittelpunkt_linksy;
+            _form1.ir.mittelpunkt_rechts_y = Properties.Settings.Default.mittelpunkt_rechtsy;
             //_form1.ir.erg_x[0] = _form1.ir.erg_x[0] - 15;
             //_form1.ir.erg_x[1] = _form1.ir.erg_x[1] - 15;
             //_form1.ir.erg_x[2] = _form1.ir.erg_x[2] - 10;
@@ -253,7 +248,7 @@ namespace Bitmap_Test1_Schmid
                         //label3.Text = Xrechts.Text + "   " + _form1.ir.erg_x[1] + "\n" + Xlinks.Text + "   " + _form1.ir.erg_x[2];
 
                         //if (Convert.ToInt32(lf_distance_x) >= _form1.ir.erg_x[2] && Convert.ToInt32(lf_distance_x) <= _form1.ir.erg_x[1] || Convert.ToInt32(rf_distance_x) >= _form1.ir.erg_x[2] && Convert.ToInt32(rf_distance_x) <= _form1.ir.erg_x[1])
-                        if (Convert.ToInt32(lf_distance_x) >= mittelpunkt_links && Convert.ToInt32(lf_distance_x) <= mittelpunkt_rechts || Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts)
+                        if (Convert.ToInt32(lf_distance_x) >= _form1.ir.mittelpunkt_links && Convert.ToInt32(lf_distance_x) <= _form1.ir.mittelpunkt_rechts || Convert.ToInt32(rf_distance_x) >= _form1.ir.mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= _form1.ir.mittelpunkt_rechts)
                         {// erst wenns innerhalb vom anzeigefeld ist soll er tracken
                             #region tracking
                             tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
@@ -285,7 +280,7 @@ namespace Bitmap_Test1_Schmid
 
                                         if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= schritterkennungabstand && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= schritterkennungabstand && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= schritterkennungabstand)
                                         {
-                                            durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * 6.4;
+                                            durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - _form1.ir.mittelpunkt_links) * 6.4;
                                             text.Text = "Position rechts: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
                                             //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
                                             #region Fußabdruck zeichnen rechts
@@ -331,11 +326,12 @@ namespace Bitmap_Test1_Schmid
                                             }
 
                                     #endregion
-                                    //for (int i = 0; i < 100; i++) { }
+                                            //for (int i = 0; i < 100; i++) { }
                                             count = 1;
                                             schrittzähler++;
-                                        _form1.delsteps.Visible = true;
-                                    }
+                                            _form1.delsteps.Visible = true;
+                                            _form1.analyseToolStripMenuItem.Visible = true;
+                                        }
 
                                     }
                                     //---------------------------------------------------------------------------------------------------------
@@ -350,7 +346,7 @@ namespace Bitmap_Test1_Schmid
 
                                         if (count == 0 && Math.Abs(schritt_links[0] - schritt_links[1]) <= schritterkennungabstand && Math.Abs(schritt_links[1] - schritt_links[2]) <= schritterkennungabstand && Math.Abs(schritt_links[0] - schritt_links[2]) <= schritterkennungabstand)
                                         {
-                                            durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * 6.4;
+                                            durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - _form1.ir.mittelpunkt_links) * 6.4;
                                                                                                                                                                  //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
                                             text.Text = "Position links: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
                                             //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920

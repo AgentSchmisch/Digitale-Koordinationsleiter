@@ -37,13 +37,13 @@ namespace Bitmap_Test1_Schmid
             this.kal = new System.Windows.Forms.Button();
             this.anzeige = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mankal = new System.Windows.Forms.Button();
             this.r1 = new System.Windows.Forms.RadioButton();
             this.r2 = new System.Windows.Forms.RadioButton();
             this.r3 = new System.Windows.Forms.RadioButton();
             this.r4 = new System.Windows.Forms.RadioButton();
             this.reset = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -114,7 +114,7 @@ namespace Bitmap_Test1_Schmid
             this.kal.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.kal.Location = new System.Drawing.Point(385, 442);
             this.kal.Name = "kal";
-            this.kal.Size = new System.Drawing.Size(127, 42);
+            this.kal.Size = new System.Drawing.Size(127, 45);
             this.kal.TabIndex = 12;
             this.kal.Text = "Kalibrieren";
             this.kal.UseVisualStyleBackColor = true;
@@ -134,29 +134,18 @@ namespace Bitmap_Test1_Schmid
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(35, 439);
+            this.trackBar1.Location = new System.Drawing.Point(12, 442);
             this.trackBar1.Maximum = 500;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(193, 45);
             this.trackBar1.TabIndex = 10;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(512, 424);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             // 
             // mankal
             // 
             this.mankal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mankal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.mankal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.mankal.Location = new System.Drawing.Point(524, 421);
+            this.mankal.Location = new System.Drawing.Point(528, 424);
             this.mankal.Name = "mankal";
             this.mankal.Size = new System.Drawing.Size(198, 63);
             this.mankal.TabIndex = 18;
@@ -226,14 +215,25 @@ namespace Bitmap_Test1_Schmid
             this.reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.reset.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.reset.Location = new System.Drawing.Point(252, 442);
+            this.reset.Location = new System.Drawing.Point(234, 442);
             this.reset.Name = "reset";
-            this.reset.Size = new System.Drawing.Size(127, 42);
+            this.reset.Size = new System.Drawing.Size(145, 45);
             this.reset.TabIndex = 23;
             this.reset.Text = "reset";
             this.reset.UseVisualStyleBackColor = true;
             this.reset.UseWaitCursor = true;
             this.reset.Click += new System.EventHandler(this.reset_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(512, 424);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             // 
             // IR
             // 
@@ -241,7 +241,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(738, 496);
+            this.ClientSize = new System.Drawing.Size(738, 502);
             this.Controls.Add(this.reset);
             this.Controls.Add(this.r4);
             this.Controls.Add(this.r3);

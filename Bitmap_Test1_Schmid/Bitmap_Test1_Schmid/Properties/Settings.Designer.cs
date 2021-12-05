@@ -94,5 +94,53 @@ namespace Bitmap_Test1_Schmid.Properties {
                 this["color_b"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double mittelpunkt_links {
+            get {
+                return ((double)(this["mittelpunkt_links"]));
+            }
+            set {
+                this["mittelpunkt_links"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
+        public double mittelpunkt_rechts {
+            get {
+                return ((double)(this["mittelpunkt_rechts"]));
+            }
+            set {
+                this["mittelpunkt_rechts"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double mittelpunkt_linksy {
+            get {
+                return ((double)(this["mittelpunkt_linksy"]));
+            }
+            set {
+                this["mittelpunkt_linksy"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public double mittelpunkt_rechtsy {
+            get {
+                return ((double)(this["mittelpunkt_rechtsy"]));
+            }
+            set {
+                this["mittelpunkt_rechtsy"] = value;
+            }
+        }
     }
 }

@@ -57,6 +57,7 @@
             this.delsteps = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.analyseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -91,7 +92,7 @@
             // 
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.bestätigen.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.bestätigen.ForeColor = System.Drawing.Color.White;
             this.bestätigen.Location = new System.Drawing.Point(51, 179);
             this.bestätigen.Name = "bestätigen";
             this.bestätigen.Size = new System.Drawing.Size(160, 56);
@@ -140,9 +141,9 @@
             this.fläche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fläche.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.fläche.ForeColor = System.Drawing.Color.White;
-            this.fläche.Location = new System.Drawing.Point(365, 271);
+            this.fläche.Location = new System.Drawing.Point(364, 277);
             this.fläche.Name = "fläche";
-            this.fläche.Size = new System.Drawing.Size(156, 70);
+            this.fläche.Size = new System.Drawing.Size(156, 56);
             this.fläche.TabIndex = 17;
             this.fläche.Text = "bestätigen";
             this.fläche.UseVisualStyleBackColor = false;
@@ -154,7 +155,7 @@
             this.reglertext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.reglertext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.reglertext.ForeColor = System.Drawing.Color.Gray;
-            this.reglertext.Location = new System.Drawing.Point(427, 119);
+            this.reglertext.Location = new System.Drawing.Point(431, 119);
             this.reglertext.Name = "reglertext";
             this.reglertext.Size = new System.Drawing.Size(24, 26);
             this.reglertext.TabIndex = 16;
@@ -178,7 +179,7 @@
             this.länge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.länge.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.länge.ForeColor = System.Drawing.Color.Gray;
-            this.länge.Location = new System.Drawing.Point(427, 228);
+            this.länge.Location = new System.Drawing.Point(431, 234);
             this.länge.Name = "länge";
             this.länge.Size = new System.Drawing.Size(24, 26);
             this.länge.TabIndex = 22;
@@ -220,7 +221,8 @@
             this.patientToolStripMenuItem,
             this.kinectToolStripMenuItem,
             this.kantenerkennungToolStripMenuItem,
-            this.einstellungenToolStripMenuItem});
+            this.einstellungenToolStripMenuItem,
+            this.analyseToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -351,7 +353,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(343, 30);
+            this.label4.Location = new System.Drawing.Point(343, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(229, 26);
             this.label4.TabIndex = 36;
@@ -361,10 +363,10 @@
             // 
             this.delsteps.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.delsteps.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.delsteps.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.delsteps.Location = new System.Drawing.Point(51, 251);
+            this.delsteps.ForeColor = System.Drawing.Color.White;
+            this.delsteps.Location = new System.Drawing.Point(51, 268);
             this.delsteps.Name = "delsteps";
-            this.delsteps.Size = new System.Drawing.Size(160, 68);
+            this.delsteps.Size = new System.Drawing.Size(160, 65);
             this.delsteps.TabIndex = 37;
             this.delsteps.Text = "Fußabdrücke zurücksetzen";
             this.delsteps.UseVisualStyleBackColor = true;
@@ -392,6 +394,15 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(2, 330);
             this.label8.TabIndex = 39;
+            // 
+            // analyseToolStripMenuItem
+            // 
+            this.analyseToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.analyseToolStripMenuItem.Name = "analyseToolStripMenuItem";
+            this.analyseToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.analyseToolStripMenuItem.Text = "Analyse";
+            this.analyseToolStripMenuItem.Visible = false;
+            this.analyseToolStripMenuItem.Click += new System.EventHandler(this.analyseToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -477,6 +488,7 @@
         public System.Windows.Forms.Button delsteps;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.ToolStripMenuItem analyseToolStripMenuItem;
     }
 }
 

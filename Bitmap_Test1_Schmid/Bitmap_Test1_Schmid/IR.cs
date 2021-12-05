@@ -36,6 +36,13 @@ namespace Bitmap_Test1_Schmid
         int mode = 0;
         int mode2 = 0;
         public double multiplikator;
+
+        public double mittelpunkt_links = 0;
+        public double mittelpunkt_rechts = 300;
+
+        public double mittelpunkt_links_y = 0;
+        public double mittelpunkt_rechts_y = 300;
+
         private void IR_Load_1(object sender, EventArgs e)
         {
 
@@ -177,15 +184,15 @@ namespace Bitmap_Test1_Schmid
             double rechts_max = 0;
             double links_max = 0;
 
-            //ecken1_x = 50;//testzwecke
-            //ecken2_x = 440;
-            //ecken3_x = 470;
-            //ecken4_x = 30;
+            ecken1_x = 50;//testzwecke
+            ecken2_x = 440;
+            ecken3_x = 470;
+            ecken4_x = 30;
 
-            //ecken1_y = 100;
-            //ecken2_y = 100;
-            //ecken3_y = 310;
-            //ecken4_y = 310;
+            ecken1_y = 100;
+            ecken2_y = 100;
+            ecken3_y = 310;
+            ecken4_y = 310;
 
             vergleich_x[0] = Math.Round(ecken1_x * 0.5859375);//scaling auf 300
             vergleich_x[1] = Math.Round(ecken2_x * 0.5859375);
@@ -359,21 +366,37 @@ namespace Bitmap_Test1_Schmid
 
             k1.Left = (int)Math.Round(erg_x[0] * 1.706);
             k1.Top = (int)(erg_y[0]);
-            k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];
+            //k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];//nur für debugging mit Koordinaten
+            k1.Text = "rechts oben";
 
             k2.Left = (int)Math.Round(erg_x[1] * 1.706);
             k2.Top = (int)(erg_y[1]);
-            k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];
+            //k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];//nur für debugging mit Koordinaten
+            k2.Text = "rechts unten";
 
             k3.Left = (int)Math.Round(erg_x[2] * 1.706);
             k3.Top = (int)(erg_y[2]);
-            k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];
+            //k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];//nur für debugging mit Koordinaten
+            k3.Text = "links unten";
 
             k4.Left = (int)Math.Round(erg_x[3] * 1.706);
             k4.Top = (int)(erg_y[3]);
-            k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];
+            //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
+            k4.Text = "links oben";
 
             //multiplikator = Math.Round(1920.0 / (erg_x[3] - erg_x[0]) * 100) / 100; //unwichtig
+
+            mittelpunkt_links = erg_x[2] + ((erg_x[3] - erg_x[2]) / 2); //"linkster" punkt plus hälfte der beiden
+            mittelpunkt_rechts = erg_x[1] + ((erg_x[0] - erg_x[1]) / 2); //"rechtster" punkt plus hälfte der beiden
+            mittelpunkt_links_y = erg_y[2] + ((erg_y[3] - erg_y[2]) / 2); //"linkster" punkt plus hälfte der beiden
+            mittelpunkt_rechts_y = erg_y[1] + ((erg_y[0] - erg_y[1]) / 2); //"rechtster" punkt plus hälfte der beiden
+
+            Properties.Settings.Default.mittelpunkt_links = mittelpunkt_links;
+            Properties.Settings.Default.mittelpunkt_rechts = mittelpunkt_rechts;
+            Properties.Settings.Default.mittelpunkt_linksy = mittelpunkt_links_y;
+            Properties.Settings.Default.mittelpunkt_rechtsy = mittelpunkt_rechts_y;
+            Properties.Settings.Default.Save();
+
         }
         private void button1_Click(object sender, EventArgs e)
         {

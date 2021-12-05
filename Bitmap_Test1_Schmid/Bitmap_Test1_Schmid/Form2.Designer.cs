@@ -61,6 +61,7 @@ namespace Bitmap_Test1_Schmid
             this.left_ten = new System.Windows.Forms.PictureBox();
             this.right_seven = new System.Windows.Forms.PictureBox();
             this.left_seven = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -84,6 +85,7 @@ namespace Bitmap_Test1_Schmid
             ((System.ComponentModel.ISupportInitialize)(this.left_ten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.right_seven)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_seven)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // bestätigen
@@ -478,6 +480,17 @@ namespace Bitmap_Test1_Schmid
             this.left_seven.TabStop = false;
             this.left_seven.Visible = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Bitmap_Test1_Schmid.Properties.Resources.Bildschirmfoto_2021_11_29_um_18_26_59;
+            this.pictureBox2.Location = new System.Drawing.Point(1776, 988);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(114, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 41;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,6 +498,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.right_seven);
             this.Controls.Add(this.left_seven);
             this.Controls.Add(this.right_ten);
@@ -546,6 +560,7 @@ namespace Bitmap_Test1_Schmid
             ((System.ComponentModel.ISupportInitialize)(this.left_ten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.right_seven)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_seven)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -584,5 +599,6 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.PictureBox left_ten;
         public System.Windows.Forms.PictureBox right_seven;
         public System.Windows.Forms.PictureBox left_seven;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

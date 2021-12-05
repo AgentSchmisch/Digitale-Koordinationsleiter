@@ -199,8 +199,8 @@ namespace Bitmap_Test1_Schmid
             kinectM.form1 = this;
             kinectM.steps_kinect = Convert.ToInt32(steps.Text);
             //this.Hide();
-            //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
-            kinectM.Show();//kürzlich geändert --> mögliche fehlerquelle
+            Task kinectmon = Task.Run(() => kinectM.ShowDialog());
+            //kinectM.ShowDialog();//kürzlich geändert --> mögliche fehlerquelle
             //this.Show();
         }
 
@@ -252,6 +252,38 @@ namespace Bitmap_Test1_Schmid
             Properties.Settings.Default.color_g = screen.color_g;//speichert Farbwerte
             Properties.Settings.Default.color_b = screen.color_b;
             Properties.Settings.Default.Save();
+        }
+
+        private void analyseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            double schrittdurchschnitt = 0;
+            double kleinsterabstand = 500;
+            double größterabstand = 0;
+
+            for (int i = 0; i < kinectM.schrittzähler; i++)
+            {
+                schrittdurchschnitt += kinectM.durchschnitt[i];
+                if (i>0)
+                {
+                    if (Math.Abs(kinectM.durchschnitt[i+1] - kinectM.durchschnitt[i]) < kleinsterabstand)
+                    {
+                        kleinsterabstand = Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]);
+                    }
+
+                    if (Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]) > größterabstand)
+                    {
+                        größterabstand = Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]);
+                    }
+                }
+
+            }
+            schrittdurchschnitt = schrittdurchschnitt / kinectM.schrittzähler;
+
+            MessageBox.Show("Gegegangene schritte: " + (kinectM.schrittzähler+1) + "\n" +
+                            "Druchschnittslänge: " + schrittdurchschnitt + "\n" +
+                            "Minimaler Abstand: " + kleinsterabstand + "\n" +
+                            "Maximaler Abstand: " + größterabstand + "\n"
+                            );
         }
     }
 }

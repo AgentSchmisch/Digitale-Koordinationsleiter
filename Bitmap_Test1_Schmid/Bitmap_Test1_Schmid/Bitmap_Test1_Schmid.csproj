@@ -237,6 +237,7 @@
   <ItemGroup>
     <None Include="Resources\left.png" />
     <None Include="Resources\klammer.png" />
+    <Content Include="Resources\Bildschirmfoto 2021-11-29 um 18.26.59.png" />
     <Content Include="Resources\walking_man.ico" />
   </ItemGroup>
   <ItemGroup>
