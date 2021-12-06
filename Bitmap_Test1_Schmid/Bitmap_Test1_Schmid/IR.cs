@@ -23,6 +23,13 @@ namespace Bitmap_Test1_Schmid
         MultiSourceFrameReader reader = null;
         MultiSourceFrameReader rgb = null;
         BlobCounter counter = null;
+
+        private Form1 _form1_2;
+        public Form1 form1_2
+        {
+            set { this._form1_2 = value; }
+        }
+
         string[] possibleTracker;
         int ecken1_x;
         int ecken1_y;
@@ -511,6 +518,10 @@ namespace Bitmap_Test1_Schmid
             ecken2_y = 0;
             ecken3_y = 0;
             ecken4_y = 0;
+        }
+
+        private void IR_FormClosing(object sender, FormClosingEventArgs e)
+        {
         }
     }
 }

@@ -286,7 +286,9 @@ namespace Bitmap_Test1_Schmid
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Kinect Monitor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KinectMonitor_FormClosing);
             this.Load += new System.EventHandler(this.KinectMonitor_Load);
+            this.LocationChanged += new System.EventHandler(this.KinectMonitor_LocationChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);

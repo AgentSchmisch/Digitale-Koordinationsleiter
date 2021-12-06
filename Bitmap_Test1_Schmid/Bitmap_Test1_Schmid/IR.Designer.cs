@@ -258,11 +258,11 @@ namespace Bitmap_Test1_Schmid
             this.überschrift.AutoSize = true;
             this.überschrift.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.überschrift.ForeColor = System.Drawing.Color.White;
-            this.überschrift.Location = new System.Drawing.Point(158, 10);
+            this.überschrift.Location = new System.Drawing.Point(136, 9);
             this.überschrift.Name = "überschrift";
-            this.überschrift.Size = new System.Drawing.Size(310, 46);
+            this.überschrift.Size = new System.Drawing.Size(332, 46);
             this.überschrift.TabIndex = 25;
-            this.überschrift.Text = "Kantenerkennug";
+            this.überschrift.Text = "Kantenerkennung";
             // 
             // IR
             // 
@@ -288,12 +288,14 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.anzeige);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.pictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "IR";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "IR";
+            this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IR_FormClosing);
             this.Load += new System.EventHandler(this.IR_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

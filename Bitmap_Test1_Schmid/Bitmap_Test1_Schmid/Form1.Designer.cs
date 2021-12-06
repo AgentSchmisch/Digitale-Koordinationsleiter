@@ -479,7 +479,6 @@
         private System.Windows.Forms.Button button2;
         public System.Windows.Forms.Label reglertext;
         public System.Windows.Forms.Label länge;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem patientToolStripMenuItem;
         private System.Windows.Forms.Button BtnSitzungBeenden;
         private System.Windows.Forms.Label label3;
@@ -488,7 +487,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblLezteTherapie;
         public System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.ToolStripMenuItem kinectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem einstellungenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kantenerkennungToolStripMenuItem;
         private System.Windows.Forms.Label label4;
@@ -497,6 +495,8 @@
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.ToolStripMenuItem analyseToolStripMenuItem;
         private System.Windows.Forms.Timer timer;
+        public System.Windows.Forms.MenuStrip menuStrip1;
+        public System.Windows.Forms.ToolStripMenuItem kinectToolStripMenuItem;
     }
 }
 

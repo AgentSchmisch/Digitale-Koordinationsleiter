@@ -70,16 +70,14 @@ namespace Bitmap_Test1_Schmid
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
+
             _form1.ir.mittelpunkt_links = Properties.Settings.Default.mittelpunkt_links;
             _form1.ir.mittelpunkt_rechts = Properties.Settings.Default.mittelpunkt_rechts;
             _form1.ir.mittelpunkt_links_y = Properties.Settings.Default.mittelpunkt_linksy;
             _form1.ir.mittelpunkt_rechts_y = Properties.Settings.Default.mittelpunkt_rechtsy;
-            //_form1.ir.erg_x[0] = _form1.ir.erg_x[0] - 15;
-            //_form1.ir.erg_x[1] = _form1.ir.erg_x[1] - 15;
-            //_form1.ir.erg_x[2] = _form1.ir.erg_x[2] - 10;
-            //_form1.ir.erg_x[3] = _form1.ir.erg_x[3] - 10;
 
             pictureBox1.Paint += DrawLineFloat;
+
             //Task thread = Task.Run(() =>
             //{  
             // mySensor = KinectSensor.GetDefault();
@@ -97,6 +95,7 @@ namespace Bitmap_Test1_Schmid
             //    }
 
             //});
+
             mySensor = KinectSensor.GetDefault();
 
             if (mySensor != null)
@@ -111,7 +110,6 @@ namespace Bitmap_Test1_Schmid
             if (bodyFrameReader != null)
             {
                 bodyFrameReader.FrameArrived += reader_FrameArrived;
-
             }
         }
         void reader_IRFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
@@ -562,6 +560,15 @@ namespace Bitmap_Test1_Schmid
                             durchschnitt[8] + "  " + durchschnitt[8] / 3.75 + "\n" +
                             durchschnitt[9] + "  " + durchschnitt[9] / 3.75 + "\n" +
                             durchschnitt[10] + "  " + durchschnitt[10] / 3.75);
+        }
+
+        private void KinectMonitor_LocationChanged(object sender, EventArgs e)
+        {
+            _form1.ir.Location  =  new Point(this.Location.X+9, this.Location.Y+31);
+        }
+
+        private void KinectMonitor_FormClosing(object sender, FormClosingEventArgs e)
+        {
         }
     }
 }
