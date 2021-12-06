@@ -23,7 +23,7 @@ namespace Bitmap_Test1_Schmid
         {
             set { this._form1 = value; }
         }
-
+        int x = 0;
         private void Einstellungen_Load(object sender, EventArgs e)
         {
             ColorDialog colorpicker = new ColorDialog();
@@ -47,31 +47,35 @@ namespace Bitmap_Test1_Schmid
 
         private void Einstellungen_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this._form1.screen.dicke = bar_dicke.Value;
-            if (colorpicker.Color.R == 0 && colorpicker.Color.G == 0 && colorpicker.Color.B == 0)
+            if (x == 0)
             {
-                this._form1.screen.color_r = Properties.Settings.Default.color_r;
-                this._form1.screen.color_g = Properties.Settings.Default.color_g;
-                this._form1.screen.color_b = Properties.Settings.Default.color_b;
+                this._form1.screen.dicke = bar_dicke.Value;
+                if (colorpicker.Color.R == 0 && colorpicker.Color.G == 0 && colorpicker.Color.B == 0)
+                {
+                    this._form1.screen.color_r = Properties.Settings.Default.color_r;
+                    this._form1.screen.color_g = Properties.Settings.Default.color_g;
+                    this._form1.screen.color_b = Properties.Settings.Default.color_b;
+                }
+                else
+                {
+                    this._form1.screen.color_r = colorpicker.Color.R;
+                    this._form1.screen.color_g = colorpicker.Color.G;
+                    this._form1.screen.color_b = colorpicker.Color.B;
+                }
+                if (colorpicker2.Color.R == 0 && colorpicker2.Color.G == 0 && colorpicker2.Color.B == 0)
+                {
+                    this._form1.screen.color_box_r = Properties.Settings.Default.colorbox_r;
+                    this._form1.screen.color_box_g = Properties.Settings.Default.colorbox_g;
+                    this._form1.screen.color_box_b = Properties.Settings.Default.colorbox_b;
+                }
+                else
+                {
+                    this._form1.screen.color_box_r = colorpicker2.Color.R;
+                    this._form1.screen.color_box_g = colorpicker2.Color.G;
+                    this._form1.screen.color_box_b = colorpicker2.Color.B;
+                }
             }
-            else
-            {
-                this._form1.screen.color_r = colorpicker.Color.R;
-                this._form1.screen.color_g = colorpicker.Color.G;
-                this._form1.screen.color_b = colorpicker.Color.B;
-            }
-            if(colorpicker2.Color.R == 0 && colorpicker2.Color.G == 0 && colorpicker2.Color.B == 0)
-            {
-                this._form1.screen.color_box_r = Properties.Settings.Default.colorbox_r;
-                this._form1.screen.color_box_g = Properties.Settings.Default.colorbox_g;
-                this._form1.screen.color_box_b = Properties.Settings.Default.colorbox_b;
-            }
-            else
-            {
-                this._form1.screen.color_box_r = colorpicker2.Color.R;
-                this._form1.screen.color_box_g = colorpicker2.Color.G;
-                this._form1.screen.color_box_b = colorpicker2.Color.B;
-            }
+            x = 0;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -106,6 +110,8 @@ namespace Bitmap_Test1_Schmid
             Properties.Settings.Default.color_g = 255;//speichert Farbwerte
             Properties.Settings.Default.color_b = 255;
             Properties.Settings.Default.Save();
+
+            x = 1;
         }
     }
 }

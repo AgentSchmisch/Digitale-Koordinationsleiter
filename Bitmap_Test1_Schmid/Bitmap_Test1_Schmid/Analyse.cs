@@ -26,29 +26,43 @@ namespace Bitmap_Test1_Schmid
         private void timer_Tick(object sender, EventArgs e)
         {
             time++;
-            if (time>=30)
+            if (time >= 30)
             {
                 x += 15;
-                if (x<= 250)
+                if (x <= 200)
                 {
-                    Size = new Size(544, 136 + x);
+                    Size = new Size(470, 136 + x);
                     this.CenterToScreen();
                 }
-                if (x>330)
+                if (x > 300)
                 {
-                    Color myColor = Color.FromArgb(40+opacity, 50+opacity, 60+ opacity);
-
-                    lab_durchs.ForeColor = myColor;
-                    lab_klein.ForeColor = myColor;
-                    lab_groß.ForeColor = myColor;
-                    lab_steps.ForeColor = myColor;
-                    durchs.ForeColor = myColor;
-                    klein.ForeColor = myColor;
-                    groß.ForeColor = myColor;
-                    steps.ForeColor = myColor;
+                    if (opacity <= 190)
+                    {
+                        Color myColor = Color.FromArgb(40 + opacity, 50 + opacity, 60 + opacity);
+                        lab_steps.ForeColor = myColor;
+                        steps.ForeColor = myColor;
+                    }
+                    if (opacity>=20 && opacity <= 210)
+                    {
+                        Color myColor = Color.FromArgb(20 + opacity, 30 + opacity, 40 + opacity);
+                        lab_durchs.ForeColor = myColor;
+                        durchs.ForeColor = myColor;
+                    }
+                    if (opacity >= 40 && opacity <= 230)
+                    {
+                        Color myColor = Color.FromArgb(opacity, 10 + opacity, 20 + opacity);
+                        lab_klein.ForeColor = myColor;
+                        klein.ForeColor = myColor;
+                    }
+                    if (opacity >= 60 && opacity <= 250)
+                    {
+                        Color myColor = Color.FromArgb(opacity-20, opacity-10, opacity);
+                        lab_groß.ForeColor = myColor;
+                        groß.ForeColor = myColor;
+                    }
 
                     opacity += 10;
-                    if (opacity >= 200)
+                    if (opacity >= 260)
                         timer.Stop(); return;
                 }
             }
@@ -72,7 +86,7 @@ namespace Bitmap_Test1_Schmid
             klein.Text = kleinsterabstand.ToString();
             groß.Text = größterabstand.ToString();
 
-            Size = new Size(544, 136);
+            Size = new Size(470, 136);
             this.CenterToScreen();
             timer.Start();
 

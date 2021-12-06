@@ -45,6 +45,7 @@ namespace Bitmap_Test1_Schmid
             this.reset = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.überschrift = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -90,11 +91,12 @@ namespace Bitmap_Test1_Schmid
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(531, 223);
+            this.label2.Location = new System.Drawing.Point(575, 295);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 29);
             this.label2.TabIndex = 14;
             this.label2.Text = "-";
+            this.label2.Visible = false;
             // 
             // k1
             // 
@@ -113,7 +115,7 @@ namespace Bitmap_Test1_Schmid
             this.kal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.kal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.kal.Location = new System.Drawing.Point(385, 442);
+            this.kal.Location = new System.Drawing.Point(229, 510);
             this.kal.Name = "kal";
             this.kal.Size = new System.Drawing.Size(127, 45);
             this.kal.TabIndex = 12;
@@ -127,32 +129,35 @@ namespace Bitmap_Test1_Schmid
             this.anzeige.AutoSize = true;
             this.anzeige.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.anzeige.ForeColor = System.Drawing.Color.White;
-            this.anzeige.Location = new System.Drawing.Point(535, 21);
+            this.anzeige.Location = new System.Drawing.Point(575, 129);
             this.anzeige.Name = "anzeige";
             this.anzeige.Size = new System.Drawing.Size(21, 29);
             this.anzeige.TabIndex = 11;
             this.anzeige.Text = "-";
+            this.anzeige.Visible = false;
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(12, 442);
+            this.trackBar1.Location = new System.Drawing.Point(60, 518);
             this.trackBar1.Maximum = 500;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(193, 45);
             this.trackBar1.TabIndex = 10;
+            this.trackBar1.Visible = false;
             // 
             // mankal
             // 
             this.mankal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mankal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.mankal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.mankal.Location = new System.Drawing.Point(528, 424);
+            this.mankal.Location = new System.Drawing.Point(576, 510);
             this.mankal.Name = "mankal";
             this.mankal.Size = new System.Drawing.Size(198, 63);
             this.mankal.TabIndex = 18;
             this.mankal.Text = "Manuell/automatisch Kalibrieren";
             this.mankal.UseVisualStyleBackColor = true;
             this.mankal.UseWaitCursor = true;
+            this.mankal.Visible = false;
             this.mankal.Click += new System.EventHandler(this.button1_Click);
             // 
             // r1
@@ -216,19 +221,20 @@ namespace Bitmap_Test1_Schmid
             this.reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.reset.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.reset.Location = new System.Drawing.Point(234, 442);
+            this.reset.Location = new System.Drawing.Point(415, 519);
             this.reset.Name = "reset";
             this.reset.Size = new System.Drawing.Size(145, 45);
             this.reset.TabIndex = 23;
             this.reset.Text = "reset";
             this.reset.UseVisualStyleBackColor = true;
             this.reset.UseWaitCursor = true;
+            this.reset.Visible = false;
             this.reset.Click += new System.EventHandler(this.reset_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(49, 76);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(512, 424);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -240,12 +246,23 @@ namespace Bitmap_Test1_Schmid
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(528, 0);
+            this.checkBox1.Location = new System.Drawing.Point(369, 510);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(99, 17);
             this.checkBox1.TabIndex = 24;
             this.checkBox1.Text = "testkoordinaten";
             this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // überschrift
+            // 
+            this.überschrift.AutoSize = true;
+            this.überschrift.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.überschrift.ForeColor = System.Drawing.Color.White;
+            this.überschrift.Location = new System.Drawing.Point(158, 10);
+            this.überschrift.Name = "überschrift";
+            this.überschrift.Size = new System.Drawing.Size(310, 46);
+            this.überschrift.TabIndex = 25;
+            this.überschrift.Text = "Kantenerkennug";
             // 
             // IR
             // 
@@ -253,7 +270,8 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(738, 502);
+            this.ClientSize = new System.Drawing.Size(645, 570);
+            this.Controls.Add(this.überschrift);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.reset);
             this.Controls.Add(this.r4);
@@ -302,5 +320,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.RadioButton r4;
         private System.Windows.Forms.Button reset;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label überschrift;
     }
 }

@@ -47,6 +47,7 @@
             this.kinectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kantenerkennungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.analyseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnSitzungBeenden = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.delsteps = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.analyseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
@@ -69,7 +69,7 @@
             // 
             this.steps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.steps.Location = new System.Drawing.Point(154, 125);
+            this.steps.Location = new System.Drawing.Point(154, 117);
             this.steps.MaxLength = 2;
             this.steps.Name = "steps";
             this.steps.Size = new System.Drawing.Size(57, 38);
@@ -83,7 +83,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(33, 127);
+            this.label1.Location = new System.Drawing.Point(33, 119);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(115, 31);
@@ -95,9 +95,9 @@
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.bestätigen.ForeColor = System.Drawing.Color.White;
-            this.bestätigen.Location = new System.Drawing.Point(51, 179);
+            this.bestätigen.Location = new System.Drawing.Point(51, 190);
             this.bestätigen.Name = "bestätigen";
-            this.bestätigen.Size = new System.Drawing.Size(160, 56);
+            this.bestätigen.Size = new System.Drawing.Size(160, 54);
             this.bestätigen.TabIndex = 3;
             this.bestätigen.Text = "bestätigen";
             this.bestätigen.UseVisualStyleBackColor = true;
@@ -145,7 +145,7 @@
             this.fläche.ForeColor = System.Drawing.Color.White;
             this.fläche.Location = new System.Drawing.Point(364, 277);
             this.fläche.Name = "fläche";
-            this.fläche.Size = new System.Drawing.Size(156, 56);
+            this.fläche.Size = new System.Drawing.Size(156, 54);
             this.fläche.TabIndex = 17;
             this.fläche.Text = "bestätigen";
             this.fläche.UseVisualStyleBackColor = false;
@@ -264,6 +264,15 @@
             this.einstellungenToolStripMenuItem.Text = "Einstellungen";
             this.einstellungenToolStripMenuItem.Click += new System.EventHandler(this.einstellungenToolStripMenuItem_Click);
             // 
+            // analyseToolStripMenuItem
+            // 
+            this.analyseToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.analyseToolStripMenuItem.Name = "analyseToolStripMenuItem";
+            this.analyseToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.analyseToolStripMenuItem.Text = "Analyse";
+            this.analyseToolStripMenuItem.Visible = false;
+            this.analyseToolStripMenuItem.Click += new System.EventHandler(this.analyseToolStripMenuItem_Click);
+            // 
             // BtnSitzungBeenden
             // 
             this.BtnSitzungBeenden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
@@ -366,7 +375,7 @@
             this.delsteps.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.delsteps.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.delsteps.ForeColor = System.Drawing.Color.White;
-            this.delsteps.Location = new System.Drawing.Point(51, 268);
+            this.delsteps.Location = new System.Drawing.Point(51, 276);
             this.delsteps.Name = "delsteps";
             this.delsteps.Size = new System.Drawing.Size(160, 65);
             this.delsteps.TabIndex = 37;
@@ -396,15 +405,6 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(2, 330);
             this.label8.TabIndex = 39;
-            // 
-            // analyseToolStripMenuItem
-            // 
-            this.analyseToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.analyseToolStripMenuItem.Name = "analyseToolStripMenuItem";
-            this.analyseToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.analyseToolStripMenuItem.Text = "Analyse";
-            this.analyseToolStripMenuItem.Visible = false;
-            this.analyseToolStripMenuItem.Click += new System.EventHandler(this.analyseToolStripMenuItem_Click);
             // 
             // timer
             // 

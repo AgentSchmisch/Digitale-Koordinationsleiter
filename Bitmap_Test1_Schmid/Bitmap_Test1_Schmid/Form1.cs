@@ -224,10 +224,6 @@ namespace Bitmap_Test1_Schmid
         {
             //this.Hide();
             Task infrared = Task.Run(() => ir.ShowDialog());
-            //if (ir != null)
-            //{
-            //    this.Hide();
-            //}
             //ir.ShowDialog();
             //this.Show();
         }
@@ -288,11 +284,6 @@ namespace Bitmap_Test1_Schmid
             }
             schrittdurchschnitt = schrittdurchschnitt / (kinectM.schrittzähler-1);
 
-            //MessageBox.Show("Gegegangene schritte: " + (kinectM.schrittzähler) + "\n" +
-            //                "Druchschnittslänge: " + schrittdurchschnitt + "\n" +
-            //                "Minimaler Abstand: " + kleinsterabstand + "\n" +
-            //                "Maximaler Abstand: " + größterabstand + "\n"
-            //                );
             Math.Round(schrittdurchschnitt);
             Math.Round(kleinsterabstand);
             Math.Round(schrittdurchschnitt);

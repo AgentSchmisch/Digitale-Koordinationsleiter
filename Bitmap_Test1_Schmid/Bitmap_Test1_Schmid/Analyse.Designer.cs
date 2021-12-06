@@ -48,7 +48,7 @@ namespace Bitmap_Test1_Schmid
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(180, 9);
+            this.label1.Location = new System.Drawing.Point(139, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 46);
             this.label1.TabIndex = 0;
@@ -64,7 +64,7 @@ namespace Bitmap_Test1_Schmid
             this.lab_steps.AutoSize = true;
             this.lab_steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.lab_steps.ForeColor = System.Drawing.Color.White;
-            this.lab_steps.Location = new System.Drawing.Point(22, 102);
+            this.lab_steps.Location = new System.Drawing.Point(24, 88);
             this.lab_steps.Name = "lab_steps";
             this.lab_steps.Size = new System.Drawing.Size(195, 31);
             this.lab_steps.TabIndex = 1;
@@ -75,7 +75,7 @@ namespace Bitmap_Test1_Schmid
             this.lab_durchs.AutoSize = true;
             this.lab_durchs.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.lab_durchs.ForeColor = System.Drawing.Color.White;
-            this.lab_durchs.Location = new System.Drawing.Point(22, 152);
+            this.lab_durchs.Location = new System.Drawing.Point(24, 138);
             this.lab_durchs.Name = "lab_durchs";
             this.lab_durchs.Size = new System.Drawing.Size(255, 31);
             this.lab_durchs.TabIndex = 2;
@@ -86,7 +86,7 @@ namespace Bitmap_Test1_Schmid
             this.lab_klein.AutoSize = true;
             this.lab_klein.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.lab_klein.ForeColor = System.Drawing.Color.White;
-            this.lab_klein.Location = new System.Drawing.Point(22, 202);
+            this.lab_klein.Location = new System.Drawing.Point(24, 188);
             this.lab_klein.Name = "lab_klein";
             this.lab_klein.Size = new System.Drawing.Size(209, 31);
             this.lab_klein.TabIndex = 3;
@@ -97,7 +97,7 @@ namespace Bitmap_Test1_Schmid
             this.lab_groß.AutoSize = true;
             this.lab_groß.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.lab_groß.ForeColor = System.Drawing.Color.White;
-            this.lab_groß.Location = new System.Drawing.Point(22, 251);
+            this.lab_groß.Location = new System.Drawing.Point(24, 237);
             this.lab_groß.Name = "lab_groß";
             this.lab_groß.Size = new System.Drawing.Size(195, 31);
             this.lab_groß.TabIndex = 4;
@@ -108,7 +108,7 @@ namespace Bitmap_Test1_Schmid
             this.steps.AutoSize = true;
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.steps.ForeColor = System.Drawing.Color.White;
-            this.steps.Location = new System.Drawing.Point(290, 102);
+            this.steps.Location = new System.Drawing.Point(292, 88);
             this.steps.Name = "steps";
             this.steps.Size = new System.Drawing.Size(23, 31);
             this.steps.TabIndex = 5;
@@ -119,7 +119,7 @@ namespace Bitmap_Test1_Schmid
             this.groß.AutoSize = true;
             this.groß.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.groß.ForeColor = System.Drawing.Color.White;
-            this.groß.Location = new System.Drawing.Point(290, 251);
+            this.groß.Location = new System.Drawing.Point(292, 237);
             this.groß.Name = "groß";
             this.groß.Size = new System.Drawing.Size(23, 31);
             this.groß.TabIndex = 6;
@@ -130,7 +130,7 @@ namespace Bitmap_Test1_Schmid
             this.klein.AutoSize = true;
             this.klein.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.klein.ForeColor = System.Drawing.Color.White;
-            this.klein.Location = new System.Drawing.Point(290, 202);
+            this.klein.Location = new System.Drawing.Point(292, 188);
             this.klein.Name = "klein";
             this.klein.Size = new System.Drawing.Size(23, 31);
             this.klein.TabIndex = 7;
@@ -141,7 +141,7 @@ namespace Bitmap_Test1_Schmid
             this.durchs.AutoSize = true;
             this.durchs.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.durchs.ForeColor = System.Drawing.Color.White;
-            this.durchs.Location = new System.Drawing.Point(290, 152);
+            this.durchs.Location = new System.Drawing.Point(292, 138);
             this.durchs.Name = "durchs";
             this.durchs.Size = new System.Drawing.Size(23, 31);
             this.durchs.TabIndex = 8;
@@ -153,7 +153,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(528, 257);
+            this.ClientSize = new System.Drawing.Size(454, 311);
             this.Controls.Add(this.durchs);
             this.Controls.Add(this.klein);
             this.Controls.Add(this.groß);

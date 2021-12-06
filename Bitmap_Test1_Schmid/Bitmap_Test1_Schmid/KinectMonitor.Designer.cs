@@ -52,8 +52,8 @@ namespace Bitmap_Test1_Schmid
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(512, 424);
@@ -97,6 +97,7 @@ namespace Bitmap_Test1_Schmid
             this.Zrechts.Size = new System.Drawing.Size(31, 31);
             this.Zrechts.TabIndex = 17;
             this.Zrechts.Text = "Z";
+            this.Zrechts.Visible = false;
             // 
             // Yrechts
             // 
@@ -109,6 +110,7 @@ namespace Bitmap_Test1_Schmid
             this.Yrechts.Size = new System.Drawing.Size(32, 31);
             this.Yrechts.TabIndex = 16;
             this.Yrechts.Text = "Y";
+            this.Yrechts.Visible = false;
             // 
             // Xrechts
             // 
@@ -133,6 +135,7 @@ namespace Bitmap_Test1_Schmid
             this.Zlinks.Size = new System.Drawing.Size(31, 31);
             this.Zlinks.TabIndex = 14;
             this.Zlinks.Text = "Z";
+            this.Zlinks.Visible = false;
             // 
             // Ylinks
             // 
@@ -145,6 +148,7 @@ namespace Bitmap_Test1_Schmid
             this.Ylinks.Size = new System.Drawing.Size(32, 31);
             this.Ylinks.TabIndex = 13;
             this.Ylinks.Text = "Y";
+            this.Ylinks.Visible = false;
             // 
             // Xlinks
             // 
@@ -167,6 +171,7 @@ namespace Bitmap_Test1_Schmid
             this.trackBar1.Size = new System.Drawing.Size(299, 45);
             this.trackBar1.SmallChange = 10;
             this.trackBar1.TabIndex = 18;
+            this.trackBar1.Visible = false;
             // 
             // text
             // 

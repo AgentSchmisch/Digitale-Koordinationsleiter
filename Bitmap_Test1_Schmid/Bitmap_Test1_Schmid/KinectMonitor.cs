@@ -61,12 +61,12 @@ namespace Bitmap_Test1_Schmid
         {
             Pen blackPen = new Pen(Color.Red, 1);
 
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[0] * 1.706)), (int)(_form1.ir.erg_y[0]), (int)(Math.Round(_form1.ir.erg_x[1] * 1.706)), (int)(_form1.ir.erg_y[1]));// ro ru
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[0] * 1.706)), (int)(_form1.ir.erg_y[0]), (int)(Math.Round(_form1.ir.erg_x[3] * 1.706)), (int)(_form1.ir.erg_y[3]));// ro lo
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[2] * 1.706)), (int)(_form1.ir.erg_y[2]), (int)(Math.Round(_form1.ir.erg_x[3] * 1.706)), (int)(_form1.ir.erg_y[3]));// lu lo
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[2] * 1.706)), (int)(_form1.ir.erg_y[2]), (int)(Math.Round(_form1.ir.erg_x[1] * 1.706)), (int)(_form1.ir.erg_y[1]));// lu ru
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[0] * 1.706)) + pictureBox1.Location.X, (int)(_form1.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1.ir.erg_x[1] * 1.706)) + pictureBox1.Location.X, (int)(_form1.ir.erg_y[1]) + pictureBox1.Location.Y);// ro ru
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[0] * 1.706)) + pictureBox1.Location.X, (int)(_form1.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1.ir.erg_x[3] * 1.706)) + pictureBox1.Location.X, (int)(_form1.ir.erg_y[3]) + pictureBox1.Location.Y);// ro lo
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[2] * 1.706)) + pictureBox1.Location.X, (int)(_form1.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1.ir.erg_x[3] * 1.706)) + pictureBox1.Location.X, (int)(_form1.ir.erg_y[3]) + pictureBox1.Location.Y);// lu lo
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1.ir.erg_x[2] * 1.706)) + pictureBox1.Location.X, (int)(_form1.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1.ir.erg_x[1] * 1.706)) + pictureBox1.Location.X, (int)(_form1.ir.erg_y[1]) + pictureBox1.Location.Y);// lu ru
 
-            e.Graphics.DrawLine(blackPen, (int)Math.Round(_form1.ir.mittelpunkt_links * 1.706), (int)_form1.ir.mittelpunkt_links_y, (int)Math.Round(_form1.ir.mittelpunkt_rechts * 1.706), (int)_form1.ir.mittelpunkt_rechts_y);
+            e.Graphics.DrawLine(blackPen, (int)Math.Round(_form1.ir.mittelpunkt_links * 1.706) + pictureBox1.Location.X, (int)_form1.ir.mittelpunkt_links_y + pictureBox1.Location.Y, (int)Math.Round(_form1.ir.mittelpunkt_rechts * 1.706) + pictureBox1.Location.X, (int)_form1.ir.mittelpunkt_rechts_y + pictureBox1.Location.Y);
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
@@ -188,7 +188,7 @@ namespace Bitmap_Test1_Schmid
                     ColorFiltering filter = new ColorFiltering();
                     BrightnessCorrection filter2 = new BrightnessCorrection(+50);
 
-                    ResizeNearestNeighbor filter3 = new ResizeNearestNeighbor(512, 424);//unwichtig: passt so hoffentlich
+                    ResizeNearestNeighbor filter3 = new ResizeNearestNeighbor(512, 424);
                     Bitmap newImage = filter3.Apply(bitmap);
 
                     filter.Red = new AForge.IntRange(0, 255);
@@ -332,11 +332,10 @@ namespace Bitmap_Test1_Schmid
                                             }
 
                                             #endregion
-                                            for (int i = 0; i < 1000; i++) { count = 1; }
-
+                                            //for (int i = 0; i < 1000; i++) { count = 1; }
                                             schrittzähler++;
-                                            _form1.delsteps.Visible = true;
-                                            _form1.analyseToolStripMenuItem.Visible = true;
+                                            _form1.delsteps.Visible = true;//aktiviert zurücksetzen button
+                                            _form1.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
                                         }
                                     }
                                     else
@@ -389,8 +388,8 @@ namespace Bitmap_Test1_Schmid
                                         for (int i = 0; i < 1000; i++) { count = 1; }
 
                                         schrittzähler++;
-                                        _form1.delsteps.Visible = true;
-                                        _form1.analyseToolStripMenuItem.Visible = true;
+                                        _form1.delsteps.Visible = true;//aktiviert zurücksetzen button
+                                        _form1.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
                                     }
 
                                 }
@@ -404,7 +403,7 @@ namespace Bitmap_Test1_Schmid
                                     text.Text = "bewegt";
                                     // MessageBox.Show(schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2]);
                                     count = 0;
-                                    for (int i = 0; i < 1000; i++) { count = 0; }
+                                    //for (int i = 0; i < 1000; i++) { count = 0; }
                                 }
 
                                 if (count == 0 && Math.Abs(schritt_links[0] - schritt_links[1]) <= schritterkennungabstand && Math.Abs(schritt_links[1] - schritt_links[2]) <= schritterkennungabstand && Math.Abs(schritt_links[0] - schritt_links[2]) <= schritterkennungabstand)
@@ -462,9 +461,9 @@ namespace Bitmap_Test1_Schmid
 
                                             #endregion
                                             //_form2.übertragung();
-                                            _form1.delsteps.Visible = true;
-                                            _form1.analyseToolStripMenuItem.Visible = true;
-                                            for (int i = 0; i < 1000; i++) { count = 1; }
+                                            _form1.delsteps.Visible = true;//aktiviert zurücksetzen button
+                                            _form1.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                                            //for (int i = 0; i < 1000; i++) { count = 1; }
                                             count = 1;
                                             schrittzähler++;
                                         }
@@ -472,9 +471,9 @@ namespace Bitmap_Test1_Schmid
 
                                     else
                                     {
-                                            text.Text = "Position links: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
-                                            //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
-                                            #region Fußabdruck zeichnen links
+                                        text.Text = "Position links: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
+                                        //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
+                                        #region Fußabdruck zeichnen links
                                             if (durchschnitt[1] != 0 && schrittzähler == 1)
                                             {
                                                 _form1.screen.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form1.screen.left_one.Size.Width / 2); _form1.screen.left_one.Show();
@@ -516,13 +515,13 @@ namespace Bitmap_Test1_Schmid
                                                 _form1.screen.left_ten.Left = Convert.ToInt32(durchschnitt[14]) - (_form1.screen.right_one.Size.Width / 2); _form1.screen.left_ten.Show();
                                             }
 
-                                            #endregion
-                                            //_form2.übertragung();
-                                            _form1.delsteps.Visible = true;
-                                            _form1.analyseToolStripMenuItem.Visible = true;
-                                            for (int i = 0; i < 1000; i++) { count = 1; }
-                                            count = 1;
-                                            schrittzähler++;
+                                        #endregion
+                                        //_form2.übertragung();
+                                        _form1.delsteps.Visible = true;//aktiviert zurücksetzen button
+                                        _form1.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                                        //for (int i = 0; i < 1000; i++) { count = 1; }
+                                        count = 1;
+                                        schrittzähler++;
                                     }
                                 }
                             }

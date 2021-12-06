@@ -54,28 +54,6 @@ namespace Bitmap_Test1_Schmid
             int rightfoot = waagrechtunten - 250;
             int leftfoot = waagrechtoben + 150;
 
-            //right_one.Hide();
-            //right_two.Hide();
-            //right_three.Hide();
-            //right_four.Hide();
-            //right_five.Hide();
-            //right_six.Hide();
-            //right_seven.Hide();
-            //right_eight.Hide();
-            //right_nine.Hide();
-            //right_ten.Hide();
-
-            //left_one.Hide();
-            //left_two.Hide();
-            //left_three.Hide();
-            //left_four.Hide();
-            //left_five.Hide();
-            //left_six.Hide();
-            //left_seven.Hide();
-            //left_eight.Hide();
-            //left_nine.Hide();
-            //left_ten.Hide();
-
             right_one.Top = rightfoot;
             right_two.Top = rightfoot;
             right_three.Top = rightfoot;
@@ -323,15 +301,6 @@ namespace Bitmap_Test1_Schmid
                         }
                     } //box löschen
                 }
-                //for (x = 0; x < image1.Width; x++) //alles löschen
-                //{
-                //    for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
-                //    {
-                //        Color pixelColor = image1.GetPixel(x, y);
-                //        Color newColor = Color.FromArgb(0, 0, 0);
-                //        image1.SetPixel(x, y, newColor);
-                //    }
-                //}//Alles löschen
 
                 for (x = 0; x < image1.Width; x++)               //waagrecht oben
                 {
@@ -376,60 +345,6 @@ namespace Bitmap_Test1_Schmid
                     }
                 }//senkrechte am schluss automatisch
 
-                //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
-                /*
-                #region Fußabdruck zeichnen
-                if (schrittlänge[1] != null && sendvar >= 1)
-                {
-                    right_one.Left = Convert.ToInt32(schrittlänge[1]) - (right_one.Size.Width / 2); right_one.Show();
-                }
-                if (schrittlänge[2] != null && sendvar >= 2)
-                {
-                    left_one.Left = Convert.ToInt32(schrittlänge[2]) - (left_one.Size.Width / 2); left_one.Show();
-                }
-                if (schrittlänge[3] != null && sendvar >= 3)
-                {
-                    right_two.Left = Convert.ToInt32(schrittlänge[3]) - (right_one.Size.Width / 2); right_two.Show();
-                }
-                if (schrittlänge[4] != null && sendvar >= 4)
-                {
-                    left_two.Left = Convert.ToInt32(schrittlänge[4]) - (left_one.Size.Width / 2); left_two.Show();
-                }
-                if (schrittlänge[5] != null && sendvar >= 5)
-                {
-                    right_three.Left = Convert.ToInt32(schrittlänge[5]) - (right_one.Size.Width / 2); right_three.Show();
-                }
-                if (schrittlänge[6] != null && sendvar >= 6)
-                {
-                    left_three.Left = Convert.ToInt32(schrittlänge[6]) - (left_one.Size.Width / 2); left_three.Show();
-                }
-                if (schrittlänge[7] != null && sendvar >= 7)
-                {
-                    right_four.Left = Convert.ToInt32(schrittlänge[7]) - (right_one.Size.Width / 2); right_four.Show();
-                }
-                if (schrittlänge[8] != null && sendvar >= 8)
-                {
-                    left_four.Left = Convert.ToInt32(schrittlänge[8]) - (left_one.Size.Width / 2); left_four.Show();
-                }
-                if (schrittlänge[9] != null && sendvar >= 9)
-                {
-                    right_five.Left = Convert.ToInt32(schrittlänge[9]) - (right_one.Size.Width / 2); right_five.Show();
-                }
-                if (schrittlänge[10] != null && sendvar >= 10)
-                {
-                    left_five.Left = Convert.ToInt32(schrittlänge[10]) - (left_one.Size.Width / 2); left_five.Show();
-                }
-                if (schrittlänge[11] != null && sendvar >= 11)
-                {
-                    right_six.Left = Convert.ToInt32(schrittlänge[11]) - (right_one.Size.Width / 2); right_six.Show();
-                }
-                if (schrittlänge[12] != null && sendvar >= 12)
-                {
-                    left_six.Left = Convert.ToInt32(schrittlänge[12]) - (left_one.Size.Width / 2); left_six.Show();
-                }
-                #endregion
-                */
-                //Array.Clear(schrittlänge,0,schrittlänge.Length);
                 pictureBox1.Image = image1;
                 stepsalt = steps.Text;// für löschvorgang
             }

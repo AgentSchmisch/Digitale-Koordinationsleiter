@@ -374,22 +374,22 @@ namespace Bitmap_Test1_Schmid
             //                "links unten: " + erg_x[2] + " " + erg_y[2] + "\n" + 
             //                "links oben: " + erg_x[3] + " " + erg_y[3]);
 
-            k1.Left = (int)Math.Round(erg_x[0] * 1.706);
+            k1.Left = (int)Math.Round(erg_x[0] * 1.706) + pictureBox1.Location.X;
             k1.Top = (int)(erg_y[0]);
             //k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];//nur für debugging mit Koordinaten
             k1.Text = "rechts oben";
 
-            k2.Left = (int)Math.Round(erg_x[1] * 1.706);
+            k2.Left = (int)Math.Round(erg_x[1] * 1.706) + pictureBox1.Location.X;
             k2.Top = (int)(erg_y[1]);
             //k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];//nur für debugging mit Koordinaten
             k2.Text = "rechts unten";
 
-            k3.Left = (int)Math.Round(erg_x[2] * 1.706);
+            k3.Left = (int)Math.Round(erg_x[2] * 1.706) + pictureBox1.Location.X;
             k3.Top = (int)(erg_y[2]);
             //k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];//nur für debugging mit Koordinaten
             k3.Text = "links unten";
 
-            k4.Left = (int)Math.Round(erg_x[3] * 1.706);
+            k4.Left = (int)Math.Round(erg_x[3] * 1.706) + pictureBox1.Location.X;
             k4.Top = (int)(erg_y[3]);
             //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";
@@ -418,7 +418,7 @@ namespace Bitmap_Test1_Schmid
                 reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
                 reader.MultiSourceFrameArrived += reader_IRFrameArrived;
             }
-            if (mode == 0 && mode2==0)//unwichtig: geht nich wirklich --> unwichtig!
+            if (mode == 0 && mode2==0)//unwichtig: geht nich wirklich
             {
                 mode = 1;
                 reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
