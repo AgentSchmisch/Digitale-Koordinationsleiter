@@ -44,6 +44,7 @@ namespace Bitmap_Test1_Schmid
             this.r4 = new System.Windows.Forms.RadioButton();
             this.reset = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -87,11 +88,11 @@ namespace Bitmap_Test1_Schmid
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(531, 223);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(16, 24);
+            this.label2.Size = new System.Drawing.Size(21, 29);
             this.label2.TabIndex = 14;
             this.label2.Text = "-";
             // 
@@ -124,11 +125,11 @@ namespace Bitmap_Test1_Schmid
             // anzeige
             // 
             this.anzeige.AutoSize = true;
-            this.anzeige.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.anzeige.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.anzeige.ForeColor = System.Drawing.Color.White;
             this.anzeige.Location = new System.Drawing.Point(535, 21);
             this.anzeige.Name = "anzeige";
-            this.anzeige.Size = new System.Drawing.Size(16, 24);
+            this.anzeige.Size = new System.Drawing.Size(21, 29);
             this.anzeige.TabIndex = 11;
             this.anzeige.Text = "-";
             // 
@@ -235,6 +236,17 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(528, 0);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(99, 17);
+            this.checkBox1.TabIndex = 24;
+            this.checkBox1.Text = "testkoordinaten";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // IR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,6 +254,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(738, 502);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.reset);
             this.Controls.Add(this.r4);
             this.Controls.Add(this.r3);
@@ -257,6 +270,7 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.anzeige);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "IR";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -287,5 +301,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.RadioButton r3;
         private System.Windows.Forms.RadioButton r4;
         private System.Windows.Forms.Button reset;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

@@ -23,6 +23,13 @@ namespace Bitmap_Test1_Schmid
 
         public int defaultsize_f1_x = 660; //fenstergröße
         public int defaultsize_f1_y = 409;
+
+        public double schrittdurchschnitt = 0;
+        public double kleinsterabstand = 500;
+        public double größterabstand = 0;
+
+
+        int animation = 0;
         public Form1()
         {
             InitializeComponent();
@@ -166,8 +173,9 @@ namespace Bitmap_Test1_Schmid
 
                     if (Patientendatenbank.auswahl)
                     {
-                        Size = new Size(defaultsize_f1_x + 500 , defaultsize_f1_y);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
-                        this.CenterToScreen();
+                        x = 0;
+                        animation = 0;
+                        timer.Start();                  
                     }
                     bestätigen.PerformClick();
                 }
@@ -190,8 +198,11 @@ namespace Bitmap_Test1_Schmid
         {
             //übergabe der aktuellen schrittweite nach abschließen der Behandlungssitzung
             Patientendatenbank.wertuebergabe = steps.Text.ToString();
-            Size = new Size(defaultsize_f1_x, defaultsize_f1_y);
-            this.CenterToScreen();
+            x = 0;
+            animation = 1;
+            timer.Start();
+            //Size = new Size(defaultsize_f1_x, defaultsize_f1_y);
+            //this.CenterToScreen();
         }
 
         private void kinectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -199,8 +210,8 @@ namespace Bitmap_Test1_Schmid
             kinectM.form1 = this;
             kinectM.steps_kinect = Convert.ToInt32(steps.Text);
             //this.Hide();
-            Task kinectmon = Task.Run(() => kinectM.ShowDialog());
-            //kinectM.ShowDialog();//kürzlich geändert --> mögliche fehlerquelle
+            //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
+            kinectM.Show();//kürzlich geändert --> mögliche fehlerquelle
             //this.Show();
         }
 
@@ -256,9 +267,7 @@ namespace Bitmap_Test1_Schmid
 
         private void analyseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            double schrittdurchschnitt = 0;
-            double kleinsterabstand = 500;
-            double größterabstand = 0;
+
 
             for (int i = 0; i < kinectM.schrittzähler; i++)
             {
@@ -277,13 +286,44 @@ namespace Bitmap_Test1_Schmid
                 }
 
             }
-            schrittdurchschnitt = schrittdurchschnitt / kinectM.schrittzähler;
+            schrittdurchschnitt = schrittdurchschnitt / (kinectM.schrittzähler-1);
 
-            MessageBox.Show("Gegegangene schritte: " + (kinectM.schrittzähler+1) + "\n" +
-                            "Druchschnittslänge: " + schrittdurchschnitt + "\n" +
-                            "Minimaler Abstand: " + kleinsterabstand + "\n" +
-                            "Maximaler Abstand: " + größterabstand + "\n"
-                            );
+            //MessageBox.Show("Gegegangene schritte: " + (kinectM.schrittzähler) + "\n" +
+            //                "Druchschnittslänge: " + schrittdurchschnitt + "\n" +
+            //                "Minimaler Abstand: " + kleinsterabstand + "\n" +
+            //                "Maximaler Abstand: " + größterabstand + "\n"
+            //                );
+            Math.Round(schrittdurchschnitt);
+            Math.Round(kleinsterabstand);
+            Math.Round(schrittdurchschnitt);
+
+            Analyse analyse = new Analyse();
+            analyse.schrittdurchschnitt = schrittdurchschnitt;
+            analyse.kleinsterabstand = kleinsterabstand;
+            analyse.größterabstand = größterabstand;
+            analyse.schritte = kinectM.schrittzähler;
+            analyse.ShowDialog();
+
+        }
+
+        int x = 0;
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            x+=100;
+            if (animation==0)
+            {
+                Size = new Size(defaultsize_f1_x + x, defaultsize_f1_y);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
+                this.CenterToScreen();
+                if (x >= 499)
+                    timer.Stop(); return;
+            }
+            if (animation == 1)
+            {
+                Size = new Size(defaultsize_f1_x+500 - x, defaultsize_f1_y);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
+                this.CenterToScreen();
+                if (x >= 499)
+                    timer.Stop(); return;
+            }
         }
     }
 }

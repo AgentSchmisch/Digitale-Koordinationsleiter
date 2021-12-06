@@ -43,6 +43,8 @@ namespace Bitmap_Test1_Schmid
         public double mittelpunkt_links_y = 0;
         public double mittelpunkt_rechts_y = 300;
 
+        int kreise = 1;
+
         private void IR_Load_1(object sender, EventArgs e)
         {
 
@@ -125,7 +127,7 @@ namespace Bitmap_Test1_Schmid
                     Pen redPen = new Pen(Color.Red, 20);//Kreisradius
                     Graphics g = Graphics.FromImage(bmp);
                     SimpleShapeChecker shapeChecker = new SimpleShapeChecker();
-
+                    
 
                     for (int i = 0; i < blobs.Length; i++)
                     {
@@ -141,27 +143,31 @@ namespace Bitmap_Test1_Schmid
                                 (int)(center.Y - radius),
                                 (int)(radius * 2),
                                 (int)(radius * 2));
-                            if (i == 1)
+                            if (kreise == 1)
                             {
                                 ecken1_x = (int)center.X;
                                 ecken1_y = (int)center.Y;
                             }
-                            if (i == 2)
+                            if (kreise == 2)
                             {
                                 ecken2_x = (int)center.X;
                                 ecken2_y = (int)center.Y;
                             }
-                            if (i == 3)
+                            if (kreise == 3)
                             {
                                 ecken3_x = (int)center.X;
                                 ecken3_y = (int)center.Y;
                             }
-                            if (i == 4)
+                            if (kreise == 4)
                             {
                                 ecken4_x = (int)center.X;
                                 ecken4_y = (int)center.Y;
                             }
-
+                            if (kreise==4)
+                            {
+                                kreise = 0;
+                            }
+                            kreise++;
                         }
 
                         //anzeige.Text = center.X.ToString() + " " + center.Y.ToString();
@@ -184,15 +190,19 @@ namespace Bitmap_Test1_Schmid
             double rechts_max = 0;
             double links_max = 0;
 
-            ecken1_x = 50;//testzwecke
-            ecken2_x = 440;
-            ecken3_x = 470;
-            ecken4_x = 30;
+            if (checkBox1.Checked)
+            {
+                ecken1_x = 50;//testzwecke
+                ecken2_x = 440;
+                ecken3_x = 470;
+                ecken4_x = 30;
 
-            ecken1_y = 100;
-            ecken2_y = 100;
-            ecken3_y = 310;
-            ecken4_y = 310;
+                ecken1_y = 100;
+                ecken2_y = 100;
+                ecken3_y = 310;
+                ecken4_y = 310;
+            }
+
 
             vergleich_x[0] = Math.Round(ecken1_x * 0.5859375);//scaling auf 300
             vergleich_x[1] = Math.Round(ecken2_x * 0.5859375);

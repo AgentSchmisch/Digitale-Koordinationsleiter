@@ -149,6 +149,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analyse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Analyse.Designer.cs">
+      <DependentUpon>Analyse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Einstellungen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="retrieve_Kinect.cs" />
+    <EmbeddedResource Include="Analyse.resx">
+      <DependentUpon>Analyse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Einstellungen.resx">
       <DependentUpon>Einstellungen.cs</DependentUpon>
     </EmbeddedResource>
