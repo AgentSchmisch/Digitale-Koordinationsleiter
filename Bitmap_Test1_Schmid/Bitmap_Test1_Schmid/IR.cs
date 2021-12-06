@@ -394,12 +394,13 @@ namespace Bitmap_Test1_Schmid
             //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";
 
-            //multiplikator = Math.Round(1920.0 / (erg_x[3] - erg_x[0]) * 100) / 100; //unwichtig
 
             mittelpunkt_links = erg_x[2] + ((erg_x[3] - erg_x[2]) / 2); //"linkster" punkt plus hälfte der beiden
             mittelpunkt_rechts = erg_x[1] + ((erg_x[0] - erg_x[1]) / 2); //"rechtster" punkt plus hälfte der beiden
             mittelpunkt_links_y = erg_y[2] + ((erg_y[3] - erg_y[2]) / 2); //"linkster" punkt plus hälfte der beiden
             mittelpunkt_rechts_y = erg_y[1] + ((erg_y[0] - erg_y[1]) / 2); //"rechtster" punkt plus hälfte der beiden
+
+            multiplikator = Math.Round(1920.0 / (mittelpunkt_rechts - mittelpunkt_links)); 
 
             Properties.Settings.Default.mittelpunkt_links = mittelpunkt_links;
             Properties.Settings.Default.mittelpunkt_rechts = mittelpunkt_rechts;

@@ -282,7 +282,7 @@ namespace Bitmap_Test1_Schmid
 
                                 if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= schritterkennungabstand && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= schritterkennungabstand && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= schritterkennungabstand)
                                 {
-                                    durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - _form1.ir.mittelpunkt_links) * 6;
+                                    durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - _form1.ir.mittelpunkt_links) * _form1.ir.multiplikator;
                                     if (schrittzähler>0)
                                     {
                                         if (Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 1]) > schritterkennungabstand)
@@ -409,7 +409,7 @@ namespace Bitmap_Test1_Schmid
 
                                 if (count == 0 && Math.Abs(schritt_links[0] - schritt_links[1]) <= schritterkennungabstand && Math.Abs(schritt_links[1] - schritt_links[2]) <= schritterkennungabstand && Math.Abs(schritt_links[0] - schritt_links[2]) <= schritterkennungabstand)
                                 {
-                                    durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - _form1.ir.mittelpunkt_links) * 6;
+                                    durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - _form1.ir.mittelpunkt_links) * _form1.ir.multiplikator;
                                     //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
 
                                     if (schrittzähler > 0)
