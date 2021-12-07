@@ -90,13 +90,13 @@ namespace Bitmap_Test1_Schmid
             // 
             // bestätigen
             // 
-            this.bestätigen.BackColor = System.Drawing.Color.Black;
+            this.bestätigen.BackColor = System.Drawing.Color.Transparent;
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.bestätigen.ForeColor = System.Drawing.Color.Black;
-            this.bestätigen.Location = new System.Drawing.Point(80, 96);
+            this.bestätigen.Location = new System.Drawing.Point(172, 16);
             this.bestätigen.Name = "bestätigen";
-            this.bestätigen.Size = new System.Drawing.Size(156, 70);
+            this.bestätigen.Size = new System.Drawing.Size(60, 32);
             this.bestätigen.TabIndex = 6;
             this.bestätigen.Text = "bestätigen";
             this.bestätigen.UseVisualStyleBackColor = false;
@@ -159,13 +159,13 @@ namespace Bitmap_Test1_Schmid
             // 
             // fläche
             // 
-            this.fläche.BackColor = System.Drawing.Color.Black;
+            this.fläche.BackColor = System.Drawing.Color.Transparent;
             this.fläche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fläche.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.fläche.ForeColor = System.Drawing.Color.Black;
-            this.fläche.Location = new System.Drawing.Point(610, 96);
+            this.fläche.Location = new System.Drawing.Point(702, 16);
             this.fläche.Name = "fläche";
-            this.fläche.Size = new System.Drawing.Size(156, 70);
+            this.fläche.Size = new System.Drawing.Size(60, 32);
             this.fläche.TabIndex = 11;
             this.fläche.Text = "bestätigen";
             this.fläche.UseVisualStyleBackColor = false;
@@ -215,7 +215,7 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1920, 1080);
+            this.pictureBox1.Size = new System.Drawing.Size(1280, 800);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -381,7 +381,7 @@ namespace Bitmap_Test1_Schmid
             this.right_nine.BackColor = System.Drawing.Color.Black;
             this.right_nine.Image = ((System.Drawing.Image)(resources.GetObject("right_nine.Image")));
             this.right_nine.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_nine.InitialImage")));
-            this.right_nine.Location = new System.Drawing.Point(1313, 227);
+            this.right_nine.Location = new System.Drawing.Point(991, 385);
             this.right_nine.Name = "right_nine";
             this.right_nine.Size = new System.Drawing.Size(155, 73);
             this.right_nine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -394,7 +394,7 @@ namespace Bitmap_Test1_Schmid
             this.left_nine.BackColor = System.Drawing.Color.Black;
             this.left_nine.Image = ((System.Drawing.Image)(resources.GetObject("left_nine.Image")));
             this.left_nine.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_nine.InitialImage")));
-            this.left_nine.Location = new System.Drawing.Point(1313, 148);
+            this.left_nine.Location = new System.Drawing.Point(991, 306);
             this.left_nine.Name = "left_nine";
             this.left_nine.Size = new System.Drawing.Size(155, 73);
             this.left_nine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -433,7 +433,7 @@ namespace Bitmap_Test1_Schmid
             this.right_ten.BackColor = System.Drawing.Color.Black;
             this.right_ten.Image = ((System.Drawing.Image)(resources.GetObject("right_ten.Image")));
             this.right_ten.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_ten.InitialImage")));
-            this.right_ten.Location = new System.Drawing.Point(1474, 227);
+            this.right_ten.Location = new System.Drawing.Point(1152, 385);
             this.right_ten.Name = "right_ten";
             this.right_ten.Size = new System.Drawing.Size(155, 73);
             this.right_ten.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -446,7 +446,7 @@ namespace Bitmap_Test1_Schmid
             this.left_ten.BackColor = System.Drawing.Color.Black;
             this.left_ten.Image = ((System.Drawing.Image)(resources.GetObject("left_ten.Image")));
             this.left_ten.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_ten.InitialImage")));
-            this.left_ten.Location = new System.Drawing.Point(1474, 148);
+            this.left_ten.Location = new System.Drawing.Point(1152, 306);
             this.left_ten.Name = "left_ten";
             this.left_ten.Size = new System.Drawing.Size(155, 73);
             this.left_ten.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -497,7 +497,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.ClientSize = new System.Drawing.Size(1280, 800);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.right_seven);
             this.Controls.Add(this.left_seven);
@@ -535,7 +535,6 @@ namespace Bitmap_Test1_Schmid
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Virtuelle Oberfläche";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.regler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).EndInit();

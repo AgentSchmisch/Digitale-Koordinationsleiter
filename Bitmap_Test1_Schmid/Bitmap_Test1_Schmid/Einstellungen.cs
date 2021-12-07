@@ -12,7 +12,7 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Einstellungen : Form
     {
-
+        public bool dickeanders = false;
         public Einstellungen()
         {
             InitializeComponent();
@@ -38,6 +38,7 @@ namespace Bitmap_Test1_Schmid
         private void bar_dicke_ValueChanged(object sender, EventArgs e)
         {
             anzeige.Text = bar_dicke.Value.ToString();
+            dickeanders = true;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -41,6 +41,11 @@ namespace Bitmap_Test1_Schmid
             this.groß = new System.Windows.Forms.Label();
             this.klein = new System.Windows.Forms.Label();
             this.durchs = new System.Windows.Forms.Label();
+            this.hintergrund = new System.Windows.Forms.PictureBox();
+            this.text_länge = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.hintergrund)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -147,6 +152,49 @@ namespace Bitmap_Test1_Schmid
             this.durchs.TabIndex = 8;
             this.durchs.Text = "-";
             // 
+            // hintergrund
+            // 
+            this.hintergrund.Location = new System.Drawing.Point(12, 289);
+            this.hintergrund.Name = "hintergrund";
+            this.hintergrund.Size = new System.Drawing.Size(440, 297);
+            this.hintergrund.TabIndex = 9;
+            this.hintergrund.TabStop = false;
+            // 
+            // text_länge
+            // 
+            this.text_länge.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.text_länge.Location = new System.Drawing.Point(372, 289);
+            this.text_länge.Name = "text_länge";
+            this.text_länge.Size = new System.Drawing.Size(100, 32);
+            this.text_länge.TabIndex = 10;
+            this.text_länge.Visible = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(98, 289);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(268, 26);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Länge der Projektion (cm):";
+            this.label2.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(12, 289);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 42);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Bestätigen";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Analyse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +202,10 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(454, 311);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.text_länge);
+            this.Controls.Add(this.hintergrund);
             this.Controls.Add(this.durchs);
             this.Controls.Add(this.klein);
             this.Controls.Add(this.groß);
@@ -164,6 +216,7 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.lab_steps);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -171,7 +224,9 @@ namespace Bitmap_Test1_Schmid
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Analyse";
             this.TopMost = true;
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Analyse_HelpButtonClicked);
             this.Load += new System.EventHandler(this.Analyse_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.hintergrund)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +244,9 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Label groß;
         private System.Windows.Forms.Label klein;
         private System.Windows.Forms.Label durchs;
+        private System.Windows.Forms.PictureBox hintergrund;
+        private System.Windows.Forms.TextBox text_länge;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }

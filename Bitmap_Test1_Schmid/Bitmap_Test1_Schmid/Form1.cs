@@ -16,7 +16,7 @@ namespace Bitmap_Test1_Schmid
         Einstellungen einstellungen = new Einstellungen();
         public Patientendatenbank Patientendatenbank = new Patientendatenbank();
         retrieve_Kinect kinect = new retrieve_Kinect();
-        public KinectMonitor kinectM = new KinectMonitor();
+        public KinectMonitor kinectM;// = new KinectMonitor();
         public IR ir = new IR();
 
         public static int schritt = 0;
@@ -204,22 +204,39 @@ namespace Bitmap_Test1_Schmid
             //Size = new Size(defaultsize_f1_x, defaultsize_f1_y);
             //this.CenterToScreen();
         }
-
+        bool einaus = true;
         private void kinectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            kinectM.form1 = this;
-            ir.form1_2 = this;
-            kinectM.steps_kinect = Convert.ToInt32(steps.Text);
-            //this.Hide();
-            //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
-            kinectM.Show();//kürzlich geändert --> mögliche fehlerquelle
-            //this.Show();
+            if (einaus)
+            {
+                kinectM = new KinectMonitor();
+                kinectM.form1 = this;
+                ir.form1_2 = this;
+                kinectM.steps_kinect = Convert.ToInt32(steps.Text);
+                kinectToolStripMenuItem.BackColor = Color.Orange;
+                //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
+                //kinectM.WindowState = FormWindowState.Minimized;
+                kinectM.Show();//unwichtig: kürzlich geändert --> mögliche fehlerquelle
+                //kinectM.Hide();
+
+            }
+            if (!einaus)
+            {
+                kinectM.Close();
+                kinectToolStripMenuItem.BackColor = Color.Black;
+            }
+            einaus = !einaus;
         }
 
         private void einstellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             einstellungen.form1 = this;
             einstellungen.ShowDialog();
+            if(einstellungen.dickeanders)
+            {
+                screen.deleteall();
+                einstellungen.dickeanders = false;
+            }
         }
         private void kantenerkennungToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -269,9 +286,9 @@ namespace Bitmap_Test1_Schmid
             for (int i = 0; i < kinectM.schrittzähler; i++)
             {
                 schrittdurchschnitt += kinectM.durchschnitt[i];
-                if (i>0)
+                if (i > 0)
                 {
-                    if (Math.Abs(kinectM.durchschnitt[i+1] - kinectM.durchschnitt[i]) < kleinsterabstand)
+                    if (Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]) < kleinsterabstand)
                     {
                         kleinsterabstand = Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]);
                     }
@@ -283,7 +300,7 @@ namespace Bitmap_Test1_Schmid
                 }
 
             }
-            schrittdurchschnitt = schrittdurchschnitt / (kinectM.schrittzähler-1);
+            schrittdurchschnitt = schrittdurchschnitt / (kinectM.schrittzähler - 1);
 
             Math.Round(schrittdurchschnitt);
             Math.Round(kleinsterabstand);
@@ -317,5 +334,6 @@ namespace Bitmap_Test1_Schmid
                     timer.Stop(); return;
             }
         }
+
     }
 }

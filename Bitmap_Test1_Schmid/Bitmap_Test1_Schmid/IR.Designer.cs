@@ -233,6 +233,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Location = new System.Drawing.Point(49, 76);
             this.pictureBox1.Name = "pictureBox1";

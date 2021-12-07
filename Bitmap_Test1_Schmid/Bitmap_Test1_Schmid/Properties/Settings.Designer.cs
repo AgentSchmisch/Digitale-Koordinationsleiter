@@ -142,5 +142,29 @@ namespace Bitmap_Test1_Schmid.Properties {
                 this["mittelpunkt_rechtsy"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double multiplikator {
+            get {
+                return ((double)(this["multiplikator"]));
+            }
+            set {
+                this["multiplikator"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1280")]
+        public double länge {
+            get {
+                return ((double)(this["länge"]));
+            }
+            set {
+                this["länge"] = value;
+            }
+        }
     }
 }

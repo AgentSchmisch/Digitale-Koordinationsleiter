@@ -54,7 +54,6 @@ namespace Bitmap_Test1_Schmid
 
         private void IR_Load_1(object sender, EventArgs e)
         {
-
             sensor = KinectSensor.GetDefault();
             rgbsensor = KinectSensor.GetDefault();
 
@@ -65,6 +64,7 @@ namespace Bitmap_Test1_Schmid
             reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
             reader.MultiSourceFrameArrived += reader_IRFrameArrived;
         }
+
         void reader_IRFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
         {
             if (mode == 1)
@@ -134,7 +134,6 @@ namespace Bitmap_Test1_Schmid
                     Pen redPen = new Pen(Color.Red, 20);//Kreisradius
                     Graphics g = Graphics.FromImage(bmp);
                     SimpleShapeChecker shapeChecker = new SimpleShapeChecker();
-                    
 
                     for (int i = 0; i < blobs.Length; i++)
                     {
@@ -209,7 +208,6 @@ namespace Bitmap_Test1_Schmid
                 ecken3_y = 310;
                 ecken4_y = 310;
             }
-
 
             vergleich_x[0] = Math.Round(ecken1_x * 0.5859375);//scaling auf 300
             vergleich_x[1] = Math.Round(ecken2_x * 0.5859375);
@@ -382,37 +380,37 @@ namespace Bitmap_Test1_Schmid
             //                "links oben: " + erg_x[3] + " " + erg_y[3]);
 
             k1.Left = (int)Math.Round(erg_x[0] * 1.706) + pictureBox1.Location.X;
-            k1.Top = (int)(erg_y[0]);
+            k1.Top = (int)(erg_y[0]) + pictureBox1.Location.Y;
             //k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];//nur für debugging mit Koordinaten
             k1.Text = "rechts oben";
 
             k2.Left = (int)Math.Round(erg_x[1] * 1.706) + pictureBox1.Location.X;
-            k2.Top = (int)(erg_y[1]);
+            k2.Top = (int)(erg_y[1]) + pictureBox1.Location.Y;
             //k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];//nur für debugging mit Koordinaten
             k2.Text = "rechts unten";
 
             k3.Left = (int)Math.Round(erg_x[2] * 1.706) + pictureBox1.Location.X;
-            k3.Top = (int)(erg_y[2]);
+            k3.Top = (int)(erg_y[2]) + pictureBox1.Location.Y;
             //k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];//nur für debugging mit Koordinaten
             k3.Text = "links unten";
 
             k4.Left = (int)Math.Round(erg_x[3] * 1.706) + pictureBox1.Location.X;
-            k4.Top = (int)(erg_y[3]);
+            k4.Top = (int)(erg_y[3]) + pictureBox1.Location.Y;
             //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";
-
 
             mittelpunkt_links = erg_x[2] + ((erg_x[3] - erg_x[2]) / 2); //"linkster" punkt plus hälfte der beiden
             mittelpunkt_rechts = erg_x[1] + ((erg_x[0] - erg_x[1]) / 2); //"rechtster" punkt plus hälfte der beiden
             mittelpunkt_links_y = erg_y[2] + ((erg_y[3] - erg_y[2]) / 2); //"linkster" punkt plus hälfte der beiden
             mittelpunkt_rechts_y = erg_y[1] + ((erg_y[0] - erg_y[1]) / 2); //"rechtster" punkt plus hälfte der beiden
 
-            multiplikator = Math.Round(1920.0 / (mittelpunkt_rechts - mittelpunkt_links)); 
+            multiplikator = Math.Round(_form1_2.screen.Auflösung_Projektor_x / (mittelpunkt_rechts - mittelpunkt_links)); 
 
             Properties.Settings.Default.mittelpunkt_links = mittelpunkt_links;
             Properties.Settings.Default.mittelpunkt_rechts = mittelpunkt_rechts;
             Properties.Settings.Default.mittelpunkt_linksy = mittelpunkt_links_y;
             Properties.Settings.Default.mittelpunkt_rechtsy = mittelpunkt_rechts_y;
+            Properties.Settings.Default.multiplikator = multiplikator;
             Properties.Settings.Default.Save();
 
         }
@@ -523,5 +521,19 @@ namespace Bitmap_Test1_Schmid
         private void IR_FormClosing(object sender, FormClosingEventArgs e)
         {
         }
+        //private void DrawEllipseFloat(object sender, PaintEventArgs g)
+        //{
+        //    //Graphics g = CreateGraphics();
+
+        //    Pen blackPen = new Pen(Color.Red, 1);
+
+        //    g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(erg_x[1] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[1]) + pictureBox1.Location.Y);// ro ru
+        //    g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(erg_x[3] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[3]) + pictureBox1.Location.Y);// ro lo
+        //    g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(erg_x[3] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[3]) + pictureBox1.Location.Y);// lu lo
+        //    g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(erg_x[1] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[1]) + pictureBox1.Location.Y);// lu ru
+
+        //    g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * 1.706) + pictureBox1.Location.X, (int)mittelpunkt_links_y + pictureBox1.Location.Y, (int)Math.Round(mittelpunkt_rechts * 1.706) + pictureBox1.Location.X, (int)mittelpunkt_rechts_y + pictureBox1.Location.Y);
+        //    g.Graphics.DrawLine(blackPen, 1, 1, 500, 500);
+        //}
     }
 }

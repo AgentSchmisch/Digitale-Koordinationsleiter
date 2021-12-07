@@ -23,6 +23,14 @@ namespace Bitmap_Test1_Schmid
         public double kleinsterabstand = 500;
         public double größterabstand = 0;
         public double schritte = 0;
+        double länge;
+
+        private Form1 _form1;
+        public Form1 form1
+        {
+            set { this._form1 = value; }
+        }
+
         private void timer_Tick(object sender, EventArgs e)
         {
             time++;
@@ -70,6 +78,7 @@ namespace Bitmap_Test1_Schmid
 
         private void Analyse_Load(object sender, EventArgs e)
         {
+            hintergrund.Visible = false;
             Color myColor = Color.FromArgb(40, 50, 60);
 
             lab_durchs.ForeColor = myColor;
@@ -81,16 +90,45 @@ namespace Bitmap_Test1_Schmid
             groß.ForeColor = myColor;
             steps.ForeColor = myColor;
 
+            länge = Properties.Settings.Default.länge;
+
             steps.Text = schritte.ToString();
-            durchs.Text = schrittdurchschnitt.ToString();
-            klein.Text = kleinsterabstand.ToString();
-            groß.Text = größterabstand.ToString();
+            durchs.Text = (schrittdurchschnitt * länge).ToString();
+            klein.Text = (kleinsterabstand * länge).ToString();
+            groß.Text = (größterabstand * länge).ToString();
 
             Size = new Size(470, 136);
             this.CenterToScreen();
             timer.Start();
 
 
+        }
+
+        private void Analyse_HelpButtonClicked(object sender, CancelEventArgs e)
+        {
+            hintergrund.Location = new Point(2, 2);
+            label2.Location = new Point(33, 112);
+            text_länge.Location = new Point(307, 112);
+            button1.Location = new Point(150, 170);
+            label2.Visible=true;
+            button1.Visible = true;
+            text_länge.Visible = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label2.Visible = false;
+            button1.Visible = false;
+            text_länge.Visible = false;
+            hintergrund.Visible = false;
+
+            länge = Convert.ToDouble(text_länge.Text);
+            Properties.Settings.Default.länge = länge;
+            Properties.Settings.Default.Save();
+
+            durchs.Text = ((schrittdurchschnitt / _form1.screen.Auflösung_Projektor_x) * länge).ToString();
+            klein.Text = ((kleinsterabstand / _form1.screen.Auflösung_Projektor_x) * länge).ToString();
+            groß.Text = ((größterabstand / _form1.screen.Auflösung_Projektor_x) * länge).ToString();
         }
     }
 }

@@ -115,12 +115,12 @@ namespace Bitmap_Test1_Schmid
             // Xrechts
             // 
             this.Xrechts.AutoSize = true;
-            this.Xrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.Xrechts.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.Xrechts.ForeColor = System.Drawing.Color.White;
             this.Xrechts.Location = new System.Drawing.Point(746, 63);
             this.Xrechts.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Xrechts.Name = "Xrechts";
-            this.Xrechts.Size = new System.Drawing.Size(32, 31);
+            this.Xrechts.Size = new System.Drawing.Size(47, 46);
             this.Xrechts.TabIndex = 15;
             this.Xrechts.Text = "X";
             // 
@@ -153,12 +153,12 @@ namespace Bitmap_Test1_Schmid
             // Xlinks
             // 
             this.Xlinks.AutoSize = true;
-            this.Xlinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.Xlinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.Xlinks.ForeColor = System.Drawing.Color.White;
             this.Xlinks.Location = new System.Drawing.Point(572, 63);
             this.Xlinks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Xlinks.Name = "Xlinks";
-            this.Xlinks.Size = new System.Drawing.Size(32, 31);
+            this.Xlinks.Size = new System.Drawing.Size(47, 46);
             this.Xlinks.TabIndex = 12;
             this.Xlinks.Text = "X";
             // 
@@ -252,8 +252,9 @@ namespace Bitmap_Test1_Schmid
             this.label3.Location = new System.Drawing.Point(553, 300);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 37);
+            this.label3.Size = new System.Drawing.Size(161, 37);
             this.label3.TabIndex = 25;
+            this.label3.Text = "                ";
             // 
             // KinectMonitor
             // 

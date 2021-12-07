@@ -57,7 +57,6 @@
             this.lblName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.delsteps = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
@@ -242,10 +241,11 @@
             // 
             // kinectToolStripMenuItem
             // 
+            this.kinectToolStripMenuItem.BackColor = System.Drawing.Color.Black;
             this.kinectToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.kinectToolStripMenuItem.Name = "kinectToolStripMenuItem";
-            this.kinectToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.kinectToolStripMenuItem.Text = "Kinect";
+            this.kinectToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
+            this.kinectToolStripMenuItem.Text = "Schritterkennung";
             this.kinectToolStripMenuItem.Click += new System.EventHandler(this.kinectToolStripMenuItem_Click);
             // 
             // kantenerkennungToolStripMenuItem
@@ -384,17 +384,6 @@
             this.delsteps.Visible = false;
             this.delsteps.Click += new System.EventHandler(this.delsteps_Click);
             // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label7.ForeColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(266, 30);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(2, 330);
-            this.label7.TabIndex = 38;
-            // 
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.Transparent;
@@ -420,7 +409,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(644, 370);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.delsteps);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblName);
@@ -491,7 +479,6 @@
         private System.Windows.Forms.ToolStripMenuItem kantenerkennungToolStripMenuItem;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.Button delsteps;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.ToolStripMenuItem analyseToolStripMenuItem;
         private System.Windows.Forms.Timer timer;
