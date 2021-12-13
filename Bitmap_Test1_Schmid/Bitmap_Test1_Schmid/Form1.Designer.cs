@@ -116,9 +116,11 @@
             // 
             // längelabel
             // 
-            this.längelabel.Location = new System.Drawing.Point(26, 39);
+            this.längelabel.BackColor = System.Drawing.Color.White;
+            this.längelabel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.längelabel.Location = new System.Drawing.Point(267, 36);
             this.längelabel.Name = "längelabel";
-            this.längelabel.Size = new System.Drawing.Size(100, 23);
+            this.längelabel.Size = new System.Drawing.Size(1, 320);
             this.längelabel.TabIndex = 21;
             // 
             // längebox
