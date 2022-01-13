@@ -16,11 +16,11 @@ namespace Bitmap_Test1_Schmid
     public partial class Patientendatenbank : Form
     {
         /*Alle Patientenspezifischen Tabellen nach dem Schema: Patientennummer_Vorname_Nachname
-        *
+         * 
         */
          
         //Connectionstring für die Verbindung zum Mysql Server
-        string SQLServer = "server = koordinationsleiter.ddns.net; user id = Klinikum;password=koordinationsleiter; database=Patienten; sslmode=None;port=3306; persistsecurityinfo=True";
+        string SQLServer = "server = koordinationsleiter.ddns.net; user id = Klinikum; password = koordinationsleiter; database = Patienten; sslmode=None; port=3306; persistsecurityinfo=True";
 
         #region alle mySQL Abfragen
         //ausnahme: Abfragen bei denen die werte erst während der Laufzeit eingegeben werden
@@ -34,6 +34,7 @@ namespace Bitmap_Test1_Schmid
         bool bearbeitung = false;
         public bool auswahl = false;
         //Variablen für die verschiedenen Patientendaten die später von der UI geholt werden
+
         public string Patientenname;
         string PatNr_aktuell;
         public string Nameaktuell;
@@ -217,45 +218,27 @@ namespace Bitmap_Test1_Schmid
                         record += row[j] + ";";
                         continue;
                     }
-                }
-
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Vorname")
                     {
 
                         record += row[j] + ";";
                         continue;
                     }
-                }
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Nachname")
                     {
                         record += row[j] + ";";
                         continue;
                     }
-                }
-
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Postleitzahl")
                     {
                         record += row[j] + ";";
                         continue;
                     }
-                }
-
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Ort")
                     {
                         record += row[j] + ";";
                         continue;
                     }
-                }
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Geburtsdatum")
                     {
                         record += row[j] + ";";
