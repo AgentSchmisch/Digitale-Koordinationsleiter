@@ -210,8 +210,8 @@ namespace Bitmap_Test1_Schmid
             if (einaus)
             {
                 kinectM = new KinectMonitor();
-                kinectM.form1 = this;
-                ir.form1_2 = this;
+                kinectM.form1_schritt = this;
+                //ir.form1_2 = this;
                 kinectM.steps_kinect = Convert.ToInt32(steps.Text);
                 kinectToolStripMenuItem.BackColor = Color.Orange;
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
@@ -242,6 +242,7 @@ namespace Bitmap_Test1_Schmid
         {
             //this.Hide();
             Task infrared = Task.Run(() => ir.ShowDialog());
+            ir.form1_2 = this;
             //ir.ShowDialog();
             //this.Show();
         }
@@ -254,17 +255,26 @@ namespace Bitmap_Test1_Schmid
             screen.right_four.Hide();
             screen.right_five.Hide();
             screen.right_six.Hide();
+            screen.right_seven.Hide();
+            screen.right_eight.Hide();
+            screen.right_nine.Hide();
+            screen.right_ten.Hide();
             screen.left_one.Hide();
             screen.left_two.Hide();
             screen.left_three.Hide();
             screen.left_four.Hide();
             screen.left_five.Hide();
             screen.left_six.Hide();
+            screen.left_seven.Hide();
+            screen.left_eight.Hide();
+            screen.left_nine.Hide();
+            screen.left_ten.Hide();
+
             kinectM.schrittzähler = 0;
         }
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            if (MessageBox.Show("Wollen Sie wirklich neustarten?", "neustart", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Wollen Sie wirklich neustarten?", "Neustart", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 Application.Restart();
         }
 
@@ -281,7 +291,6 @@ namespace Bitmap_Test1_Schmid
 
         private void analyseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
 
             for (int i = 0; i < kinectM.schrittzähler; i++)
             {
@@ -307,6 +316,7 @@ namespace Bitmap_Test1_Schmid
             Math.Round(schrittdurchschnitt);
 
             Analyse analyse = new Analyse();
+            analyse.form1_anal = this;
             analyse.schrittdurchschnitt = schrittdurchschnitt;
             analyse.kleinsterabstand = kleinsterabstand;
             analyse.größterabstand = größterabstand;
