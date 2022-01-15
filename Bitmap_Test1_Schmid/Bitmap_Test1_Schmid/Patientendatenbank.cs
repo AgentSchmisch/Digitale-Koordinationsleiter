@@ -111,7 +111,6 @@ namespace Bitmap_Test1_Schmid
             catch
             {
                 lblEditStatus.BackColor = Color.Red;
-
             }
             finally
             {
@@ -196,7 +195,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Bitte Daten eingeben!", "Eingabefehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                exception(ex.Number);
                 return;
             }
             finally
@@ -290,7 +289,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (MySqlException ex)
             {
-                exception(ex.ToString());
+                exception(ex.Number);
                 return;
             }
             finally
@@ -578,7 +577,7 @@ namespace Bitmap_Test1_Schmid
                 }
                 catch(MySqlException ex)
                 {
-                    MessageBox.Show(""+ex);
+                    exception(ex.Number);
                     return;
                 }
                 finally
@@ -673,7 +672,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (MySqlException ex)
             {
-                exception(ex.ToString());
+                exception(ex.Number);
             }
 
             finally
@@ -727,7 +726,7 @@ namespace Bitmap_Test1_Schmid
 
                 catch (MySqlException ex)
                 {
-                    exception(ex.ToString());
+                    exception(ex.Number);
                 }
                 finally
                 {
@@ -783,7 +782,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (MySqlException ex)
             {
-                exception(ex.ToString());
+                exception(ex.Number);
                 return;
             }
             finally
@@ -998,8 +997,7 @@ namespace Bitmap_Test1_Schmid
                 }
                 catch (MySqlException ex)
                 {
-                    exception(ex.ToString());
-
+                    exception(ex.Number);
                 }
 
                 finally
@@ -1109,7 +1107,7 @@ namespace Bitmap_Test1_Schmid
                 }
                 catch (MySqlException ex)
                 {
-                    exception(ex.ToString());
+                    exception(ex.Number);
                 }
 
                 finally
@@ -1118,9 +1116,21 @@ namespace Bitmap_Test1_Schmid
                 }
             }
         }
-        void exception(string Exception)
+        void exception(int Exception)
         {
-            MessageBox.Show(Exception);
+            //TODO: vollständige Fehlerbehandlung mit schönen Fehlermeldungen
+            //https://stackoverflow.com/questions/8138392/make-mysql-errors-caught-in-c-sharp-user-friendly
+            //https://mariadb.com/kb/en/mariadb-error-codes/
+            switch (Exception)
+            {
+                case 1042:
+                    MessageBox.Show("Keine Verbindung zur Datenbank möglich\nFehler: "+Exception);
+                    return;
+                case 0:
+                    MessageBox.Show("Schwerer Fehler\nBitte kontaktieren Sie den Entwickler");
+                    break;
+           }
+            MessageBox.Show(Exception.ToString());
         }
     }
 
