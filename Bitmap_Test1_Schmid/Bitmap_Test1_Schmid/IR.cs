@@ -209,10 +209,13 @@ namespace Bitmap_Test1_Schmid
                 ecken4_y = 310;
             }
 
-            vergleich_x[0] = Math.Round(ecken1_x * 0.5859375);//scaling auf 300
-            vergleich_x[1] = Math.Round(ecken2_x * 0.5859375);
-            vergleich_x[2] = Math.Round(ecken3_x * 0.5859375);
-            vergleich_x[3] = Math.Round(ecken4_x * 0.5859375);
+            double _512_auf_320 = 0.625;
+            double _320_auf_512 = 1.6;
+
+            vergleich_x[0] = Math.Round(ecken1_x * _512_auf_320);//scaling auf 320
+            vergleich_x[1] = Math.Round(ecken2_x * _512_auf_320);
+            vergleich_x[2] = Math.Round(ecken3_x * _512_auf_320);
+            vergleich_x[3] = Math.Round(ecken4_x * _512_auf_320);
 
             vergleich_y[0] = ecken1_y;// * 2.54;
             vergleich_y[1] = ecken2_y;// * 2.54;
@@ -379,22 +382,22 @@ namespace Bitmap_Test1_Schmid
             //                "links unten: " + erg_x[2] + " " + erg_y[2] + "\n" + 
             //                "links oben: " + erg_x[3] + " " + erg_y[3]);
 
-            k1.Left = (int)Math.Round(erg_x[0] * 1.706) + pictureBox1.Location.X;
+            k1.Left = (int)Math.Round(erg_x[0] * _320_auf_512) + pictureBox1.Location.X;
             k1.Top = (int)(erg_y[0]) + pictureBox1.Location.Y;
             //k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];//nur für debugging mit Koordinaten
             k1.Text = "rechts oben";
 
-            k2.Left = (int)Math.Round(erg_x[1] * 1.706) + pictureBox1.Location.X;
+            k2.Left = (int)Math.Round(erg_x[1] * _320_auf_512) + pictureBox1.Location.X;
             k2.Top = (int)(erg_y[1]) + pictureBox1.Location.Y;
             //k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];//nur für debugging mit Koordinaten
             k2.Text = "rechts unten";
 
-            k3.Left = (int)Math.Round(erg_x[2] * 1.706) + pictureBox1.Location.X;
+            k3.Left = (int)Math.Round(erg_x[2] * _320_auf_512) + pictureBox1.Location.X;
             k3.Top = (int)(erg_y[2]) + pictureBox1.Location.Y;
             //k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];//nur für debugging mit Koordinaten
             k3.Text = "links unten";
 
-            k4.Left = (int)Math.Round(erg_x[3] * 1.706) + pictureBox1.Location.X;
+            k4.Left = (int)Math.Round(erg_x[3] * _320_auf_512) + pictureBox1.Location.X;
             k4.Top = (int)(erg_y[3]) + pictureBox1.Location.Y;
             //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";

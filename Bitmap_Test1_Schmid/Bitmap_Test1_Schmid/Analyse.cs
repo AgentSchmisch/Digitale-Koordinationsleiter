@@ -23,12 +23,12 @@ namespace Bitmap_Test1_Schmid
         public double kleinsterabstand = 500;
         public double größterabstand = 0;
         public double schritte = 0;
-        double länge;
+        double länge = 300;
 
-        private Form1 _form1;
-        public Form1 form1
+        private Form1 _form1_anal;
+        public Form1 form1_anal
         {
-            set { this._form1 = value; }
+            set { this._form1_anal = value; }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -93,9 +93,9 @@ namespace Bitmap_Test1_Schmid
             länge = Properties.Settings.Default.länge;
 
             steps.Text = schritte.ToString();
-            durchs.Text = (schrittdurchschnitt * länge).ToString();
-            klein.Text = (kleinsterabstand * länge).ToString();
-            groß.Text = (größterabstand * länge).ToString();
+            durchs.Text = ((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
+            klein.Text = ((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
+            groß.Text = ((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
 
             Size = new Size(470, 136);
             this.CenterToScreen();
@@ -106,6 +106,16 @@ namespace Bitmap_Test1_Schmid
 
         private void Analyse_HelpButtonClicked(object sender, CancelEventArgs e)
         {
+
+            lab_durchs.Visible = false;
+            lab_klein.Visible = false;
+            lab_groß.Visible = false;
+            lab_steps.Visible = false;
+            durchs.Visible = false;
+            klein.Visible = false;
+            groß.Visible = false;
+            steps.Visible = false;
+
             hintergrund.Location = new Point(2, 2);
             label2.Location = new Point(33, 112);
             text_länge.Location = new Point(307, 112);
@@ -117,6 +127,15 @@ namespace Bitmap_Test1_Schmid
 
         private void button1_Click(object sender, EventArgs e)
         {
+            lab_durchs.Visible = true;
+            lab_klein.Visible = true;
+            lab_groß.Visible = true;
+            lab_steps.Visible = true;
+            durchs.Visible = true;
+            klein.Visible = true;
+            groß.Visible = true;
+            steps.Visible = true;
+
             label2.Visible = false;
             button1.Visible = false;
             text_länge.Visible = false;
@@ -126,9 +145,9 @@ namespace Bitmap_Test1_Schmid
             Properties.Settings.Default.länge = länge;
             Properties.Settings.Default.Save();
 
-            durchs.Text = ((schrittdurchschnitt / _form1.screen.Auflösung_Projektor_x) * länge).ToString();
-            klein.Text = ((kleinsterabstand / _form1.screen.Auflösung_Projektor_x) * länge).ToString();
-            groß.Text = ((größterabstand / _form1.screen.Auflösung_Projektor_x) * länge).ToString();
+            durchs.Text = ((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
+            klein.Text = ((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
+            groß.Text = ((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
         }
     }
 }
