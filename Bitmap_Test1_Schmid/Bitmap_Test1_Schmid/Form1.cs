@@ -22,7 +22,7 @@ namespace Bitmap_Test1_Schmid
         public static int schritt = 0;
 
         public int defaultsize_f1_x = 660; //fenstergröße
-        public int defaultsize_f1_y = 409;
+        public int defaultsize_f1_y = 424;
 
         public double schrittdurchschnitt = 0;
         public double kleinsterabstand = 500;
@@ -49,8 +49,8 @@ namespace Bitmap_Test1_Schmid
             {
                 //schritt=Convert.ToInt32(steps.Text);
                 screen.sendvar = Convert.ToInt32(steps.Text);
-                regler.Maximum = Convert.ToInt32(steps.Text)-1;
-                screen.regler.Maximum = Convert.ToInt32(steps.Text)-1;
+                regler.Maximum = Convert.ToInt32(steps.Text) - 1;
+                screen.regler.Maximum = Convert.ToInt32(steps.Text) - 1;
                 längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
                 screen.bestätigen.PerformClick();
 
@@ -155,7 +155,7 @@ namespace Bitmap_Test1_Schmid
             }
         }
         private void patientToolStripMenuItem_Click(object sender, EventArgs e)
-        {   
+        {
             try
             {
                 //öffnen der Form für die Patientendatenbank, 
@@ -175,14 +175,14 @@ namespace Bitmap_Test1_Schmid
                     {
                         x = 0;
                         animation = 0;
-                        timer.Start();                  
+                        timer.Start();
                     }
                     bestätigen.PerformClick();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Fehlgeschlagen" +ex);
+                MessageBox.Show("Fehlgeschlagen" + ex);
             }
 
         }
@@ -217,8 +217,7 @@ namespace Bitmap_Test1_Schmid
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
                 //kinectM.WindowState = FormWindowState.Minimized;
                 kinectM.Show();//unwichtig: kürzlich geändert --> mögliche fehlerquelle
-                //kinectM.Hide();
-
+                               //kinectM.Hide();
             }
             if (!einaus)
             {
@@ -232,7 +231,7 @@ namespace Bitmap_Test1_Schmid
         {
             einstellungen.form1 = this;
             einstellungen.ShowDialog();
-            if(einstellungen.dickeanders)
+            if (einstellungen.dickeanders)
             {
                 screen.deleteall();
                 einstellungen.dickeanders = false;
@@ -328,8 +327,8 @@ namespace Bitmap_Test1_Schmid
         int x = 0;
         private void timer_Tick(object sender, EventArgs e)
         {
-            x+=100;
-            if (animation==0)
+            x += 100;
+            if (animation == 0)
             {
                 Size = new Size(defaultsize_f1_x + x, defaultsize_f1_y);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
                 this.CenterToScreen();
@@ -338,12 +337,36 @@ namespace Bitmap_Test1_Schmid
             }
             if (animation == 1)
             {
-                Size = new Size(defaultsize_f1_x+500 - x, defaultsize_f1_y);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
+                Size = new Size(defaultsize_f1_x + 500 - x, defaultsize_f1_y);                //vergrößern der UI um die aktuellen Patientenwerte auszulesen
                 this.CenterToScreen();
                 if (x >= 499)
                     timer.Stop(); return;
             }
         }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            if (trackBar1.Value == 1)
+            {
+                label9.Location = new Point(475, 360);
+                label9.Text = "gering";
+            }
+
+            if (trackBar1.Value == 2) 
+            {
+                label9.Location = new Point(520, 360);
+                label9.Text = "mittel";
+            }
+            if (trackBar1.Value == 3)
+            {
+                label9.Location = new Point(560, 360);
+                label9.Text = "hoch";
+            }
+        }
     }
 }
