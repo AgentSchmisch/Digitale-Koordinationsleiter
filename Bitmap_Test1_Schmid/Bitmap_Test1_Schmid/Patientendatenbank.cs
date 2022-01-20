@@ -16,11 +16,11 @@ namespace Bitmap_Test1_Schmid
     public partial class Patientendatenbank : Form
     {
         /*Alle Patientenspezifischen Tabellen nach dem Schema: Patientennummer_Vorname_Nachname
-        *
+         * 
         */
          
         //Connectionstring für die Verbindung zum Mysql Server
-        string SQLServer = "server = koordinationsleiter.ddns.net; user id = Klinikum;password=koordinationsleiter; database=Patienten; sslmode=None;port=3306; persistsecurityinfo=True";
+        string SQLServer = "server = koordinationsleiter.ddns.net; user id = Klinikum; password = koordinationsleiter; database = Patienten; sslmode=None; port=3306; persistsecurityinfo=True";
 
         #region alle mySQL Abfragen
         //ausnahme: Abfragen bei denen die werte erst während der Laufzeit eingegeben werden
@@ -34,6 +34,7 @@ namespace Bitmap_Test1_Schmid
         bool bearbeitung = false;
         public bool auswahl = false;
         //Variablen für die verschiedenen Patientendaten die später von der UI geholt werden
+
         public string Patientenname;
         string PatNr_aktuell;
         public string Nameaktuell;
@@ -110,7 +111,6 @@ namespace Bitmap_Test1_Schmid
             catch
             {
                 lblEditStatus.BackColor = Color.Red;
-
             }
             finally
             {
@@ -195,7 +195,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Bitte Daten eingeben!", "Eingabefehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                exception(ex.Number);
                 return;
             }
             finally
@@ -217,45 +217,27 @@ namespace Bitmap_Test1_Schmid
                         record += row[j] + ";";
                         continue;
                     }
-                }
-
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Vorname")
                     {
 
                         record += row[j] + ";";
                         continue;
                     }
-                }
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Nachname")
                     {
                         record += row[j] + ";";
                         continue;
                     }
-                }
-
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Postleitzahl")
                     {
                         record += row[j] + ";";
                         continue;
                     }
-                }
-
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Ort")
                     {
                         record += row[j] + ";";
                         continue;
                     }
-                }
-                for (int j = 0; j < tbl.Columns.Count; j++)
-                {
                     if (tbl.Columns[j].ColumnName == "Geburtsdatum")
                     {
                         record += row[j] + ";";
@@ -307,7 +289,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (MySqlException ex)
             {
-                exception(ex.ToString());
+                exception(ex.Number);
                 return;
             }
             finally
@@ -340,43 +322,28 @@ namespace Bitmap_Test1_Schmid
                                     Nameaktuell += row[j] + " ";
                                     continue;
                                 }
-                            }
-                            for (int j = 0; j < tbl2.Columns.Count; j++)
-                            {
                                 if (tbl2.Columns[j].ColumnName == "Nachname")
                                 {
                                     Nameaktuell += row[j];
                                     continue;
                                 }
-                            }
-
-                            for (int k = 0; k < tbl2.Columns.Count; k++)
-                            {
-                                if (tbl2.Columns[k].ColumnName == "Behandlungsdatum")
+                                if (tbl2.Columns[j].ColumnName == "Behandlungsdatum")
                                 {
-                                    letzteBehandlung += row[k];
+                                    letzteBehandlung += row[j];
                                     letzteBehandlung = letzteBehandlung.Replace(" 00:00:00", "");
                                     continue;
                                 }
-                            }
-
-                            for (int l = 0; l < tbl2.Columns.Count; l++)
-                            {
-                                if (tbl2.Columns[l].ColumnName == "Schrittweite")
+                                if (tbl2.Columns[j].ColumnName == "Behandlungsnummer")
                                 {
-                                    letzteSchrittanzahl += row[l];
+                                    BehandlungsnummerMax += row[j];
                                     continue;
                                 }
-                            }
-
-                            for (int l = 0; l < tbl2.Columns.Count; l++)
-                            {
-                                if (tbl2.Columns[l].ColumnName == "Behandlungsnummer")
+                                if (tbl2.Columns[j].ColumnName == "Schrittweite")
                                 {
-                                    BehandlungsnummerMax += row[l];
+                                    letzteSchrittanzahl += row[j];
                                     continue;
                                 }
-                            }
+                             }
 
             #endregion
                 this.Close();
@@ -610,7 +577,7 @@ namespace Bitmap_Test1_Schmid
                 }
                 catch(MySqlException ex)
                 {
-                    MessageBox.Show(""+ex);
+                    exception(ex.Number);
                     return;
                 }
                 finally
@@ -705,7 +672,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (MySqlException ex)
             {
-                exception(ex.ToString());
+                exception(ex.Number);
             }
 
             finally
@@ -759,7 +726,7 @@ namespace Bitmap_Test1_Schmid
 
                 catch (MySqlException ex)
                 {
-                    exception(ex.ToString());
+                    exception(ex.Number);
                 }
                 finally
                 {
@@ -815,7 +782,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (MySqlException ex)
             {
-                exception(ex.ToString());
+                exception(ex.Number);
                 return;
             }
             finally
@@ -1030,8 +997,7 @@ namespace Bitmap_Test1_Schmid
                 }
                 catch (MySqlException ex)
                 {
-                    exception(ex.ToString());
-
+                    exception(ex.Number);
                 }
 
                 finally
@@ -1141,7 +1107,7 @@ namespace Bitmap_Test1_Schmid
                 }
                 catch (MySqlException ex)
                 {
-                    exception(ex.ToString());
+                    exception(ex.Number);
                 }
 
                 finally
@@ -1150,9 +1116,21 @@ namespace Bitmap_Test1_Schmid
                 }
             }
         }
-        void exception(string Exception)
+        void exception(int Exception)
         {
-            MessageBox.Show(Exception);
+            //TODO: vollständige Fehlerbehandlung mit schönen Fehlermeldungen
+            //https://stackoverflow.com/questions/8138392/make-mysql-errors-caught-in-c-sharp-user-friendly
+            //https://mariadb.com/kb/en/mariadb-error-codes/
+            switch (Exception)
+            {
+                case 1042:
+                    MessageBox.Show("Keine Verbindung zur Datenbank möglich\nFehler: "+Exception);
+                    return;
+                case 0:
+                    MessageBox.Show("Schwerer Fehler\nBitte kontaktieren Sie den Entwickler");
+                    break;
+           }
+            MessageBox.Show(Exception.ToString());
         }
     }
 
