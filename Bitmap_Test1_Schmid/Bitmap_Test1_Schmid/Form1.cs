@@ -28,7 +28,6 @@ namespace Bitmap_Test1_Schmid
         public double kleinsterabstand = 500;
         public double größterabstand = 0;
 
-
         int animation = 0;
         public Form1()
         {
@@ -73,9 +72,16 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
-                längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
-                screen.längebox.Maximum = längebox.Maximum;
-                screen.fläche.PerformClick();
+                if (check_autoobjekt.Checked == false)
+                {
+                    längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
+                    screen.längebox.Maximum = längebox.Maximum;
+                    screen.fläche.PerformClick();
+                }
+                if (check_autoobjekt.Checked == true)
+                {
+                    screen.deletebox();
+                }
             }
             catch
             {
@@ -101,9 +107,13 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
+                längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
+                länge.Text = längebox.Value.ToString();
                 reglertext.Text = regler.Value.ToString();
                 screen.regler.Value = Convert.ToInt32(reglertext.Text);
                 screen.reglertext.Text = reglertext.Text;
+
+                kinectM.anzeigepunkt = Convert.ToInt32(screen.schrittlänge[regler.Value]);
             }
             catch
             {
@@ -214,6 +224,7 @@ namespace Bitmap_Test1_Schmid
                 //ir.form1_2 = this;
                 kinectM.steps_kinect = Convert.ToInt32(steps.Text);
                 kinectToolStripMenuItem.BackColor = Color.Orange;
+                check_autoobjekt.Enabled = true;
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
                 //kinectM.WindowState = FormWindowState.Minimized;
                 kinectM.Show();//unwichtig: kürzlich geändert --> mögliche fehlerquelle
@@ -353,19 +364,60 @@ namespace Bitmap_Test1_Schmid
         {
             if (trackBar1.Value == 1)
             {
-                label9.Location = new Point(475, 360);
-                label9.Text = "gering";
+                label9.Location = new Point(461, 360);
+                label9.Text = "sehr früh";
+                kinectM.empfindlichkeit = 500; 
             }
 
             if (trackBar1.Value == 2) 
             {
-                label9.Location = new Point(520, 360);
-                label9.Text = "mittel";
+                label9.Location = new Point(505, 360);
+                label9.Text = "früh";
+                kinectM.empfindlichkeit = 400;
             }
+
             if (trackBar1.Value == 3)
             {
-                label9.Location = new Point(560, 360);
-                label9.Text = "hoch";
+                label9.Location = new Point(520, 360);
+                label9.Text = "mittel";
+                kinectM.empfindlichkeit = 300;
+            }
+
+            if (trackBar1.Value == 4)
+            {
+                label9.Location = new Point(540, 360);
+                label9.Text = "spät";
+                kinectM.empfindlichkeit = 200;
+            }
+
+            if (trackBar1.Value == 5)
+            {
+                label9.Location = new Point(555, 360);
+                label9.Text = "sehr spät";
+                kinectM.empfindlichkeit = 100;
+            }
+        }
+
+        private void chech_autoobjekt_CheckedChanged(object sender, EventArgs e)
+        {
+            if (check_autoobjekt.Checked == true)
+            {
+                fläche.Text = "Entfernen";
+                trackBar1.Enabled = true;
+                label9.ForeColor = Color.White;
+                label7.ForeColor = Color.White;
+                kinectM.autobox = true;
+                kinectM.anzeigepunkt = Convert.ToInt32(screen.schrittlänge[regler.Value]);
+                trackBar1.Value = 3;
+                kinectM.empfindlichkeit = 300;
+            }
+            if (check_autoobjekt.Checked == false)
+            {
+                kinectM.autobox = false;
+                fläche.Text = "bestätigen";
+                trackBar1.Enabled = false;
+                label7.ForeColor = Color.Gray;
+                label9.ForeColor = Color.Gray;
             }
         }
     }

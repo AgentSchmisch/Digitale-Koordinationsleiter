@@ -343,5 +343,37 @@ namespace Bitmap_Test1_Schmid
             }//Alles löschen
             bestätigen.PerformClick();
         }
+        public void deletebox()
+        {
+            for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++)                 //fläche
+            {
+                for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(0, 0, 0, 0);
+                    image1.SetPixel(x, y, newColor);
+                }
+            } //box
+            for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++)                 //waagrechte unten
+            {
+                for (y = waagrechtunten - dicke; y < waagrechtunten + 5; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                    image1.SetPixel(x, y, newColor);
+                }
+            } //waagrecht unten sektion
+            for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++)                 //waagrechte oben
+            {
+                for (y = waagrechtoben - dicke; y < waagrechtoben + 5; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                    image1.SetPixel(x, y, newColor);
+                }
+            } //waagrecht oben sektion
+
+            pictureBox1.Image = image1;
+        }
     }
 }

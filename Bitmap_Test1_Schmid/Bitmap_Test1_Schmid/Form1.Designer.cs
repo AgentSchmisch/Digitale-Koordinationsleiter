@@ -59,7 +59,7 @@
             this.delsteps = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.chech_autoobjekt = new System.Windows.Forms.CheckBox();
+            this.check_autoobjekt = new System.Windows.Forms.CheckBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -407,29 +407,32 @@
             this.timer.Interval = 10;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // chech_autoobjekt
+            // check_autoobjekt
             // 
-            this.chech_autoobjekt.AutoSize = true;
-            this.chech_autoobjekt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.chech_autoobjekt.ForeColor = System.Drawing.Color.White;
-            this.chech_autoobjekt.Location = new System.Drawing.Point(317, 263);
-            this.chech_autoobjekt.Name = "chech_autoobjekt";
-            this.chech_autoobjekt.Size = new System.Drawing.Size(261, 24);
-            this.chech_autoobjekt.TabIndex = 40;
-            this.chech_autoobjekt.Text = "automatische Objekteinblendung";
-            this.chech_autoobjekt.UseVisualStyleBackColor = true;
+            this.check_autoobjekt.AutoSize = true;
+            this.check_autoobjekt.Enabled = false;
+            this.check_autoobjekt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.check_autoobjekt.ForeColor = System.Drawing.Color.White;
+            this.check_autoobjekt.Location = new System.Drawing.Point(317, 263);
+            this.check_autoobjekt.Name = "check_autoobjekt";
+            this.check_autoobjekt.Size = new System.Drawing.Size(261, 24);
+            this.check_autoobjekt.TabIndex = 40;
+            this.check_autoobjekt.Text = "automatische Objekteinblendung";
+            this.check_autoobjekt.UseVisualStyleBackColor = true;
+            this.check_autoobjekt.CheckedChanged += new System.EventHandler(this.chech_autoobjekt_CheckedChanged);
             // 
             // trackBar1
             // 
             this.trackBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
+            this.trackBar1.Enabled = false;
             this.trackBar1.LargeChange = 1;
             this.trackBar1.Location = new System.Drawing.Point(482, 328);
-            this.trackBar1.Maximum = 3;
+            this.trackBar1.Maximum = 5;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(110, 45);
             this.trackBar1.TabIndex = 41;
-            this.trackBar1.Value = 2;
+            this.trackBar1.Value = 3;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // label7
@@ -451,7 +454,7 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(520, 359);
+            this.label9.Location = new System.Drawing.Point(518, 360);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 17);
             this.label9.TabIndex = 43;
@@ -468,7 +471,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.chech_autoobjekt);
+            this.Controls.Add(this.check_autoobjekt);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.delsteps);
             this.Controls.Add(this.label4);
@@ -546,7 +549,7 @@
         private System.Windows.Forms.Timer timer;
         public System.Windows.Forms.MenuStrip menuStrip1;
         public System.Windows.Forms.ToolStripMenuItem kinectToolStripMenuItem;
-        private System.Windows.Forms.CheckBox chech_autoobjekt;
+        private System.Windows.Forms.CheckBox check_autoobjekt;
         public System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;

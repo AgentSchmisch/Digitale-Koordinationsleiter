@@ -49,6 +49,10 @@ namespace Bitmap_Test1_Schmid
         double _512_auf_320 = 0.625;
         double _320_auf_512 = 1.6;
 
+        public bool autobox = false;//für automatische Boxeinblendung
+        public int anzeigepunkt;
+        public int empfindlichkeit;
+
         retrieve_Kinect kinect = new retrieve_Kinect();
 
         //private Form2 _form2;
@@ -471,6 +475,17 @@ namespace Bitmap_Test1_Schmid
                                         }
                                     }
                                     #endregion
+                                }
+
+                                if (autobox)
+                                {
+                                    if (Convert.ToInt32(rf_distance_x) >= 0 || Convert.ToInt32(lf_distance_x) >= 0)
+                                    {
+                                        if (Convert.ToInt32(rf_distance_x) >= anzeigepunkt - empfindlichkeit || Convert.ToInt32(lf_distance_x) >= anzeigepunkt - empfindlichkeit)
+                                        {
+                                            _form1_schritt.screen.fläche.PerformClick();
+                                        }
+                                    }
                                 }
 
                             for (int i = 0; i < 10; i++)
