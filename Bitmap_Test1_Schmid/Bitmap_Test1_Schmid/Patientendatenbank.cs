@@ -719,7 +719,7 @@ namespace Bitmap_Test1_Schmid
                     conn.Open();
 
                     cmd = new MySqlCommand(query4, conn);
-
+                    
                     cmd.ExecuteNonQuery();
 
                 }
@@ -1129,8 +1129,10 @@ namespace Bitmap_Test1_Schmid
                 case 0:
                     MessageBox.Show("Schwerer Fehler\nBitte kontaktieren Sie den Entwickler");
                     break;
+                default:
+                    MessageBox.Show("Fehler: " + Exception.ToString());
+                    break;
            }
-            MessageBox.Show(Exception.ToString());
         }
     }
 
