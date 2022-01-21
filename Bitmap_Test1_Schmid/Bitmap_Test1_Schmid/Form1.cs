@@ -364,43 +364,44 @@ namespace Bitmap_Test1_Schmid
         {
             if (trackBar1.Value == 1)
             {
-                label9.Location = new Point(461, 360);
+                label9.Location = new Point(446, 360);
                 label9.Text = "sehr früh";
                 kinectM.empfindlichkeit = 500; 
             }
 
             if (trackBar1.Value == 2) 
             {
-                label9.Location = new Point(505, 360);
+                label9.Location = new Point(490, 360);
                 label9.Text = "früh";
                 kinectM.empfindlichkeit = 400;
             }
 
             if (trackBar1.Value == 3)
             {
-                label9.Location = new Point(520, 360);
+                label9.Location = new Point(505, 360);
                 label9.Text = "mittel";
                 kinectM.empfindlichkeit = 300;
             }
 
             if (trackBar1.Value == 4)
             {
-                label9.Location = new Point(540, 360);
+                label9.Location = new Point(525, 360);
                 label9.Text = "spät";
                 kinectM.empfindlichkeit = 200;
             }
 
             if (trackBar1.Value == 5)
             {
-                label9.Location = new Point(555, 360);
+                label9.Location = new Point(540, 360);
                 label9.Text = "sehr spät";
                 kinectM.empfindlichkeit = 100;
             }
+            screen.fläche.PerformClick();
         }
 
         private void chech_autoobjekt_CheckedChanged(object sender, EventArgs e)
         {
-            if (check_autoobjekt.Checked == true)
+            if (check_autoobjekt.Checked == true)//wenn aktiviert
             {
                 fläche.Text = "Entfernen";
                 trackBar1.Enabled = true;
@@ -411,7 +412,7 @@ namespace Bitmap_Test1_Schmid
                 trackBar1.Value = 3;
                 kinectM.empfindlichkeit = 300;
             }
-            if (check_autoobjekt.Checked == false)
+            if (check_autoobjekt.Checked == false)// wenn deaktiviert
             {
                 kinectM.autobox = false;
                 fläche.Text = "bestätigen";
@@ -419,6 +420,11 @@ namespace Bitmap_Test1_Schmid
                 label7.ForeColor = Color.Gray;
                 label9.ForeColor = Color.Gray;
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hier können sie einstellen, wie weit vor dem Ziel eine Box eingeblendet werden soll.", "Hilfe", 0, MessageBoxIcon.Question);//hilfeanzeige
         }
     }
 }
