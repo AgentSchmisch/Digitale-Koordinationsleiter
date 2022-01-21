@@ -112,8 +112,10 @@ namespace Bitmap_Test1_Schmid
                 reglertext.Text = regler.Value.ToString();
                 screen.regler.Value = Convert.ToInt32(reglertext.Text);
                 screen.reglertext.Text = reglertext.Text;
-
-                kinectM.anzeigepunkt = Convert.ToInt32(screen.schrittlänge[regler.Value]);
+                if (!einaus)//nur wenn schritterkennung aktiv
+                {
+                    kinectM.anzeigepunkt = Convert.ToInt32(screen.schrittlänge[regler.Value]);
+                }
             }
             catch
             {
@@ -232,6 +234,8 @@ namespace Bitmap_Test1_Schmid
             }
             if (!einaus)
             {
+                check_autoobjekt.Enabled = false;
+                check_autoobjekt.Checked = false;
                 kinectM.Close();
                 kinectToolStripMenuItem.BackColor = Color.Black;
             }
@@ -424,7 +428,7 @@ namespace Bitmap_Test1_Schmid
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hier können sie einstellen, wie weit vor dem Ziel eine Box eingeblendet werden soll.", "Hilfe", 0, MessageBoxIcon.Question);//hilfeanzeige
+            MessageBox.Show("Hier können Sie einstellen, wie weit vor dem Ziel eine Box eingeblendet werden soll.", "Hilfe", 0, MessageBoxIcon.Question);//hilfeanzeige
         }
     }
 }

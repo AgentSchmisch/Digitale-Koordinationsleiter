@@ -79,7 +79,7 @@
             this.steps.Name = "steps";
             this.steps.Size = new System.Drawing.Size(57, 38);
             this.steps.TabIndex = 1;
-            this.steps.Text = "10";
+            this.steps.Text = "6";
             this.steps.TextChanged += new System.EventHandler(this.steps_TextChanged);
             this.steps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.steps_KeyDown);
             // 

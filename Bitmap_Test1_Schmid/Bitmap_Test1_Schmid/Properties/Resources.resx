@@ -118,16 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="left" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="HTLMI_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HTLMI_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Bildschirmfoto 2021-11-29 um 18.26.59" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bildschirmfoto 2021-11-29 um 18.26.59.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="klammer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\klammer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Bildschirmfoto 2021-11-29 um 18.26.59" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="HTLMI_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HTLMI_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_dpl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_dpl1.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bildschirmfoto 2021-11-29 um 18.261" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bildschirmfoto 2021-11-29 um 18.26.59.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_dpl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_dpl.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_dpl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_dpl.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

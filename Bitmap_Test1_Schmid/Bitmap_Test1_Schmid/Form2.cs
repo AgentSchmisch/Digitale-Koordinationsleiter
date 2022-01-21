@@ -17,14 +17,12 @@ namespace Bitmap_Test1_Schmid
         public double[] schrittlänge = new double[500];
         public double schrittlängealt = 100;
         int x, y;
-        public int waagrechtoben = 100;
-        public int waagrechtunten = 600;
 
-        public int color_r = 255;
+        public int color_r = 255;//linienfarbe
         public int color_g = 255;
         public int color_b = 255;
 
-        public int color_box_r = 150;
+        public int color_box_r = 150;//objektfarbe
         public int color_box_g = 0;
         public int color_box_b = 180;
 
@@ -38,6 +36,9 @@ namespace Bitmap_Test1_Schmid
 
         public int Auflösung_Projektor_x = 1280; //Auflösung Projektor
         public int Auflösung_Projektor_y = 800;
+
+        public int waagrechtoben = 100;
+        public int waagrechtunten = 700;
 
         Bitmap image1 = null;
         public KinectMonitor _Kinect;
@@ -84,34 +85,52 @@ namespace Bitmap_Test1_Schmid
             left_ten.Top = leftfoot;
 
             image1 = new Bitmap(Auflösung_Projektor_x, Auflösung_Projektor_y);
-            try
-            {
-                for (x = 0; x < image1.Width; x++)               //waagrecht unten
-                {
-                    for (y = waagrechtunten - dicke; y < waagrechtunten + 5; y++)
-                    {
-                        Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
-                        image1.SetPixel(x, y, newColor);
-                    }
-                }//waagrachte unten
-                for (x = 0; x < image1.Width; x++)              //waagrecht oben
-                {
-                    for (y = waagrechtoben - dicke; y < waagrechtoben + 5; y++)
-                    {
-                        Color pixelColor = image1.GetPixel(x, y);
-                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
-                        image1.SetPixel(x, y, newColor);
-                    }
-                }//waagrechte oben
 
-                pictureBox1.Image = image1;
+            timer1.Start(); //ohne animation das kommentieren
+            //linienladen(); //ohne animation das auskommentieren
 
-            }
-            catch (ArgumentException)
-            {
-                MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
-            }
+            //zu "linieladen()" verschoben !!!
+
+            //try
+            //{
+
+            //        kur.Visible = false;
+            //        for (x = 0; x < image1.Width; x++)               
+            //        {
+            //            for (y = 0; y < image1.Height; y++)
+            //            {
+            //                Color pixelColor = image1.GetPixel(x, y);
+            //                Color newColor = Color.FromArgb(0, 0, 0);
+            //                image1.SetPixel(x, y, newColor);
+            //            }
+            //        }//alles löschen
+
+            //        for (x = 0; x < image1.Width; x++)               //waagrecht unten
+            //        {
+            //            for (y = waagrechtunten - dicke; y < waagrechtunten + 5; y++)
+            //            {
+            //                Color pixelColor = image1.GetPixel(x, y);
+            //                Color newColor = Color.FromArgb(color_r, color_g, color_b);
+            //                image1.SetPixel(x, y, newColor);
+            //            }
+            //        }//waagrachte unten
+            //        for (x = 0; x < image1.Width; x++)              //waagrecht oben
+            //        {
+            //            for (y = waagrechtoben - dicke; y < waagrechtoben + 5; y++)
+            //            {
+            //                Color pixelColor = image1.GetPixel(x, y);
+            //                Color newColor = Color.FromArgb(color_r, color_g, color_b);
+            //                image1.SetPixel(x, y, newColor);
+            //            }
+            //        }//waagrechte oben
+
+            //        pictureBox1.Image = image1;
+
+            //}
+            //catch (ArgumentException)
+            //{
+            //    MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
+            //}
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -326,10 +345,10 @@ namespace Bitmap_Test1_Schmid
             }
         }
 
-        public void übertragung()
-        {
-            //_Kinect.form2 = this;
-        }
+        //public void übertragung()
+        //{
+        //    //_Kinect.form2 = this;
+        //}
         public void deleteall()
         {
             for (x = 0; x < image1.Width; x++) //alles löschen
@@ -343,6 +362,61 @@ namespace Bitmap_Test1_Schmid
             }//Alles löschen
             bestätigen.PerformClick();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+        int neu = 0;
+        int delay = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (neu + Auflösung_Projektor_x/2 < Auflösung_Projektor_x)
+            {
+                neu += 10;
+
+                for (x = 630 + neu; x < 630 + neu + 10; x++)
+                {
+                    for (y = 0; y < Auflösung_Projektor_y; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }
+                for (x = 650 - neu; x > 650 - neu - 10; x--)
+                {
+                    for (y = 0; y < Auflösung_Projektor_y; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }
+                pictureBox1.Image = image1;
+            }
+
+            else
+            {
+                delay++;            
+                kur.Location = new Point(Auflösung_Projektor_x / 2 - kur.Width/2, Auflösung_Projektor_y / 2 - kur.Height/2);
+                if (delay > 10)
+                {
+                    kur.Visible = true;
+                }
+                if (delay > 200)
+                {
+                    linienladen();
+                    timer1.Stop(); 
+                }
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public void deletebox()
         {
             for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++)                 //fläche
@@ -374,6 +448,48 @@ namespace Bitmap_Test1_Schmid
             } //waagrecht oben sektion
 
             pictureBox1.Image = image1;
+        }
+        public void linienladen()
+        {
+            try
+            {
+                kur.Visible = false;
+                for (x = 0; x < image1.Width; x++)
+                {
+                    for (y = 0; y < image1.Height; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(0, 0, 0);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }//alles löschen
+
+                for (x = 0; x < image1.Width; x++)               //waagrecht unten
+                {
+                    for (y = waagrechtunten - dicke; y < waagrechtunten + 5; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }//waagrachte unten
+                for (x = 0; x < image1.Width; x++)              //waagrecht oben
+                {
+                    for (y = waagrechtoben - dicke; y < waagrechtoben + 5; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }//waagrechte oben
+
+                pictureBox1.Image = image1;
+
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
+            }
         }
     }
 }

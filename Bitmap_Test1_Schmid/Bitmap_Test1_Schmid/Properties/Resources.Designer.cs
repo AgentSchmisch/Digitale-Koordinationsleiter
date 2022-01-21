@@ -73,6 +73,16 @@ namespace Bitmap_Test1_Schmid.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bildschirmfoto_2021_11_29_um_18_261 {
+            get {
+                object obj = ResourceManager.GetObject("Bildschirmfoto 2021-11-29 um 18.261", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HTLMI_logo {
             get {
                 object obj = ResourceManager.GetObject("HTLMI_logo", resourceCulture);
@@ -96,6 +106,36 @@ namespace Bitmap_Test1_Schmid.Properties {
         internal static System.Drawing.Bitmap left {
             get {
                 object obj = ResourceManager.GetObject("left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_dpl {
+            get {
+                object obj = ResourceManager.GetObject("logo_dpl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_dpl1 {
+            get {
+                object obj = ResourceManager.GetObject("logo_dpl1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_dpl2 {
+            get {
+                object obj = ResourceManager.GetObject("logo_dpl2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
