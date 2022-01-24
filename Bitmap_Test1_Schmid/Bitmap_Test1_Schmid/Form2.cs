@@ -28,13 +28,13 @@ namespace Bitmap_Test1_Schmid
 
         public int zähler = 0;
         public int dicke = 5;//dicke der Linien
-        public int sendvar = 10;
+        public int sendvar = 6;
         public int count = 0;
         public int count2 = 0;
         public string reglerwertalt;
         public int längewertalt;
 
-        public int Auflösung_Projektor_x = 1280; //Auflösung Projektor
+        public int Auflösung_Projektor_x = 1280; //Auflösung Projektor ----- zeile 272 wird die Zahl 1280.0 verwendet
         public int Auflösung_Projektor_y = 800;
 
         public int waagrechtoben = 100;
@@ -90,47 +90,6 @@ namespace Bitmap_Test1_Schmid
             //linienladen(); //ohne animation das auskommentieren
 
             //zu "linieladen()" verschoben !!!
-
-            //try
-            //{
-
-            //        kur.Visible = false;
-            //        for (x = 0; x < image1.Width; x++)               
-            //        {
-            //            for (y = 0; y < image1.Height; y++)
-            //            {
-            //                Color pixelColor = image1.GetPixel(x, y);
-            //                Color newColor = Color.FromArgb(0, 0, 0);
-            //                image1.SetPixel(x, y, newColor);
-            //            }
-            //        }//alles löschen
-
-            //        for (x = 0; x < image1.Width; x++)               //waagrecht unten
-            //        {
-            //            for (y = waagrechtunten - dicke; y < waagrechtunten + 5; y++)
-            //            {
-            //                Color pixelColor = image1.GetPixel(x, y);
-            //                Color newColor = Color.FromArgb(color_r, color_g, color_b);
-            //                image1.SetPixel(x, y, newColor);
-            //            }
-            //        }//waagrachte unten
-            //        for (x = 0; x < image1.Width; x++)              //waagrecht oben
-            //        {
-            //            for (y = waagrechtoben - dicke; y < waagrechtoben + 5; y++)
-            //            {
-            //                Color pixelColor = image1.GetPixel(x, y);
-            //                Color newColor = Color.FromArgb(color_r, color_g, color_b);
-            //                image1.SetPixel(x, y, newColor);
-            //            }
-            //        }//waagrechte oben
-
-            //        pictureBox1.Image = image1;
-
-            //}
-            //catch (ArgumentException)
-            //{
-            //    MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
-            //}
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -269,7 +228,7 @@ namespace Bitmap_Test1_Schmid
                 }
 
                 regler.Maximum = sendvar - 1;
-                schrittlänge[1] = image1.Width / sendvar;
+                schrittlänge[1] = 1280.0 / sendvar;
                 schrittlängealt = schrittlänge[1];
 
                 for (x = 0; x < image1.Width; x++)               //waagrecht oben
@@ -335,20 +294,7 @@ namespace Bitmap_Test1_Schmid
             }
         }
         public Ex1 e001 = new Ex1();
-        public void feet()
-        {
-            int[] step_right = new int[5];
-            if (step_right[0] != null)
-            {
-                right_one.Top = waagrechtoben + 20;
-                right_one.Show();
-            }
-        }
 
-        //public void übertragung()
-        //{
-        //    //_Kinect.form2 = this;
-        //}
         public void deleteall()
         {
             for (x = 0; x < image1.Width; x++) //alles löschen
@@ -361,11 +307,6 @@ namespace Bitmap_Test1_Schmid
                 }
             }//Alles löschen
             bestätigen.PerformClick();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            timer1.Start();
         }
         int neu = 0;
         int delay = 0;
@@ -400,14 +341,16 @@ namespace Bitmap_Test1_Schmid
             {
                 delay++;            
                 kur.Location = new Point(Auflösung_Projektor_x / 2 - kur.Width/2, Auflösung_Projektor_y / 2 - kur.Height/2);
-                if (delay > 10)
+                if (delay > 10 && delay < 12)
                 {
                     kur.Visible = true;
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Resources\mac_bong.wav");
+                    player.Play();
                 }
                 if (delay > 200)
                 {
                     linienladen();
-                    timer1.Stop(); 
+                    timer1.Stop();
                 }
             }
         }

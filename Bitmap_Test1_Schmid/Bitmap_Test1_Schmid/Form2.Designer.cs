@@ -65,6 +65,8 @@ namespace Bitmap_Test1_Schmid
             this.right_one = new System.Windows.Forms.PictureBox();
             this.left_one = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.strich = new System.Windows.Forms.Label();
+            this.koordinaten = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kur)).BeginInit();
@@ -515,6 +517,30 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // strich
+            // 
+            this.strich.AutoSize = true;
+            this.strich.BackColor = System.Drawing.Color.White;
+            this.strich.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.strich.Font = new System.Drawing.Font("Microsoft Sans Serif", 200F);
+            this.strich.ForeColor = System.Drawing.Color.White;
+            this.strich.Location = new System.Drawing.Point(364, 300);
+            this.strich.Name = "strich";
+            this.strich.Size = new System.Drawing.Size(2, 304);
+            this.strich.TabIndex = 44;
+            this.strich.Visible = false;
+            // 
+            // koordinaten
+            // 
+            this.koordinaten.AutoSize = true;
+            this.koordinaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.koordinaten.Location = new System.Drawing.Point(397, 366);
+            this.koordinaten.Name = "koordinaten";
+            this.koordinaten.Size = new System.Drawing.Size(235, 46);
+            this.koordinaten.TabIndex = 45;
+            this.koordinaten.Text = "Koordinaten";
+            this.koordinaten.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,6 +548,8 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 800);
+            this.Controls.Add(this.koordinaten);
+            this.Controls.Add(this.strich);
             this.Controls.Add(this.kur);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.right_seven);
@@ -627,5 +655,7 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox kur;
+        public System.Windows.Forms.Label strich;
+        public System.Windows.Forms.Label koordinaten;
     }
 }

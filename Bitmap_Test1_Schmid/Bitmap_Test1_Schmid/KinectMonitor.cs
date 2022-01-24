@@ -37,7 +37,8 @@ namespace Bitmap_Test1_Schmid
         int count = 0;
         public int schrittzähler = 0;//schrittezähler
         public double[] durchschnitt=new double[99];
-        int schritterkennungabstand = 3;
+
+        int schritterkennungabstand = 5;
         int abstand_zw_zwei_schritten = 40;
 
         double mittelpunkt_links;
@@ -244,11 +245,11 @@ namespace Bitmap_Test1_Schmid
                         Joint FootRight = joints[JointType.FootRight];
                         Joint FootLeft = joints[JointType.FootLeft];
 
-                        float rf_distance_x = ((FootRight.Position.X * -100) + 160);
+                        float rf_distance_x = ((FootRight.Position.X * -100) + 140);//unwichtig: musss wahrscheinlich geändert werden
                         float rf_distance_y = FootRight.Position.Y * 1000;
                         float rf_distance_z = FootRight.Position.Z;
 
-                        float lf_distance_x = ((FootLeft.Position.X * -100) + 160);
+                        float lf_distance_x = ((FootLeft.Position.X * -100) + 140);
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
 
@@ -265,7 +266,6 @@ namespace Bitmap_Test1_Schmid
                         Yrechts.Text = rf_distance_y.ToString("###");
                         Zrechts.Text = rf_distance_z.ToString("#.##");
 
-                            
                         //label3.Text = Xlinks.Text + "   " + _form1_schritt.ir.mittelpunkt_rechts + "\n" + Xrechts.Text + "   " + _form1_schritt.ir.mittelpunkt_links;
 
                         tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
@@ -286,6 +286,11 @@ namespace Bitmap_Test1_Schmid
                                 schritt_rechts[i + 1] = zw_schritt_rechts[i];
                                 schritt_links[i + 1] = zw_schritt_links[i];
                             }
+                                _form1_schritt.screen.strich.Visible = true;//zum testen
+                                _form1_schritt.screen.koordinaten.Visible = true;
+                                _form1_schritt.screen.strich.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
+                                _form1_schritt.screen.koordinaten.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 450);
+                                _form1_schritt.screen.koordinaten.Text = ((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
 
                                 if (Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts)
                                 {// erst wenns innerhalb vom anzeigefeld ist soll er tracken

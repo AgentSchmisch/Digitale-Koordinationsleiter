@@ -229,7 +229,7 @@ namespace Bitmap_Test1_Schmid
                 check_autoobjekt.Enabled = true;
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
                 //kinectM.WindowState = FormWindowState.Minimized;
-                kinectM.Show();//unwichtig: kürzlich geändert --> mögliche fehlerquelle
+                kinectM.Show();//TODO: Muss noch vor release geändert werden
                                //kinectM.Hide();
             }
             if (!einaus)
@@ -368,35 +368,35 @@ namespace Bitmap_Test1_Schmid
         {
             if (trackBar1.Value == 1)
             {
-                label9.Location = new Point(446, 360);
+                label9.Location = new Point(446, label9.Location.Y);
                 label9.Text = "sehr früh";
                 kinectM.empfindlichkeit = 500; 
             }
 
             if (trackBar1.Value == 2) 
             {
-                label9.Location = new Point(490, 360);
+                label9.Location = new Point(490, label9.Location.Y);
                 label9.Text = "früh";
                 kinectM.empfindlichkeit = 400;
             }
 
             if (trackBar1.Value == 3)
             {
-                label9.Location = new Point(505, 360);
+                label9.Location = new Point(505, label9.Location.Y);
                 label9.Text = "mittel";
                 kinectM.empfindlichkeit = 300;
             }
 
             if (trackBar1.Value == 4)
             {
-                label9.Location = new Point(525, 360);
+                label9.Location = new Point(525, label9.Location.Y);
                 label9.Text = "spät";
                 kinectM.empfindlichkeit = 200;
             }
 
             if (trackBar1.Value == 5)
             {
-                label9.Location = new Point(540, 360);
+                label9.Location = new Point(540, label9.Location.Y);
                 label9.Text = "sehr spät";
                 kinectM.empfindlichkeit = 100;
             }
