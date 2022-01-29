@@ -64,6 +64,7 @@ namespace Bitmap_Test1_Schmid
                             break;
 
                         case DBT_DEVICEREMOVECOMPLETE:
+                            listBox1.Items.Clear();
                             break;
                     }
                     break;
