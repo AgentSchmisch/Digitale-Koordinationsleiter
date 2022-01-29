@@ -48,6 +48,7 @@ namespace Bitmap_Test1_Schmid
             this.lblEditStatus = new System.Windows.Forms.Label();
             this.NeuAbbrechenBtn = new System.Windows.Forms.Button();
             this.NeuSpeichernBtn = new System.Windows.Forms.Button();
+            this.laufwerkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@ namespace Bitmap_Test1_Schmid
             this.menuStrip1.BackColor = System.Drawing.Color.Black;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.patientToolStripMenuItem});
+            this.patientToolStripMenuItem,
+            this.laufwerkToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -271,6 +273,14 @@ namespace Bitmap_Test1_Schmid
             this.NeuSpeichernBtn.Visible = false;
             this.NeuSpeichernBtn.Click += new System.EventHandler(this.NeuSpeichernBtn_Click);
             // 
+            // laufwerkToolStripMenuItem
+            // 
+            this.laufwerkToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.laufwerkToolStripMenuItem.Name = "laufwerkToolStripMenuItem";
+            this.laufwerkToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.laufwerkToolStripMenuItem.Text = "Laufwerk:";
+            this.laufwerkToolStripMenuItem.Click += new System.EventHandler(this.laufwerkToolStripMenuItem_Click);
+            // 
             // Patientendatenbank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,5 +339,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Label lblEditStatus;
         private System.Windows.Forms.Button NeuAbbrechenBtn;
         private System.Windows.Forms.Button NeuSpeichernBtn;
+        private System.Windows.Forms.ToolStripMenuItem laufwerkToolStripMenuItem;
     }
 }

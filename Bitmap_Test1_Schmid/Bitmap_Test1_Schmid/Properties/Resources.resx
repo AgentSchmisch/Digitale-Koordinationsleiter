@@ -121,6 +121,9 @@
   <data name="Bildschirmfoto 2021-11-29 um 18.26.59" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bildschirmfoto 2021-11-29 um 18.26.59.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logo_dpl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_dpl.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="klammer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\klammer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -130,16 +133,16 @@
   <data name="left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_dpl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_dpl1.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Bildschirmfoto 2021-11-29 um 18.261" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bildschirmfoto 2021-11-29 um 18.26.59.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_dpl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_dpl.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DKL1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DKL.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo_dpl2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo_dpl.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="DKL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DKL.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DKL2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DKL.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

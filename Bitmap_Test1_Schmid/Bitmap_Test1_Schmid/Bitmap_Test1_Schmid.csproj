@@ -185,6 +185,12 @@
     <Compile Include="KinectMonitor.Designer.cs">
       <DependentUpon>KinectMonitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Laufwerk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Laufwerk.Designer.cs">
+      <DependentUpon>Laufwerk.cs</DependentUpon>
+    </Compile>
     <Compile Include="Patientendatenbank.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     <EmbeddedResource Include="KinectMonitor.resx">
       <DependentUpon>KinectMonitor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Laufwerk.resx">
+      <DependentUpon>Laufwerk.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Patientendatenbank.resx">
       <DependentUpon>Patientendatenbank.cs</DependentUpon>
     </EmbeddedResource>
@@ -247,9 +256,8 @@
     <None Include="Resources\left.png" />
     <None Include="Resources\klammer.png" />
     <Content Include="Resources\Bildschirmfoto 2021-11-29 um 18.26.59.png" />
-    <None Include="Resources\logo_dpl.jpeg" />
-    <None Include="Resources\logo_dpl1.jpeg" />
     <None Include="Resources\logo_dpl.jpg" />
+    <None Include="Resources\DKL.jpeg" />
     <Content Include="Resources\walking_man.ico" />
   </ItemGroup>
   <ItemGroup>

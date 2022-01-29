@@ -166,5 +166,17 @@ namespace Bitmap_Test1_Schmid.Properties {
                 this["länge"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Laufwerk {
+            get {
+                return ((string)(this["Laufwerk"]));
+            }
+            set {
+                this["Laufwerk"] = value;
+            }
+        }
     }
 }

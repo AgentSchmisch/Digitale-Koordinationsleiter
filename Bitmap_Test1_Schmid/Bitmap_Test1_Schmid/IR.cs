@@ -45,10 +45,10 @@ namespace Bitmap_Test1_Schmid
         public double multiplikator;
 
         public double mittelpunkt_links = 0;
-        public double mittelpunkt_rechts = 300;
+        public double mittelpunkt_rechts = 0;
 
         public double mittelpunkt_links_y = 0;
-        public double mittelpunkt_rechts_y = 300;
+        public double mittelpunkt_rechts_y = 0;//unwichtig: das wurde geändert
 
         int kreise = 1;
 

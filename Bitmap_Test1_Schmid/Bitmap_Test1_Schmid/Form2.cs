@@ -86,8 +86,8 @@ namespace Bitmap_Test1_Schmid
 
             image1 = new Bitmap(Auflösung_Projektor_x, Auflösung_Projektor_y);
 
-            timer1.Start(); //ohne animation das kommentieren
-            //linienladen(); //ohne animation das auskommentieren
+            //timer1.Start(); //ohne animation das kommentieren
+            linienladen(); //ohne animation das auskommentieren
 
             //zu "linieladen()" verschoben !!!
         }

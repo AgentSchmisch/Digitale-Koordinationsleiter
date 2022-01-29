@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Bitmap_Test1_Schmid
 {
@@ -18,6 +19,7 @@ namespace Bitmap_Test1_Schmid
         retrieve_Kinect kinect = new retrieve_Kinect();
         public KinectMonitor kinectM;// = new KinectMonitor();
         public IR ir = new IR();
+        public Laufwerk usb = new Laufwerk();
 
         public static int schritt = 0;
 
@@ -174,7 +176,9 @@ namespace Bitmap_Test1_Schmid
                 //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
                 // Patientendatenbank p = new Patientendatenbank();
                 System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+                Patientendatenbank.haupt = this;
                 Patientendatenbank.ShowDialog();
+
                 if (Patientendatenbank.Patientenname != null && Patientendatenbank.letzteBehandlung != null) {
                     lblName.Text = Patientendatenbank.Patientenname;
                     lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;

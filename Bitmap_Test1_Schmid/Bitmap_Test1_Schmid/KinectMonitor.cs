@@ -245,11 +245,11 @@ namespace Bitmap_Test1_Schmid
                         Joint FootRight = joints[JointType.FootRight];
                         Joint FootLeft = joints[JointType.FootLeft];
 
-                        float rf_distance_x = ((FootRight.Position.X * -100) + 140);//unwichtig: musss wahrscheinlich geändert werden
+                        float rf_distance_x = ((FootRight.Position.X * -100) + 155);//unwichtig: musss wahrscheinlich geändert werden
                         float rf_distance_y = FootRight.Position.Y * 1000;
                         float rf_distance_z = FootRight.Position.Z;
 
-                        float lf_distance_x = ((FootLeft.Position.X * -100) + 140);
+                        float lf_distance_x = ((FootLeft.Position.X * -100) + 155);
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
 

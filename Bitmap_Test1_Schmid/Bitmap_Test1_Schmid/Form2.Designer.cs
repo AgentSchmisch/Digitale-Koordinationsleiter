@@ -42,7 +42,6 @@ namespace Bitmap_Test1_Schmid
             this.label2 = new System.Windows.Forms.Label();
             this.directoryEntry1 = new System.DirectoryServices.DirectoryEntry();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.kur = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.right_seven = new System.Windows.Forms.PictureBox();
             this.left_seven = new System.Windows.Forms.PictureBox();
@@ -67,9 +66,9 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.strich = new System.Windows.Forms.Label();
             this.koordinaten = new System.Windows.Forms.Label();
+            this.kur = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.right_seven)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_seven)).BeginInit();
@@ -92,6 +91,7 @@ namespace Bitmap_Test1_Schmid
             ((System.ComponentModel.ISupportInitialize)(this.right_one)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_one)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kur)).BeginInit();
             this.SuspendLayout();
             // 
             // bestätigen
@@ -220,23 +220,8 @@ namespace Bitmap_Test1_Schmid
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // kur
-            // 
-            this.kur.BackColor = System.Drawing.Color.White;
-            this.kur.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.kur.Image = global::Bitmap_Test1_Schmid.Properties.Resources.logo_dpl2;
-            this.kur.Location = new System.Drawing.Point(128, 634);
-            this.kur.Margin = new System.Windows.Forms.Padding(0);
-            this.kur.Name = "kur";
-            this.kur.Size = new System.Drawing.Size(696, 428);
-            this.kur.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.kur.TabIndex = 43;
-            this.kur.TabStop = false;
-            this.kur.Visible = false;
-            // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Bitmap_Test1_Schmid.Properties.Resources.Bildschirmfoto_2021_11_29_um_18_26_59;
             this.pictureBox2.Location = new System.Drawing.Point(1776, 988);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(114, 64);
@@ -496,7 +481,6 @@ namespace Bitmap_Test1_Schmid
             // 
             this.left_one.BackColor = System.Drawing.Color.Transparent;
             this.left_one.Cursor = System.Windows.Forms.Cursors.Default;
-            this.left_one.Image = global::Bitmap_Test1_Schmid.Properties.Resources.left;
             this.left_one.InitialImage = null;
             this.left_one.Location = new System.Drawing.Point(25, 148);
             this.left_one.Name = "left_one";
@@ -541,6 +525,18 @@ namespace Bitmap_Test1_Schmid
             this.koordinaten.Text = "Koordinaten";
             this.koordinaten.Visible = false;
             // 
+            // kur
+            // 
+            this.kur.BackColor = System.Drawing.Color.White;
+            this.kur.Image = ((System.Drawing.Image)(resources.GetObject("kur.Image")));
+            this.kur.Location = new System.Drawing.Point(210, 630);
+            this.kur.Name = "kur";
+            this.kur.Size = new System.Drawing.Size(907, 516);
+            this.kur.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.kur.TabIndex = 46;
+            this.kur.TabStop = false;
+            this.kur.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,9 +544,9 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 800);
+            this.Controls.Add(this.kur);
             this.Controls.Add(this.koordinaten);
             this.Controls.Add(this.strich);
-            this.Controls.Add(this.kur);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.right_seven);
             this.Controls.Add(this.left_seven);
@@ -591,7 +587,6 @@ namespace Bitmap_Test1_Schmid
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.regler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.right_seven)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_seven)).EndInit();
@@ -614,6 +609,7 @@ namespace Bitmap_Test1_Schmid
             ((System.ComponentModel.ISupportInitialize)(this.right_one)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_one)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kur)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -654,8 +650,8 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.PictureBox left_seven;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.PictureBox kur;
         public System.Windows.Forms.Label strich;
         public System.Windows.Forms.Label koordinaten;
+        private System.Windows.Forms.PictureBox kur;
     }
 }

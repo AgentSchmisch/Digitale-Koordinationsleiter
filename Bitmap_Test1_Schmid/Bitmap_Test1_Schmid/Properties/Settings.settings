@@ -38,5 +38,8 @@
     <Setting Name="länge" Type="System.Double" Scope="User">
       <Value Profile="(Default)">1280</Value>
     </Setting>
+    <Setting Name="Laufwerk" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

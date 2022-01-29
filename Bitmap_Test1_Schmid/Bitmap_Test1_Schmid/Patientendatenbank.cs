@@ -53,6 +53,13 @@ namespace Bitmap_Test1_Schmid
         MySqlDataAdapter da;
         DataTable tbl;  //datatable für Abfragenergebnisse aus der Patientensuche
 
+
+        private Form1 _haupt;
+        public Form1 haupt
+        {
+            set { this._haupt = value; }
+        }
+
         public Patientendatenbank() //constructuor
         {
             InitializeComponent();
@@ -61,6 +68,8 @@ namespace Bitmap_Test1_Schmid
 
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
+            laufwerkToolStripMenuItem.Text = "Aktuelles Laufwerk: " + Properties.Settings.Default.Laufwerk;
+
             #region zurücksetzen der Formelemente
             Size = new Size(471, 383);
             auswahlBtn.Location = new Point(166, 349);
@@ -611,6 +620,13 @@ namespace Bitmap_Test1_Schmid
                     e.Handled = true;
                 }
             }
+        }
+
+        private void laufwerkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _haupt.usb.ShowDialog();
+            laufwerkToolStripMenuItem.Text = "Aktuelles Laufwerk: " + Properties.Settings.Default.Laufwerk;
+            //todo: hier muss noch der string geändert werden
         }
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)//Neu im ToolstripMenu
