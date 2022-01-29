@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace Bitmap_Test1_Schmid
@@ -40,34 +40,50 @@ namespace Bitmap_Test1_Schmid
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
-
-            switch (m.Msg)
+            try
             {
 
-                case WM_DEVICECHANGE:
-                    switch ((int)m.WParam)
-                    {
-                        case DBT_DEVICEARRIVAL:
+                switch (m.Msg)
+                {
 
-                            int devType = Marshal.ReadInt32(m.LParam, 4);
-                            if (devType == DBT_DEVTYP_VOLUME)
-                            {
-                                DevBroadcastVolume vol;
-                                vol = (DevBroadcastVolume)
-                                   Marshal.PtrToStructure(m.LParam,
-                                   typeof(DevBroadcastVolume));
-                                output = Convert.ToString(vol.Mask, 2);
-                                listBox1.Items.Add("Laufwerkbuchstabe: " + alpha[output.Length - 1]);
+                    case WM_DEVICECHANGE:
+                        switch ((int)m.WParam)
+                        {
+                            case DBT_DEVICEARRIVAL:
 
-                            }
+                                int devType = Marshal.ReadInt32(m.LParam, 4);
+                                if (devType == DBT_DEVTYP_VOLUME)
+                                {
+                                    DevBroadcastVolume vol;
+                                    vol = (DevBroadcastVolume)
+                                       Marshal.PtrToStructure(m.LParam,
+                                       typeof(DevBroadcastVolume));
+                                    output = Convert.ToString(vol.Mask, 2);
 
-                            break;
 
-                        case DBT_DEVICEREMOVECOMPLETE:
-                            listBox1.Items.Clear();
-                            break;
-                    }
-                    break;
+                                    DriveInfo[] diLocalDrives = DriveInfo.GetDrives();
+
+                                    foreach (DriveInfo diLogicalDrive in diLocalDrives)
+                                    {
+                                        if (diLogicalDrive.Name.ToString().Contains(alpha[output.Length - 1]))
+                                        {
+                                            listBox1.Items.Add("USB: (" + alpha[output.Length - 1] + ") " + diLogicalDrive.VolumeLabel);
+                                        }
+                                    }
+                                }
+
+                                break;
+
+                            case DBT_DEVICEREMOVECOMPLETE:
+                                listBox1.Items.Clear();
+                                break;
+                        }
+                        break;
+                }
+            }
+            catch 
+            {
+
             }
 
         }
@@ -82,7 +98,7 @@ namespace Bitmap_Test1_Schmid
 
         private void Laufwerk_Load(object sender, EventArgs e)
         {
-
+            listBox1.Items.Clear();
         }
     }
 }
