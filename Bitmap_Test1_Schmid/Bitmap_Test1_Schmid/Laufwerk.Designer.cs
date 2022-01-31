@@ -41,6 +41,7 @@ namespace Bitmap_Test1_Schmid
             // listBox1
             // 
             this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.listBox1.Enabled = false;
             this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.listBox1.ForeColor = System.Drawing.Color.White;
             this.listBox1.FormattingEnabled = true;

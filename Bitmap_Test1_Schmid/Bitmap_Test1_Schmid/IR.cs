@@ -77,6 +77,8 @@ namespace Bitmap_Test1_Schmid
             {
                 if (frame != null)
                 {
+                    warten.Visible = false;
+
                     int width = frame.FrameDescription.Width;
                     int height = frame.FrameDescription.Height;
                     ushort[] data = new ushort[width * height];
@@ -168,9 +170,6 @@ namespace Bitmap_Test1_Schmid
                             {
                                 ecken4_x = (int)center.X;
                                 ecken4_y = (int)center.Y;
-                            }
-                            if (kreise==4)
-                            {
                                 kreise = 0;
                             }
                             kreise++;
@@ -182,6 +181,10 @@ namespace Bitmap_Test1_Schmid
 
                     }
                     pictureBox1.Image = bmp;
+                }
+                else
+                {
+                    warten.Visible = true;
                 }
             }
         }
@@ -523,6 +526,12 @@ namespace Bitmap_Test1_Schmid
 
         private void IR_FormClosing(object sender, FormClosingEventArgs e)
         {
+
+        }
+
+        private void IR_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
         //private void DrawEllipseFloat(object sender, PaintEventArgs g)
         //{

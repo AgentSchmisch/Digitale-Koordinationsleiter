@@ -537,6 +537,7 @@ namespace Bitmap_Test1_Schmid
 
         private void KinectMonitor_FormClosing(object sender, FormClosingEventArgs e)
         {
+
         }
     }
 }

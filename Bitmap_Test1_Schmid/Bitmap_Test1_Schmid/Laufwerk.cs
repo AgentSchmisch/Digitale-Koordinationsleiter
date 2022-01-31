@@ -115,11 +115,18 @@ namespace Bitmap_Test1_Schmid
             {
                 if (diLogicalDrive.DriveType.ToString() == "Removable")
                 {
-                    listBox1.Items.Add(diLogicalDrive.Name + "" + diLogicalDrive.VolumeLabel + " " + diLogicalDrive.AvailableFreeSpace / 1000000000 + "/" + diLogicalDrive.TotalSize / 1000000000 + " GB");
+                    listBox1.Enabled = true;
+                    listBox1.Items.Add(diLogicalDrive.Name + " " + diLogicalDrive.VolumeLabel + " (" + diLogicalDrive.AvailableFreeSpace / 1000000000 + "/" + diLogicalDrive.TotalSize / 1000000000 + " GB)");
                     usbname[i] = diLogicalDrive.Name;
                     i++;
                 }
             }
+            if (i == 0)
+            {
+                listBox1.Items.Add("kein USB-Gerät erkannt!");
+                listBox1.Enabled = false;
+            }
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)

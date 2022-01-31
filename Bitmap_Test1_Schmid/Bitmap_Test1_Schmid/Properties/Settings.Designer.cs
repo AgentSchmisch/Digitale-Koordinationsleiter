@@ -109,7 +109,7 @@ namespace Bitmap_Test1_Schmid.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("300")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double mittelpunkt_rechts {
             get {
                 return ((double)(this["mittelpunkt_rechts"]));
@@ -121,7 +121,7 @@ namespace Bitmap_Test1_Schmid.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double mittelpunkt_linksy {
             get {
                 return ((double)(this["mittelpunkt_linksy"]));
@@ -133,7 +133,7 @@ namespace Bitmap_Test1_Schmid.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double mittelpunkt_rechtsy {
             get {
                 return ((double)(this["mittelpunkt_rechtsy"]));

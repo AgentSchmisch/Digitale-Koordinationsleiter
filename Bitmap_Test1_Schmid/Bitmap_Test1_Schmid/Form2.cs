@@ -52,12 +52,12 @@ namespace Bitmap_Test1_Schmid
             this.Size = new Size(Auflösung_Projektor_x, Auflösung_Projektor_y);
             pictureBox1.Size = new Size(Auflösung_Projektor_x, Auflösung_Projektor_y);
 
-            color_box_r =Properties.Settings.Default.colorbox_r;
-            color_box_g=Properties.Settings.Default.colorbox_g;
-            color_box_b=Properties.Settings.Default.colorbox_b;
-            color_r=Properties.Settings.Default.color_r;
-            color_g=Properties.Settings.Default.color_g;//ruft Farbwerte ab
-            color_b=Properties.Settings.Default.color_b;
+            color_box_r = Properties.Settings.Default.colorbox_r;
+            color_box_g = Properties.Settings.Default.colorbox_g;
+            color_box_b = Properties.Settings.Default.colorbox_b;
+            color_r = Properties.Settings.Default.color_r;
+            color_g = Properties.Settings.Default.color_g;//ruft Farbwerte ab
+            color_b = Properties.Settings.Default.color_b;
 
             int rightfoot = waagrechtunten - 250;//fußabdruck y position definieren
             int leftfoot = waagrechtoben + 150;
@@ -109,7 +109,7 @@ namespace Bitmap_Test1_Schmid
                 //längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
                 schrittlängealt = schrittlänge[1];
                 schrittlänge[0] = 0;
-                                   
+
                 if (count == 1) //entfernt nur die bisherige Box und erneuert die waagrechte oben und unten
                 {
                     for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++)                 //fläche
@@ -196,7 +196,6 @@ namespace Bitmap_Test1_Schmid
         string stepsalt = "0";
         private void bestätigen_Click(object sender, EventArgs e)
         {
-
             System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;//warte cursor für visuelles Feedback
             try
             {
@@ -204,7 +203,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     for (x = Convert.ToInt32(schrittlänge[zähler]); x < schrittlänge[zähler] + dicke + 5; x++) //senkrecht
                     {
-                        for (y = waagrechtoben+5; y < waagrechtunten-dicke; y++)
+                        for (y = waagrechtoben + 5; y < waagrechtunten - dicke; y++)
                         {
                             Color pixelColor = image1.GetPixel(x, y);
                             Color newColor = Color.FromArgb(0, 0, 0);
@@ -255,7 +254,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     for (x = Convert.ToInt32(schrittlänge[zähler]); x < schrittlänge[zähler] + dicke + 5; x++) //senkrecht
                     {
-                        for (y = waagrechtoben +5; y < waagrechtunten - dicke; y++)
+                        for (y = waagrechtoben + 5; y < waagrechtunten - dicke; y++)
                         {
                             Color pixelColor = image1.GetPixel(x, y);
                             Color newColor = Color.FromArgb(color_r, color_g, color_b);
@@ -264,9 +263,9 @@ namespace Bitmap_Test1_Schmid
                     }
                     schrittlänge[zähler + 1] = schrittlänge[zähler] + schrittlängealt;
                 }//senkrecht
-                for (x = image1.Width-dicke-5; x < image1.Width; x++) //senkrecht ende
+                for (x = image1.Width - dicke - 5; x < image1.Width; x++) //senkrecht ende
                 {
-                    for (y = waagrechtoben; y < waagrechtunten ; y++)
+                    for (y = waagrechtoben; y < waagrechtunten; y++)
                     {
                         Color pixelColor = image1.GetPixel(x, y);
                         Color newColor = Color.FromArgb(color_r, color_g, color_b);
@@ -312,7 +311,7 @@ namespace Bitmap_Test1_Schmid
         int delay = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (neu + Auflösung_Projektor_x/2 < Auflösung_Projektor_x)
+            if (neu + Auflösung_Projektor_x / 2 < Auflösung_Projektor_x)
             {
                 neu += 10;
 
@@ -339,8 +338,8 @@ namespace Bitmap_Test1_Schmid
 
             else
             {
-                delay++;            
-                kur.Location = new Point(Auflösung_Projektor_x / 2 - kur.Width/2, Auflösung_Projektor_y / 2 - kur.Height/2);
+                delay++;
+                kur.Location = new Point(Auflösung_Projektor_x / 2 - kur.Width / 2, Auflösung_Projektor_y / 2 - kur.Height / 2);
                 if (delay > 10 && delay < 12)
                 {
                     kur.Visible = true;
@@ -449,16 +448,138 @@ namespace Bitmap_Test1_Schmid
                     }
                 }//Alles löschen
                 himmelhölle.Visible = true;
-                himmelhölle.Location = new Point(0, Auflösung_Projektor_y/2 - himmelhölle.Height/2);
+                himmelhölle.Location = new Point(0, Auflösung_Projektor_y / 2 - himmelhölle.Height / 2);
                 pictureBox1.Image = image1;
             }
             if (!klick)
             {
-                himmelhölle.Visible = false; 
+                himmelhölle.Visible = false;
                 bestätigen.PerformClick();
             }
 
             klick = !klick;
+        }
+
+        public void kantenerkennung()
+        {
+            for (x = 0; x < image1.Width; x++) //alles löschen
+            {
+                for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(0, 0, 0);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }//Alles löschen
+
+            for (x = 0; x < 16; x++)                                                    //links oben
+            {
+                for (y = waagrechtoben - 8; y < waagrechtoben + 8; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }
+            for (x = Auflösung_Projektor_x - 16; x < Auflösung_Projektor_x; x++)        //rechts oben
+            {
+                for (y = waagrechtoben - 8; y < waagrechtoben + 8; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }
+            for (x = 0; x < 16; x++)                                                    //links unten
+            {
+                for (y = waagrechtunten - 8; y < waagrechtunten + 8; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }
+            for (x = Auflösung_Projektor_x - 16; x < Auflösung_Projektor_x; x++)        //rechts unten
+            {
+                for (y = waagrechtunten - 8; y < waagrechtunten + 8; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }
+            kanten.Visible = true;
+            kanten.Location = new Point(Auflösung_Projektor_x / 2 - kanten.Width / 2, Auflösung_Projektor_y / 2 - kanten.Height / 2);
+
+            pictureBox1.Paint += DrawLineFloat;
+
+            pictureBox1.Image = image1;
+        }
+        public bool draw = true;
+        public void DrawLineFloat(object sender, PaintEventArgs e)
+        {
+            if (draw)
+            {
+                Pen blackPen = new Pen(Color.White, 1);
+
+                e.Graphics.DrawLine(blackPen, kanten.Location.X + kanten.Width, kanten.Location.Y, Auflösung_Projektor_x - 21, waagrechtoben + 18); //ro
+                e.Graphics.DrawLine(blackPen, kanten.Location.X + kanten.Width, kanten.Location.Y + kanten.Height, Auflösung_Projektor_x - 21, waagrechtunten - 18); //ru
+                e.Graphics.DrawLine(blackPen, kanten.Location.X, kanten.Location.Y, 21, waagrechtoben + 18); //lo
+                e.Graphics.DrawLine(blackPen, kanten.Location.X, kanten.Location.Y + kanten.Height, 21, waagrechtunten - 18); //lu
+                draw = false;
+            }
+            if (!draw)
+            {
+                Pen blackPen = new Pen(Color.Transparent, 1);
+
+                e.Graphics.DrawLine(blackPen, kanten.Location.X + kanten.Width, kanten.Location.Y, Auflösung_Projektor_x - 21, waagrechtoben + 18); //ro
+                e.Graphics.DrawLine(blackPen, kanten.Location.X + kanten.Width, kanten.Location.Y + kanten.Height, Auflösung_Projektor_x - 21, waagrechtunten - 18); //ru
+                e.Graphics.DrawLine(blackPen, kanten.Location.X, kanten.Location.Y, 21, waagrechtoben + 18); //lo
+                e.Graphics.DrawLine(blackPen, kanten.Location.X, kanten.Location.Y + kanten.Height, 21, waagrechtunten - 18); //lu
+            }
+        }
+
+        public void endkanten()
+        {
+            for (x = 0; x < 16; x++)                                                    //links oben
+            {
+                for (y = waagrechtoben - 8; y < waagrechtoben + 8; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(0, 0, 0);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }
+            for (x = Auflösung_Projektor_x - 16; x < Auflösung_Projektor_x; x++)        //rechts oben
+            {
+                for (y = waagrechtoben - 8; y < waagrechtoben + 8; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(0, 0, 0);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }
+            for (x = 0; x < 16; x++)                                                    //links unten
+            {
+                for (y = waagrechtunten - 8; y < waagrechtunten + 8; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(0, 0, 0);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }
+            for (x = Auflösung_Projektor_x - 16; x < Auflösung_Projektor_x; x++)        //rechts unten
+            {
+                for (y = waagrechtunten - 8; y < waagrechtunten + 8; y++)
+                {
+                    Color pixelColor = image1.GetPixel(x, y);
+                    Color newColor = Color.FromArgb(0, 0, 0);
+                    image1.SetPixel(x, y, newColor);
+                }
+            }
+
+            kanten.Visible = false;
+            bestätigen.PerformClick();
         }
     }
 }

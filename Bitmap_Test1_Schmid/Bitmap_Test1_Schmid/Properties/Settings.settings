@@ -24,13 +24,13 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="mittelpunkt_rechts" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">300</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="mittelpunkt_linksy" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="mittelpunkt_rechtsy" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="multiplikator" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>

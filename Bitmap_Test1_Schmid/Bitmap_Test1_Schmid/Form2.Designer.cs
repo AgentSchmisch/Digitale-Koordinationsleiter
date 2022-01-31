@@ -68,6 +68,7 @@ namespace Bitmap_Test1_Schmid
             this.right_one = new System.Windows.Forms.PictureBox();
             this.left_one = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.kanten = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.himmelhölle)).BeginInit();
@@ -551,6 +552,18 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // kanten
+            // 
+            this.kanten.AutoSize = true;
+            this.kanten.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.kanten.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F);
+            this.kanten.Location = new System.Drawing.Point(12, 703);
+            this.kanten.Name = "kanten";
+            this.kanten.Size = new System.Drawing.Size(1029, 75);
+            this.kanten.TabIndex = 48;
+            this.kanten.Text = "Reflektoren in die Rechtecke legen";
+            this.kanten.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -558,6 +571,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 800);
+            this.Controls.Add(this.kanten);
             this.Controls.Add(this.himmelhölle);
             this.Controls.Add(this.kur);
             this.Controls.Add(this.koordinaten);
@@ -670,5 +684,6 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.Label koordinaten;
         private System.Windows.Forms.PictureBox kur;
         private System.Windows.Forms.PictureBox himmelhölle;
+        private System.Windows.Forms.Label kanten;
     }
 }

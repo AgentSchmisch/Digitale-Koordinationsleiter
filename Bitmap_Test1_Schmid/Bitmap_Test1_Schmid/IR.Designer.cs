@@ -29,6 +29,7 @@ namespace Bitmap_Test1_Schmid
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IR));
             this.k4 = new System.Windows.Forms.Label();
             this.k3 = new System.Windows.Forms.Label();
             this.k2 = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.überschrift = new System.Windows.Forms.Label();
+            this.warten = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -266,6 +268,18 @@ namespace Bitmap_Test1_Schmid
             this.überschrift.TabIndex = 25;
             this.überschrift.Text = "Kantenerkennung";
             // 
+            // warten
+            // 
+            this.warten.AutoSize = true;
+            this.warten.BackColor = System.Drawing.Color.Transparent;
+            this.warten.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.warten.ForeColor = System.Drawing.Color.White;
+            this.warten.Location = new System.Drawing.Point(161, 270);
+            this.warten.Name = "warten";
+            this.warten.Size = new System.Drawing.Size(297, 31);
+            this.warten.TabIndex = 26;
+            this.warten.Text = "Warten auf Bilddaten ...";
+            // 
             // IR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,6 +287,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(645, 570);
+            this.Controls.Add(this.warten);
             this.Controls.Add(this.überschrift);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.reset);
@@ -291,12 +306,15 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "IR";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "IR";
+            this.Text = "Kantenerkennung";
             this.TopMost = true;
+            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.IR_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IR_FormClosing);
             this.Load += new System.EventHandler(this.IR_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -325,5 +343,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.Button reset;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label überschrift;
+        private System.Windows.Forms.Label warten;
     }
 }

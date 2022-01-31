@@ -259,7 +259,12 @@ namespace Bitmap_Test1_Schmid
         private void kantenerkennungToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            Task infrared = Task.Run(() => ir.ShowDialog());
+            //Task infrared = Task.Run(() => ir.ShowDialog());
+            screen.kantenerkennung();
+            screen.draw = true;
+            ir.ShowDialog();
+            screen.endkanten();
+            
             ir.form1_2 = this;
             //ir.ShowDialog();
             //this.Show();
