@@ -434,5 +434,31 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
             }
         }
+        bool klick = true;
+        public void himmel_hölle()
+        {
+            if (klick)
+            {
+                for (x = 0; x < image1.Width; x++) //alles löschen
+                {
+                    for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(0, 0, 0);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }//Alles löschen
+                himmelhölle.Visible = true;
+                himmelhölle.Location = new Point(0, Auflösung_Projektor_y/2 - himmelhölle.Height/2);
+                pictureBox1.Image = image1;
+            }
+            if (!klick)
+            {
+                himmelhölle.Visible = false; 
+                bestätigen.PerformClick();
+            }
+
+            klick = !klick;
+        }
     }
 }

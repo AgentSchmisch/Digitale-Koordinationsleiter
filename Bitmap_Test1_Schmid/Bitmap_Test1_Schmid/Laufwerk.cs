@@ -30,67 +30,67 @@ namespace Bitmap_Test1_Schmid
         private const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
         private const int DBT_DEVTYP_VOLUME = 0x00000002;
         public string[] alpha = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-        string output = "110";
+        string output = "100000";
         public string letter;
         public Laufwerk()
         {
             InitializeComponent();
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-            try
-            {
+        //protected override void WndProc(ref Message m)
+        //{
+        //    base.WndProc(ref m);
+        //    try
+        //    {
 
-                switch (m.Msg)
-                {
+        //        switch (m.Msg)
+        //        {
 
-                    case WM_DEVICECHANGE:
-                        switch ((int)m.WParam)
-                        {
-                            case DBT_DEVICEARRIVAL:
+        //            case WM_DEVICECHANGE:
+        //                switch ((int)m.WParam)
+        //                {
+        //                    case DBT_DEVICEARRIVAL:
 
-                                int devType = Marshal.ReadInt32(m.LParam, 4);
-                                if (devType == DBT_DEVTYP_VOLUME)
-                                {
-                                    DevBroadcastVolume vol;
-                                    vol = (DevBroadcastVolume)
-                                       Marshal.PtrToStructure(m.LParam,
-                                       typeof(DevBroadcastVolume));
-                                    output = Convert.ToString(vol.Mask, 2);
+        //                        int devType = Marshal.ReadInt32(m.LParam, 4);
+        //                        if (devType == DBT_DEVTYP_VOLUME)
+        //                        {
+        //                            DevBroadcastVolume vol;
+        //                            vol = (DevBroadcastVolume)
+        //                               Marshal.PtrToStructure(m.LParam,
+        //                               typeof(DevBroadcastVolume));
+        //                            output = Convert.ToString(vol.Mask, 2);
 
 
-                                    DriveInfo[] diLocalDrives = DriveInfo.GetDrives();
+        //                            DriveInfo[] diLocalDrives = DriveInfo.GetDrives();
 
-                                    foreach (DriveInfo diLogicalDrive in diLocalDrives)
-                                    {
-                                        if (diLogicalDrive.Name.ToString().Contains(alpha[output.Length - 1]))
-                                        {
-                                            listBox1.Items.Add("USB: (" + alpha[output.Length - 1] + ") " + diLogicalDrive.VolumeLabel);
-                                        }
-                                    }
-                                }
+        //                            foreach (DriveInfo diLogicalDrive in diLocalDrives)
+        //                            {
+        //                                if (diLogicalDrive.Name.ToString().Contains(alpha[output.Length - 1]))
+        //                                {
+        //                                    listBox1.Items.Add("USB: " + diLogicalDrive.VolumeLabel + " (" + alpha[output.Length - 1] + ":), " + diLogicalDrive.AvailableFreeSpace/ 1000000000 + "/" + diLogicalDrive.TotalSize/1000000000 + " GB");
+        //                                }
+        //                            }
+        //                        }
 
-                                break;
+        //                        break;
 
-                            case DBT_DEVICEREMOVECOMPLETE:
-                                listBox1.Items.Clear();
-                                break;
-                        }
-                        break;
-                }
-            }
-            catch 
-            {
+        //                    case DBT_DEVICEREMOVECOMPLETE:
+        //                        listBox1.Items.Clear();
+        //                        break;
+        //                }
+        //                break;
+        //        }
+        //    }
+        //    catch 
+        //    {
+        //    }
 
-            }
-
-        }
+        //}
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
-            letter = alpha[output.Length - 1];
+            //letter = alpha[output.Length - 1];
+            letter = usbname[listBox1.SelectedIndex];
             Properties.Settings.Default.Laufwerk = letter;
             Properties.Settings.Default.Save();
             this.Close();
@@ -98,7 +98,33 @@ namespace Bitmap_Test1_Schmid
 
         private void Laufwerk_Load(object sender, EventArgs e)
         {
+            timer1.Start();
             listBox1.Items.Clear();
+            usbfinder();
+        }
+        int i = 0;
+        string[] usbname = new string[10];
+        public void usbfinder()
+        {
+            i = 0;
+            listBox1.Items.Clear();
+
+            DriveInfo[] diLocalDrives = DriveInfo.GetDrives();
+
+            foreach (DriveInfo diLogicalDrive in diLocalDrives)
+            {
+                if (diLogicalDrive.DriveType.ToString() == "Removable")
+                {
+                    listBox1.Items.Add(diLogicalDrive.Name + "" + diLogicalDrive.VolumeLabel + " " + diLogicalDrive.AvailableFreeSpace / 1000000000 + "/" + diLogicalDrive.TotalSize / 1000000000 + " GB");
+                    usbname[i] = diLogicalDrive.Name;
+                    i++;
+                }
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            usbfinder();
         }
     }
 }

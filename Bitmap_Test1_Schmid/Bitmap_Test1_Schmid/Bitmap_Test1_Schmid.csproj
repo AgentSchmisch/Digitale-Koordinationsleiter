@@ -258,6 +258,7 @@
     <Content Include="Resources\Bildschirmfoto 2021-11-29 um 18.26.59.png" />
     <None Include="Resources\logo_dpl.jpg" />
     <None Include="Resources\DKL.jpeg" />
+    <None Include="Resources\himmelhölle3.png" />
     <Content Include="Resources\walking_man.ico" />
   </ItemGroup>
   <ItemGroup>

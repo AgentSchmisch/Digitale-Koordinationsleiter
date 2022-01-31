@@ -434,5 +434,10 @@ namespace Bitmap_Test1_Schmid
         {
             MessageBox.Show("Hier können Sie einstellen, wie weit vor dem Ziel eine Box eingeblendet werden soll.", "Hilfe", 0, MessageBoxIcon.Question);//hilfeanzeige
         }
+
+        private void label1_DoubleClick(object sender, EventArgs e)
+        {
+            screen.himmel_hölle();
+        }
     }
 }

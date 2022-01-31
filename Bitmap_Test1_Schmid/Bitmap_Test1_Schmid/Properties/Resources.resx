@@ -136,13 +136,16 @@
   <data name="Bildschirmfoto 2021-11-29 um 18.261" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bildschirmfoto 2021-11-29 um 18.26.59.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DKL2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DKL.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="DKL1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DKL.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DKL" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DKL.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="DKL2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DKL.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="himmelhölle3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\himmelhölle3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

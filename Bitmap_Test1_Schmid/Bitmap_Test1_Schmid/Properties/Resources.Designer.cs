@@ -113,6 +113,16 @@ namespace Bitmap_Test1_Schmid.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap himmelhölle3 {
+            get {
+                object obj = ResourceManager.GetObject("himmelhölle3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HTLMI_logo {
             get {
                 object obj = ResourceManager.GetObject("HTLMI_logo", resourceCulture);

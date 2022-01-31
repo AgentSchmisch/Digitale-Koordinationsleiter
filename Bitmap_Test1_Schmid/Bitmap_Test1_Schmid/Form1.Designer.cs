@@ -94,6 +94,7 @@
             this.label1.Size = new System.Drawing.Size(115, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "Schritte:";
+            this.label1.DoubleClick += new System.EventHandler(this.label1_DoubleClick);
             // 
             // bestätigen
             // 
