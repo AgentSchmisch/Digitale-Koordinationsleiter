@@ -136,6 +136,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     int width = frame.FrameDescription.Width;
                     int height = frame.FrameDescription.Height;
+                    MessageBox.Show("Breite: " + width + "\nHöhe: " + height + "\nLol einfach die höhenwerte auslesen. ez\naja und bitte Foto machen.");
                     ushort[] data = new ushort[width * height];
                     byte[] pixelData = new byte[width * height * 4];
                     int xcoord = 0;
@@ -286,11 +287,18 @@ namespace Bitmap_Test1_Schmid
                                 schritt_rechts[i + 1] = zw_schritt_rechts[i];
                                 schritt_links[i + 1] = zw_schritt_links[i];
                             }
-                                _form1_schritt.screen.strich.Visible = true;//zum testen
-                                _form1_schritt.screen.koordinaten.Visible = true;
-                                _form1_schritt.screen.strich.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
-                                _form1_schritt.screen.koordinaten.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 450);
-                                _form1_schritt.screen.koordinaten.Text = ((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
+                                _form1_schritt.screen.strich_links.Visible = true;//zum testen
+                                _form1_schritt.screen.koordinaten_left.Visible = true;
+                                _form1_schritt.screen.strich_rechts.Visible = true;//zum testen
+                                _form1_schritt.screen.koordinaten_right.Visible = true;
+
+                                _form1_schritt.screen.strich_links.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
+                                _form1_schritt.screen.koordinaten_left.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 450);
+                                _form1_schritt.screen.koordinaten_left.Text = ((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
+
+                                _form1_schritt.screen.strich_rechts.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
+                                _form1_schritt.screen.koordinaten_right.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 550);
+                                _form1_schritt.screen.koordinaten_right.Text = ((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
 
                                 if (Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts)
                                 {// erst wenns innerhalb vom anzeigefeld ist soll er tracken

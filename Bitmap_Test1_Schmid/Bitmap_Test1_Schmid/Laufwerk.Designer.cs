@@ -70,9 +70,9 @@ namespace Bitmap_Test1_Schmid
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(22, 34);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 24);
+            this.label2.Size = new System.Drawing.Size(246, 24);
             this.label2.TabIndex = 2;
-            this.label2.Text = "USB-Stick aus (doppelklick).";
+            this.label2.Text = "USB-Stick aus (Doppelklick).";
             // 
             // contextMenuStrip1
             // 
@@ -81,7 +81,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Laufwerk

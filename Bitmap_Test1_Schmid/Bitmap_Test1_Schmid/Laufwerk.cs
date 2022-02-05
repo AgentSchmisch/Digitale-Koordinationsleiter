@@ -25,13 +25,13 @@ namespace Bitmap_Test1_Schmid
 
     public partial class Laufwerk : Form
     {
-        private const int WM_DEVICECHANGE = 0x219;
-        private const int DBT_DEVICEARRIVAL = 0x8000;
-        private const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
-        private const int DBT_DEVTYP_VOLUME = 0x00000002;
-        public string[] alpha = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-        string output = "100000";
-        public string letter;
+        //private const int WM_DEVICECHANGE = 0x219;
+        //private const int DBT_DEVICEARRIVAL = 0x8000;
+        //private const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
+        //private const int DBT_DEVTYP_VOLUME = 0x00000002;
+        //public string[] alpha = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+        //string output = "100000";
+        //public string letter;
         public Laufwerk()
         {
             InitializeComponent();
@@ -89,11 +89,17 @@ namespace Bitmap_Test1_Schmid
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
-            //letter = alpha[output.Length - 1];
-            letter = usbname[listBox1.SelectedIndex];
-            Properties.Settings.Default.Laufwerk = letter;
-            Properties.Settings.Default.Save();
-            this.Close();
+            try
+            {
+                //letter = alpha[output.Length - 1];
+                Properties.Settings.Default.Laufwerk = usbname[listBox1.SelectedIndex];
+                Properties.Settings.Default.Save();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Bitte schneller klicken!", "schneller klicken!", MessageBoxButtons.OK , MessageBoxIcon.Asterisk);
+            }
         }
 
         private void Laufwerk_Load(object sender, EventArgs e)
@@ -106,25 +112,33 @@ namespace Bitmap_Test1_Schmid
         string[] usbname = new string[10];
         public void usbfinder()
         {
-            i = 0;
-            listBox1.Items.Clear();
-
-            DriveInfo[] diLocalDrives = DriveInfo.GetDrives();
-
-            foreach (DriveInfo diLogicalDrive in diLocalDrives)
+            try
             {
-                if (diLogicalDrive.DriveType.ToString() == "Removable")
+                i = 0;
+                Array.Clear(usbname, 0, usbname.Length);
+                listBox1.Items.Clear();
+
+                DriveInfo[] diLocalDrives = DriveInfo.GetDrives();
+
+                foreach (DriveInfo diLogicalDrive in diLocalDrives)
                 {
-                    listBox1.Enabled = true;
-                    listBox1.Items.Add(diLogicalDrive.Name + " " + diLogicalDrive.VolumeLabel + " (" + diLogicalDrive.AvailableFreeSpace / 1000000000 + "/" + diLogicalDrive.TotalSize / 1000000000 + " GB)");
-                    usbname[i] = diLogicalDrive.Name;
-                    i++;
+                    if (diLogicalDrive.DriveType.ToString() == "Removable")
+                    {
+                        listBox1.Enabled = true;
+                        listBox1.Items.Add(diLogicalDrive.Name + " " + diLogicalDrive.VolumeLabel + " (" + diLogicalDrive.AvailableFreeSpace / 1000000000 + "/" + diLogicalDrive.TotalSize / 1000000000 + " GB)");
+                        usbname[i] = diLogicalDrive.Name;
+                        i++;
+                    }
+                }
+                if (i == 0)
+                {
+                    listBox1.Items.Add("kein USB-Gerät erkannt!");
+                    listBox1.Enabled = false;
                 }
             }
-            if (i == 0)
+            catch 
             {
-                listBox1.Items.Add("kein USB-Gerät erkannt!");
-                listBox1.Enabled = false;
+                MessageBox.Show("Es ist ein Fehler aufgetreten");
             }
 
         }
