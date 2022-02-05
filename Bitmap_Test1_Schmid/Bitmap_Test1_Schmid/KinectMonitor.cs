@@ -176,6 +176,7 @@ namespace Bitmap_Test1_Schmid
                     filter2.Apply(bmp);
                     //filter3.Apply(bmp);
                     pictureBox1.Image = bitmap;
+                    MessageBox.Show("Breite: " + width + "\nHöhe: " + height + "\nLol einfach die höhenwerte auslesen. ez\naja und bitte Foto machen.");
                 }
             }
         }
