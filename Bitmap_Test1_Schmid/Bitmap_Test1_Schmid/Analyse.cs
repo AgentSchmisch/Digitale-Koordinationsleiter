@@ -93,9 +93,9 @@ namespace Bitmap_Test1_Schmid
             länge = Properties.Settings.Default.länge;
 
             steps.Text = schritte.ToString();
-            durchs.Text = ((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
-            klein.Text = ((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
-            groß.Text = ((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
+            durchs.Text = Math.Round(((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
+            klein.Text = Math.Round(((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
+            groß.Text = Math.Round(((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
 
             Size = new Size(470, 136);
             this.CenterToScreen();
@@ -145,9 +145,9 @@ namespace Bitmap_Test1_Schmid
             Properties.Settings.Default.länge = länge;
             Properties.Settings.Default.Save();
 
-            durchs.Text = ((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
-            klein.Text = ((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
-            groß.Text = ((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString();
+            durchs.Text = Math.Round(((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
+            klein.Text = Math.Round(((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
+            groß.Text = Math.Round(((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
         }
     }
 }

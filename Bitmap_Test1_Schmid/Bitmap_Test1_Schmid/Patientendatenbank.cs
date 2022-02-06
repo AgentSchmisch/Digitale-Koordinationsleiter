@@ -222,24 +222,25 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[j].ColumnName == "Patientennummer")
                     {
-
-                        record += row[j] + ";";
+                        record += row[j] + ",  ";
+                        PatNr_aktuell = row[j].ToString();
                         continue;
                     }
                     if (tbl.Columns[j].ColumnName == "Vorname")
                     {
-
-                        record += row[j] + ";";
+                        record += row[j] + " ";
+                        Patientenname = row[j] + " ";
                         continue;
                     }
                     if (tbl.Columns[j].ColumnName == "Nachname")
                     {
                         record += row[j] + ";";
+                        Patientenname += row[j];
                         continue;
                     }
-                    if (tbl.Columns[j].ColumnName == "Postleitzahl")
+                    if (tbl.Columns[j].ColumnName == "PLZ")
                     {
-                        record += row[j] + ";";
+                        record += row[j] + " ";
                         continue;
                     }
                     if (tbl.Columns[j].ColumnName == "Ort")
@@ -250,7 +251,6 @@ namespace Bitmap_Test1_Schmid
                     if (tbl.Columns[j].ColumnName == "Geburtsdatum")
                     {
                         record += row[j] + ";";
-
                         continue;
                     }
                 }
@@ -268,24 +268,24 @@ namespace Bitmap_Test1_Schmid
         private void button1_Click(object sender, EventArgs e) //auswahlBtn
         {
             //variablen leeren um bei merfachem drücken des Buttons nicht die selbe information mehrfach im label in der UI zu bekommen
-            Patientenname = "";
+            //Patientenname = ""; //----------------------------------
             letzteBehandlung = "";
             letzteSchrittanzahl = "";
 
             string s = Patienten.SelectedItem.ToString();
-            for (int i = tabs[0]; i < tabs[2]; i++)
-            {
-                if (i == tabs[1])
-                {
-                    Patientenname += " ";
-                }
+            //for (int i = tabs[0]; i < tabs[2]; i++) //-----------------------------------------------------------------------------
+            //{
+            //    if (i == tabs[0])
+            //    {
+            //        Patientenname += " ";
+            //    }
 
-                Patientenname += s[i];
+            //    Patientenname += s[i];
 
-            }
+            //}
 
             DataTable tbl2;
-            Patientenname = Patientenname.Replace("\t", "");
+            //Patientenname = Patientenname.Replace("\t", "");------------------------------
             query3 = "select Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite from " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + ";"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
             try
             {
@@ -582,7 +582,7 @@ namespace Bitmap_Test1_Schmid
                     cmd = new MySqlCommand(query3, conn);
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Sitzung erfolgreich beendet", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    //MessageBox.Show("Sitzung erfolgreich beendet", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 catch(MySqlException ex)
                 {
@@ -627,6 +627,157 @@ namespace Bitmap_Test1_Schmid
             _haupt.usb.ShowDialog();
             laufwerkToolStripMenuItem.Text = "Aktuelles Laufwerk: " + Properties.Settings.Default.Laufwerk;
             //todo: hier muss noch der string geändert werden
+        }
+
+        private void Patienten_DoubleClick(object sender, EventArgs e)
+        {
+            //PatNr_aktuell = "";
+            string s_ = Patienten.SelectedItem.ToString();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    //die ersten 10 stellen des ausgewählten index auslesen und in die Variable schreiben solange sie eine Zahl ist
+            //    if (Char.IsDigit(s_[i]))
+            //    {
+            //        PatNr_aktuell += s_[i];
+            //    }
+
+            //}
+
+            //auslesen der Tabulatoren aus dem ausgewählten string um bei der auswahl den Patientennamen herauslesen zu können
+            int x = 0;
+            for (int i = 0; i < s_.Length; i++)
+            {
+
+                if (s_[i].ToString() == "\t")
+                {
+                    // schreiben der index der tabs in ein array um sie später wieder abrufen zu können
+                    //einführen einer 2.Variable "x" um so das Array so klein wie möglich zu halten
+                    tabs[x] = i;
+                    x++;
+                }
+            }
+
+
+            DataTable tbl3;
+            query3 = "select Patientennummer, Vorname, Nachname, Geburtsdatum, Adresse, PLZ,Ort,Telefonnummer from Patienten.Patientenliste where Patientennummer = '" + PatNr_aktuell + "';"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
+            try
+            {
+                cmd = new MySqlCommand(query3, conn);
+                conn.Open();
+                da = new MySqlDataAdapter(cmd);
+                tbl3 = new DataTable();
+                da.Fill(tbl3);
+            }
+            catch (MySqlException ex)
+            {
+                exception(ex.Number);
+                return;
+            }
+            finally
+            {
+
+                conn.Close();
+            }
+            //suchen und befüllen aller textboxen mit den gefundenen Informationen um sie, falls nötig, bearbeiten zu können
+            #region Befüllen der Variablen mit den Informationen aus der Datenbank
+
+            for (int i = 0; i < tbl3.Rows.Count; i++)
+            {
+                record = "";
+                DataRow row = tbl3.Rows[i];
+                for (int j = 0; j < tbl3.Columns.Count; j++)
+                {
+                    if (tbl3.Columns[j].ColumnName == "Patientennummer")
+                    {
+                        record += row[j];
+                        patnr = row[j].ToString();
+                        continue;
+                    }
+
+                    if (tbl3.Columns[j].ColumnName == "Vorname")
+                    {
+                        record += row[j];
+                        vorname = row[j].ToString();
+                        continue;
+                    }
+
+                    if (tbl3.Columns[j].ColumnName == "Nachname")
+                    {
+                        record += row[j];
+                        nachname = row[j].ToString();
+                        continue;
+                    }
+
+                    if (tbl3.Columns[j].ColumnName == "Geburtsdatum")
+                    {
+                        record += row[j];
+                        geburtsdatum = row[j].ToString();
+                        continue;
+                    }
+
+                    if (tbl3.Columns[j].ColumnName == "Adresse")
+                    {
+                        record += row[j];
+                        adresse = row[j].ToString();
+                        continue;
+                    }
+
+                    if (tbl3.Columns[j].ColumnName == "PLZ")
+                    {
+                        record += row[j];
+                        plz = row[j].ToString();
+                        continue;
+                    }
+
+                    if (tbl3.Columns[j].ColumnName == "Ort")
+                    {
+                        record += row[j];
+                        ort = row[j].ToString();
+                        continue;
+                    }
+
+                    if (tbl3.Columns[j].ColumnName == "Telefonnummer")
+                    {
+                        record += row[j];
+                        telNr = row[j].ToString();
+                        continue;
+                    }
+                }
+            }
+            bearbeitung = true; //aktivieren des bearbeitungsmodus
+            //Präsentieren der Informationen in der Textbox
+            TbName.Text = vorname;
+            TbNachname.Text = nachname;
+            TbPatNr.Text = patnr;
+            TbGeburtsdatum.Text = geburtsdatum.Replace("-", " ");
+            TbAdresse.Text = adresse;
+            TbPLZ.Text = plz;
+            TbOrt.Text = ort;
+            TbTelefonnummer.Text = telNr;
+            #endregion
+
+            TbName.ForeColor = Color.Black;
+            TbNachname.ForeColor = Color.Black;
+            TbPatNr.ForeColor = Color.Black;
+            TbGeburtsdatum.ForeColor = Color.Black;
+            TbAdresse.ForeColor = Color.Black;
+            TbPLZ.ForeColor = Color.Black;
+            TbOrt.ForeColor = Color.Black;
+            TbTelefonnummer.ForeColor = Color.Black;
+
+            Patienten.Visible = false;
+            sucheBtn.Visible = false;
+
+            TbPatNr.ReadOnly = true;
+
+            lblEditStatus.BackColor = Color.Orange; //anzeigen dass sich die Daten im Bearbeitungsmodus befinden
+
+            NeuSpeichernBtn.Visible = true;
+            NeuAbbrechenBtn.Visible = true;
+
+            //Verkleinern des Datenbankfensters
+            this.Size = new Size(471, 348);
+            auswahlBtn.Location = new Point(167, 244);
         }
 
         private void neuToolStripMenuItem_Click(object sender, EventArgs e)//Neu im ToolstripMenu
@@ -759,153 +910,153 @@ namespace Bitmap_Test1_Schmid
 
         private void Patienten_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PatNr_aktuell = "";
-            string s_ = Patienten.SelectedItem.ToString();
-            for (int i = 0; i < 10; i++)
-            {
-                //die ersten 10 stellen des ausgewählten index auslesen und in die Variable schreiben solange sie eine Zahl ist
-                if (Char.IsDigit(s_[i]))
-                {
-                    PatNr_aktuell += s_[i];
-                }
+//            PatNr_aktuell = "";
+//            string s_ = Patienten.SelectedItem.ToString();
+//            for (int i = 0; i < 10; i++)
+//            {
+//                //die ersten 10 stellen des ausgewählten index auslesen und in die Variable schreiben solange sie eine Zahl ist
+//                if (Char.IsDigit(s_[i]))
+//                {
+//                    PatNr_aktuell += s_[i];
+//                }
 
-            }
+//            }
 
-            //auslesen der Tabulatoren aus dem ausgewählten string um bei der auswahl den Patientennamen herauslesen zu können
-            int x = 0;
-            for (int i = 0; i < s_.Length; i++)
-            {
+//            //auslesen der Tabulatoren aus dem ausgewählten string um bei der auswahl den Patientennamen herauslesen zu können
+//            int x = 0;
+//            for (int i = 0; i < s_.Length; i++)
+//            {
 
-                if (s_[i].ToString() == "\t")
-                {
-                    // schreiben der index der tabs in ein array um sie später wieder abrufen zu können
-                    //einführen einer 2.Variable "x" um so das Array so klein wie möglich zu halten
-                    tabs[x] = i;
-                    x++;
-                }
-            }
+//                if (s_[i].ToString() == "\t")
+//                {
+//                    // schreiben der index der tabs in ein array um sie später wieder abrufen zu können
+//                    //einführen einer 2.Variable "x" um so das Array so klein wie möglich zu halten
+//                    tabs[x] = i;
+//                    x++;
+//                }
+//            }
 
 
-            DataTable tbl3;
-            query3 = "select Patientennummer, Vorname, Nachname, Geburtsdatum, Adresse, PLZ,Ort,Telefonnummer from Patienten.Patientenliste where Patientennummer = '" + PatNr_aktuell + "';"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
-            try
-            {
-                cmd = new MySqlCommand(query3, conn);
-                conn.Open();
-                da = new MySqlDataAdapter(cmd);
-                tbl3 = new DataTable();
-                da.Fill(tbl3);
-            }
-            catch (MySqlException ex)
-            {
-                exception(ex.Number);
-                return;
-            }
-            finally
-            {
+//            DataTable tbl3;
+//            query3 = "select Patientennummer, Vorname, Nachname, Geburtsdatum, Adresse, PLZ,Ort,Telefonnummer from Patienten.Patientenliste where Patientennummer = '" + PatNr_aktuell + "';"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
+//            try
+//            {
+//                cmd = new MySqlCommand(query3, conn);
+//                conn.Open();
+//                da = new MySqlDataAdapter(cmd);
+//                tbl3 = new DataTable();
+//                da.Fill(tbl3);
+//            }
+//            catch (MySqlException ex)
+//            {
+//                exception(ex.Number);
+//                return;
+//            }
+//            finally
+//            {
 
-                conn.Close();
-            }
-            //suchen und befüllen aller textboxen mit den gefundenen Informationen um sie, falls nötig, bearbeiten zu können
-#region Befüllen der Variablen mit den Informationen aus der Datenbank
+//                conn.Close();
+//            }
+//            //suchen und befüllen aller textboxen mit den gefundenen Informationen um sie, falls nötig, bearbeiten zu können
+//#region Befüllen der Variablen mit den Informationen aus der Datenbank
 
-            for (int i = 0; i < tbl3.Rows.Count; i++)
-            {
-                record = "";
-                DataRow row = tbl3.Rows[i];
-                for (int j = 0; j < tbl3.Columns.Count; j++)
-                {
-                    if (tbl3.Columns[j].ColumnName == "Patientennummer")
-                    {
-                        record += row[j];
-                        patnr = row[j].ToString();
-                        continue;
-                    }
+//            for (int i = 0; i < tbl3.Rows.Count; i++)
+//            {
+//                record = "";
+//                DataRow row = tbl3.Rows[i];
+//                for (int j = 0; j < tbl3.Columns.Count; j++)
+//                {
+//                    if (tbl3.Columns[j].ColumnName == "Patientennummer")
+//                    {
+//                        record += row[j];
+//                        patnr = row[j].ToString();
+//                        continue;
+//                    }
 
-                    if (tbl3.Columns[j].ColumnName == "Vorname")
-                    {
-                        record += row[j];
-                        vorname = row[j].ToString();
-                        continue;
-                    }
+//                    if (tbl3.Columns[j].ColumnName == "Vorname")
+//                    {
+//                        record += row[j];
+//                        vorname = row[j].ToString();
+//                        continue;
+//                    }
 
-                    if (tbl3.Columns[j].ColumnName == "Nachname")
-                    {
-                        record += row[j];
-                        nachname = row[j].ToString();
-                        continue;
-                    }
+//                    if (tbl3.Columns[j].ColumnName == "Nachname")
+//                    {
+//                        record += row[j];
+//                        nachname = row[j].ToString();
+//                        continue;
+//                    }
 
-                    if (tbl3.Columns[j].ColumnName == "Geburtsdatum")
-                    {
-                        record += row[j];
-                        geburtsdatum = row[j].ToString();
-                        continue;
-                    }
+//                    if (tbl3.Columns[j].ColumnName == "Geburtsdatum")
+//                    {
+//                        record += row[j];
+//                        geburtsdatum = row[j].ToString();
+//                        continue;
+//                    }
 
-                    if (tbl3.Columns[j].ColumnName == "Adresse")
-                    {
-                        record += row[j];
-                        adresse = row[j].ToString();
-                        continue;
-                    }
+//                    if (tbl3.Columns[j].ColumnName == "Adresse")
+//                    {
+//                        record += row[j];
+//                        adresse = row[j].ToString();
+//                        continue;
+//                    }
 
-                    if (tbl3.Columns[j].ColumnName == "PLZ")
-                    {
-                        record += row[j];
-                        plz = row[j].ToString();
-                        continue;
-                    }
+//                    if (tbl3.Columns[j].ColumnName == "PLZ")
+//                    {
+//                        record += row[j];
+//                        plz = row[j].ToString();
+//                        continue;
+//                    }
 
-                    if (tbl3.Columns[j].ColumnName == "Ort")
-                    {
-                        record += row[j];
-                        ort = row[j].ToString();
-                        continue;
-                    }
+//                    if (tbl3.Columns[j].ColumnName == "Ort")
+//                    {
+//                        record += row[j];
+//                        ort = row[j].ToString();
+//                        continue;
+//                    }
 
-                    if (tbl3.Columns[j].ColumnName == "Telefonnummer")
-                    {
-                        record += row[j];
-                        telNr = row[j].ToString();
-                        continue;
-                    }
-                }
-            }
-            bearbeitung = true; //aktivieren des bearbeitungsmodus
-            //Präsentieren der Informationen in der Textbox
-            TbName.Text = vorname;
-            TbNachname.Text = nachname;
-            TbPatNr.Text = patnr;
-            TbGeburtsdatum.Text = geburtsdatum.Replace("-", " ");
-            TbAdresse.Text = adresse;
-            TbPLZ.Text = plz;
-            TbOrt.Text = ort;
-            TbTelefonnummer.Text = telNr;
-#endregion
+//                    if (tbl3.Columns[j].ColumnName == "Telefonnummer")
+//                    {
+//                        record += row[j];
+//                        telNr = row[j].ToString();
+//                        continue;
+//                    }
+//                }
+//            }
+//            bearbeitung = true; //aktivieren des bearbeitungsmodus
+//            //Präsentieren der Informationen in der Textbox
+//            TbName.Text = vorname;
+//            TbNachname.Text = nachname;
+//            TbPatNr.Text = patnr;
+//            TbGeburtsdatum.Text = geburtsdatum.Replace("-", " ");
+//            TbAdresse.Text = adresse;
+//            TbPLZ.Text = plz;
+//            TbOrt.Text = ort;
+//            TbTelefonnummer.Text = telNr;
+//#endregion
 
-            TbName.ForeColor = Color.Black;
-            TbNachname.ForeColor = Color.Black;
-            TbPatNr.ForeColor = Color.Black;
-            TbGeburtsdatum.ForeColor = Color.Black;
-            TbAdresse.ForeColor = Color.Black;
-            TbPLZ.ForeColor = Color.Black;
-            TbOrt.ForeColor = Color.Black;
-            TbTelefonnummer.ForeColor = Color.Black;
+//            TbName.ForeColor = Color.Black;
+//            TbNachname.ForeColor = Color.Black;
+//            TbPatNr.ForeColor = Color.Black;
+//            TbGeburtsdatum.ForeColor = Color.Black;
+//            TbAdresse.ForeColor = Color.Black;
+//            TbPLZ.ForeColor = Color.Black;
+//            TbOrt.ForeColor = Color.Black;
+//            TbTelefonnummer.ForeColor = Color.Black;
 
-            Patienten.Visible = false;
-            sucheBtn.Visible = false;
+//            Patienten.Visible = false;
+//            sucheBtn.Visible = false;
 
-            TbPatNr.ReadOnly = true;
+//            TbPatNr.ReadOnly = true;
 
-            lblEditStatus.BackColor = Color.Orange; //anzeigen dass sich die Daten im Bearbeitungsmodus befinden
+//            lblEditStatus.BackColor = Color.Orange; //anzeigen dass sich die Daten im Bearbeitungsmodus befinden
 
-            NeuSpeichernBtn.Visible = true;
-            NeuAbbrechenBtn.Visible = true;
+//            NeuSpeichernBtn.Visible = true;
+//            NeuAbbrechenBtn.Visible = true;
 
-            //Verkleinern des Datenbankfensters
-            this.Size = new Size(471, 348);
-            auswahlBtn.Location = new Point(167, 244);
+//            //Verkleinern des Datenbankfensters
+//            this.Size = new Size(471, 348);
+//            auswahlBtn.Location = new Point(167, 244);
         }
 
 

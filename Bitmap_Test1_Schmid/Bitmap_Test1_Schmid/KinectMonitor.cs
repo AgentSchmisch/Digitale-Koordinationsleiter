@@ -47,10 +47,11 @@ namespace Bitmap_Test1_Schmid
         double mittelpunkt_rechts_y;
         double multiplikator;
 
-        double _512_auf_320 = 0.625;
-        double _320_auf_512 = 1.6;
+        double _512_auf_360 = 0.703;
+        double _360_auf_512 = 1.422;
 
         public bool autobox = false;//für automatische Boxeinblendung
+        public bool already_placed = false;
         public int anzeigepunkt;
         public int empfindlichkeit;
 
@@ -75,12 +76,12 @@ namespace Bitmap_Test1_Schmid
         {
             Pen blackPen = new Pen(Color.Red, 1);
 
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[0] * _320_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[1] * _320_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[1]) + pictureBox1.Location.Y);// ro ru
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[0] * _320_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[3] * _320_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[3]) + pictureBox1.Location.Y);// ro lo
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[2] * _320_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[3] * _320_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[3]) + pictureBox1.Location.Y);// lu lo
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[2] * _320_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[1] * _320_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[1]) + pictureBox1.Location.Y);// lu ru
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[0] * _360_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[1] * _360_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[1]) + pictureBox1.Location.Y);// ro ru
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[0] * _360_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[3] * _360_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[3]) + pictureBox1.Location.Y);// ro lo
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[2] * _360_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[3] * _360_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[3]) + pictureBox1.Location.Y);// lu lo
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[2] * _360_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[1] * _360_auf_512)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[1]) + pictureBox1.Location.Y);// lu ru
 
-            e.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * _320_auf_512) + pictureBox1.Location.X, (int)mittelpunkt_links_y + pictureBox1.Location.Y, (int)Math.Round(mittelpunkt_rechts * _320_auf_512) + pictureBox1.Location.X, (int)mittelpunkt_rechts_y + pictureBox1.Location.Y);
+            e.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * _360_auf_512) + pictureBox1.Location.X, (int)mittelpunkt_links_y + pictureBox1.Location.Y, (int)Math.Round(mittelpunkt_rechts * _360_auf_512) + pictureBox1.Location.X, (int)mittelpunkt_rechts_y + pictureBox1.Location.Y);
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
@@ -117,11 +118,13 @@ namespace Bitmap_Test1_Schmid
             {
                 mySensor.Open();
             }
-            //myReader = mySensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
+            //myReader = mySensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);//todo: für release kommentieren
             //myReader.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
+
             bodyFrameReader = mySensor.BodyFrameSource.OpenReader();
-            myReader = mySensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
-            myReader.MultiSourceFrameArrived += reader_IRFrameArrived;
+
+            //myReader = mySensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
+            //myReader.MultiSourceFrameArrived += reader_IRFrameArrived; //unwichtig: kürzlich geändert
             if (bodyFrameReader != null)
             {
                 bodyFrameReader.FrameArrived += reader_FrameArrived;
@@ -136,7 +139,6 @@ namespace Bitmap_Test1_Schmid
                 {
                     int width = frame.FrameDescription.Width;
                     int height = frame.FrameDescription.Height;
-                    MessageBox.Show("Breite: " + width + "\nHöhe: " + height + "\nLol einfach die höhenwerte auslesen. ez\naja und bitte Foto machen.");
                     ushort[] data = new ushort[width * height];
                     byte[] pixelData = new byte[width * height * 4];
                     int xcoord = 0;
@@ -176,7 +178,7 @@ namespace Bitmap_Test1_Schmid
                     filter2.Apply(bmp);
                     //filter3.Apply(bmp);
                     pictureBox1.Image = bitmap;
-                    MessageBox.Show("Breite: " + width + "\nHöhe: " + height + "\nLol einfach die höhenwerte auslesen. ez\naja und bitte Foto machen.");
+
                 }
             }
         }
@@ -223,8 +225,7 @@ namespace Bitmap_Test1_Schmid
             using (BodyFrame bodyFrame = e.FrameReference.AcquireFrame())
             {
                 if (bodyFrame != null)
-                {
-
+                { 
                     if (bodies == null)
                         bodies = new Body[bodyFrame.BodyCount];
 
@@ -243,15 +244,15 @@ namespace Bitmap_Test1_Schmid
                         _form1_schritt.kinectToolStripMenuItem.BackColor = Color.Green;
                         IReadOnlyDictionary<JointType, Joint> joints = body.Joints;
                         Dictionary<JointType, Point> jointPoints = new Dictionary<JointType, Point>();
-
+                        
                         Joint FootRight = joints[JointType.FootRight];
                         Joint FootLeft = joints[JointType.FootLeft];
-
-                        float rf_distance_x = ((FootRight.Position.X * -100) + 155);//unwichtig: musss wahrscheinlich geändert werden
+                        
+                        float rf_distance_x = ((FootRight.Position.X * -100) + 180);//unwichtig: musss wahrscheinlich geändert werden
                         float rf_distance_y = FootRight.Position.Y * 1000;
                         float rf_distance_z = FootRight.Position.Z;
 
-                        float lf_distance_x = ((FootLeft.Position.X * -100) + 155);
+                        float lf_distance_x = ((FootLeft.Position.X * -100) + 180);
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
 
@@ -288,18 +289,18 @@ namespace Bitmap_Test1_Schmid
                                 schritt_rechts[i + 1] = zw_schritt_rechts[i];
                                 schritt_links[i + 1] = zw_schritt_links[i];
                             }
-                                _form1_schritt.screen.strich_links.Visible = true;//zum testen
-                                _form1_schritt.screen.koordinaten_left.Visible = true;
-                                _form1_schritt.screen.strich_rechts.Visible = true;//zum testen
-                                _form1_schritt.screen.koordinaten_right.Visible = true;
+                            _form1_schritt.screen.strich_links.Visible = true;//zum testen
+                            _form1_schritt.screen.koordinaten_left.Visible = true;
+                            _form1_schritt.screen.strich_rechts.Visible = true;//zum testen
+                            _form1_schritt.screen.koordinaten_right.Visible = true;
 
-                                _form1_schritt.screen.strich_links.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
-                                _form1_schritt.screen.koordinaten_left.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 450);
-                                _form1_schritt.screen.koordinaten_left.Text = ((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
+                            _form1_schritt.screen.strich_links.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
+                            _form1_schritt.screen.koordinaten_left.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 450);
+                            _form1_schritt.screen.koordinaten_left.Text = ((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
 
-                                _form1_schritt.screen.strich_rechts.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
-                                _form1_schritt.screen.koordinaten_right.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 550);
-                                _form1_schritt.screen.koordinaten_right.Text = ((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
+                            _form1_schritt.screen.strich_rechts.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
+                            _form1_schritt.screen.koordinaten_right.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 550);
+                            _form1_schritt.screen.koordinaten_right.Text = ((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
 
                                 if (Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts)
                                 {// erst wenns innerhalb vom anzeigefeld ist soll er tracken
@@ -322,7 +323,7 @@ namespace Bitmap_Test1_Schmid
                                                 if (Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 1]) > abstand_zw_zwei_schritten)
                                                 {
                                                     text.Text = "Position rechts: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
-                                                    //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
+                                                    //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1280
                                                     #region Fußabdruck zeichnen rechts
                                                     if (durchschnitt[0] != 0 && schrittzähler == 0)
                                                     {
@@ -376,7 +377,7 @@ namespace Bitmap_Test1_Schmid
                                             else
                                             {
                                                 text.Text = "Position rechts: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
-                                                //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
+                                                //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1280
 
                                                 if (durchschnitt[0] != 0 && schrittzähler == 0)
                                                 {
@@ -491,13 +492,17 @@ namespace Bitmap_Test1_Schmid
                                     #endregion
                                 }
 
-                                if (autobox)
+                                if (schrittzähler == 19)
+                                    schrittzähler = 0;
+
+                                if (autobox && !already_placed)
                                 {
                                     if (Convert.ToInt32(rf_distance_x) >= 0 || Convert.ToInt32(lf_distance_x) >= 0)
                                     {
-                                        if (Convert.ToInt32(rf_distance_x) >= anzeigepunkt - empfindlichkeit || Convert.ToInt32(lf_distance_x) >= anzeigepunkt - empfindlichkeit)
+                                        if (Convert.ToInt32((rf_distance_x - mittelpunkt_links) * multiplikator) >= anzeigepunkt - empfindlichkeit || Convert.ToInt32((lf_distance_x - mittelpunkt_links) * multiplikator) >= anzeigepunkt - empfindlichkeit)
                                         {
                                             _form1_schritt.screen.fläche.PerformClick();
+                                            already_placed=!already_placed;
                                         }
                                     }
                                 }
@@ -516,6 +521,10 @@ namespace Bitmap_Test1_Schmid
 
                     }
                 }
+            }
+            else
+            {
+                _form1_schritt.kinectToolStripMenuItem.BackColor = Color.Orange;
             }
         }
 
@@ -546,7 +555,15 @@ namespace Bitmap_Test1_Schmid
 
         private void KinectMonitor_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (myReader != null)//unwichtig: kürzlich geändert
+            {
+                myReader.Dispose();
+            }
 
+            if (mySensor != null)
+            {
+                mySensor.Close();
+            }
         }
     }
 }

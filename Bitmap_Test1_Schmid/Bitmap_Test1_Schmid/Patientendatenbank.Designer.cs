@@ -34,6 +34,7 @@ namespace Bitmap_Test1_Schmid
             this.patientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.neuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eintragungLöschenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laufwerkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sucheBtn = new System.Windows.Forms.Button();
             this.Patienten = new System.Windows.Forms.ListBox();
             this.auswahlBtn = new System.Windows.Forms.Button();
@@ -48,7 +49,6 @@ namespace Bitmap_Test1_Schmid
             this.lblEditStatus = new System.Windows.Forms.Label();
             this.NeuAbbrechenBtn = new System.Windows.Forms.Button();
             this.NeuSpeichernBtn = new System.Windows.Forms.Button();
-            this.laufwerkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,16 +79,24 @@ namespace Bitmap_Test1_Schmid
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // eintragungLöschenToolStripMenuItem
             // 
             this.eintragungLöschenToolStripMenuItem.Name = "eintragungLöschenToolStripMenuItem";
-            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.eintragungLöschenToolStripMenuItem.Text = "Eintragung löschen";
             this.eintragungLöschenToolStripMenuItem.Click += new System.EventHandler(this.eintragungLöschenToolStripMenuItem_Click);
+            // 
+            // laufwerkToolStripMenuItem
+            // 
+            this.laufwerkToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.laufwerkToolStripMenuItem.Name = "laufwerkToolStripMenuItem";
+            this.laufwerkToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.laufwerkToolStripMenuItem.Text = "Laufwerk:";
+            this.laufwerkToolStripMenuItem.Click += new System.EventHandler(this.laufwerkToolStripMenuItem_Click);
             // 
             // sucheBtn
             // 
@@ -115,6 +123,7 @@ namespace Bitmap_Test1_Schmid
             this.Patienten.Size = new System.Drawing.Size(435, 80);
             this.Patienten.TabIndex = 9;
             this.Patienten.SelectedIndexChanged += new System.EventHandler(this.Patienten_SelectedIndexChanged);
+            this.Patienten.DoubleClick += new System.EventHandler(this.Patienten_DoubleClick);
             // 
             // auswahlBtn
             // 
@@ -272,14 +281,6 @@ namespace Bitmap_Test1_Schmid
             this.NeuSpeichernBtn.UseVisualStyleBackColor = true;
             this.NeuSpeichernBtn.Visible = false;
             this.NeuSpeichernBtn.Click += new System.EventHandler(this.NeuSpeichernBtn_Click);
-            // 
-            // laufwerkToolStripMenuItem
-            // 
-            this.laufwerkToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.laufwerkToolStripMenuItem.Name = "laufwerkToolStripMenuItem";
-            this.laufwerkToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.laufwerkToolStripMenuItem.Text = "Laufwerk:";
-            this.laufwerkToolStripMenuItem.Click += new System.EventHandler(this.laufwerkToolStripMenuItem_Click);
             // 
             // Patientendatenbank
             // 

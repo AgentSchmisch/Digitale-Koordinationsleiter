@@ -55,7 +55,7 @@ namespace Bitmap_Test1_Schmid
         private void IR_Load_1(object sender, EventArgs e)
         {
             sensor = KinectSensor.GetDefault();
-            rgbsensor = KinectSensor.GetDefault();
+            //rgbsensor = KinectSensor.GetDefault();
 
             if (sensor != null)
             {
@@ -212,13 +212,13 @@ namespace Bitmap_Test1_Schmid
                 ecken4_y = 310;
             }
 
-            double _512_auf_320 = 0.625;
-            double _320_auf_512 = 1.6;
+            double _512_auf_360 = 0.703;
+            double _360_auf_512 = 1.422;
 
-            vergleich_x[0] = Math.Round(ecken1_x * _512_auf_320);//scaling auf 320
-            vergleich_x[1] = Math.Round(ecken2_x * _512_auf_320);
-            vergleich_x[2] = Math.Round(ecken3_x * _512_auf_320);
-            vergleich_x[3] = Math.Round(ecken4_x * _512_auf_320);
+            vergleich_x[0] = Math.Round(ecken1_x * _512_auf_360);//scaling auf 360
+            vergleich_x[1] = Math.Round(ecken2_x * _512_auf_360);
+            vergleich_x[2] = Math.Round(ecken3_x * _512_auf_360);
+            vergleich_x[3] = Math.Round(ecken4_x * _512_auf_360);
 
             vergleich_y[0] = ecken1_y;// * 2.54;
             vergleich_y[1] = ecken2_y;// * 2.54;
@@ -385,22 +385,22 @@ namespace Bitmap_Test1_Schmid
             //                "links unten: " + erg_x[2] + " " + erg_y[2] + "\n" + 
             //                "links oben: " + erg_x[3] + " " + erg_y[3]);
 
-            k1.Left = (int)Math.Round(erg_x[0] * _320_auf_512) + pictureBox1.Location.X;
+            k1.Left = (int)Math.Round(erg_x[0] * _360_auf_512) + pictureBox1.Location.X;
             k1.Top = (int)(erg_y[0]) + pictureBox1.Location.Y;
             //k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];//nur für debugging mit Koordinaten
             k1.Text = "rechts oben";
 
-            k2.Left = (int)Math.Round(erg_x[1] * _320_auf_512) + pictureBox1.Location.X;
+            k2.Left = (int)Math.Round(erg_x[1] * _360_auf_512) + pictureBox1.Location.X;
             k2.Top = (int)(erg_y[1]) + pictureBox1.Location.Y;
             //k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];//nur für debugging mit Koordinaten
             k2.Text = "rechts unten";
 
-            k3.Left = (int)Math.Round(erg_x[2] * _320_auf_512) + pictureBox1.Location.X;
+            k3.Left = (int)Math.Round(erg_x[2] * _360_auf_512) + pictureBox1.Location.X;
             k3.Top = (int)(erg_y[2]) + pictureBox1.Location.Y;
             //k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];//nur für debugging mit Koordinaten
             k3.Text = "links unten";
 
-            k4.Left = (int)Math.Round(erg_x[3] * _320_auf_512) + pictureBox1.Location.X;
+            k4.Left = (int)Math.Round(erg_x[3] * _360_auf_512) + pictureBox1.Location.X;
             k4.Top = (int)(erg_y[3]) + pictureBox1.Location.Y;
             //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";
@@ -422,94 +422,37 @@ namespace Bitmap_Test1_Schmid
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (mode == 1)
-            {
-                mode = 0;
-                mode2 = 1;
-                reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
-                reader.MultiSourceFrameArrived += reader_IRFrameArrived;
-            }
-            if (mode == 0 && mode2==0)//unwichtig: geht nich wirklich
-            {
-                mode = 1;
-                reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
-                reader.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
-            }
-            mode2 =0;
-            //rgb = rgbsensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color);
-            //rgb.MultiSourceFrameArrived += myReader_MultiSourceFrameArrived;
-
+  
         }
-        void myReader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
+        private void pictureBox1_Mouseclick(object sender, MouseEventArgs e)
         {
-            if (mode == 0)
-            {
-                return;
-            }
-            var reference = e.FrameReference.AcquireFrame();
-            using (var frame = reference.ColorFrameReference.AcquireFrame())
-            {
-                if (frame != null)
-                {
-                    var width = frame.FrameDescription.Width;
-                    var height = frame.FrameDescription.Height;
-                    var data = new byte[width * height * 32 / 8];
-                    frame.CopyConvertedFrameDataToArray(data, ColorImageFormat.Bgra);
-
-                    var bitmap = new Bitmap(width, height, PixelFormat.Format32bppRgb);
-                    var bitmapData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.WriteOnly, bitmap.PixelFormat);
-
-                    Marshal.Copy(data, 0, bitmapData.Scan0, data.Length);
-                    bitmap.UnlockBits(bitmapData);
-                    bitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
-
-                    ColorFiltering filter = new ColorFiltering();
-                    BrightnessCorrection filter2 = new BrightnessCorrection(+50);
-                    Graphics g = Graphics.FromImage(bitmap);
-
-                    ResizeNearestNeighbor filter3 = new ResizeNearestNeighbor(578, 350);//passt so hoffentlich
-                    Bitmap newImage = filter3.Apply(bitmap);
-
-                    filter.Red = new AForge.IntRange(0, 255);
-                    filter.Green = new AForge.IntRange(0, 75);
-                    filter.Blue = new AForge.IntRange(0, 75);
-                    //filter2.ApplyInPlace(bitmap);
-                    //filter.ApplyInPlace(bitmap);
-
-                    pictureBox1.Image = newImage;
-                }
-            }
-        }
-        int klickanzahl = 0;
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            klickanzahl++;
-            if (klickanzahl == 1)
-            {
-                ecken1_x = e.X;
-                ecken1_y = e.Y;
-                r1.Location = new System.Drawing.Point(e.X-4, e.Y-4);
-            }
-            if (klickanzahl == 2)
-            {
-                ecken2_x = e.X;
-                ecken2_y = e.Y;
-                r2.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
-            }
-            if (klickanzahl == 3)
-            {
-                ecken3_x = e.X;
-                ecken3_y = e.Y;
-                r3.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
-            }
-            if (klickanzahl == 4)
-            {
-                ecken4_x = e.X;
-                ecken4_y = e.Y;
-                r4.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
-                kal.PerformClick();
-                klickanzahl = 0;
-            }
+            //klickanzahl++;
+            //if (klickanzahl == 1)
+            //{
+            //    ecken1_x = e.X;
+            //    ecken1_y = e.Y;
+            //    r1.Location = new System.Drawing.Point(e.X-4, e.Y-4);
+            //}
+            //if (klickanzahl == 2)
+            //{
+            //    ecken2_x = e.X;
+            //    ecken2_y = e.Y;
+            //    r2.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
+            //}
+            //if (klickanzahl == 3)
+            //{
+            //    ecken3_x = e.X;
+            //    ecken3_y = e.Y;
+            //    r3.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
+            //}
+            //if (klickanzahl == 4)
+            //{
+            //    ecken4_x = e.X;
+            //    ecken4_y = e.Y;
+            //    r4.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
+            //    kal.PerformClick();
+            //    klickanzahl = 0;
+            //}
         }
         private void reset_Click(object sender, EventArgs e)
         {
@@ -526,7 +469,15 @@ namespace Bitmap_Test1_Schmid
 
         private void IR_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (reader != null)//unwichtig: kürzlich geändert
+            {
+                reader.Dispose();
+            }
 
+            if (sensor != null)
+            {
+                sensor.Close();
+            }
         }
 
         private void IR_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)

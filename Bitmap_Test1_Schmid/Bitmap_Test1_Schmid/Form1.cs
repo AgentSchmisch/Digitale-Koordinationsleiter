@@ -83,6 +83,7 @@ namespace Bitmap_Test1_Schmid
                 if (check_autoobjekt.Checked == true)
                 {
                     screen.deletebox();
+                    kinectM.already_placed = false; // für automatische Boxplatzierung
                 }
             }
             catch
@@ -443,6 +444,11 @@ namespace Bitmap_Test1_Schmid
         private void label1_DoubleClick(object sender, EventArgs e)
         {
             screen.himmel_hölle();
+        }
+
+        private void regler_Scroll(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -180,6 +180,7 @@
             this.regler.Name = "regler";
             this.regler.Size = new System.Drawing.Size(273, 45);
             this.regler.TabIndex = 15;
+            this.regler.Scroll += new System.EventHandler(this.regler_Scroll);
             this.regler.ValueChanged += new System.EventHandler(this.regler_ValueChanged);
             this.regler.KeyDown += new System.Windows.Forms.KeyEventHandler(this.regler_KeyDown);
             // 
