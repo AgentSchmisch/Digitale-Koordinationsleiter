@@ -446,9 +446,9 @@ namespace Bitmap_Test1_Schmid
             screen.himmel_hölle();
         }
 
-        private void regler_Scroll(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-
+            Patientendatenbank.neustart = true;
         }
     }
 }
