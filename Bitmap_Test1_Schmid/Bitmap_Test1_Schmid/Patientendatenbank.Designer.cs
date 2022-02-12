@@ -54,7 +54,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Black;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.patientToolStripMenuItem,
@@ -114,14 +114,14 @@ namespace Bitmap_Test1_Schmid
             // Patienten
             // 
             this.Patienten.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
-            this.Patienten.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Patienten.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.Patienten.ForeColor = System.Drawing.Color.White;
             this.Patienten.FormattingEnabled = true;
             this.Patienten.HorizontalScrollbar = true;
-            this.Patienten.ItemHeight = 20;
-            this.Patienten.Location = new System.Drawing.Point(12, 228);
+            this.Patienten.ItemHeight = 16;
+            this.Patienten.Location = new System.Drawing.Point(12, 232);
             this.Patienten.Name = "Patienten";
-            this.Patienten.Size = new System.Drawing.Size(435, 104);
+            this.Patienten.Size = new System.Drawing.Size(435, 100);
             this.Patienten.TabIndex = 9;
             this.Patienten.DoubleClick += new System.EventHandler(this.Patienten_DoubleClick);
             // 

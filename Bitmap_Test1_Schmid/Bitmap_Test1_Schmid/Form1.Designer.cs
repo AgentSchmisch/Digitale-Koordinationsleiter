@@ -64,6 +64,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -226,7 +227,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Black;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.patientToolStripMenuItem,
@@ -251,7 +252,7 @@
             // 
             // kinectToolStripMenuItem
             // 
-            this.kinectToolStripMenuItem.BackColor = System.Drawing.Color.Black;
+            this.kinectToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
             this.kinectToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.kinectToolStripMenuItem.Name = "kinectToolStripMenuItem";
             this.kinectToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
@@ -477,6 +478,15 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label10.Location = new System.Drawing.Point(0, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(1144, 2);
+            this.label10.TabIndex = 45;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -485,6 +495,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(644, 385);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
@@ -572,6 +583,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label10;
     }
 }
 

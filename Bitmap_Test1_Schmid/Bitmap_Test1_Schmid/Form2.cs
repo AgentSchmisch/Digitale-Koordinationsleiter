@@ -215,7 +215,7 @@ namespace Bitmap_Test1_Schmid
 
                 if (count == 1) //entfernt die Box wenn eine Vorhanden ist
                 {
-                    for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++)                 //fläche
+                    for (x = Convert.ToInt32(schrittlänge[Convert.ToInt32(reglerwertalt)]) + dicke + 5; x < schrittlänge[Convert.ToInt32(reglerwertalt) + längewertalt]; x++) //fläche
                     {
                         for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
                         {

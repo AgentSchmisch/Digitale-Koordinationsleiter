@@ -232,7 +232,7 @@ namespace Bitmap_Test1_Schmid
                 check_autoobjekt.Enabled = false;
                 check_autoobjekt.Checked = false;
                 kinectM.Close();
-                kinectToolStripMenuItem.BackColor = Color.Black;
+                kinectToolStripMenuItem.BackColor = Color.Transparent;
             }
             einaus = !einaus;
         }

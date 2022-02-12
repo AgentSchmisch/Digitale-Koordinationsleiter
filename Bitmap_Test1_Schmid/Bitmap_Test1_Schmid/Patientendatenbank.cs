@@ -1045,22 +1045,22 @@ namespace Bitmap_Test1_Schmid
                 {
                     TbGeburtsdatum.Text = "";
                 }
-                if (TbOrt.Text == "Ort")
-                {
-                    TbOrt.Text = "";
-                }
-                if (TbPLZ.Text == "PLZ")
-                {
-                    TbPLZ.Text = "";
-                }
-                if (TbTelefonnummer.Text == "Telefonnummer")
-                {
-                    TbTelefonnummer.Text = "";
-                }
-                if (TbAdresse.Text == "Adresse")
-                {
-                    TbAdresse.Text = "";
-                }
+                //if (TbOrt.Text == "Ort")
+                //{
+                //    TbOrt.Text = "";
+                //}
+                //if (TbPLZ.Text == "PLZ")
+                //{
+                //    TbPLZ.Text = "";
+                //}
+                //if (TbTelefonnummer.Text == "Telefonnummer")
+                //{
+                //    TbTelefonnummer.Text = "";
+                //}
+                //if (TbAdresse.Text == "Adresse")
+                //{
+                //    TbAdresse.Text = "";
+                //}
 
                 string[] PatName_ = new string[2];
                 Patientenname = TbName.Text.ToString();
