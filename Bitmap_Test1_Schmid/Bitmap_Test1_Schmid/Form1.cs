@@ -157,18 +157,6 @@ namespace Bitmap_Test1_Schmid
         {
             MessageBox.Show("Wählen Sie, wie lang das Objekt sein soll.", "Hilfe", 0, MessageBoxIcon.Question);
         }
-
-        private void steps_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                UInt16 Variable = Convert.ToUInt16(steps.Text);
-            }
-            catch (FormatException)
-            {
-                steps.Clear();
-            }
-        }
         private void patientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -433,8 +421,8 @@ namespace Bitmap_Test1_Schmid
                 kinectM.autobox = false;
                 fläche.Text = "bestätigen";
                 trackBar1.Enabled = false;
-                label7.ForeColor = Color.Gray;
-                label9.ForeColor = Color.Gray;
+                label7.ForeColor = Patientendatenbank.color_on_leafe;
+                label9.ForeColor = Patientendatenbank.color_on_leafe;
             }
         }
 
@@ -451,6 +439,14 @@ namespace Bitmap_Test1_Schmid
         private void Form1_Load(object sender, EventArgs e)
         {
             Patientendatenbank.neustart = true;
+        }
+
+        private void steps_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

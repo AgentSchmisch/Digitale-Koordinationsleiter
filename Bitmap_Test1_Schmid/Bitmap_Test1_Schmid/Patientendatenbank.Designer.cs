@@ -79,14 +79,14 @@ namespace Bitmap_Test1_Schmid
             // neuToolStripMenuItem
             // 
             this.neuToolStripMenuItem.Name = "neuToolStripMenuItem";
-            this.neuToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.neuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.neuToolStripMenuItem.Text = "Neu";
             this.neuToolStripMenuItem.Click += new System.EventHandler(this.neuToolStripMenuItem_Click);
             // 
             // eintragungLöschenToolStripMenuItem
             // 
             this.eintragungLöschenToolStripMenuItem.Name = "eintragungLöschenToolStripMenuItem";
-            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.eintragungLöschenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eintragungLöschenToolStripMenuItem.Text = "Eintragung löschen";
             this.eintragungLöschenToolStripMenuItem.Click += new System.EventHandler(this.eintragungLöschenToolStripMenuItem_Click);
             // 
@@ -113,14 +113,15 @@ namespace Bitmap_Test1_Schmid
             // 
             // Patienten
             // 
-            this.Patienten.BackColor = System.Drawing.SystemColors.Menu;
-            this.Patienten.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Patienten.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.Patienten.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Patienten.ForeColor = System.Drawing.Color.White;
             this.Patienten.FormattingEnabled = true;
+            this.Patienten.HorizontalScrollbar = true;
             this.Patienten.ItemHeight = 20;
-            this.Patienten.Location = new System.Drawing.Point(12, 233);
+            this.Patienten.Location = new System.Drawing.Point(12, 228);
             this.Patienten.Name = "Patienten";
-            this.Patienten.Size = new System.Drawing.Size(435, 80);
+            this.Patienten.Size = new System.Drawing.Size(435, 104);
             this.Patienten.TabIndex = 9;
             this.Patienten.DoubleClick += new System.EventHandler(this.Patienten_DoubleClick);
             // 
@@ -139,8 +140,9 @@ namespace Bitmap_Test1_Schmid
             // 
             // TbName
             // 
+            this.TbName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.TbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbName.ForeColor = System.Drawing.Color.Gray;
+            this.TbName.ForeColor = System.Drawing.Color.White;
             this.TbName.Location = new System.Drawing.Point(12, 45);
             this.TbName.Name = "TbName";
             this.TbName.Size = new System.Drawing.Size(161, 27);
@@ -152,8 +154,9 @@ namespace Bitmap_Test1_Schmid
             // 
             // TbAdresse
             // 
+            this.TbAdresse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.TbAdresse.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbAdresse.ForeColor = System.Drawing.Color.Gray;
+            this.TbAdresse.ForeColor = System.Drawing.Color.White;
             this.TbAdresse.Location = new System.Drawing.Point(12, 110);
             this.TbAdresse.Name = "TbAdresse";
             this.TbAdresse.Size = new System.Drawing.Size(161, 27);
@@ -165,8 +168,9 @@ namespace Bitmap_Test1_Schmid
             // 
             // TbPLZ
             // 
+            this.TbPLZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.TbPLZ.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPLZ.ForeColor = System.Drawing.Color.Gray;
+            this.TbPLZ.ForeColor = System.Drawing.Color.White;
             this.TbPLZ.Location = new System.Drawing.Point(328, 110);
             this.TbPLZ.Name = "TbPLZ";
             this.TbPLZ.Size = new System.Drawing.Size(119, 27);
@@ -178,8 +182,9 @@ namespace Bitmap_Test1_Schmid
             // 
             // TbOrt
             // 
+            this.TbOrt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.TbOrt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbOrt.ForeColor = System.Drawing.Color.Gray;
+            this.TbOrt.ForeColor = System.Drawing.Color.White;
             this.TbOrt.Location = new System.Drawing.Point(178, 110);
             this.TbOrt.Name = "TbOrt";
             this.TbOrt.Size = new System.Drawing.Size(141, 27);
@@ -191,8 +196,9 @@ namespace Bitmap_Test1_Schmid
             // 
             // TbGeburtsdatum
             // 
+            this.TbGeburtsdatum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.TbGeburtsdatum.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbGeburtsdatum.ForeColor = System.Drawing.Color.Gray;
+            this.TbGeburtsdatum.ForeColor = System.Drawing.Color.White;
             this.TbGeburtsdatum.Location = new System.Drawing.Point(12, 77);
             this.TbGeburtsdatum.Name = "TbGeburtsdatum";
             this.TbGeburtsdatum.Size = new System.Drawing.Size(119, 27);
@@ -204,8 +210,9 @@ namespace Bitmap_Test1_Schmid
             // 
             // TbTelefonnummer
             // 
+            this.TbTelefonnummer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.TbTelefonnummer.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbTelefonnummer.ForeColor = System.Drawing.Color.Gray;
+            this.TbTelefonnummer.ForeColor = System.Drawing.Color.White;
             this.TbTelefonnummer.Location = new System.Drawing.Point(12, 142);
             this.TbTelefonnummer.Name = "TbTelefonnummer";
             this.TbTelefonnummer.Size = new System.Drawing.Size(161, 27);
@@ -218,8 +225,9 @@ namespace Bitmap_Test1_Schmid
             // 
             // TbNachname
             // 
+            this.TbNachname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.TbNachname.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbNachname.ForeColor = System.Drawing.Color.Gray;
+            this.TbNachname.ForeColor = System.Drawing.Color.White;
             this.TbNachname.Location = new System.Drawing.Point(178, 45);
             this.TbNachname.Name = "TbNachname";
             this.TbNachname.Size = new System.Drawing.Size(141, 27);
@@ -231,8 +239,9 @@ namespace Bitmap_Test1_Schmid
             // 
             // TbPatNr
             // 
+            this.TbPatNr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.TbPatNr.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPatNr.ForeColor = System.Drawing.Color.Gray;
+            this.TbPatNr.ForeColor = System.Drawing.Color.White;
             this.TbPatNr.Location = new System.Drawing.Point(328, 45);
             this.TbPatNr.Name = "TbPatNr";
             this.TbPatNr.Size = new System.Drawing.Size(118, 27);
@@ -240,6 +249,7 @@ namespace Bitmap_Test1_Schmid
             this.TbPatNr.Text = "Patientennr.";
             this.TbPatNr.Enter += new System.EventHandler(this.TbPatNr_Enter);
             this.TbPatNr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbPatNr_KeyDown);
+            this.TbPatNr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbPatNr_KeyPress);
             this.TbPatNr.Leave += new System.EventHandler(this.TbPatNr_Leave);
             // 
             // lblEditStatus

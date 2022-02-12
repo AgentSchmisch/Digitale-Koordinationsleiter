@@ -1,5 +1,4 @@
-﻿DROP TABLE Florian_Schmid_1;
-CREATE TABLE Patientenliste(Patientennummer int NOT NULL Identity(1,1),
+﻿CREATE TABLE Patientenliste(Patientennummer int NOT NULL Identity(1,1),
 							Vorname nvarchar(50) NOT NULL,
 							Nachname nvarchar(50) NOT NULL,
 							Geburtsdatum nvarchar(10) NULL,

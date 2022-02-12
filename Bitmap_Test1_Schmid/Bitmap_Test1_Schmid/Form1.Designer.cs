@@ -72,16 +72,17 @@
             // 
             // steps
             // 
-            this.steps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.steps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.steps.ForeColor = System.Drawing.Color.White;
             this.steps.Location = new System.Drawing.Point(154, 117);
             this.steps.MaxLength = 2;
             this.steps.Name = "steps";
             this.steps.Size = new System.Drawing.Size(57, 38);
-            this.steps.TabIndex = 1;
+            this.steps.TabIndex = 2;
             this.steps.Text = "6";
-            this.steps.TextChanged += new System.EventHandler(this.steps_TextChanged);
             this.steps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.steps_KeyDown);
+            this.steps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.steps_KeyPress);
             // 
             // label1
             // 
@@ -92,7 +93,7 @@
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(115, 31);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 1;
             this.label1.Text = "Schritte:";
             this.label1.DoubleClick += new System.EventHandler(this.label1_DoubleClick);
             // 
@@ -114,7 +115,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label2.ForeColor = System.Drawing.Color.Gray;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.label2.Location = new System.Drawing.Point(343, 161);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(211, 26);
@@ -164,7 +165,7 @@
             this.reglertext.AutoSize = true;
             this.reglertext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.reglertext.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.reglertext.ForeColor = System.Drawing.Color.Gray;
+            this.reglertext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.reglertext.Location = new System.Drawing.Point(431, 119);
             this.reglertext.Name = "reglertext";
             this.reglertext.Size = new System.Drawing.Size(24, 26);
@@ -188,7 +189,7 @@
             this.länge.AutoSize = true;
             this.länge.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.länge.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.länge.ForeColor = System.Drawing.Color.Gray;
+            this.länge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.länge.Location = new System.Drawing.Point(431, 234);
             this.länge.Name = "länge";
             this.länge.Size = new System.Drawing.Size(24, 26);
@@ -200,7 +201,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.button1.ForeColor = System.Drawing.Color.Silver;
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.button1.Location = new System.Drawing.Point(584, 71);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(32, 40);
@@ -214,7 +215,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.button2.ForeColor = System.Drawing.Color.Silver;
+            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.button2.Location = new System.Drawing.Point(584, 179);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(32, 40);
@@ -372,7 +373,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.label4.Location = new System.Drawing.Point(343, 36);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(229, 26);
@@ -467,7 +468,7 @@
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.button3.ForeColor = System.Drawing.Color.Silver;
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.button3.Location = new System.Drawing.Point(584, 318);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(32, 40);
