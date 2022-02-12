@@ -180,7 +180,6 @@
             this.regler.Name = "regler";
             this.regler.Size = new System.Drawing.Size(273, 45);
             this.regler.TabIndex = 15;
-            this.regler.Scroll += new System.EventHandler(this.regler_Scroll);
             this.regler.ValueChanged += new System.EventHandler(this.regler_ValueChanged);
             this.regler.KeyDown += new System.Windows.Forms.KeyEventHandler(this.regler_KeyDown);
             // 
@@ -526,6 +525,7 @@
             this.Text = "Digitale Koordinationsleiter";
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).EndInit();
             this.menuStrip1.ResumeLayout(false);

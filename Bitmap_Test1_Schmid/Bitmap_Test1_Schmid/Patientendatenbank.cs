@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using System.IO;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid
@@ -16,18 +9,20 @@ namespace Bitmap_Test1_Schmid
     public partial class Patientendatenbank : Form
     {
         /*Alle Patientenspezifischen Tabellen nach dem Schema: Patientennummer_Vorname_Nachname
+         * TODO: Patienten neu anlegen: VornameTB wird nicht gecleart beim klicken
          * 
         */
-         
+
         //Connectionstring für die Verbindung zum Mysql Server
-        string SQLServer = "server = koordinationsleiter.ddns.net; user id = Klinikum; password = koordinationsleiter; database = Patienten; sslmode=None; port=3306; persistsecurityinfo=True";
+        string SQLServer = "";
+        //"server = koordinationsleiter.ddns.net; user id = Klinikum; password = koordinationsleiter; database = Patienten; sslmode=None; port=3306; persistsecurityinfo=True";
 
         #region alle mySQL Abfragen
         //ausnahme: Abfragen bei denen die werte erst während der Laufzeit eingegeben werden
         string query1;
         string query2;
         string query3;
-        string query4 = "select Max(Patientennummer) from Patienten.Patientenliste";
+        string query4 = "select IDENT_CURRENT('Patientenliste');";
         string query5;
         #endregion
         string record;
@@ -41,16 +36,17 @@ namespace Bitmap_Test1_Schmid
         public string letzteBehandlung;
         public string letzteSchrittanzahl;
         public string BehandlungsnummerMax;
-
+        public string Datenbankbuchstabe;
+        public bool neustart;
         //variablen die aus verschiedenen gründen global sind
         int[] tabs = new int[5];
         string patnr = "", vorname = "", nachname = "", geburtsdatum = "", adresse = "", plz = "", ort = "", telNr = "";
         int telnummerlength = 0;
 
         //Parameter für die Datenbank
-        MySqlConnection conn = new MySqlConnection();
-        MySqlCommand cmd;
-        MySqlDataAdapter da;
+        SqlConnection conn;
+        SqlCommand cmd;
+        SqlDataAdapter da;
         DataTable tbl;  //datatable für Abfragenergebnisse aus der Patientensuche
 
 
@@ -63,12 +59,20 @@ namespace Bitmap_Test1_Schmid
         public Patientendatenbank() //constructuor
         {
             InitializeComponent();
-            conn.ConnectionString = SQLServer;
         }
 
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
+            if (neustart) {
+                _haupt.usb.ShowDialog();
+                neustart = false;
+            }
             laufwerkToolStripMenuItem.Text = "Aktuelles Laufwerk: " + Properties.Settings.Default.Laufwerk;
+            Datenbankbuchstabe = Properties.Settings.Default.Laufwerk;
+            Datenbankbuchstabe.Replace("\\", "");
+            SQLServer = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+Datenbankbuchstabe+@"Datenbank\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+             conn = new SqlConnection(SQLServer);
+            
 
             #region zurücksetzen der Formelemente
             Size = new Size(471, 383);
@@ -196,13 +200,13 @@ namespace Bitmap_Test1_Schmid
             query1 += ";";
             #endregion  
             
-                cmd = new MySqlCommand(query1, conn);
+                cmd = new SqlCommand(query1, conn);
                 conn.Open();
-                da = new MySqlDataAdapter(cmd);
+                da = new SqlDataAdapter(cmd);
                 tbl = new DataTable();
                 da.Fill(tbl);
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 exception(ex.Number);
                 return;
@@ -222,7 +226,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl.Columns[j].ColumnName == "Patientennummer")
                     {
-                        record += row[j] + ",  ";
+                        record += row[j] + ",  ;";
                         PatNr_aktuell = row[j].ToString();
                         continue;
                     }
@@ -273,30 +277,20 @@ namespace Bitmap_Test1_Schmid
             letzteSchrittanzahl = "";
 
             string s = Patienten.SelectedItem.ToString();
-            //for (int i = tabs[0]; i < tabs[2]; i++) //-----------------------------------------------------------------------------
-            //{
-            //    if (i == tabs[0])
-            //    {
-            //        Patientenname += " ";
-            //    }
-
-            //    Patientenname += s[i];
-
-            //}
 
             DataTable tbl2;
             //Patientenname = Patientenname.Replace("\t", "");------------------------------
             query3 = "select Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite from " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + ";"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
             try
             {
-                cmd = new MySqlCommand(query3, conn);
+                cmd = new SqlCommand(query3, conn);
                 conn.Open();
-                da = new MySqlDataAdapter(cmd);
+                da = new SqlDataAdapter(cmd);
                 tbl2 = new DataTable();
                 da.Fill(tbl2);
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 exception(ex.Number);
                 return;
@@ -319,6 +313,7 @@ namespace Bitmap_Test1_Schmid
                 auswahl = true;
                 return;
             }
+
             else
             {
                 DataRow row = tbl2.Rows[tbl2.Rows.Count - 1];
@@ -579,12 +574,12 @@ namespace Bitmap_Test1_Schmid
 
                 try
                 {
-                    cmd = new MySqlCommand(query3, conn);
+                    cmd = new SqlCommand(query3, conn);
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    //MessageBox.Show("Sitzung erfolgreich beendet", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("Sitzung erfolgreich beendet", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
-                catch(MySqlException ex)
+                catch(SqlException ex)
                 {
                     exception(ex.Number);
                     return;
@@ -629,20 +624,15 @@ namespace Bitmap_Test1_Schmid
             //todo: hier muss noch der string geändert werden
         }
 
+        private void customInstaller1_AfterInstall(object sender, System.Configuration.Install.InstallEventArgs e)
+        {
+
+        }
+
         private void Patienten_DoubleClick(object sender, EventArgs e)
         {
-            //PatNr_aktuell = "";
             string s_ = Patienten.SelectedItem.ToString();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    //die ersten 10 stellen des ausgewählten index auslesen und in die Variable schreiben solange sie eine Zahl ist
-            //    if (Char.IsDigit(s_[i]))
-            //    {
-            //        PatNr_aktuell += s_[i];
-            //    }
-
-            //}
-
+            
             //auslesen der Tabulatoren aus dem ausgewählten string um bei der auswahl den Patientennamen herauslesen zu können
             int x = 0;
             for (int i = 0; i < s_.Length; i++)
@@ -657,18 +647,17 @@ namespace Bitmap_Test1_Schmid
                 }
             }
 
-
             DataTable tbl3;
-            query3 = "select Patientennummer, Vorname, Nachname, Geburtsdatum, Adresse, PLZ,Ort,Telefonnummer from Patienten.Patientenliste where Patientennummer = '" + PatNr_aktuell + "';"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
+            query3 = "SELECT Patientennummer, Vorname, Nachname, Geburtsdatum, Adresse, PLZ,Ort,Telefonnummer FROM Patientenliste WHERE Patientennummer = '" + PatNr_aktuell + "';";
             try
             {
-                cmd = new MySqlCommand(query3, conn);
+                cmd = new SqlCommand(query3, conn);
                 conn.Open();
-                da = new MySqlDataAdapter(cmd);
+                da = new SqlDataAdapter(cmd);
                 tbl3 = new DataTable();
                 da.Fill(tbl3);
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 exception(ex.Number);
                 return;
@@ -784,10 +773,13 @@ namespace Bitmap_Test1_Schmid
         {
             Size = new Size(471, 270);
             string patientennummer = "";
+            //TODO: wenn letzter patient wieder gelöscht wird, wird autoincrement nicht mehr kleiner also bekommt der maxvalue einen anderen wert als der autoincrement wert
+
             //Autoincrement erhöht den wert auch wenn die Position danach wieder gelöscht wird
             //-> Autoincrement daher möglicherweise höher als Max(Patientennummer)
             //egal weil so jeder Patient eine individuelle Nummer bekommt
             //falls patienten gelöscht werden wird die alte Patientennummer nicht mehr vergeben
+
 #region SQL Verbindung um die höchste Patientennummer abzurufen
             //verwendung von query4
 #region zurücksetzen der Oberflächenelemente zur Suchmaske
@@ -828,16 +820,17 @@ namespace Bitmap_Test1_Schmid
             auswahlBtn.Location = new Point(166, 349);
             Patienten.Items.Clear();
 #endregion;
+            
             try
             {
-                cmd = new MySqlCommand(query4, conn);
+                cmd = new SqlCommand(query4, conn);
                 conn.Open();
-                da = new MySqlDataAdapter(cmd);
+                da = new SqlDataAdapter(cmd);
                 tbl = new DataTable();
                 da.Fill(tbl);
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 exception(ex.Number);
             }
@@ -878,20 +871,19 @@ namespace Bitmap_Test1_Schmid
         {
             if (bearbeitung)
             {
-                string query4 = " drop Table " + vorname + "_" + nachname + "_" + patnr + ";";
-                query4 += "Delete From Patienten.Patientenliste where Patientennummer='" + patnr + "';";
+                string query4 = " DROP TABLE " + vorname + "_" + nachname + "_" + patnr + ";";
+                query4 += "DELETE FROM Patientenliste WHERE Patientennummer = '" + patnr + "';";
 
                 try
                 {
                     conn.Open();
-
-                    cmd = new MySqlCommand(query4, conn);
-                    
+                    cmd = new SqlCommand(query4, conn);
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Eintragung erfolgreich entfernt!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
 
-                catch (MySqlException ex)
+                catch (SqlException ex)
                 {
                     exception(ex.Number);
                 }
@@ -907,159 +899,6 @@ namespace Bitmap_Test1_Schmid
 
 
         }
-
-        private void Patienten_SelectedIndexChanged(object sender, EventArgs e)
-        {
-//            PatNr_aktuell = "";
-//            string s_ = Patienten.SelectedItem.ToString();
-//            for (int i = 0; i < 10; i++)
-//            {
-//                //die ersten 10 stellen des ausgewählten index auslesen und in die Variable schreiben solange sie eine Zahl ist
-//                if (Char.IsDigit(s_[i]))
-//                {
-//                    PatNr_aktuell += s_[i];
-//                }
-
-//            }
-
-//            //auslesen der Tabulatoren aus dem ausgewählten string um bei der auswahl den Patientennamen herauslesen zu können
-//            int x = 0;
-//            for (int i = 0; i < s_.Length; i++)
-//            {
-
-//                if (s_[i].ToString() == "\t")
-//                {
-//                    // schreiben der index der tabs in ein array um sie später wieder abrufen zu können
-//                    //einführen einer 2.Variable "x" um so das Array so klein wie möglich zu halten
-//                    tabs[x] = i;
-//                    x++;
-//                }
-//            }
-
-
-//            DataTable tbl3;
-//            query3 = "select Patientennummer, Vorname, Nachname, Geburtsdatum, Adresse, PLZ,Ort,Telefonnummer from Patienten.Patientenliste where Patientennummer = '" + PatNr_aktuell + "';"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
-//            try
-//            {
-//                cmd = new MySqlCommand(query3, conn);
-//                conn.Open();
-//                da = new MySqlDataAdapter(cmd);
-//                tbl3 = new DataTable();
-//                da.Fill(tbl3);
-//            }
-//            catch (MySqlException ex)
-//            {
-//                exception(ex.Number);
-//                return;
-//            }
-//            finally
-//            {
-
-//                conn.Close();
-//            }
-//            //suchen und befüllen aller textboxen mit den gefundenen Informationen um sie, falls nötig, bearbeiten zu können
-//#region Befüllen der Variablen mit den Informationen aus der Datenbank
-
-//            for (int i = 0; i < tbl3.Rows.Count; i++)
-//            {
-//                record = "";
-//                DataRow row = tbl3.Rows[i];
-//                for (int j = 0; j < tbl3.Columns.Count; j++)
-//                {
-//                    if (tbl3.Columns[j].ColumnName == "Patientennummer")
-//                    {
-//                        record += row[j];
-//                        patnr = row[j].ToString();
-//                        continue;
-//                    }
-
-//                    if (tbl3.Columns[j].ColumnName == "Vorname")
-//                    {
-//                        record += row[j];
-//                        vorname = row[j].ToString();
-//                        continue;
-//                    }
-
-//                    if (tbl3.Columns[j].ColumnName == "Nachname")
-//                    {
-//                        record += row[j];
-//                        nachname = row[j].ToString();
-//                        continue;
-//                    }
-
-//                    if (tbl3.Columns[j].ColumnName == "Geburtsdatum")
-//                    {
-//                        record += row[j];
-//                        geburtsdatum = row[j].ToString();
-//                        continue;
-//                    }
-
-//                    if (tbl3.Columns[j].ColumnName == "Adresse")
-//                    {
-//                        record += row[j];
-//                        adresse = row[j].ToString();
-//                        continue;
-//                    }
-
-//                    if (tbl3.Columns[j].ColumnName == "PLZ")
-//                    {
-//                        record += row[j];
-//                        plz = row[j].ToString();
-//                        continue;
-//                    }
-
-//                    if (tbl3.Columns[j].ColumnName == "Ort")
-//                    {
-//                        record += row[j];
-//                        ort = row[j].ToString();
-//                        continue;
-//                    }
-
-//                    if (tbl3.Columns[j].ColumnName == "Telefonnummer")
-//                    {
-//                        record += row[j];
-//                        telNr = row[j].ToString();
-//                        continue;
-//                    }
-//                }
-//            }
-//            bearbeitung = true; //aktivieren des bearbeitungsmodus
-//            //Präsentieren der Informationen in der Textbox
-//            TbName.Text = vorname;
-//            TbNachname.Text = nachname;
-//            TbPatNr.Text = patnr;
-//            TbGeburtsdatum.Text = geburtsdatum.Replace("-", " ");
-//            TbAdresse.Text = adresse;
-//            TbPLZ.Text = plz;
-//            TbOrt.Text = ort;
-//            TbTelefonnummer.Text = telNr;
-//#endregion
-
-//            TbName.ForeColor = Color.Black;
-//            TbNachname.ForeColor = Color.Black;
-//            TbPatNr.ForeColor = Color.Black;
-//            TbGeburtsdatum.ForeColor = Color.Black;
-//            TbAdresse.ForeColor = Color.Black;
-//            TbPLZ.ForeColor = Color.Black;
-//            TbOrt.ForeColor = Color.Black;
-//            TbTelefonnummer.ForeColor = Color.Black;
-
-//            Patienten.Visible = false;
-//            sucheBtn.Visible = false;
-
-//            TbPatNr.ReadOnly = true;
-
-//            lblEditStatus.BackColor = Color.Orange; //anzeigen dass sich die Daten im Bearbeitungsmodus befinden
-
-//            NeuSpeichernBtn.Visible = true;
-//            NeuAbbrechenBtn.Visible = true;
-
-//            //Verkleinern des Datenbankfensters
-//            this.Size = new Size(471, 348);
-//            auswahlBtn.Location = new Point(167, 244);
-        }
-
-
         void messagebox_leerfeld()
         {
             MessageBox.Show("Die Felder Vorname und Nachname dürfen nicht freigelassen werden.", "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1132,20 +971,20 @@ namespace Bitmap_Test1_Schmid
                 Patientenname = TbName.Text.ToString();
                 PatName_ = Patientenname.Split('_');
                 //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
-                query2 = "CREATE TABLE " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int(11) not null auto_increment," +
-                                                                                                        "Vorname varchar(50)not null," +
-                                                                                                        "Nachname varchar(50)not null," +
-                                                                                                        "Schrittweite int(50)not null," +
-                                                                                                        "Behandlungsdatum varchar(10) not null," +
+                query2 = "CREATE TABLE " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int NOT NULL IDENTITY(1,1)," +
+                                                                                                        "Vorname nvarchar(50) NOT NULL," +
+                                                                                                        "Nachname nvarchar(50) NOT NULL," +
+                                                                                                        "Schrittweite int NOT NULL," +
+                                                                                                        "Behandlungsdatum varchar(10) NOT NULL," +
                                                                                                         "Primary Key(Behandlungsnummer)); " +
-                    "INSERT INTO Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) Values ('" + TbName.Text + "','" + TbNachname.Text + "','" +
+                    "INSERT INTO Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) VALUES ('" + TbName.Text + "','" + TbNachname.Text + "','" +
                      TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "') ;";
 
                 try
                 {
                     conn.Open();
 
-                    cmd = new MySqlCommand(query2, conn);
+                    cmd = new SqlCommand(query2, conn);
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Patient erfolgreich hinzugefügt!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1162,7 +1001,7 @@ namespace Bitmap_Test1_Schmid
                     NeuSpeichernBtn.Visible = false;
 
                 }
-                catch (MySqlException ex)
+                catch (SqlException ex)
                 {
                     exception(ex.Number);
                 }
@@ -1200,7 +1039,7 @@ namespace Bitmap_Test1_Schmid
                     {
                         TbTelefonnummer.Text = "";
                     }
-                    query2 = "UPDATE Patienten.Patientenliste Set Geburtsdatum='" + TbGeburtsdatum.Text.Replace(" ", "-") + "'," +
+                    query2 = "UPDATE Patientenliste Set Geburtsdatum='" + TbGeburtsdatum.Text.Replace(" ", "-") + "'," +
                                                                 "Adresse='" + TbAdresse.Text + "'," +
                                                                 "PLZ='" + TbPLZ.Text + "'," +
                                                                 "Ort='" + TbOrt.Text + "'," +
@@ -1209,7 +1048,7 @@ namespace Bitmap_Test1_Schmid
                 }
                 if (TbName.Text != vorname || TbNachname.Text != nachname)//falls einer der beiden namensteile geändert wurde, alle datensätze außer der Patientennummer updaten
                 {
-                    query2 = "UPDATE Patienten.Patientenliste SET Vorname='" + TbName.Text + "'," +
+                    query2 = "UPDATE Patientenliste SET Vorname='" + TbName.Text + "'," +
                                             "Nachname='" + TbNachname.Text + "'," +
                                             "Geburtsdatum='" + TbGeburtsdatum.Text.Replace(" ", "-") + "'," +
                                             "Adresse='" + TbAdresse.Text + "'," +
@@ -1227,7 +1066,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     conn.Open();
 
-                    cmd = new MySqlCommand(query2, conn);
+                    cmd = new SqlCommand(query2, conn);
 
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Patient erfolgreich aktualisiert!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1272,7 +1111,7 @@ namespace Bitmap_Test1_Schmid
                     Patienten.Items.Clear();
 #endregion;
                 }
-                catch (MySqlException ex)
+                catch (SqlException ex)
                 {
                     exception(ex.Number);
                 }
@@ -1286,8 +1125,9 @@ namespace Bitmap_Test1_Schmid
         void exception(int Exception)
         {
             //TODO: vollständige Fehlerbehandlung mit schönen Fehlermeldungen
-            //https://stackoverflow.com/questions/8138392/make-mysql-errors-caught-in-c-sharp-user-friendly
+            //https://stackoverflow.com/questions/8138392/make-sql-errors-caught-in-c-sharp-user-friendly
             //https://mariadb.com/kb/en/mariadb-error-codes/
+            //https://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc00729.1500/html/errMessageAdvRes/CHDGFCCJ.htm
             switch (Exception)
             {
                 case 1042:
@@ -1296,6 +1136,12 @@ namespace Bitmap_Test1_Schmid
                 case 0:
                     MessageBox.Show("Schwerer Fehler\nBitte kontaktieren Sie den Entwickler");
                     break;
+                case 2714:
+                    MessageBox.Show("Dieses Objekt ist bereits in der Datenbank vorhanden\nFehler: " + Exception);
+                    return;
+                case 3701:
+                    MessageBox.Show("Dieses Objekt ist nicht in der Datenbank vorhanden\nFehler: " + Exception);
+                    return;
                 default:
                     MessageBox.Show("Fehler: " + Exception.ToString());
                     break;

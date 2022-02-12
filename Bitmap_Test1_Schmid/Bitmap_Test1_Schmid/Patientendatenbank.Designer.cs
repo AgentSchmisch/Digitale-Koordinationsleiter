@@ -122,7 +122,6 @@ namespace Bitmap_Test1_Schmid
             this.Patienten.Name = "Patienten";
             this.Patienten.Size = new System.Drawing.Size(435, 80);
             this.Patienten.TabIndex = 9;
-            this.Patienten.SelectedIndexChanged += new System.EventHandler(this.Patienten_SelectedIndexChanged);
             this.Patienten.DoubleClick += new System.EventHandler(this.Patienten_DoubleClick);
             // 
             // auswahlBtn
@@ -145,7 +144,7 @@ namespace Bitmap_Test1_Schmid
             this.TbName.Location = new System.Drawing.Point(12, 45);
             this.TbName.Name = "TbName";
             this.TbName.Size = new System.Drawing.Size(161, 27);
-            this.TbName.TabIndex = 0;
+            this.TbName.TabIndex = 1;
             this.TbName.Text = "Vorname";
             this.TbName.Enter += new System.EventHandler(this.TbName_Enter);
             this.TbName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbName_KeyDown);
@@ -262,7 +261,7 @@ namespace Bitmap_Test1_Schmid
             this.NeuAbbrechenBtn.Location = new System.Drawing.Point(293, 184);
             this.NeuAbbrechenBtn.Name = "NeuAbbrechenBtn";
             this.NeuAbbrechenBtn.Size = new System.Drawing.Size(150, 38);
-            this.NeuAbbrechenBtn.TabIndex = 12;
+            this.NeuAbbrechenBtn.TabIndex = 10;
             this.NeuAbbrechenBtn.Text = "Abbrechen";
             this.NeuAbbrechenBtn.UseVisualStyleBackColor = true;
             this.NeuAbbrechenBtn.Visible = false;
@@ -276,7 +275,7 @@ namespace Bitmap_Test1_Schmid
             this.NeuSpeichernBtn.Location = new System.Drawing.Point(12, 184);
             this.NeuSpeichernBtn.Name = "NeuSpeichernBtn";
             this.NeuSpeichernBtn.Size = new System.Drawing.Size(161, 38);
-            this.NeuSpeichernBtn.TabIndex = 13;
+            this.NeuSpeichernBtn.TabIndex = 9;
             this.NeuSpeichernBtn.Text = "Speichern";
             this.NeuSpeichernBtn.UseVisualStyleBackColor = true;
             this.NeuSpeichernBtn.Visible = false;
