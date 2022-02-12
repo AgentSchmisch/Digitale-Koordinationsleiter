@@ -128,6 +128,7 @@ namespace Bitmap_Test1_Schmid
                         listBox1.Items.Add(diLogicalDrive.Name + " " + diLogicalDrive.VolumeLabel + " (" + diLogicalDrive.AvailableFreeSpace / 1000000000 + "/" + diLogicalDrive.TotalSize / 1000000000 + " GB)");
                         usbname[i] = diLogicalDrive.Name;
                         i++;
+                        listBox1.SelectedIndex = 0;
                     }
                 }
                 if (i == 0)
@@ -146,6 +147,23 @@ namespace Bitmap_Test1_Schmid
         private void timer1_Tick(object sender, EventArgs e)
         {
             usbfinder();
+        }
+
+        private void listBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                try
+                {
+                    Properties.Settings.Default.Laufwerk = usbname[listBox1.SelectedIndex];
+                    Properties.Settings.Default.Save();
+                    this.Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Bitte schneller klicken!", "schneller klicken!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+            }
         }
     }
 }

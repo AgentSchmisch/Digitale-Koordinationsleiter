@@ -38,7 +38,7 @@ namespace Bitmap_Test1_Schmid
         public int schrittzähler = 0;//schrittezähler
         public double[] durchschnitt=new double[99];
 
-        int schritterkennungabstand = 5;
+        int schritterkennungabstand = 3;
         int abstand_zw_zwei_schritten = 40;
 
         double mittelpunkt_links;
@@ -70,7 +70,7 @@ namespace Bitmap_Test1_Schmid
         public KinectMonitor()
         {
             InitializeComponent();
-             
+
         }
         public void DrawLineFloat(object sender, PaintEventArgs e)
         {
@@ -230,9 +230,8 @@ namespace Bitmap_Test1_Schmid
                         bodies = new Body[bodyFrame.BodyCount];
 
                     bodyFrame.GetAndRefreshBodyData(bodies);
-
+                    _form1_schritt.kinectToolStripMenuItem.BackColor = Color.Orange;
                     dataRecieved = true;
-
                 }
             }
             if (dataRecieved)
@@ -241,6 +240,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (body.IsTracked)
                     {
+                        Thread.Sleep(15);
                         _form1_schritt.kinectToolStripMenuItem.BackColor = Color.Green;
                         IReadOnlyDictionary<JointType, Joint> joints = body.Joints;
                         Dictionary<JointType, Point> jointPoints = new Dictionary<JointType, Point>();
@@ -521,10 +521,6 @@ namespace Bitmap_Test1_Schmid
 
                     }
                 }
-            }
-            else
-            {
-                _form1_schritt.kinectToolStripMenuItem.BackColor = Color.Orange;
             }
         }
 

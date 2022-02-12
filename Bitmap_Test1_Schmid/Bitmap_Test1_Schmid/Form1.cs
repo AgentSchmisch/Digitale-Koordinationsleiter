@@ -230,11 +230,13 @@ namespace Bitmap_Test1_Schmid
                 kinectM.form1_schritt = this;
                 //ir.form1_2 = this;
                 kinectM.steps_kinect = Convert.ToInt32(steps.Text);
-                kinectToolStripMenuItem.BackColor = Color.Orange;
+                kinectToolStripMenuItem.BackColor = Color.Red;
                 check_autoobjekt.Enabled = true;
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
-                //kinectM.WindowState = FormWindowState.Minimized;
+                kinectM.WindowState = FormWindowState.Minimized;
                 kinectM.Show();//TODO: Muss noch vor release geändert werden
+                kinectM.Hide();
+
                                //kinectM.Hide();
             }
             if (!einaus)
@@ -263,10 +265,10 @@ namespace Bitmap_Test1_Schmid
             //Task infrared = Task.Run(() => ir.ShowDialog());
             screen.kantenerkennung();
             screen.draw = true;
+            ir.form1_2 = this;
             ir.ShowDialog();
             screen.endkanten();
             
-            ir.form1_2 = this;
             //ir.ShowDialog();
             //this.Show();
         }

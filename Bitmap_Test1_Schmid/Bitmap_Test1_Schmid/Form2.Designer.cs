@@ -641,6 +641,7 @@ namespace Bitmap_Test1_Schmid
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Virtuelle Oberfläche";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.regler)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).EndInit();

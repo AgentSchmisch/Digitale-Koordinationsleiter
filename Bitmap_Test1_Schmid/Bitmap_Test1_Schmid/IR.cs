@@ -51,6 +51,8 @@ namespace Bitmap_Test1_Schmid
         public double mittelpunkt_rechts_y = 0;//unwichtig: das wurde geändert
 
         int kreise = 1;
+        double _512_auf_360 = 0.703;
+        double _360_auf_512 = 1.422;
 
         private void IR_Load_1(object sender, EventArgs e)
         {
@@ -64,7 +66,7 @@ namespace Bitmap_Test1_Schmid
             reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
             reader.MultiSourceFrameArrived += reader_IRFrameArrived;
         }
-
+       
         void reader_IRFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
         {
             if (mode == 1)
@@ -212,9 +214,6 @@ namespace Bitmap_Test1_Schmid
                 ecken4_y = 310;
             }
 
-            double _512_auf_360 = 0.703;
-            double _360_auf_512 = 1.422;
-
             vergleich_x[0] = Math.Round(ecken1_x * _512_auf_360);//scaling auf 360
             vergleich_x[1] = Math.Round(ecken2_x * _512_auf_360);
             vergleich_x[2] = Math.Round(ecken3_x * _512_auf_360);
@@ -224,6 +223,29 @@ namespace Bitmap_Test1_Schmid
             vergleich_y[1] = ecken2_y;// * 2.54;
             vergleich_y[2] = ecken3_y;// * 2.54;
             vergleich_y[3] = ecken4_y;// * 2.54;
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = i + 1; j < 4; j++)
+                {
+                    if (vergleich_y[i] == vergleich_y[j])
+                    {
+                        MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+            }//doppelte y werte löschen
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = i + 1; j < 4; j++)
+                {
+                    if (vergleich_x[i] == vergleich_x[j])
+                    {
+                        MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+            }//doppelte x werte löschen
 
             if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
             {
@@ -405,19 +427,28 @@ namespace Bitmap_Test1_Schmid
             //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";
 
-            mittelpunkt_links = erg_x[2] + ((erg_x[3] - erg_x[2]) / 2); //"linkster" punkt plus hälfte der beiden
-            mittelpunkt_rechts = erg_x[1] + ((erg_x[0] - erg_x[1]) / 2); //"rechtster" punkt plus hälfte der beiden
-            mittelpunkt_links_y = erg_y[2] + ((erg_y[3] - erg_y[2]) / 2); //"linkster" punkt plus hälfte der beiden
-            mittelpunkt_rechts_y = erg_y[1] + ((erg_y[0] - erg_y[1]) / 2); //"rechtster" punkt plus hälfte der beiden
+            pictureBox1.Paint += DrawEllipseFloat;
 
-            multiplikator = Math.Round(_form1_2.screen.Auflösung_Projektor_x / (mittelpunkt_rechts - mittelpunkt_links)); 
+            try
+            {
+                mittelpunkt_links = erg_x[2] + ((erg_x[3] - erg_x[2]) / 2); //"linkster" punkt plus hälfte der beiden
+                mittelpunkt_rechts = erg_x[1] + ((erg_x[0] - erg_x[1]) / 2); //"rechtster" punkt plus hälfte der beiden
+                mittelpunkt_links_y = erg_y[2] + ((erg_y[3] - erg_y[2]) / 2); //"linkster" punkt plus hälfte der beiden
+                mittelpunkt_rechts_y = erg_y[1] + ((erg_y[0] - erg_y[1]) / 2); //"rechtster" punkt plus hälfte der beiden
 
-            Properties.Settings.Default.mittelpunkt_links = mittelpunkt_links;
-            Properties.Settings.Default.mittelpunkt_rechts = mittelpunkt_rechts;
-            Properties.Settings.Default.mittelpunkt_linksy = mittelpunkt_links_y;
-            Properties.Settings.Default.mittelpunkt_rechtsy = mittelpunkt_rechts_y;
-            Properties.Settings.Default.multiplikator = multiplikator;
-            Properties.Settings.Default.Save();
+                multiplikator = Math.Round(_form1_2.screen.Auflösung_Projektor_x / (mittelpunkt_rechts - mittelpunkt_links));
+
+                Properties.Settings.Default.mittelpunkt_links = mittelpunkt_links;
+                Properties.Settings.Default.mittelpunkt_rechts = mittelpunkt_rechts;
+                Properties.Settings.Default.mittelpunkt_linksy = mittelpunkt_links_y;
+                Properties.Settings.Default.mittelpunkt_rechtsy = mittelpunkt_rechts_y;
+                Properties.Settings.Default.multiplikator = multiplikator;
+                Properties.Settings.Default.Save();
+            }
+            catch 
+            {
+                MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
         private void button1_Click(object sender, EventArgs e)
@@ -484,19 +515,26 @@ namespace Bitmap_Test1_Schmid
         {
 
         }
-        //private void DrawEllipseFloat(object sender, PaintEventArgs g)
-        //{
-        //    //Graphics g = CreateGraphics();
+        private void DrawEllipseFloat(object sender, PaintEventArgs g)
+        {
+            //Graphics g = CreateGraphics();
 
-        //    Pen blackPen = new Pen(Color.Red, 1);
+            Pen blackPen = new Pen(Color.Red, 1);
 
-        //    g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(erg_x[1] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[1]) + pictureBox1.Location.Y);// ro ru
-        //    g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(erg_x[3] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[3]) + pictureBox1.Location.Y);// ro lo
-        //    g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(erg_x[3] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[3]) + pictureBox1.Location.Y);// lu lo
-        //    g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(erg_x[1] * 1.706)) + pictureBox1.Location.X, (int)(erg_y[1]) + pictureBox1.Location.Y);// lu ru
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * _360_auf_512)), (int)(erg_y[0]), (int)(Math.Round(erg_x[1] * _360_auf_512)), (int)(erg_y[1]));// ro ru
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * _360_auf_512)), (int)(erg_y[0]), (int)(Math.Round(erg_x[3] * _360_auf_512)), (int)(erg_y[3]));// ro lo
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * _360_auf_512)), (int)(erg_y[2]), (int)(Math.Round(erg_x[3] * _360_auf_512)), (int)(erg_y[3]));// lu lo
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * _360_auf_512)), (int)(erg_y[2]), (int)(Math.Round(erg_x[1] * _360_auf_512)), (int)(erg_y[1]));// lu ru
 
-        //    g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * 1.706) + pictureBox1.Location.X, (int)mittelpunkt_links_y + pictureBox1.Location.Y, (int)Math.Round(mittelpunkt_rechts * 1.706) + pictureBox1.Location.X, (int)mittelpunkt_rechts_y + pictureBox1.Location.Y);
-        //    g.Graphics.DrawLine(blackPen, 1, 1, 500, 500);
-        //}
+            g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * _360_auf_512), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts * _360_auf_512), (int)mittelpunkt_rechts_y);
+        }
+
+        private void IR_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                kal.PerformClick();
+            }
+        }
     }
 }
