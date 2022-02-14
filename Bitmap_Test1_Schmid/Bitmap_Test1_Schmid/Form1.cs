@@ -30,6 +30,8 @@ namespace Bitmap_Test1_Schmid
         public double kleinsterabstand = 500;
         public double größterabstand = 0;
 
+        public bool etwas_geändert = true;//wenn Box daten gleich sind kommt "entfernen" statt "bestätigen"
+
         int animation = 0;
         public Form1()
         {
@@ -74,13 +76,24 @@ namespace Bitmap_Test1_Schmid
         {
             try
             {
-                if (check_autoobjekt.Checked == false)
+                if (!check_autoobjekt.Checked)
                 {
                     längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
                     screen.längebox.Maximum = längebox.Maximum;
-                    screen.fläche.PerformClick();
+                    if (etwas_geändert)
+                    {
+                        screen.fläche.PerformClick();
+                        fläche.Text = "Entfernen";
+                        etwas_geändert = !etwas_geändert;
+                    }
+                    else if (!etwas_geändert)
+                    {
+                        screen.deletebox();
+                        fläche.Text = "Bestätigen";
+                        etwas_geändert = !etwas_geändert;
+                    }
                 }
-                if (check_autoobjekt.Checked == true)
+                if (check_autoobjekt.Checked)
                 {
                     screen.deletebox();
                     kinectM.already_placed = false; // für automatische Boxplatzierung
@@ -91,7 +104,6 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show(screen.e001.Message, "Error", 0, MessageBoxIcon.Error);
             }
         }
-
         private void längebox_ValueChanged(object sender, EventArgs e)
         {
             try
@@ -99,6 +111,8 @@ namespace Bitmap_Test1_Schmid
                 länge.Text = längebox.Value.ToString();
                 screen.längebox.Value = Convert.ToInt32(länge.Text);
                 screen.längelabel.Text = länge.Text;
+                etwas_geändert = true;
+                fläche.Text = "bestätigen";
             }
             catch
             {
@@ -119,6 +133,8 @@ namespace Bitmap_Test1_Schmid
                 {
                     kinectM.anzeigepunkt = Convert.ToInt32(screen.schrittlänge[regler.Value]);
                 }
+                etwas_geändert = true;
+                fläche.Text = "bestätigen";
             }
             catch
             {
@@ -220,17 +236,22 @@ namespace Bitmap_Test1_Schmid
                 kinectM.steps_kinect = Convert.ToInt32(steps.Text);
                 kinectToolStripMenuItem.BackColor = Color.Red;
                 check_autoobjekt.Enabled = true;
+                lab_schrittgeschw.Visible = true;
+                lab_schrittgeschw_text.Visible = true;
+                schrittgeschw.Visible = true;
+
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
                 kinectM.WindowState = FormWindowState.Minimized;
-                kinectM.Show();//TODO: Muss noch vor release geändert werden
+                kinectM.Show();
                 kinectM.Hide();
-
-                               //kinectM.Hide();
             }
             if (!einaus)
             {
                 check_autoobjekt.Enabled = false;
                 check_autoobjekt.Checked = false;
+                lab_schrittgeschw.Visible = false;
+                lab_schrittgeschw_text.Visible = false;
+                schrittgeschw.Visible = false;
                 kinectM.Close();
                 kinectToolStripMenuItem.BackColor = Color.Transparent;
             }
@@ -284,6 +305,7 @@ namespace Bitmap_Test1_Schmid
             screen.left_nine.Hide();
             screen.left_ten.Hide();
 
+            delsteps.Visible = false;
             kinectM.schrittzähler = 0;
         }
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
@@ -446,6 +468,30 @@ namespace Bitmap_Test1_Schmid
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void schrittgeschw_ValueChanged(object sender, EventArgs e)
+        {
+            if (schrittgeschw.Value == 1)
+            {
+                lab_schrittgeschw.Location = new Point(127, lab_schrittgeschw.Location.Y);
+                lab_schrittgeschw.Text = "langsam";
+                kinectM.timeout = 20;
+            }
+
+            if (schrittgeschw.Value == 2)
+            {
+                lab_schrittgeschw.Location = new Point(176, lab_schrittgeschw.Location.Y);
+                lab_schrittgeschw.Text = "mittel";
+                kinectM.timeout = 12;
+            }
+
+            if (schrittgeschw.Value == 3)
+            {
+                lab_schrittgeschw.Location = new Point(210, lab_schrittgeschw.Location.Y);
+                lab_schrittgeschw.Text = "schnell";
+                kinectM.timeout = 5;
             }
         }
     }

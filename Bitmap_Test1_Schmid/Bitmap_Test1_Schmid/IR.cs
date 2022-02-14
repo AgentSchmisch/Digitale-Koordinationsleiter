@@ -31,14 +31,16 @@ namespace Bitmap_Test1_Schmid
         }
 
         string[] possibleTracker;
-        int ecken1_x;
-        int ecken1_y;
-        int ecken2_x;
-        int ecken2_y;
-        int ecken3_x;
-        int ecken3_y;
-        int ecken4_x;
-        int ecken4_y;
+        int[] ecken_x = new int[3];
+        int[] ecken_y = new int[3];
+        //int ecken1_x;
+        //int ecken1_y;
+        //int ecken2_x;
+        //int ecken2_y;
+        //int ecken3_x;
+        //int ecken3_y;
+        //int ecken4_x;
+        //int ecken4_y;
 
         int mode = 0;
         int mode2 = 0;
@@ -51,11 +53,15 @@ namespace Bitmap_Test1_Schmid
         public double mittelpunkt_rechts_y = 0;//unwichtig: das wurde geändert
 
         int kreise = 1;
-        double _512_auf_360 = 0.703;
-        double _360_auf_512 = 1.422;
+        double skalierkorrektur = 260;
+        double downskaling = 360 / 512;
+        double upskaling = 512 / 360;
 
         private void IR_Load_1(object sender, EventArgs e)
         {
+            downskaling = (skalierkorrektur * 2) / 512.0;
+            upskaling = 512.0 / (skalierkorrektur * 2);
+
             sensor = KinectSensor.GetDefault();
             //rgbsensor = KinectSensor.GetDefault();
 
@@ -155,32 +161,54 @@ namespace Bitmap_Test1_Schmid
                                 (int)(radius * 2));
                             if (kreise == 1)
                             {
-                                ecken1_x = (int)center.X;
-                                ecken1_y = (int)center.Y;
+                                ecken_x[0] = (int)center.X;
+                                ecken_y[0] = (int)center.Y;
                             }
                             if (kreise == 2)
                             {
-                                ecken2_x = (int)center.X;
-                                ecken2_y = (int)center.Y;
+                                ecken_x[1] = (int)center.X;
+                                ecken_y[1] = (int)center.Y;
                             }
                             if (kreise == 3)
                             {
-                                ecken3_x = (int)center.X;
-                                ecken3_y = (int)center.Y;
+                                ecken_x[2] = (int)center.X;
+                                ecken_y[2] = (int)center.Y;
                             }
                             if (kreise == 4)
                             {
-                                ecken4_x = (int)center.X;
-                                ecken4_y = (int)center.Y;
+                                ecken_x[3] = (int)center.X;
+                                ecken_y[3] = (int)center.Y;
                                 kreise = 0;
+
+                                for (int x = 0; x < 4; x++)
+                                {
+                                    for (int j = x + 1; j < 4; j++)
+                                    {
+                                        if (ecken_y[x] == ecken_y[j])
+                                        {
+                                            kal.Enabled = false;
+                                            return;
+                                        }
+                                        else
+                                            kal.Enabled = true;
+                                    }
+                                }//doppelte y werte löschen
+                                for (int x = 0; x < 4; i++)
+                                {
+                                    for (int j = x + 1; j < 4; j++)
+                                    {
+                                        if (ecken_x[x] == ecken_x[j])
+                                        {
+                                            kal.Enabled = false;
+                                            return;
+                                        }
+                                        else
+                                            kal.Enabled = true;
+                                    }
+                                }//doppelte x werte löschen
                             }
                             kreise++;
                         }
-
-                        //anzeige.Text = center.X.ToString() + " " + center.Y.ToString();
-                        //anzeige.Text = ecken_x[z].ToString() + " " + ecken_x[z].ToString();
-                        anzeige.Text = "Punkt 1: " + ecken1_x + " " + ecken1_y + "\n" + "Punkt 2: " + ecken2_x + " " + ecken2_y + "\n" + "Punkt 3: " + ecken3_x + " " + ecken3_y + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
-
                     }
                     pictureBox1.Image = bmp;
                 }
@@ -201,28 +229,15 @@ namespace Bitmap_Test1_Schmid
             double rechts_max = 0;
             double links_max = 0;
 
-            if (checkBox1.Checked)
-            {
-                ecken1_x = 50;//testzwecke
-                ecken2_x = 440;
-                ecken3_x = 470;
-                ecken4_x = 30;
+            vergleich_x[0] = Math.Round(ecken_x[0] * downskaling);
+            vergleich_x[1] = Math.Round(ecken_x[1] * downskaling);
+            vergleich_x[2] = Math.Round(ecken_x[2] * downskaling);
+            vergleich_x[3] = Math.Round(ecken_x[3] * downskaling);
 
-                ecken1_y = 100;
-                ecken2_y = 100;
-                ecken3_y = 310;
-                ecken4_y = 310;
-            }
-
-            vergleich_x[0] = Math.Round(ecken1_x * _512_auf_360);//scaling auf 360
-            vergleich_x[1] = Math.Round(ecken2_x * _512_auf_360);
-            vergleich_x[2] = Math.Round(ecken3_x * _512_auf_360);
-            vergleich_x[3] = Math.Round(ecken4_x * _512_auf_360);
-
-            vergleich_y[0] = ecken1_y;// * 2.54;
-            vergleich_y[1] = ecken2_y;// * 2.54;
-            vergleich_y[2] = ecken3_y;// * 2.54;
-            vergleich_y[3] = ecken4_y;// * 2.54;
+            vergleich_y[0] = ecken_y[0];
+            vergleich_y[1] = ecken_y[1];
+            vergleich_y[2] = ecken_y[2];
+            vergleich_y[3] = ecken_y[3];
 
             for (int i = 0; i < 4; i++)
             {
@@ -252,8 +267,6 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            label2.Text = "Punkt 1: " + vergleich_x[0] + " " + ecken1_y + "\n" + "Punkt 2: " + vergleich_x[1] + " " + ecken2_y + "\n" + "Punkt 3: " + vergleich_x[2] + " " + vergleich_x[3] + "\n" + "Punkt 4: " + ecken4_x + " " + ecken4_y;
 
             vergleich2_x[0] = vergleich_x[0];
             vergleich2_x[1] = vergleich_x[1];
@@ -407,22 +420,22 @@ namespace Bitmap_Test1_Schmid
             //                "links unten: " + erg_x[2] + " " + erg_y[2] + "\n" + 
             //                "links oben: " + erg_x[3] + " " + erg_y[3]);
 
-            k1.Left = (int)Math.Round(erg_x[0] * _360_auf_512) + pictureBox1.Location.X;
+            k1.Left = (int)Math.Round(erg_x[0] * upskaling) + pictureBox1.Location.X;
             k1.Top = (int)(erg_y[0]) + pictureBox1.Location.Y;
             //k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];//nur für debugging mit Koordinaten
             k1.Text = "rechts oben";
 
-            k2.Left = (int)Math.Round(erg_x[1] * _360_auf_512) + pictureBox1.Location.X;
+            k2.Left = (int)Math.Round(erg_x[1] * upskaling) + pictureBox1.Location.X;
             k2.Top = (int)(erg_y[1]) + pictureBox1.Location.Y;
             //k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];//nur für debugging mit Koordinaten
             k2.Text = "rechts unten";
 
-            k3.Left = (int)Math.Round(erg_x[2] * _360_auf_512) + pictureBox1.Location.X;
+            k3.Left = (int)Math.Round(erg_x[2] * upskaling) + pictureBox1.Location.X;
             k3.Top = (int)(erg_y[2]) + pictureBox1.Location.Y;
             //k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];//nur für debugging mit Koordinaten
             k3.Text = "links unten";
 
-            k4.Left = (int)Math.Round(erg_x[3] * _360_auf_512) + pictureBox1.Location.X;
+            k4.Left = (int)Math.Round(erg_x[3] * upskaling) + pictureBox1.Location.X;
             k4.Top = (int)(erg_y[3]) + pictureBox1.Location.Y;
             //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";
@@ -451,53 +464,6 @@ namespace Bitmap_Test1_Schmid
             }
 
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-  
-        }
-        private void pictureBox1_Mouseclick(object sender, MouseEventArgs e)
-        {
-            //klickanzahl++;
-            //if (klickanzahl == 1)
-            //{
-            //    ecken1_x = e.X;
-            //    ecken1_y = e.Y;
-            //    r1.Location = new System.Drawing.Point(e.X-4, e.Y-4);
-            //}
-            //if (klickanzahl == 2)
-            //{
-            //    ecken2_x = e.X;
-            //    ecken2_y = e.Y;
-            //    r2.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
-            //}
-            //if (klickanzahl == 3)
-            //{
-            //    ecken3_x = e.X;
-            //    ecken3_y = e.Y;
-            //    r3.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
-            //}
-            //if (klickanzahl == 4)
-            //{
-            //    ecken4_x = e.X;
-            //    ecken4_y = e.Y;
-            //    r4.Location = new System.Drawing.Point(e.X - 4, e.Y - 4);
-            //    kal.PerformClick();
-            //    klickanzahl = 0;
-            //}
-        }
-        private void reset_Click(object sender, EventArgs e)
-        {
-            ecken1_x = 0;
-            ecken2_x = 0;
-            ecken3_x = 0;
-            ecken4_x = 0;
-
-            ecken1_y = 0;
-            ecken2_y = 0;
-            ecken3_y = 0;
-            ecken4_y = 0;
-        }
-
         private void IR_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (reader != null)//unwichtig: kürzlich geändert
@@ -510,23 +476,17 @@ namespace Bitmap_Test1_Schmid
                 sensor.Close();
             }
         }
-
-        private void IR_HelpButtonClicked(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
-        }
         private void DrawEllipseFloat(object sender, PaintEventArgs g)
         {
-            //Graphics g = CreateGraphics();
 
             Pen blackPen = new Pen(Color.Red, 1);
 
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * _360_auf_512)), (int)(erg_y[0]), (int)(Math.Round(erg_x[1] * _360_auf_512)), (int)(erg_y[1]));// ro ru
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * _360_auf_512)), (int)(erg_y[0]), (int)(Math.Round(erg_x[3] * _360_auf_512)), (int)(erg_y[3]));// ro lo
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * _360_auf_512)), (int)(erg_y[2]), (int)(Math.Round(erg_x[3] * _360_auf_512)), (int)(erg_y[3]));// lu lo
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * _360_auf_512)), (int)(erg_y[2]), (int)(Math.Round(erg_x[1] * _360_auf_512)), (int)(erg_y[1]));// lu ru
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * upskaling)), (int)(erg_y[0]), (int)(Math.Round(erg_x[1] * upskaling)), (int)(erg_y[1]));// ro ru
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * upskaling)), (int)(erg_y[0]), (int)(Math.Round(erg_x[3] * upskaling)), (int)(erg_y[3]));// ro lo
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * upskaling)), (int)(erg_y[2]), (int)(Math.Round(erg_x[3] * upskaling)), (int)(erg_y[3]));// lu lo
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * upskaling)), (int)(erg_y[2]), (int)(Math.Round(erg_x[1] * upskaling)), (int)(erg_y[1]));// lu ru
 
-            g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * _360_auf_512), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts * _360_auf_512), (int)mittelpunkt_rechts_y);
+            g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * upskaling), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts * upskaling), (int)mittelpunkt_rechts_y);
         }
 
         private void IR_KeyDown(object sender, KeyEventArgs e)

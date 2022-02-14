@@ -65,10 +65,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.lab_schrittgeschw = new System.Windows.Forms.Label();
+            this.lab_schrittgeschw_text = new System.Windows.Forms.Label();
+            this.schrittgeschw = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.schrittgeschw)).BeginInit();
             this.SuspendLayout();
             // 
             // steps
@@ -401,7 +405,7 @@
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label8.ForeColor = System.Drawing.Color.Transparent;
-            this.label8.Location = new System.Drawing.Point(645, 30);
+            this.label8.Location = new System.Drawing.Point(645, 36);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(2, 340);
             this.label8.TabIndex = 39;
@@ -487,6 +491,46 @@
             this.label10.Size = new System.Drawing.Size(1144, 2);
             this.label10.TabIndex = 45;
             // 
+            // lab_schrittgeschw
+            // 
+            this.lab_schrittgeschw.AutoSize = true;
+            this.lab_schrittgeschw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
+            this.lab_schrittgeschw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lab_schrittgeschw.ForeColor = System.Drawing.Color.White;
+            this.lab_schrittgeschw.Location = new System.Drawing.Point(176, 74);
+            this.lab_schrittgeschw.Name = "lab_schrittgeschw";
+            this.lab_schrittgeschw.Size = new System.Drawing.Size(41, 17);
+            this.lab_schrittgeschw.TabIndex = 48;
+            this.lab_schrittgeschw.Text = "mittel";
+            this.lab_schrittgeschw.Visible = false;
+            // 
+            // lab_schrittgeschw_text
+            // 
+            this.lab_schrittgeschw_text.AutoSize = true;
+            this.lab_schrittgeschw_text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
+            this.lab_schrittgeschw_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lab_schrittgeschw_text.ForeColor = System.Drawing.Color.White;
+            this.lab_schrittgeschw_text.Location = new System.Drawing.Point(12, 42);
+            this.lab_schrittgeschw_text.Name = "lab_schrittgeschw_text";
+            this.lab_schrittgeschw_text.Size = new System.Drawing.Size(117, 20);
+            this.lab_schrittgeschw_text.TabIndex = 47;
+            this.lab_schrittgeschw_text.Text = "Schrittgeschw.:";
+            this.lab_schrittgeschw_text.Visible = false;
+            // 
+            // schrittgeschw
+            // 
+            this.schrittgeschw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
+            this.schrittgeschw.LargeChange = 1;
+            this.schrittgeschw.Location = new System.Drawing.Point(140, 42);
+            this.schrittgeschw.Maximum = 3;
+            this.schrittgeschw.Minimum = 1;
+            this.schrittgeschw.Name = "schrittgeschw";
+            this.schrittgeschw.Size = new System.Drawing.Size(110, 45);
+            this.schrittgeschw.TabIndex = 46;
+            this.schrittgeschw.Value = 2;
+            this.schrittgeschw.Visible = false;
+            this.schrittgeschw.ValueChanged += new System.EventHandler(this.schrittgeschw_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +539,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(644, 385);
+            this.Controls.Add(this.lab_schrittgeschw);
+            this.Controls.Add(this.lab_schrittgeschw_text);
+            this.Controls.Add(this.schrittgeschw);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label9);
@@ -535,6 +582,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Digitale Koordinationsleiter";
+            this.TopMost = true;
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -543,6 +591,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.schrittgeschw)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -584,6 +633,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lab_schrittgeschw;
+        private System.Windows.Forms.Label lab_schrittgeschw_text;
+        public System.Windows.Forms.TrackBar schrittgeschw;
     }
 }
 

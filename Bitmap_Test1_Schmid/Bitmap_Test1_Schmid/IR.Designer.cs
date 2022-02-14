@@ -114,6 +114,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // kal
             // 
+            this.kal.Enabled = false;
             this.kal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.kal.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -160,7 +161,6 @@ namespace Bitmap_Test1_Schmid
             this.mankal.UseVisualStyleBackColor = true;
             this.mankal.UseWaitCursor = true;
             this.mankal.Visible = false;
-            this.mankal.Click += new System.EventHandler(this.button1_Click);
             // 
             // r1
             // 
@@ -231,7 +231,6 @@ namespace Bitmap_Test1_Schmid
             this.reset.UseVisualStyleBackColor = true;
             this.reset.UseWaitCursor = true;
             this.reset.Visible = false;
-            this.reset.Click += new System.EventHandler(this.reset_Click);
             // 
             // pictureBox1
             // 
@@ -312,7 +311,6 @@ namespace Bitmap_Test1_Schmid
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Kantenerkennung";
-            this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.IR_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IR_FormClosing);
             this.Load += new System.EventHandler(this.IR_Load_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IR_KeyDown);

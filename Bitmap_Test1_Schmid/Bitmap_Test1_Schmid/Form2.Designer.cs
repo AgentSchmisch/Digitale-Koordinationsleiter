@@ -289,7 +289,7 @@ namespace Bitmap_Test1_Schmid
             this.right_seven.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_seven.InitialImage")));
             this.right_seven.Location = new System.Drawing.Point(991, 227);
             this.right_seven.Name = "right_seven";
-            this.right_seven.Size = new System.Drawing.Size(155, 73);
+            this.right_seven.Size = new System.Drawing.Size(132, 60);
             this.right_seven.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_seven.TabIndex = 38;
             this.right_seven.TabStop = false;
@@ -302,7 +302,7 @@ namespace Bitmap_Test1_Schmid
             this.left_seven.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_seven.InitialImage")));
             this.left_seven.Location = new System.Drawing.Point(991, 148);
             this.left_seven.Name = "left_seven";
-            this.left_seven.Size = new System.Drawing.Size(155, 73);
+            this.left_seven.Size = new System.Drawing.Size(132, 60);
             this.left_seven.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_seven.TabIndex = 37;
             this.left_seven.TabStop = false;
@@ -315,7 +315,7 @@ namespace Bitmap_Test1_Schmid
             this.right_ten.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_ten.InitialImage")));
             this.right_ten.Location = new System.Drawing.Point(1152, 385);
             this.right_ten.Name = "right_ten";
-            this.right_ten.Size = new System.Drawing.Size(155, 73);
+            this.right_ten.Size = new System.Drawing.Size(132, 60);
             this.right_ten.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_ten.TabIndex = 36;
             this.right_ten.TabStop = false;
@@ -328,7 +328,7 @@ namespace Bitmap_Test1_Schmid
             this.left_ten.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_ten.InitialImage")));
             this.left_ten.Location = new System.Drawing.Point(1152, 306);
             this.left_ten.Name = "left_ten";
-            this.left_ten.Size = new System.Drawing.Size(155, 73);
+            this.left_ten.Size = new System.Drawing.Size(132, 60);
             this.left_ten.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_ten.TabIndex = 35;
             this.left_ten.TabStop = false;
@@ -341,7 +341,7 @@ namespace Bitmap_Test1_Schmid
             this.right_nine.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_nine.InitialImage")));
             this.right_nine.Location = new System.Drawing.Point(991, 385);
             this.right_nine.Name = "right_nine";
-            this.right_nine.Size = new System.Drawing.Size(155, 73);
+            this.right_nine.Size = new System.Drawing.Size(132, 60);
             this.right_nine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_nine.TabIndex = 32;
             this.right_nine.TabStop = false;
@@ -354,7 +354,7 @@ namespace Bitmap_Test1_Schmid
             this.left_nine.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_nine.InitialImage")));
             this.left_nine.Location = new System.Drawing.Point(991, 306);
             this.left_nine.Name = "left_nine";
-            this.left_nine.Size = new System.Drawing.Size(155, 73);
+            this.left_nine.Size = new System.Drawing.Size(132, 60);
             this.left_nine.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_nine.TabIndex = 31;
             this.left_nine.TabStop = false;
@@ -367,7 +367,7 @@ namespace Bitmap_Test1_Schmid
             this.right_eight.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_eight.InitialImage")));
             this.right_eight.Location = new System.Drawing.Point(1152, 227);
             this.right_eight.Name = "right_eight";
-            this.right_eight.Size = new System.Drawing.Size(155, 73);
+            this.right_eight.Size = new System.Drawing.Size(132, 60);
             this.right_eight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_eight.TabIndex = 30;
             this.right_eight.TabStop = false;
@@ -380,7 +380,7 @@ namespace Bitmap_Test1_Schmid
             this.left_eight.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_eight.InitialImage")));
             this.left_eight.Location = new System.Drawing.Point(1152, 148);
             this.left_eight.Name = "left_eight";
-            this.left_eight.Size = new System.Drawing.Size(155, 73);
+            this.left_eight.Size = new System.Drawing.Size(132, 60);
             this.left_eight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_eight.TabIndex = 29;
             this.left_eight.TabStop = false;
@@ -393,7 +393,7 @@ namespace Bitmap_Test1_Schmid
             this.right_six.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_six.InitialImage")));
             this.right_six.Location = new System.Drawing.Point(830, 227);
             this.right_six.Name = "right_six";
-            this.right_six.Size = new System.Drawing.Size(155, 73);
+            this.right_six.Size = new System.Drawing.Size(132, 60);
             this.right_six.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_six.TabIndex = 26;
             this.right_six.TabStop = false;
@@ -406,7 +406,7 @@ namespace Bitmap_Test1_Schmid
             this.left_six.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_six.InitialImage")));
             this.left_six.Location = new System.Drawing.Point(830, 148);
             this.left_six.Name = "left_six";
-            this.left_six.Size = new System.Drawing.Size(155, 73);
+            this.left_six.Size = new System.Drawing.Size(132, 60);
             this.left_six.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_six.TabIndex = 25;
             this.left_six.TabStop = false;
@@ -419,7 +419,7 @@ namespace Bitmap_Test1_Schmid
             this.right_five.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_five.InitialImage")));
             this.right_five.Location = new System.Drawing.Point(669, 227);
             this.right_five.Name = "right_five";
-            this.right_five.Size = new System.Drawing.Size(155, 73);
+            this.right_five.Size = new System.Drawing.Size(132, 60);
             this.right_five.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_five.TabIndex = 24;
             this.right_five.TabStop = false;
@@ -432,7 +432,7 @@ namespace Bitmap_Test1_Schmid
             this.left_five.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_five.InitialImage")));
             this.left_five.Location = new System.Drawing.Point(669, 148);
             this.left_five.Name = "left_five";
-            this.left_five.Size = new System.Drawing.Size(155, 73);
+            this.left_five.Size = new System.Drawing.Size(132, 60);
             this.left_five.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_five.TabIndex = 23;
             this.left_five.TabStop = false;
@@ -445,7 +445,7 @@ namespace Bitmap_Test1_Schmid
             this.right_four.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_four.InitialImage")));
             this.right_four.Location = new System.Drawing.Point(508, 227);
             this.right_four.Name = "right_four";
-            this.right_four.Size = new System.Drawing.Size(155, 73);
+            this.right_four.Size = new System.Drawing.Size(132, 60);
             this.right_four.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_four.TabIndex = 22;
             this.right_four.TabStop = false;
@@ -458,7 +458,7 @@ namespace Bitmap_Test1_Schmid
             this.left_four.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_four.InitialImage")));
             this.left_four.Location = new System.Drawing.Point(508, 148);
             this.left_four.Name = "left_four";
-            this.left_four.Size = new System.Drawing.Size(155, 73);
+            this.left_four.Size = new System.Drawing.Size(132, 60);
             this.left_four.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_four.TabIndex = 21;
             this.left_four.TabStop = false;
@@ -471,7 +471,7 @@ namespace Bitmap_Test1_Schmid
             this.right_three.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_three.InitialImage")));
             this.right_three.Location = new System.Drawing.Point(347, 227);
             this.right_three.Name = "right_three";
-            this.right_three.Size = new System.Drawing.Size(155, 73);
+            this.right_three.Size = new System.Drawing.Size(132, 60);
             this.right_three.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_three.TabIndex = 20;
             this.right_three.TabStop = false;
@@ -484,7 +484,7 @@ namespace Bitmap_Test1_Schmid
             this.left_three.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_three.InitialImage")));
             this.left_three.Location = new System.Drawing.Point(347, 148);
             this.left_three.Name = "left_three";
-            this.left_three.Size = new System.Drawing.Size(155, 73);
+            this.left_three.Size = new System.Drawing.Size(132, 60);
             this.left_three.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_three.TabIndex = 19;
             this.left_three.TabStop = false;
@@ -497,7 +497,7 @@ namespace Bitmap_Test1_Schmid
             this.right_two.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_two.InitialImage")));
             this.right_two.Location = new System.Drawing.Point(186, 227);
             this.right_two.Name = "right_two";
-            this.right_two.Size = new System.Drawing.Size(155, 73);
+            this.right_two.Size = new System.Drawing.Size(132, 60);
             this.right_two.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_two.TabIndex = 18;
             this.right_two.TabStop = false;
@@ -510,7 +510,7 @@ namespace Bitmap_Test1_Schmid
             this.left_two.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_two.InitialImage")));
             this.left_two.Location = new System.Drawing.Point(186, 148);
             this.left_two.Name = "left_two";
-            this.left_two.Size = new System.Drawing.Size(155, 73);
+            this.left_two.Size = new System.Drawing.Size(132, 60);
             this.left_two.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_two.TabIndex = 17;
             this.left_two.TabStop = false;
@@ -523,7 +523,7 @@ namespace Bitmap_Test1_Schmid
             this.right_one.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_one.InitialImage")));
             this.right_one.Location = new System.Drawing.Point(25, 227);
             this.right_one.Name = "right_one";
-            this.right_one.Size = new System.Drawing.Size(155, 73);
+            this.right_one.Size = new System.Drawing.Size(132, 60);
             this.right_one.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.right_one.TabIndex = 16;
             this.right_one.TabStop = false;
@@ -537,7 +537,7 @@ namespace Bitmap_Test1_Schmid
             this.left_one.InitialImage = null;
             this.left_one.Location = new System.Drawing.Point(25, 148);
             this.left_one.Name = "left_one";
-            this.left_one.Size = new System.Drawing.Size(155, 73);
+            this.left_one.Size = new System.Drawing.Size(132, 60);
             this.left_one.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.left_one.TabIndex = 15;
             this.left_one.TabStop = false;

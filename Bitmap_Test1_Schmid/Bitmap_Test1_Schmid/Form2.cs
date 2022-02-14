@@ -34,7 +34,7 @@ namespace Bitmap_Test1_Schmid
         public string reglerwertalt;
         public int längewertalt;
 
-        public int Auflösung_Projektor_x = 1280; //Auflösung Projektor ----- zeile 272 wird die Zahl 1280.0 verwendet
+        public int Auflösung_Projektor_x = 1280; //Auflösung Projektor ----- zeile 230 wird die Zahl 1280.0 verwendet
         public int Auflösung_Projektor_y = 800;
 
         public int waagrechtoben = 100;
@@ -59,8 +59,8 @@ namespace Bitmap_Test1_Schmid
             color_g = Properties.Settings.Default.color_g;//ruft Farbwerte ab
             color_b = Properties.Settings.Default.color_b;
 
-            int rightfoot = waagrechtunten - 250;//fußabdruck y position definieren
-            int leftfoot = waagrechtoben + 150;
+            int rightfoot = waagrechtunten - 215;//fußabdruck y position definieren
+            int leftfoot = waagrechtoben + 215;
 
             right_one.Top = rightfoot;
             right_two.Top = rightfoot;
@@ -141,6 +141,7 @@ namespace Bitmap_Test1_Schmid
                     } //waagrecht oben sektion
                     count = 0;
                 }
+
                 if (längewertalt >= 2) //setzt die schrittlinien ein, wenn welche verschwinden (nur wenn länger als 2 Kästchen)
                 {
                     for (zähler = Convert.ToInt32(reglerwertalt); zähler < Convert.ToDouble(reglerwertalt) + längewertalt; zähler++)
@@ -388,7 +389,22 @@ namespace Bitmap_Test1_Schmid
                     image1.SetPixel(x, y, newColor);
                 }
             } //waagrecht oben sektion
-
+            if (längewertalt >= 2) //setzt die schrittlinien ein, wenn welche verschwinden (nur wenn länger als 2 Kästchen)
+            {
+                for (zähler = Convert.ToInt32(reglerwertalt); zähler < Convert.ToDouble(reglerwertalt) + längewertalt; zähler++)
+                {
+                    for (x = Convert.ToInt32(schrittlänge[zähler]); x < schrittlänge[zähler] + dicke + 5; x++) //senkrecht
+                    {
+                        for (y = waagrechtoben; y < waagrechtunten; y++)
+                        {
+                            Color pixelColor = image1.GetPixel(x, y);
+                            Color newColor = Color.FromArgb(color_r, color_g, color_b);
+                            image1.SetPixel(x, y, newColor);
+                        }
+                    }
+                    schrittlänge[zähler + 1] = schrittlänge[zähler] + schrittlängealt;
+                } //setzt die senkrechten ein, durch ein längeres Objekt verschwunden sind
+            }
             pictureBox1.Image = image1;
         }
         public void linienladen()
