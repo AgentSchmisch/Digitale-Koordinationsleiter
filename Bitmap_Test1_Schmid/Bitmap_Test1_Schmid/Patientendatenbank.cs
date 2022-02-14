@@ -13,17 +13,16 @@ namespace Bitmap_Test1_Schmid
          * 
         */
 
-        //Connectionstring für die Verbindung zum Mysql Server
+        //Connectionstring für die Verbindung zum Server
         string SQLServer = "";
         //"server = koordinationsleiter.ddns.net; user id = Klinikum; password = koordinationsleiter; database = Patienten; sslmode=None; port=3306; persistsecurityinfo=True";
 
-        #region alle mySQL Abfragen
+        #region alle SQL Abfragen
         //ausnahme: Abfragen bei denen die werte erst während der Laufzeit eingegeben werden
         string query1;
         string query2;
         string query3;
         string query4 = "select IDENT_CURRENT('Patientenliste');";
-        string query5;
         #endregion
         string record;
         bool bearbeitung = false;
@@ -143,74 +142,74 @@ namespace Bitmap_Test1_Schmid
             {
                 Patienten.Items.Clear();
                 int ix = 0;
-                query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where ";
+                query1 = "SELECT Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum FROM Patientenliste WHERE ";
 
                 #region durchsuchen der Db
                 if (TbName.Text != "Vorname")
                 {
                     if (ix == 1)
-                        query1 += "or ";
+                        query1 += "OR ";
                     ix = 1;
-                    query1 += "Vorname in ('" + TbName.Text + "')";
+                    query1 += "Vorname IN ('" + TbName.Text + "')";
                 }
                 if (TbNachname.Text != "Nachname")
                 {
                     if (ix == 1)
-                        query1 += "or ";
+                        query1 += "OR ";
                     ix = 1;
-                    query1 += "(Nachname in ('" + TbNachname.Text + "'))";
+                    query1 += "(Nachname IN ('" + TbNachname.Text + "'))";
                 }
                 if (TbPLZ.Text != "PLZ")
                 {
                     if (ix == 1)
-                        query1 += "or ";
+                        query1 += "OR ";
                     ix = 1;
-                    query1 += "(PLZ in('" + TbPLZ.Text + "'))";
+                    query1 += "(PLZ IN ('" + TbPLZ.Text + "'))";
                 }
                 if (TbOrt.Text != "Ort")
                 {
                     if (ix == 1)
-                        query1 += "or ";
+                        query1 += "OR ";
                     ix = 1;
-                    query1 += "(Ort in('" + TbOrt.Text + "'))";
+                    query1 += "(Ort IN('" + TbOrt.Text + "'))";
                 }
                 if (TbAdresse.Text != "Adresse")
                 {
                     if (ix == 1)
-                        query1 += "or ";
+                        query1 += "OR ";
                     ix = 1;
-                    query1 += "(Adresse in ('" + TbAdresse.Text + "'))";
+                    query1 += "(Adresse IN ('" + TbAdresse.Text + "'))";
                 }
                 if (TbTelefonnummer.Text != "Telefonnummer")
                 {
                     if (ix == 1)
-                        query1 += "or ";
+                        query1 += "OR ";
                     ix = 1;
-                    query1 += " (Telefonnummer in ('" + TbTelefonnummer.Text + "'))";
+                    query1 += " (Telefonnummer IN ('" + TbTelefonnummer.Text + "'))";
                 }
                 if (TbGeburtsdatum.Text != "Geburtsdatum")
                 {
                     if (ix == 1)
-                        query1 += "or ";
+                        query1 += "OR ";
                     ix = 1;
-                    query1 += "(Geburtsdatum in('" + TbGeburtsdatum.Text + "'))";
+                    query1 += "(Geburtsdatum IN ('" + TbGeburtsdatum.Text + "'))";
                 }
                 if (TbPatNr.Text != "Patientennr.")
                 {
                     if (ix == 1)
-                        query1 += "or ";
+                        query1 += "OR ";
                     ix = 1;
-                    query1 += "(Patientennummer in('" + TbPatNr.Text + "'))";
+                    query1 += "(Patientennummer IN ('" + TbPatNr.Text + "'))";
                 }
                 query1 += ";";
                 #endregion
 
                 if (TbName.Text == "listall")
                 {
-                    query1 = "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where Vorname != '' ;";
+                    query1 = "SELECT Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum FROM Patientenliste;";
                 }
 
-                if (query1 != "select Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum from Patientenliste where ;")
+                if (query1 != "SELECT Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum FROM Patientenliste WHERE ;")
                 {
                     Patienten.Enabled = true;
 
@@ -287,8 +286,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("keine Datenbank gefunden\nError: " + ex.Number, "Datenbank Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //exception(ex.Number);
+                exception(ex.Number);
                 return;
             }
             finally
@@ -301,16 +299,14 @@ namespace Bitmap_Test1_Schmid
 
         private void button1_Click(object sender, EventArgs e) //auswahlBtn
         {
-            //variablen leeren um bei merfachem drücken des Buttons nicht die selbe information mehrfach im label in der UI zu bekommen
-            //Patientenname = ""; //----------------------------------
+
             letzteBehandlung = "";
             letzteSchrittanzahl = "";
 
             string s = Patienten.SelectedItem.ToString();
 
             DataTable tbl2;
-            //Patientenname = Patientenname.Replace("\t", "");------------------------------
-            query3 = "select Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite from " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + ";"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
+            query3 = "SELECT Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite FROM " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + ";"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
             try
             {
                 cmd = new SqlCommand(query3, conn);
@@ -599,7 +595,7 @@ namespace Bitmap_Test1_Schmid
             set
             {
                 Nameaktuell = Nameaktuell.Replace(" ", "_");
-                query3 = "Insert Into " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite) Values ('" + vorname + "','" + nachname + "','"
+                query3 = "INSERT INTO " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite) VALUES ('" + vorname + "','" + nachname + "','"
                     + DateTime.Now.ToString("dd.MM.yyyy") + "','" + value + "');";
 
                 try
@@ -652,11 +648,6 @@ namespace Bitmap_Test1_Schmid
             _haupt.usb.ShowDialog();
             laufwerkToolStripMenuItem.Text = "Aktuelles Laufwerk: " + Properties.Settings.Default.Laufwerk;
             //todo: hier muss noch der string geändert werden
-        }
-
-        private void customInstaller1_AfterInstall(object sender, System.Configuration.Install.InstallEventArgs e)
-        {
-
         }
 
         private void TbPatNr_KeyPress(object sender, KeyPressEventArgs e)
@@ -837,12 +828,6 @@ namespace Bitmap_Test1_Schmid
         {
             Size = new Size(471, 270);
             string patientennummer = "";
-            //TODO: wenn letzter patient wieder gelöscht wird, wird autoincrement nicht mehr kleiner also bekommt der maxvalue einen anderen wert als der autoincrement wert
-
-            //Autoincrement erhöht den wert auch wenn die Position danach wieder gelöscht wird
-            //-> Autoincrement daher möglicherweise höher als Max(Patientennummer)
-            //egal weil so jeder Patient eine individuelle Nummer bekommt
-            //falls patienten gelöscht werden wird die alte Patientennummer nicht mehr vergeben
 
             #region SQL Verbindung um die höchste Patientennummer abzurufen
             //verwendung von query4
@@ -974,12 +959,10 @@ namespace Bitmap_Test1_Schmid
 
             else
                 MessageBox.Show("Bitte zuerst einen Patienten auswählen", "Fehler");
-
-
         }
         void messagebox_leerfeld()
         {
-            MessageBox.Show("Die Felder Vorname und Nachname dürfen nicht freigelassen werden.", "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Die Felder Vorname bzw. Nachname dürfen nicht freigelassen werden.", "Achtung", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void NeuAbbrechenBtn_Click(object sender, EventArgs e)
@@ -1045,22 +1028,22 @@ namespace Bitmap_Test1_Schmid
                 {
                     TbGeburtsdatum.Text = "";
                 }
-                //if (TbOrt.Text == "Ort")
-                //{
-                //    TbOrt.Text = "";
-                //}
-                //if (TbPLZ.Text == "PLZ")
-                //{
-                //    TbPLZ.Text = "";
-                //}
-                //if (TbTelefonnummer.Text == "Telefonnummer")
-                //{
-                //    TbTelefonnummer.Text = "";
-                //}
-                //if (TbAdresse.Text == "Adresse")
-                //{
-                //    TbAdresse.Text = "";
-                //}
+                if (TbOrt.Text == "Ort")
+                {
+                    TbOrt.Text = "";
+                }
+                if (TbPLZ.Text == "PLZ")
+                {
+                    TbPLZ.Text = "";
+                }
+                if (TbTelefonnummer.Text == "Telefonnummer")
+                {
+                    TbTelefonnummer.Text = "";
+                }
+                if (TbAdresse.Text == "Adresse")
+                {
+                    TbAdresse.Text = "";
+                }
 
                 string[] PatName_ = new string[2];
                 Patientenname = TbName.Text.ToString();
@@ -1178,9 +1161,10 @@ namespace Bitmap_Test1_Schmid
                     cmd = new SqlCommand(query2, conn);
 
                     cmd.ExecuteNonQuery();
-                    //MessageBox.Show("Patient erfolgreich aktualisiert!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Patient erfolgreich aktualisiert!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     #region zurücksetzen der Oberflächenelemente zur Suchmaske
+                    //todo: was diese color_on_leafe-> vor allem leafe? leave?
 
                     TbName.Text = "Vorname";
                     TbName.ForeColor = color_on_leafe;
