@@ -59,8 +59,8 @@ namespace Bitmap_Test1_Schmid
             color_g = Properties.Settings.Default.color_g;//ruft Farbwerte ab
             color_b = Properties.Settings.Default.color_b;
 
-            int rightfoot = waagrechtunten - 215;//fußabdruck y position definieren
-            int leftfoot = waagrechtoben + 215;
+            int rightfoot = waagrechtunten - 215 - right_one.Height / 2;//fußabdruck y position definieren
+            int leftfoot = waagrechtoben + 215 + right_one.Height / 2;
 
             right_one.Top = rightfoot;
             right_two.Top = rightfoot;

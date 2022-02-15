@@ -28,10 +28,10 @@ namespace Bitmap_Test1_Schmid
         double[] zw_tracker_xrechts = new double[10];
         double[] zw_tracker_xlinks = new double[10];
 
-        double[] schritt_rechts = new double[10];
-        double[] schritt_links = new double[10];
-        double[] zw_schritt_rechts = new double[10];
-        double[] zw_schritt_links = new double[10];
+        public double[] schritt_rechts = new double[10];
+        public double[] schritt_links = new double[10];
+        public double[] zw_schritt_rechts = new double[10];
+        public double[] zw_schritt_links = new double[10];
 
         public int steps_kinect = 0; // schritte von form1
         int count = 0;
@@ -39,7 +39,7 @@ namespace Bitmap_Test1_Schmid
         public double[] durchschnitt=new double[99];
 
         int schritterkennungabstand = 3;
-        int abstand_zw_zwei_schritten = 40;
+        int abstand_zw_zwei_schritten = 80;
 
         double mittelpunkt_links;
         double mittelpunkt_rechts;
@@ -223,7 +223,7 @@ namespace Bitmap_Test1_Schmid
                 }
             }
         }
-
+        bool lf_rf_vergleich = true;
         private void reader_FrameArrived(object sender, BodyFrameArrivedEventArgs e)
         {
 
@@ -246,7 +246,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (body.IsTracked)
                     {
-                        Thread.Sleep(timeout);
+                        //Thread.Sleep(timeout);
                         _form1_schritt.kinectToolStripMenuItem.BackColor = Color.Green;
                         IReadOnlyDictionary<JointType, Joint> joints = body.Joints;
                         Dictionary<JointType, Point> jointPoints = new Dictionary<JointType, Point>();
@@ -295,213 +295,342 @@ namespace Bitmap_Test1_Schmid
                                 schritt_rechts[i + 1] = zw_schritt_rechts[i];
                                 schritt_links[i + 1] = zw_schritt_links[i];
                             }
-                            _form1_schritt.screen.strich_links.Visible = true;//zum testen
-                            _form1_schritt.screen.koordinaten_left.Visible = true;
-                            _form1_schritt.screen.strich_rechts.Visible = true;//zum testen
-                            _form1_schritt.screen.koordinaten_right.Visible = true;
+                        //_form1_schritt.screen.strich_links.Visible = true;//zum testen
+                        //_form1_schritt.screen.koordinaten_left.Visible = true;
+                        //_form1_schritt.screen.strich_rechts.Visible = true;//zum testen
+                        //_form1_schritt.screen.koordinaten_right.Visible = true;
 
-                            _form1_schritt.screen.strich_links.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
-                            _form1_schritt.screen.koordinaten_left.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 450);
-                            _form1_schritt.screen.koordinaten_left.Text = ((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
+                        //_form1_schritt.screen.strich_links.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
+                        //_form1_schritt.screen.koordinaten_left.Location = new Point(Convert.ToInt32((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), 450);
+                        //_form1_schritt.screen.koordinaten_left.Text = ((Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
 
-                            _form1_schritt.screen.strich_rechts.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
-                            _form1_schritt.screen.koordinaten_right.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 550);
-                            _form1_schritt.screen.koordinaten_right.Text = ((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
+                        //_form1_schritt.screen.strich_rechts.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 300);
+                        //_form1_schritt.screen.koordinaten_right.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 550);
+                        //_form1_schritt.screen.koordinaten_right.Text = ((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator).ToString();
+                        #region
+                        //if (Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts)
+                        //{// erst wenns innerhalb vom anzeigefeld ist soll er tracken
+                        //    #region tracking rechts
 
-                                if (Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts)
-                                {// erst wenns innerhalb vom anzeigefeld ist soll er tracken
-                                    #region tracking rechts
+                        //    if (schritt_rechts[2] != 0)//wartet bis 3 werte vorhanden sind
+                        //    {
+                        //        if (count == 1 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) > schritterkennungabstand && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) > schritterkennungabstand && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) > schritterkennungabstand)
+                        //        {
+                        //            text.Text = "bewegt";
+                        //            count = 0;
+                        //        }
 
-                                    if (schritt_rechts[2] != 0)//wartet bis 3 werte vorhanden sind
+                        //        if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= schritterkennungabstand && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= schritterkennungabstand && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= schritterkennungabstand)
+                        //        {
+                        //            durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
+                        //            if (schrittzähler > 0)
+                        //            {
+                        //                if (Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 1]) > abstand_zw_zwei_schritten)
+                        //                {
+                        //                    text.Text = "Position rechts: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
+                        //                    //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1280
+                        //                    #region Fußabdruck zeichnen rechts
+                        //                    if (durchschnitt[0] != 0 && schrittzähler == 0)
+                        //                    {
+                        //                        _form1_schritt.screen.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_one.Show();
+                        //                    }
+                        //                    if (durchschnitt[2] != 0 && schrittzähler == 2)
+                        //                    {
+                        //                        _form1_schritt.screen.right_two.Left = Convert.ToInt32(durchschnitt[2]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_two.Show();
+                        //                    }
+                        //                    if (durchschnitt[4] != 0 && schrittzähler == 4)
+                        //                    {
+                        //                        _form1_schritt.screen.right_three.Left = Convert.ToInt32(durchschnitt[4]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_three.Show();
+                        //                    }
+                        //                    if (durchschnitt[6] != 0 && schrittzähler == 6)
+                        //                    {
+                        //                        _form1_schritt.screen.right_four.Left = Convert.ToInt32(durchschnitt[6]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_four.Show();
+                        //                    }
+                        //                    if (durchschnitt[8] != 0 && schrittzähler == 8)
+                        //                    {
+                        //                        _form1_schritt.screen.right_five.Left = Convert.ToInt32(durchschnitt[8]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_five.Show();
+                        //                    }
+                        //                    if (durchschnitt[10] != 0 && schrittzähler == 10)
+                        //                    {
+                        //                        _form1_schritt.screen.right_six.Left = Convert.ToInt32(durchschnitt[10]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_six.Show();
+                        //                    }
+                        //                    if (durchschnitt[11] != 0 && schrittzähler == 12)
+                        //                    {
+                        //                        _form1_schritt.screen.right_seven.Left = Convert.ToInt32(durchschnitt[11]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_seven.Show();
+                        //                    }
+                        //                    if (durchschnitt[12] != 0 && schrittzähler == 14)
+                        //                    {
+                        //                        _form1_schritt.screen.right_eight.Left = Convert.ToInt32(durchschnitt[12]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_eight.Show();
+                        //                    }
+                        //                    if (durchschnitt[13] != 0 && schrittzähler == 16)
+                        //                    {
+                        //                        _form1_schritt.screen.right_nine.Left = Convert.ToInt32(durchschnitt[13]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_nine.Show();
+                        //                    }
+                        //                    if (durchschnitt[14] != 0 && schrittzähler == 18)
+                        //                    {
+                        //                        _form1_schritt.screen.right_ten.Left = Convert.ToInt32(durchschnitt[14]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_ten.Show();
+                        //                    }
+
+                        //                    #endregion
+                        //                    schrittzähler++;
+                        //                    count = 1;
+                        //                    _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
+                        //                    _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                        //                }
+                        //            }
+                        //            else
+                        //            {
+                        //                text.Text = "Position rechts: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
+                        //                //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1280
+
+                        //                if (durchschnitt[0] != 0 && schrittzähler == 0)
+                        //                {
+                        //                    _form1_schritt.screen.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_one.Show();
+                        //                }       
+                        //                //for (int i = 0; i < 1000; i++) { count = 1; }
+
+                        //                schrittzähler++;
+                        //                count = 1;
+                        //                _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
+                        //                _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                        //            }
+                        //        }
+                        //    }
+                        //    #endregion
+                        //}
+                        ////--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                        //if (Convert.ToInt32(lf_distance_x) >= mittelpunkt_links && Convert.ToInt32(lf_distance_x) <= mittelpunkt_rechts)
+                        //{// erst wenns innerhalb vom anzeigefeld ist soll er tracken
+                        //    #region tracking links
+                        //    if (schritt_links[2] != 0)//wartet bis 3 werte vorhanden sind
+                        //    {
+                        //        if (count == 1 && Math.Abs(schritt_links[0] - schritt_links[1]) > schritterkennungabstand && Math.Abs(schritt_links[1] - schritt_links[2]) > schritterkennungabstand && Math.Abs(schritt_links[0] - schritt_links[2]) > schritterkennungabstand)
+                        //        {
+                        //            text.Text = "bewegt";
+                        //            // MessageBox.Show(schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2]);
+                        //            count = 0;
+                        //            //for (int i = 0; i < 1000; i++) { count = 0; }
+                        //        }
+
+                        //        if (count == 0 && Math.Abs(schritt_links[0] - schritt_links[1]) <= schritterkennungabstand && Math.Abs(schritt_links[1] - schritt_links[2]) <= schritterkennungabstand && Math.Abs(schritt_links[0] - schritt_links[2]) <= schritterkennungabstand)
+                        //        {
+                        //            durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator;
+                        //            //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
+
+                        //            if (schrittzähler > 0)
+                        //            {
+                        //                if (Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 1]) > abstand_zw_zwei_schritten)
+                        //                {
+                        //                    text.Text = "Position links: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
+                        //                    //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
+                        //                    #region Fußabdruck zeichnen links
+                        //                    if (durchschnitt[1] != 0 && schrittzähler == 1)
+                        //                    {
+                        //                        _form1_schritt.screen.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_one.Show();
+                        //                    }
+                        //                    if (durchschnitt[3] != 0 && schrittzähler == 3)
+                        //                    {
+                        //                        _form1_schritt.screen.left_two.Left = Convert.ToInt32(durchschnitt[3]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_two.Show();
+                        //                    }
+                        //                    if (durchschnitt[5] != 0 && schrittzähler == 5)
+                        //                    {
+                        //                        _form1_schritt.screen.left_three.Left = Convert.ToInt32(durchschnitt[5]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_three.Show();
+                        //                    }
+                        //                    if (durchschnitt[7] != 0 && schrittzähler == 7)
+                        //                    {
+                        //                        _form1_schritt.screen.left_four.Left = Convert.ToInt32(durchschnitt[7]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_four.Show();
+                        //                    }
+                        //                    if (durchschnitt[9] != 0 && schrittzähler == 9)
+                        //                    {
+                        //                        _form1_schritt.screen.left_five.Left = Convert.ToInt32(durchschnitt[9]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_five.Show();
+                        //                    }
+                        //                    if (durchschnitt[11] != 0 && schrittzähler == 11)
+                        //                    {
+                        //                        _form1_schritt.screen.left_six.Left = Convert.ToInt32(durchschnitt[11]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_six.Show();
+                        //                    }
+                        //                    if (durchschnitt[11] != 0 && schrittzähler == 13)
+                        //                    {
+                        //                        _form1_schritt.screen.left_seven.Left = Convert.ToInt32(durchschnitt[11]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_seven.Show();
+                        //                    }
+                        //                    if (durchschnitt[12] != 0 && schrittzähler == 15)
+                        //                    {
+                        //                        _form1_schritt.screen.left_eight.Left = Convert.ToInt32(durchschnitt[12]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_eight.Show();
+                        //                    }
+                        //                    if (durchschnitt[13] != 0 && schrittzähler == 17)
+                        //                    {
+                        //                        _form1_schritt.screen.left_nine.Left = Convert.ToInt32(durchschnitt[13]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_nine.Show();
+                        //                    }
+                        //                    if (durchschnitt[14] != 0 && schrittzähler == 19)
+                        //                    {
+                        //                        _form1_schritt.screen.left_ten.Left = Convert.ToInt32(durchschnitt[14]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_ten.Show();
+                        //                    }
+
+                        //                    #endregion
+
+                        //                    _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
+                        //                    _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                        //                    //for (int i = 0; i < 1000; i++) { count = 1; }
+                        //                    count = 1;
+                        //                    schrittzähler++;
+                        //                }
+                        //            }
+
+                        //            else
+                        //            {
+                        //                text.Text = "Position links: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
+                        //                //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
+                        //                if (durchschnitt[1] != 0 && schrittzähler == 1)
+                        //                {
+                        //                    _form1_schritt.screen.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_one.Show();
+                        //                }
+
+                        //                //_form2.übertragung();
+                        //                _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
+                        //                _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                        //                                                               //for (int i = 0; i < 1000; i++) { count = 1; }
+                        //                count = 1;
+                        //                schrittzähler++;
+                        //            }
+                        //        }
+                        //    }
+                        //    #endregion
+                        //}
+                        #endregion
+
+                        if (Convert.ToInt32(lf_distance_x) >= mittelpunkt_links-10 && Convert.ToInt32(lf_distance_x) <= mittelpunkt_rechts+10 && Convert.ToInt32(rf_distance_x) >= mittelpunkt_links-10 && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts+10)
+                        {
+                            if ((Convert.ToInt32(rf_distance_x) >= Convert.ToInt32(lf_distance_x)) && !lf_rf_vergleich)
+                            {
+                                if (schrittzähler > 0 && Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 1]) > abstand_zw_zwei_schritten)
+                                {
+                                    durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
+                                    #region Fußabdruck zeichnen links
+                                    if (durchschnitt[1] != 0 && schrittzähler == 1)
                                     {
-                                        if (count == 1 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) > schritterkennungabstand && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) > schritterkennungabstand && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) > schritterkennungabstand)
-                                        {
-                                            text.Text = "bewegt";
-                                            count = 0;
-                                            //for (int i = 0; i < 1000; i++) { count = 0; }
-                                        }
-
-                                        if (count == 0 && Math.Abs(schritt_rechts[0] - schritt_rechts[1]) <= schritterkennungabstand && Math.Abs(schritt_rechts[1] - schritt_rechts[2]) <= schritterkennungabstand && Math.Abs(schritt_rechts[0] - schritt_rechts[2]) <= schritterkennungabstand)
-                                        {
-                                            durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
-                                            if (schrittzähler > 0)
-                                            {
-                                                if (Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 1]) > abstand_zw_zwei_schritten)
-                                                {
-                                                    text.Text = "Position rechts: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
-                                                    //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1280
-                                                    #region Fußabdruck zeichnen rechts
-                                                    if (durchschnitt[0] != 0 && schrittzähler == 0)
-                                                    {
-                                                        _form1_schritt.screen.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_one.Show();
-                                                    }
-                                                    if (durchschnitt[2] != 0 && schrittzähler == 2)
-                                                    {
-                                                        _form1_schritt.screen.right_two.Left = Convert.ToInt32(durchschnitt[2]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_two.Show();
-                                                    }
-                                                    if (durchschnitt[4] != 0 && schrittzähler == 4)
-                                                    {
-                                                        _form1_schritt.screen.right_three.Left = Convert.ToInt32(durchschnitt[4]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_three.Show();
-                                                    }
-                                                    if (durchschnitt[6] != 0 && schrittzähler == 6)
-                                                    {
-                                                        _form1_schritt.screen.right_four.Left = Convert.ToInt32(durchschnitt[6]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_four.Show();
-                                                    }
-                                                    if (durchschnitt[8] != 0 && schrittzähler == 8)
-                                                    {
-                                                        _form1_schritt.screen.right_five.Left = Convert.ToInt32(durchschnitt[8]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_five.Show();
-                                                    }
-                                                    if (durchschnitt[10] != 0 && schrittzähler == 10)
-                                                    {
-                                                        _form1_schritt.screen.right_six.Left = Convert.ToInt32(durchschnitt[10]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_six.Show();
-                                                    }
-                                                    if (durchschnitt[11] != 0 && schrittzähler == 12)
-                                                    {
-                                                        _form1_schritt.screen.right_seven.Left = Convert.ToInt32(durchschnitt[11]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_seven.Show();
-                                                    }
-                                                    if (durchschnitt[12] != 0 && schrittzähler == 14)
-                                                    {
-                                                        _form1_schritt.screen.right_eight.Left = Convert.ToInt32(durchschnitt[12]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_eight.Show();
-                                                    }
-                                                    if (durchschnitt[13] != 0 && schrittzähler == 16)
-                                                    {
-                                                        _form1_schritt.screen.right_nine.Left = Convert.ToInt32(durchschnitt[13]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_nine.Show();
-                                                    }
-                                                    if (durchschnitt[14] != 0 && schrittzähler == 18)
-                                                    {
-                                                        _form1_schritt.screen.right_ten.Left = Convert.ToInt32(durchschnitt[14]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_ten.Show();
-                                                    }
-
-                                                    #endregion
-                                                    //for (int i = 0; i < 1000; i++) { count = 1; }
-                                                    schrittzähler++;
-                                                    count = 1;
-                                                    _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
-                                                    _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
-                                                }
-                                            }
-                                            else
-                                            {
-                                                text.Text = "Position rechts: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
-                                                //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1280
-
-                                                if (durchschnitt[0] != 0 && schrittzähler == 0)
-                                                {
-                                                    _form1_schritt.screen.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_one.Show();
-                                                }       
-                                                //for (int i = 0; i < 1000; i++) { count = 1; }
-
-                                                schrittzähler++;
-                                                count = 1;
-                                                _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
-                                                _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
-                                            }
-                                        }
+                                        _form1_schritt.screen.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_one.Show();
                                     }
+                                    if (durchschnitt[3] != 0 && schrittzähler == 3)
+                                    {
+                                        _form1_schritt.screen.left_two.Left = Convert.ToInt32(durchschnitt[3]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_two.Show();
+                                    }
+                                    if (durchschnitt[5] != 0 && schrittzähler == 5)
+                                    {
+                                        _form1_schritt.screen.left_three.Left = Convert.ToInt32(durchschnitt[5]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_three.Show();
+                                    }
+                                    if (durchschnitt[7] != 0 && schrittzähler == 7)
+                                    {
+                                        _form1_schritt.screen.left_four.Left = Convert.ToInt32(durchschnitt[7]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_four.Show();
+                                    }
+                                    if (durchschnitt[9] != 0 && schrittzähler == 9)
+                                    {
+                                        _form1_schritt.screen.left_five.Left = Convert.ToInt32(durchschnitt[9]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_five.Show();
+                                    }
+                                    if (durchschnitt[11] != 0 && schrittzähler == 11)
+                                    {
+                                        _form1_schritt.screen.left_six.Left = Convert.ToInt32(durchschnitt[11]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_six.Show();
+                                    }
+                                    if (durchschnitt[13] != 0 && schrittzähler == 13)
+                                    {
+                                        _form1_schritt.screen.left_seven.Left = Convert.ToInt32(durchschnitt[13]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_seven.Show();
+                                    }
+                                    if (durchschnitt[15] != 0 && schrittzähler == 15)
+                                    {
+                                        _form1_schritt.screen.left_eight.Left = Convert.ToInt32(durchschnitt[15]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_eight.Show();
+                                    }
+                                    if (durchschnitt[17] != 0 && schrittzähler == 17)
+                                    {
+                                        _form1_schritt.screen.left_nine.Left = Convert.ToInt32(durchschnitt[17]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_nine.Show();
+                                    }
+                                    if (durchschnitt[19] != 0 && schrittzähler == 19)
+                                    {
+                                        _form1_schritt.screen.left_ten.Left = Convert.ToInt32(durchschnitt[19]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_ten.Show();
+                                    }
+
                                     #endregion
                                 }
-                                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                                if (Convert.ToInt32(lf_distance_x) >= mittelpunkt_links && Convert.ToInt32(lf_distance_x) <= mittelpunkt_rechts)
-                                {// erst wenns innerhalb vom anzeigefeld ist soll er tracken
-                                    #region tracking links
-                                    if (schritt_links[2] != 0)//wartet bis 3 werte vorhanden sind
+                                else
+                                {
+                                    durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
+                                    if (durchschnitt[0] != 0 && schrittzähler == 0)
                                     {
-                                        if (count == 1 && Math.Abs(schritt_links[0] - schritt_links[1]) > schritterkennungabstand && Math.Abs(schritt_links[1] - schritt_links[2]) > schritterkennungabstand && Math.Abs(schritt_links[0] - schritt_links[2]) > schritterkennungabstand)
-                                        {
-                                            text.Text = "bewegt";
-                                            // MessageBox.Show(schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2]);
-                                            count = 0;
-                                            //for (int i = 0; i < 1000; i++) { count = 0; }
-                                        }
-
-                                        if (count == 0 && Math.Abs(schritt_links[0] - schritt_links[1]) <= schritterkennungabstand && Math.Abs(schritt_links[1] - schritt_links[2]) <= schritterkennungabstand && Math.Abs(schritt_links[0] - schritt_links[2]) <= schritterkennungabstand)
-                                        {
-                                            durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator;
-                                            //text.Text = schritt_rechts[0] + " + " + schritt_rechts[1] + " + " + schritt_rechts[2] + " = " + durchschnitt.ToString();
-
-                                            if (schrittzähler > 0)
-                                            {
-                                                if (Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 1]) > abstand_zw_zwei_schritten)
-                                                {
-                                                    text.Text = "Position links: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
-                                                    //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
-                                                    #region Fußabdruck zeichnen links
-                                                    if (durchschnitt[1] != 0 && schrittzähler == 1)
-                                                    {
-                                                        _form1_schritt.screen.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_one.Show();
-                                                    }
-                                                    if (durchschnitt[3] != 0 && schrittzähler == 3)
-                                                    {
-                                                        _form1_schritt.screen.left_two.Left = Convert.ToInt32(durchschnitt[3]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_two.Show();
-                                                    }
-                                                    if (durchschnitt[5] != 0 && schrittzähler == 5)
-                                                    {
-                                                        _form1_schritt.screen.left_three.Left = Convert.ToInt32(durchschnitt[5]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_three.Show();
-                                                    }
-                                                    if (durchschnitt[7] != 0 && schrittzähler == 7)
-                                                    {
-                                                        _form1_schritt.screen.left_four.Left = Convert.ToInt32(durchschnitt[7]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_four.Show();
-                                                    }
-                                                    if (durchschnitt[9] != 0 && schrittzähler == 9)
-                                                    {
-                                                        _form1_schritt.screen.left_five.Left = Convert.ToInt32(durchschnitt[9]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_five.Show();
-                                                    }
-                                                    if (durchschnitt[11] != 0 && schrittzähler == 11)
-                                                    {
-                                                        _form1_schritt.screen.left_six.Left = Convert.ToInt32(durchschnitt[11]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_six.Show();
-                                                    }
-                                                    if (durchschnitt[11] != 0 && schrittzähler == 13)
-                                                    {
-                                                        _form1_schritt.screen.left_seven.Left = Convert.ToInt32(durchschnitt[11]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_seven.Show();
-                                                    }
-                                                    if (durchschnitt[12] != 0 && schrittzähler == 15)
-                                                    {
-                                                        _form1_schritt.screen.left_eight.Left = Convert.ToInt32(durchschnitt[12]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_eight.Show();
-                                                    }
-                                                    if (durchschnitt[13] != 0 && schrittzähler == 17)
-                                                    {
-                                                        _form1_schritt.screen.left_nine.Left = Convert.ToInt32(durchschnitt[13]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_nine.Show();
-                                                    }
-                                                    if (durchschnitt[14] != 0 && schrittzähler == 19)
-                                                    {
-                                                        _form1_schritt.screen.left_ten.Left = Convert.ToInt32(durchschnitt[14]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.left_ten.Show();
-                                                    }
-
-                                                    #endregion
-
-                                                    _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
-                                                    _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
-                                                    //for (int i = 0; i < 1000; i++) { count = 1; }
-                                                    count = 1;
-                                                    schrittzähler++;
-                                                }
-                                            }
-
-                                            else
-                                            {
-                                                text.Text = "Position links: " + durchschnitt[schrittzähler] + "   Schrittnummer: " + schrittzähler.ToString();
-                                                //für Fußabdruck: Schritt 1 bei Koordinate 0; letzter schritt bei 1920
-                                                if (durchschnitt[1] != 0 && schrittzähler == 1)
-                                                {
-                                                    _form1_schritt.screen.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_one.Show();
-                                                }
-                                                
-                                                //_form2.übertragung();
-                                                _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
-                                                _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
-                                                                                               //for (int i = 0; i < 1000; i++) { count = 1; }
-                                                count = 1;
-                                                schrittzähler++;
-                                            }
-                                        }
+                                        _form1_schritt.screen.left_one.Left = Convert.ToInt32(durchschnitt[1]) - (_form1_schritt.screen.left_one.Size.Width / 2); _form1_schritt.screen.left_one.Show();
                                     }
+                                }
+                                schrittzähler++;
+                                _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
+                                _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                                lf_rf_vergleich = true;
+                            }
+
+                            else if ((Convert.ToInt32(rf_distance_x) < Convert.ToInt32(lf_distance_x)) && lf_rf_vergleich)
+                            {
+                                durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
+                                if (schrittzähler > 0 && Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 1]) > abstand_zw_zwei_schritten)
+                                {
+                                    durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
+                                    #region Fußabdruck zeichnen rechts
+                                    if (durchschnitt[0] != 0 && schrittzähler == 0)
+                                    {
+                                        _form1_schritt.screen.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_one.Show();
+                                    }
+                                    if (durchschnitt[2] != 0 && schrittzähler == 2)
+                                    {
+                                        _form1_schritt.screen.right_two.Left = Convert.ToInt32(durchschnitt[2]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_two.Show();
+                                    }
+                                    if (durchschnitt[4] != 0 && schrittzähler == 4)
+                                    {
+                                        _form1_schritt.screen.right_three.Left = Convert.ToInt32(durchschnitt[4]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_three.Show();
+                                    }
+                                    if (durchschnitt[6] != 0 && schrittzähler == 6)
+                                    {
+                                        _form1_schritt.screen.right_four.Left = Convert.ToInt32(durchschnitt[6]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_four.Show();
+                                    }
+                                    if (durchschnitt[8] != 0 && schrittzähler == 8)
+                                    {
+                                        _form1_schritt.screen.right_five.Left = Convert.ToInt32(durchschnitt[8]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_five.Show();
+                                    }
+                                    if (durchschnitt[10] != 0 && schrittzähler == 10)
+                                    {
+                                        _form1_schritt.screen.right_six.Left = Convert.ToInt32(durchschnitt[10]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_six.Show();
+                                    }
+                                    if (durchschnitt[12] != 0 && schrittzähler == 12)
+                                    {
+                                        _form1_schritt.screen.right_seven.Left = Convert.ToInt32(durchschnitt[12]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_seven.Show();
+                                    }
+                                    if (durchschnitt[14] != 0 && schrittzähler == 14)
+                                    {
+                                        _form1_schritt.screen.right_eight.Left = Convert.ToInt32(durchschnitt[14]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_eight.Show();
+                                    }
+                                    if (durchschnitt[16] != 0 && schrittzähler == 16)
+                                    {
+                                        _form1_schritt.screen.right_nine.Left = Convert.ToInt32(durchschnitt[16]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_nine.Show();
+                                    }
+                                    if (durchschnitt[18] != 0 && schrittzähler == 18)
+                                    {
+                                        _form1_schritt.screen.right_ten.Left = Convert.ToInt32(durchschnitt[18]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_ten.Show();
+                                    }
+
                                     #endregion
                                 }
+                                else
+                                {
+                                    durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
+                                    if (durchschnitt[0] != 0 && schrittzähler == 0)
+                                    {
+                                        _form1_schritt.screen.right_one.Left = Convert.ToInt32(durchschnitt[0]) - (_form1_schritt.screen.right_one.Size.Width / 2); _form1_schritt.screen.right_one.Show();
+                                    }
+                                }
+                                schrittzähler++;
+                                lf_rf_vergleich = false;
+                                _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
+                                _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                            }
+                        }
 
-                                if (schrittzähler == 19)
-                                    schrittzähler = 0;
+                        if (schrittzähler >= 19)
+                            schrittzähler = 0;
 
-                                if (autobox && !already_placed)
+                        if (autobox && !already_placed)
                                 {
                                     if (Convert.ToInt32(rf_distance_x) >= 0 || Convert.ToInt32(lf_distance_x) >= 0)
                                     {
@@ -528,31 +657,6 @@ namespace Bitmap_Test1_Schmid
                     }
                 }
             }
-        }
-
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show(durchschnitt[0] + "  " + durchschnitt[0] / 3.75 + "\n" +
-            //                durchschnitt[1] + "  " + durchschnitt[1] / 3.75 + "\n" +
-            //                durchschnitt[2] + "  " + durchschnitt[2] / 3.75 + "\n" +
-            //                durchschnitt[3] + "  " + durchschnitt[3] / 3.75 + "\n" +
-            //                durchschnitt[4] + "  " + durchschnitt[4] / 3.75 + "\n" +
-            //                durchschnitt[5] + "  " + durchschnitt[5] / 3.75 + "\n" +
-            //                durchschnitt[6] + "  " + durchschnitt[6] / 3.75 + "\n" +
-            //                durchschnitt[7] + "  " + durchschnitt[7] / 3.75 + "\n" +
-            //                durchschnitt[8] + "  " + durchschnitt[8] / 3.75 + "\n" +
-            //                durchschnitt[9] + "  " + durchschnitt[9] / 3.75 + "\n" +
-            //                durchschnitt[10] + "  " + durchschnitt[10] / 3.75);
-        }
-
-        private void KinectMonitor_LocationChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void KinectMonitor_FormClosing(object sender, FormClosingEventArgs e)

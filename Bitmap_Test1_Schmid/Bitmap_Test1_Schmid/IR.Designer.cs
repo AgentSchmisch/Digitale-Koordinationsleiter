@@ -114,7 +114,6 @@ namespace Bitmap_Test1_Schmid
             // 
             // kal
             // 
-            this.kal.Enabled = false;
             this.kal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.kal.ForeColor = System.Drawing.SystemColors.ButtonFace;

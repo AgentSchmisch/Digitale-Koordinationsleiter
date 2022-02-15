@@ -31,8 +31,8 @@ namespace Bitmap_Test1_Schmid
         }
 
         string[] possibleTracker;
-        int[] ecken_x = new int[3];
-        int[] ecken_y = new int[3];
+        int[] ecken_x = new int[4];
+        int[] ecken_y = new int[4];
         //int ecken1_x;
         //int ecken1_y;
         //int ecken2_x;
@@ -43,7 +43,6 @@ namespace Bitmap_Test1_Schmid
         //int ecken4_y;
 
         int mode = 0;
-        int mode2 = 0;
         public double multiplikator;
 
         public double mittelpunkt_links = 0;
@@ -179,33 +178,6 @@ namespace Bitmap_Test1_Schmid
                                 ecken_x[3] = (int)center.X;
                                 ecken_y[3] = (int)center.Y;
                                 kreise = 0;
-
-                                for (int x = 0; x < 4; x++)
-                                {
-                                    for (int j = x + 1; j < 4; j++)
-                                    {
-                                        if (ecken_y[x] == ecken_y[j])
-                                        {
-                                            kal.Enabled = false;
-                                            return;
-                                        }
-                                        else
-                                            kal.Enabled = true;
-                                    }
-                                }//doppelte y werte löschen
-                                for (int x = 0; x < 4; i++)
-                                {
-                                    for (int j = x + 1; j < 4; j++)
-                                    {
-                                        if (ecken_x[x] == ecken_x[j])
-                                        {
-                                            kal.Enabled = false;
-                                            return;
-                                        }
-                                        else
-                                            kal.Enabled = true;
-                                    }
-                                }//doppelte x werte löschen
                             }
                             kreise++;
                         }

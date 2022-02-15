@@ -236,9 +236,9 @@ namespace Bitmap_Test1_Schmid
                 kinectM.steps_kinect = Convert.ToInt32(steps.Text);
                 kinectToolStripMenuItem.BackColor = Color.Red;
                 check_autoobjekt.Enabled = true;
-                lab_schrittgeschw.Visible = true;
-                lab_schrittgeschw_text.Visible = true;
-                schrittgeschw.Visible = true;
+                //lab_schrittgeschw.Visible = true;
+                //lab_schrittgeschw_text.Visible = true;
+                //schrittgeschw.Visible = true;
 
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
                 kinectM.WindowState = FormWindowState.Minimized;
@@ -307,6 +307,10 @@ namespace Bitmap_Test1_Schmid
 
             delsteps.Visible = false;
             kinectM.schrittzähler = 0;
+            Array.Clear(kinectM.schritt_rechts, 0, kinectM.schritt_rechts.Length);//arays clearn um Fehler zu vermeiden in der Schritterkennung
+            Array.Clear(kinectM.schritt_links, 0, kinectM.schritt_links.Length);
+            Array.Clear(kinectM.zw_schritt_rechts, 0, kinectM.zw_schritt_rechts.Length);
+            Array.Clear(kinectM.zw_schritt_links, 0, kinectM.zw_schritt_links.Length);
         }
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
         {
@@ -493,6 +497,33 @@ namespace Bitmap_Test1_Schmid
                 lab_schrittgeschw.Text = "schnell";
                 kinectM.timeout = 5;
             }
+        }
+        int anzahl = 1;
+        private void steps_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bestätigen.PerformClick();
+            }
+        }
+
+        private void steps_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Back && anzahl > 0)
+                anzahl = anzahl - 2;
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            if (anzahl >= 2)
+            {
+                e.Handled = true;
+                anzahl = 1;
+            }
+            anzahl++;
         }
     }
 }

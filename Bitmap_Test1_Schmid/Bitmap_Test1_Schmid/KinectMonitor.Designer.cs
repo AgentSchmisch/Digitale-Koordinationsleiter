@@ -60,7 +60,6 @@ namespace Bitmap_Test1_Schmid
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             // 
             // label1
             // 
@@ -241,9 +240,7 @@ namespace Bitmap_Test1_Schmid
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 24;
             this.button1.Text = "verlauf";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
+            this.button1.UseVisualStyleBackColor = true;            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -289,7 +286,6 @@ namespace Bitmap_Test1_Schmid
             this.Text = "Kinect Monitor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KinectMonitor_FormClosing);
             this.Load += new System.EventHandler(this.KinectMonitor_Load);
-            this.LocationChanged += new System.EventHandler(this.KinectMonitor_LocationChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);

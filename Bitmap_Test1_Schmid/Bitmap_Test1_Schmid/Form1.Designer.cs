@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.steps = new System.Windows.Forms.TextBox();
+            this.steps2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bestätigen = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,26 +68,29 @@
             this.lab_schrittgeschw = new System.Windows.Forms.Label();
             this.lab_schrittgeschw_text = new System.Windows.Forms.Label();
             this.schrittgeschw = new System.Windows.Forms.TrackBar();
+            this.steps = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schrittgeschw)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.steps)).BeginInit();
             this.SuspendLayout();
             // 
-            // steps
+            // steps2
             // 
-            this.steps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
-            this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.steps.ForeColor = System.Drawing.Color.White;
-            this.steps.Location = new System.Drawing.Point(154, 117);
-            this.steps.MaxLength = 2;
-            this.steps.Name = "steps";
-            this.steps.Size = new System.Drawing.Size(57, 38);
-            this.steps.TabIndex = 2;
-            this.steps.Text = "6";
-            this.steps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.steps_KeyDown);
-            this.steps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.steps_KeyPress);
+            this.steps2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
+            this.steps2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.steps2.ForeColor = System.Drawing.Color.White;
+            this.steps2.Location = new System.Drawing.Point(154, 117);
+            this.steps2.MaxLength = 2;
+            this.steps2.Name = "steps2";
+            this.steps2.Size = new System.Drawing.Size(57, 38);
+            this.steps2.TabIndex = 2;
+            this.steps2.Text = "6";
+            this.steps2.Visible = false;
+            this.steps2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.steps_KeyDown);
+            this.steps2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.steps_KeyPress);
             // 
             // label1
             // 
@@ -531,6 +534,34 @@
             this.schrittgeschw.Visible = false;
             this.schrittgeschw.ValueChanged += new System.EventHandler(this.schrittgeschw_ValueChanged);
             // 
+            // steps
+            // 
+            this.steps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
+            this.steps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.steps.ForeColor = System.Drawing.Color.White;
+            this.steps.Location = new System.Drawing.Point(154, 118);
+            this.steps.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.steps.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.steps.Name = "steps";
+            this.steps.Size = new System.Drawing.Size(63, 38);
+            this.steps.TabIndex = 49;
+            this.steps.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.steps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.steps_KeyDown_1);
+            this.steps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.steps_KeyPress_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,6 +570,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(644, 385);
+            this.Controls.Add(this.steps);
             this.Controls.Add(this.lab_schrittgeschw);
             this.Controls.Add(this.lab_schrittgeschw_text);
             this.Controls.Add(this.schrittgeschw);
@@ -569,7 +601,7 @@
             this.Controls.Add(this.regler);
             this.Controls.Add(this.bestätigen);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.steps);
+            this.Controls.Add(this.steps2);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -582,7 +614,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Digitale Koordinationsleiter";
-            this.TopMost = true;
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -592,6 +623,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schrittgeschw)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.steps)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -604,7 +636,7 @@
         private System.Windows.Forms.Label längelabel;
         private System.Windows.Forms.Button fläche;
         public System.Windows.Forms.TrackBar längebox;
-        public System.Windows.Forms.TextBox steps;
+        public System.Windows.Forms.TextBox steps2;
         public System.Windows.Forms.TrackBar regler;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
@@ -636,6 +668,7 @@
         private System.Windows.Forms.Label lab_schrittgeschw;
         private System.Windows.Forms.Label lab_schrittgeschw_text;
         public System.Windows.Forms.TrackBar schrittgeschw;
+        private System.Windows.Forms.NumericUpDown steps;
     }
 }
 
