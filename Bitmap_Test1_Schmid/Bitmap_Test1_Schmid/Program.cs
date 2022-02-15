@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid
@@ -20,9 +17,9 @@ namespace Bitmap_Test1_Schmid
             {
                 Application.Run(new Form1());
             }
-            catch 
+            catch
             {
-                if(MessageBox.Show("Fatal Error", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Stop) == DialogResult.OK)
+                if (MessageBox.Show("Fatal Error", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Stop) == DialogResult.OK)
                 {
                     Application.Restart();
                 }

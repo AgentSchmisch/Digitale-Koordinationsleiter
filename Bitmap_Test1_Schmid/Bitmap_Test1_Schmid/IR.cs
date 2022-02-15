@@ -33,14 +33,6 @@ namespace Bitmap_Test1_Schmid
         string[] possibleTracker;
         int[] ecken_x = new int[4];
         int[] ecken_y = new int[4];
-        //int ecken1_x;
-        //int ecken1_y;
-        //int ecken2_x;
-        //int ecken2_y;
-        //int ecken3_x;
-        //int ecken3_y;
-        //int ecken4_x;
-        //int ecken4_y;
 
         int mode = 0;
         public double multiplikator;
@@ -71,7 +63,7 @@ namespace Bitmap_Test1_Schmid
             reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Infrared);
             reader.MultiSourceFrameArrived += reader_IRFrameArrived;
         }
-       
+
         void reader_IRFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
         {
             if (mode == 1)
@@ -85,7 +77,7 @@ namespace Bitmap_Test1_Schmid
                 if (frame != null)
                 {
                     warten.Visible = false;
-
+                    kal.Enabled = true;
                     int width = frame.FrameDescription.Width;
                     int height = frame.FrameDescription.Height;
                     ushort[] data = new ushort[width * height];
@@ -120,7 +112,6 @@ namespace Bitmap_Test1_Schmid
 
                     counter = new BlobCounter();
                     EuclideanColorFiltering filter = new EuclideanColorFiltering();
-                    //ResizeNearestNeighbor filter2 = new ResizeNearestNeighbor(1920, 1080);
                     filter.CenterColor = new RGB(Color.White); //Pure White
                     filter.Radius = (short)trackBar1.Value; //Increase this to allow off-whites
                     filter.FillOutside = false;
@@ -128,15 +119,8 @@ namespace Bitmap_Test1_Schmid
 
                     Bitmap bmp = filter.Apply(bitmap);
 
-                    //filter2.Apply(bmp);
-                    //filter3.Apply(bmp);
-
-                    //filter.CenterColor = new RGB(0, 0, 0);
-                    //filter.Radius = 100;
-                    //filter.ApplyInPlace(bmp);
                     counter.MinWidth = 100;
                     counter.MinHeight = 100;
-                    //counter.FilterBlobs = true;
                     counter.BackgroundThreshold = Color.Gray;
                     counter.ProcessImage(bmp);
                     Blob[] blobs = counter.GetObjectsInformation();
@@ -187,6 +171,7 @@ namespace Bitmap_Test1_Schmid
                 else
                 {
                     warten.Visible = true;
+                    kal.Enabled = false;
                 }
             }
         }
@@ -217,7 +202,8 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (vergleich_y[i] == vergleich_y[j])
                     {
-                        MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        timer1.Start();
+                        error.Visible = true;
                         return;
                     }
                 }
@@ -228,7 +214,8 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (vergleich_x[i] == vergleich_x[j])
                     {
-                        MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        timer1.Start();
+                        error.Visible = true;
                         return;
                     }
                 }
@@ -236,7 +223,8 @@ namespace Bitmap_Test1_Schmid
 
             if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
             {
-                MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                timer1.Start();
+                error.Visible = true;
                 return;
             }
 
@@ -430,7 +418,7 @@ namespace Bitmap_Test1_Schmid
                 Properties.Settings.Default.multiplikator = multiplikator;
                 Properties.Settings.Default.Save();
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Es wurden nicht 4 Punkte gefunden", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -467,6 +455,12 @@ namespace Bitmap_Test1_Schmid
             {
                 kal.PerformClick();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            error.Visible = false;
+            timer1.Stop();
         }
     }
 }

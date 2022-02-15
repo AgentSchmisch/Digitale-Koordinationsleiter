@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AForge;
-using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
+﻿using AForge;
 using AForge.Imaging;
 using AForge.Imaging.Filters;
 using AForge.Math.Geometry;
 using Microsoft.Kinect;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace Bitmap_Test1_Schmid
 {
@@ -36,8 +33,8 @@ namespace Bitmap_Test1_Schmid
         public Bitmap bitmap;
         public Bitmap bmp;
 
-       private string footright;
-       private  string footleft;
+        private string footright;
+        private string footleft;
         public retrieve_Kinect()
         {
 
@@ -55,7 +52,7 @@ namespace Bitmap_Test1_Schmid
 
         public void BodyFrameReader()
         {
-           
+
             bodyFrameReader = kinectSensor.BodyFrameSource.OpenReader();
             if (reader != null)
             {
@@ -185,7 +182,7 @@ namespace Bitmap_Test1_Schmid
                     filter.FillOutside = false;
                     filter.FillColor = new RGB(Color.White); //Replacement Color
 
-                     bmp = filter.Apply(bitmap);
+                    bmp = filter.Apply(bitmap);
 
                     filter2.Apply(bmp);
 
@@ -263,7 +260,7 @@ namespace Bitmap_Test1_Schmid
             }
             set
             {
-                 footright=value;
+                footright = value;
             }
         }
         public string LeftFoot

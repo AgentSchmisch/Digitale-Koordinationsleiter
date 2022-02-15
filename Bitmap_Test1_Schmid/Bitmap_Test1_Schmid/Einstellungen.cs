@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid
@@ -105,9 +98,9 @@ namespace Bitmap_Test1_Schmid
             this._form1.screen.color_b = 255;
 
             Properties.Settings.Default.colorbox_r = 150;
-            Properties.Settings.Default.colorbox_g =0;
-            Properties.Settings.Default.colorbox_b =180;
-            Properties.Settings.Default.color_r =255;
+            Properties.Settings.Default.colorbox_g = 0;
+            Properties.Settings.Default.colorbox_b = 180;
+            Properties.Settings.Default.color_r = 255;
             Properties.Settings.Default.color_g = 255;//speichert Farbwerte
             Properties.Settings.Default.color_b = 255;
             Properties.Settings.Default.Save();

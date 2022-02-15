@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 
 namespace Bitmap_Test1_Schmid
 {
@@ -184,7 +179,8 @@ namespace Bitmap_Test1_Schmid
                 Patientendatenbank.haupt = this;
                 Patientendatenbank.ShowDialog();
 
-                if (Patientendatenbank.Patientenname != null && Patientendatenbank.letzteBehandlung != null) {
+                if (Patientendatenbank.Patientenname != null && Patientendatenbank.letzteBehandlung != null)
+                {
                     lblName.Text = Patientendatenbank.Patientenname;
                     lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
                     lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
@@ -277,7 +273,7 @@ namespace Bitmap_Test1_Schmid
             ir.form1_2 = this;
             ir.ShowDialog();
             screen.endkanten();
-            
+
             //ir.ShowDialog();
             //this.Show();
         }
@@ -396,10 +392,10 @@ namespace Bitmap_Test1_Schmid
             {
                 label9.Location = new Point(446, label9.Location.Y);
                 label9.Text = "sehr früh";
-                kinectM.empfindlichkeit = 500; 
+                kinectM.empfindlichkeit = 500;
             }
 
-            if (trackBar1.Value == 2) 
+            if (trackBar1.Value == 2)
             {
                 label9.Location = new Point(490, label9.Location.Y);
                 label9.Text = "früh";

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Drawing;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid

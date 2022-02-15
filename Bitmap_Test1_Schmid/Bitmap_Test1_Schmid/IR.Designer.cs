@@ -29,6 +29,7 @@ namespace Bitmap_Test1_Schmid
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IR));
             this.k4 = new System.Windows.Forms.Label();
             this.k3 = new System.Windows.Forms.Label();
@@ -48,6 +49,8 @@ namespace Bitmap_Test1_Schmid
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.überschrift = new System.Windows.Forms.Label();
             this.warten = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.error = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -114,6 +117,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // kal
             // 
+            this.kal.Enabled = false;
             this.kal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.kal.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -277,6 +281,25 @@ namespace Bitmap_Test1_Schmid
             this.warten.TabIndex = 26;
             this.warten.Text = "Warten auf Bilddaten ...";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // error
+            // 
+            this.error.AutoSize = true;
+            this.error.BackColor = System.Drawing.Color.Transparent;
+            this.error.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.error.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.error.ForeColor = System.Drawing.Color.Red;
+            this.error.Location = new System.Drawing.Point(120, 76);
+            this.error.Name = "error";
+            this.error.Size = new System.Drawing.Size(363, 28);
+            this.error.TabIndex = 27;
+            this.error.Text = "Es wurden keine 4 Punkte gefunden";
+            this.error.Visible = false;
+            // 
             // IR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +307,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(645, 570);
+            this.Controls.Add(this.error);
             this.Controls.Add(this.warten);
             this.Controls.Add(this.überschrift);
             this.Controls.Add(this.checkBox1);
@@ -340,5 +364,7 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label überschrift;
         private System.Windows.Forms.Label warten;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label error;
     }
 }

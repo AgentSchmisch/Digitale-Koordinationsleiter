@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid
@@ -50,7 +45,7 @@ namespace Bitmap_Test1_Schmid
                         lab_steps.ForeColor = myColor;
                         steps.ForeColor = myColor;
                     }
-                    if (opacity>=20 && opacity <= 210)
+                    if (opacity >= 20 && opacity <= 210)
                     {
                         Color myColor = Color.FromArgb(20 + opacity, 30 + opacity, 40 + opacity);
                         lab_durchs.ForeColor = myColor;
@@ -64,7 +59,7 @@ namespace Bitmap_Test1_Schmid
                     }
                     if (opacity >= 60 && opacity <= 250)
                     {
-                        Color myColor = Color.FromArgb(opacity-20, opacity-10, opacity);
+                        Color myColor = Color.FromArgb(opacity - 20, opacity - 10, opacity);
                         lab_groß.ForeColor = myColor;
                         groß.ForeColor = myColor;
                     }
@@ -120,7 +115,7 @@ namespace Bitmap_Test1_Schmid
             label2.Location = new Point(33, 112);
             text_länge.Location = new Point(307, 112);
             button1.Location = new Point(150, 170);
-            label2.Visible=true;
+            label2.Visible = true;
             button1.Visible = true;
             text_länge.Visible = true;
         }

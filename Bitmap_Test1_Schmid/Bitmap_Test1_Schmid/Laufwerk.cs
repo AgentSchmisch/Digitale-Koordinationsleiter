@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid
 {
@@ -98,7 +91,7 @@ namespace Bitmap_Test1_Schmid
             }
             catch
             {
-                MessageBox.Show("Bitte schneller klicken!", "schneller klicken!", MessageBoxButtons.OK , MessageBoxIcon.Asterisk);
+                MessageBox.Show("Bitte schneller klicken!", "schneller klicken!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
@@ -137,7 +130,7 @@ namespace Bitmap_Test1_Schmid
                     listBox1.Enabled = false;
                 }
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Es ist ein Fehler aufgetreten");
             }
