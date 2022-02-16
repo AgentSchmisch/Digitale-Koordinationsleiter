@@ -10,7 +10,6 @@ namespace Bitmap_Test1_Schmid
     {
         /*Alle Patientenspezifischen Tabellen nach dem Schema: Patientennummer_Vorname_Nachname
          * TODO: Patienten neu anlegen: VornameTB wird nicht gecleart beim klicken
-         * 
         */
 
         //Connectionstring für die Verbindung zum Server
@@ -41,7 +40,9 @@ namespace Bitmap_Test1_Schmid
         int[] tabs = new int[5];
         string patnr = "", vorname = "", nachname = "", geburtsdatum = "", adresse = "", plz = "", ort = "", telNr = "";
         int telnummerlength = 0;
-
+        public int[] sollMittelwerte = new int[5];
+        public int[] sollMinimalwerte = new int[5];
+        public int[] sollMaximalwerte = new int[5];
         public Color color_on_leafe = Color.FromArgb(180, 190, 200);
 
         //Parameter für die Datenbank
@@ -306,7 +307,7 @@ namespace Bitmap_Test1_Schmid
             string s = Patienten.SelectedItem.ToString();
 
             DataTable tbl2;
-            query3 = "SELECT Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite FROM " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + ";"; //Vorname_Nachname_Patientennummer     Convert.ToInt32(PatNr_aktuell)
+            query3 = "SELECT Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite_soll FROM " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + ";"; 
             try
             {
                 cmd = new SqlCommand(query3, conn);
@@ -323,7 +324,6 @@ namespace Bitmap_Test1_Schmid
             }
             finally
             {
-
                 conn.Close();
             }
 
@@ -331,7 +331,6 @@ namespace Bitmap_Test1_Schmid
             //Daten nur aus der letzten Zeile auslesen um so das aktuellste Behandlungsdatum zu erhalten
             if (tbl2.Rows.Count == 0)
             {
-
                 Nameaktuell = vorname + " " + nachname;
                 letzteBehandlung = "keine Sitzungen vorhanden";
                 letzteSchrittanzahl = "keine Daten vorhanden";
@@ -368,15 +367,22 @@ namespace Bitmap_Test1_Schmid
                         BehandlungsnummerMax += row[j];
                         continue;
                     }
-                    if (tbl2.Columns[j].ColumnName == "Schrittweite")
+                    if (tbl2.Columns[j].ColumnName == "Schrittweite_soll")
                     {
+                        
                         letzteSchrittanzahl += row[j];
+                        string[] letzteSchrittanzahl_ = new string[3];
+                        letzteSchrittanzahl_=letzteSchrittanzahl.Split(',');
+                       letzteSchrittanzahl= letzteSchrittanzahl_[1];
                         continue;
                     }
                 }
 
                 #endregion
-                this.Close();
+                Hide();
+                //todo:  hier im hintergrund alle Patientendaten abrufen und in die Arrays schreiben 
+
+                Close();
                 auswahl = true;
             }
         }
@@ -594,9 +600,12 @@ namespace Bitmap_Test1_Schmid
         {
             set
             {
+                string[] uebergeben=value.Split(';');
+
+
                 Nameaktuell = Nameaktuell.Replace(" ", "_");
-                query3 = "INSERT INTO " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite) VALUES ('" + vorname + "','" + nachname + "','"
-                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + value + "');";
+                query3 = "INSERT INTO " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist) VALUES ('" + vorname + "','" + nachname + "','"
+                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"');";
 
                 try
                 {
