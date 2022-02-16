@@ -20,6 +20,8 @@ namespace Bitmap_Test1_Schmid
         public double schritte = 0;
         double länge = 300;
 
+        Patientendatenbank patientendatenbank = new Patientendatenbank();
+
         private Form1 _form1_anal;
         public Form1 form1_anal
         {
@@ -144,5 +146,50 @@ namespace Bitmap_Test1_Schmid
             klein.Text = Math.Round(((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
             groß.Text = Math.Round(((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
         }
+
+        private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)
+        {
+            //zuerst die form vergrößern um das chart zu zeigen
+            //dann die werte aus der Patientendatenbank holen und im chart darstellen
+            chart1.Titles.Add(patientendatenbank.Nameaktuell); //titel des diagramms setzen
+            fenstergroeße.Start();//Fenster vergrößern
+            chart1.Series["Mittelwerte"].Points.Clear();//alle alten informationen löschen
+            chart1.Series["Abweichungen"].Points.Clear();
+
+            foreach (int element in patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
+            {
+                int xcoord = 1;
+                chart1.Series["Mittelwerte"].Points.AddXY(xcoord, element);
+
+                xcoord++;
+            }
+            foreach (int element in patientendatenbank.sollMaximalwerte) //die Maximalen Werte darstellen
+            {
+
+            }
+            foreach (int element in patientendatenbank.sollMinimalwerte)//die minimalen Werte darstellen
+            {
+
+            }
+
+        }
+
+        private void RB_istwerte_CheckedChanged(object sender, EventArgs e)
+        {
+            //gleiches verhalten wie bei auswahl des anderen Radio buttons
+            fenstergroeße.Start();
+            chart1.Titles.Add(patientendatenbank.Nameaktuell);
+
+            chart1.Series["Mittelwerte"].Points.Clear();
+            chart1.Series["Abweichungen"].Points.Clear();
+
+
+        }
+        private void fenstergroeße_Tick(object sender, EventArgs e)
+        {
+            //todo: i hab keine ahnung wie a timer funktioniert in dem schas
+            
+        }
     }
+
 }

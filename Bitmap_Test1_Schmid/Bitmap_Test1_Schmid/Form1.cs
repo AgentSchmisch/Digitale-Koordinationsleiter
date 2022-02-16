@@ -11,7 +11,7 @@ namespace Bitmap_Test1_Schmid
         public Form2 screen = new Form2();
         Einstellungen einstellungen = new Einstellungen();
         public Patientendatenbank Patientendatenbank = new Patientendatenbank();
-        retrieve_Kinect kinect = new retrieve_Kinect();
+        public Analyse analyse = new Analyse();
         public KinectMonitor kinectM;// = new KinectMonitor();
         public IR ir = new IR();
         public Laufwerk usb = new Laufwerk();
@@ -25,7 +25,13 @@ namespace Bitmap_Test1_Schmid
         public double kleinsterabstand = 500;
         public double größterabstand = 0;
 
-        public bool etwas_geändert = true;//wenn Box daten gleich sind kommt "entfernen" statt "bestätigen"
+        public int[] sollabstände=new int[100];
+
+        public int soll_größterabstand = 0;
+        public int soll_kleinsterabstand = 100;
+        public double soll_mittelwert = 0;
+        public int soll_anzahl = 0;
+        bool keinschritt=false;
 
         int animation = 0;
         public Form1()
@@ -59,7 +65,9 @@ namespace Bitmap_Test1_Schmid
                 länge.ForeColor = Color.White;
                 label2.ForeColor = Color.White;
                 label4.ForeColor = Color.White;
-
+               
+                sollabstände[soll_anzahl] += Convert.ToInt32(steps.Text);
+                soll_anzahl++;
             }
             catch
             {
@@ -174,8 +182,7 @@ namespace Bitmap_Test1_Schmid
             {
                 //öffnen der Form für die Patientendatenbank, 
                 //auslesen der werte in der Form, wenn die Form geschlossen wird, die werte in die Label in der UI übergeben
-                // Patientendatenbank p = new Patientendatenbank();
-                System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+                Cursor.Current = Cursors.WaitCursor;
                 Patientendatenbank.haupt = this;
                 Patientendatenbank.ShowDialog();
 
@@ -208,16 +215,34 @@ namespace Bitmap_Test1_Schmid
             //wenn die Form geschlossen wird die Werte aus der Patientendatenbank übernehmen und im Label anzeigen
             lblName.Text = Patientendatenbank.Patientenname;
             lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
-            lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
+            lblSteps.Text = Patientendatenbank.letzteSchrittanzahl; //todo:hier den mittelwert einsetzen
         }
 
         private void BtnSitzungBeenden_Click(object sender, EventArgs e)
         {
+            Array.Sort(sollabstände);
+            Array.Reverse(sollabstände);
+            soll_größterabstand = sollabstände.Max();
+            //flag setzen die angibt ob 0 als abstand ausgewählt wurde
+            soll_kleinsterabstand = sollabstände[soll_anzahl];
+
+            for (int i = 1; i < sollabstände.Length; i++) //alle arraywerte durchgehen außer den ersten, da dieser von der letzten Sitzung übernommen wird
+            {
+                soll_mittelwert += sollabstände[i];
+            }
+            soll_mittelwert = (soll_mittelwert-Convert.ToInt32(Patientendatenbank.letzteSchrittanzahl)) / (soll_anzahl - 1);
             //übergabe der aktuellen schrittweite nach abschließen der Behandlungssitzung
-            Patientendatenbank.wertuebergabe = steps.Text.ToString();
+            Patientendatenbank.wertuebergabe = steps.Text;
+            //Patientendatenbank.wertuebergabe = soll_größterabstand+","+
+            //    soll_mittelwert+ "," +
+            //    soll_kleinsterabstand + ";" +
+            //    analyse.kleinsterabstand.ToString()+","+
+            //    analyse.größterabstand.ToString()+","+
+            //    analyse.schrittdurchschnitt.ToString()+";";
             x = 0;
             animation = 1;
             timer.Start();
+            soll_anzahl = 0;
             //Size = new Size(defaultsize_f1_x, defaultsize_f1_y);
             //this.CenterToScreen();
         }
@@ -351,7 +376,6 @@ namespace Bitmap_Test1_Schmid
             Math.Round(kleinsterabstand);
             Math.Round(schrittdurchschnitt);
 
-            Analyse analyse = new Analyse();
             analyse.form1_anal = this;
             analyse.schrittdurchschnitt = schrittdurchschnitt;
             analyse.kleinsterabstand = kleinsterabstand;
@@ -381,10 +405,6 @@ namespace Bitmap_Test1_Schmid
             }
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)
         {

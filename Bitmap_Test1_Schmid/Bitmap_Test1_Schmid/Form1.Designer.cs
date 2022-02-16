@@ -288,7 +288,6 @@
             this.analyseToolStripMenuItem.Name = "analyseToolStripMenuItem";
             this.analyseToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.analyseToolStripMenuItem.Text = "Analyse";
-            this.analyseToolStripMenuItem.Visible = false;
             this.analyseToolStripMenuItem.Click += new System.EventHandler(this.analyseToolStripMenuItem_Click);
             // 
             // BtnSitzungBeenden
@@ -457,7 +456,6 @@
             this.label7.Size = new System.Drawing.Size(87, 20);
             this.label7.TabIndex = 42;
             this.label7.Text = "Erkennung";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label9
             // 
