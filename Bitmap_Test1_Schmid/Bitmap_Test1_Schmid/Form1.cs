@@ -42,10 +42,13 @@ namespace Bitmap_Test1_Schmid
             screen.Show();
         }
         private void bestätigen_Click(object sender, EventArgs e)
-        {
+        { 
             try
             {
-                //schritt=Convert.ToInt32(steps.Text);
+                if (steps.Text.Length > 2)//im Fall einer 3 stelligen zahl
+                {
+                    steps.Text = "99";
+                }
                 screen.sendvar = Convert.ToInt32(steps.Text);
                 regler.Maximum = Convert.ToInt32(steps.Text) - 1;
                 screen.regler.Maximum = Convert.ToInt32(steps.Text) - 1;
