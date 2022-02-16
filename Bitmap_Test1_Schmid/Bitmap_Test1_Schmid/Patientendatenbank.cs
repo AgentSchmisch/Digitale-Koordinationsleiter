@@ -23,27 +23,27 @@ namespace Bitmap_Test1_Schmid
         string query3;
         string query4 = "select IDENT_CURRENT('Patientenliste');";
         #endregion
-        string record;
         bool bearbeitung = false;
         public bool auswahl = false;
+        public bool neustart;
         //Variablen für die verschiedenen Patientendaten die später von der UI geholt werden
 
-        public string Patientenname;
         string PatNr_aktuell;
-        public string Nameaktuell;
+        string record;
+
         public string letzteBehandlung;
         public string letzteSchrittanzahl;
-        public string BehandlungsnummerMax;
         public string Datenbankbuchstabe;
-        public bool neustart;
-        //variablen die aus verschiedenen gründen global sind
+        public string patnr = "", vorname = "", nachname = "", geburtsdatum = "", adresse = "", plz = "", ort = "", telNr = "";
+
         int[] tabs = new int[5];
-        string patnr = "", vorname = "", nachname = "", geburtsdatum = "", adresse = "", plz = "", ort = "", telNr = "";
         int telnummerlength = 0;
+
         public int[] sollMittelwerte = new int[5];
         public int[] sollMinimalwerte = new int[5];
         public int[] sollMaximalwerte = new int[5];
-        public Color color_on_leafe = Color.FromArgb(180, 190, 200);
+
+        public Color color_on_leave = Color.FromArgb(180, 190, 200);
 
         //Parameter für die Datenbank
         SqlConnection conn;
@@ -83,31 +83,31 @@ namespace Bitmap_Test1_Schmid
             Size = new Size(471, 383);
             auswahlBtn.Location = new Point(166, 349);
             TbName.Text = "Vorname";
-            TbName.ForeColor = color_on_leafe;
+            TbName.ForeColor = color_on_leave;
             TbName.ReadOnly = false;
 
             TbNachname.Text = "Nachname";
-            TbNachname.ForeColor = color_on_leafe;
+            TbNachname.ForeColor = color_on_leave;
             TbNachname.ReadOnly = false;
 
             TbPatNr.Text = "Patientennr.";
-            TbPatNr.ForeColor = color_on_leafe;
+            TbPatNr.ForeColor = color_on_leave;
             TbPatNr.ReadOnly = false;
 
             TbGeburtsdatum.Text = "Geburtsdatum";
-            TbGeburtsdatum.ForeColor = color_on_leafe;
+            TbGeburtsdatum.ForeColor = color_on_leave;
 
             TbAdresse.Text = "Adresse";
-            TbAdresse.ForeColor = color_on_leafe;
+            TbAdresse.ForeColor = color_on_leave;
 
             TbPLZ.Text = "PLZ";
-            TbPLZ.ForeColor = color_on_leafe;
+            TbPLZ.ForeColor = color_on_leave;
 
             TbOrt.Text = "Ort";
-            TbOrt.ForeColor = color_on_leafe;
+            TbOrt.ForeColor = color_on_leave;
 
             TbTelefonnummer.Text = "Telefonnummer";
-            TbTelefonnummer.ForeColor = color_on_leafe;
+            TbTelefonnummer.ForeColor = color_on_leave;
 
             #endregion
 
@@ -236,13 +236,13 @@ namespace Bitmap_Test1_Schmid
                             if (tbl.Columns[j].ColumnName == "Vorname")
                             {
                                 record += row[j] + " ";
-                                Patientenname = row[j] + " ";
+                                vorname = row[j].ToString();
                                 continue;
                             }
                             if (tbl.Columns[j].ColumnName == "Nachname")
                             {
                                 record += row[j] + ";";
-                                Patientenname += row[j];
+                                nachname = row[j].ToString();
                                 continue;
                             }
                             if (tbl.Columns[j].ColumnName == "PLZ")
@@ -307,7 +307,7 @@ namespace Bitmap_Test1_Schmid
             string s = Patienten.SelectedItem.ToString();
 
             DataTable tbl2;
-            query3 = "SELECT Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite_soll FROM " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + ";"; 
+            query3 = "SELECT Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite_soll FROM " + vorname+ "_"+nachname + "_" + PatNr_aktuell + ";"; 
             try
             {
                 cmd = new SqlCommand(query3, conn);
@@ -331,7 +331,6 @@ namespace Bitmap_Test1_Schmid
             //Daten nur aus der letzten Zeile auslesen um so das aktuellste Behandlungsdatum zu erhalten
             if (tbl2.Rows.Count == 0)
             {
-                Nameaktuell = vorname + " " + nachname;
                 letzteBehandlung = "keine Sitzungen vorhanden";
                 letzteSchrittanzahl = "keine Daten vorhanden";
                 this.Close();
@@ -348,12 +347,12 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (tbl2.Columns[j].ColumnName == "Vorname")
                     {
-                        Nameaktuell += row[j] + " ";
+                        vorname = row[j].ToString();
                         continue;
                     }
                     if (tbl2.Columns[j].ColumnName == "Nachname")
                     {
-                        Nameaktuell += row[j];
+                        nachname = row[j].ToString();
                         continue;
                     }
                     if (tbl2.Columns[j].ColumnName == "Behandlungsdatum")
@@ -362,14 +361,8 @@ namespace Bitmap_Test1_Schmid
                         letzteBehandlung = letzteBehandlung.Replace(" 00:00:00", "");
                         continue;
                     }
-                    if (tbl2.Columns[j].ColumnName == "Behandlungsnummer")
-                    {
-                        BehandlungsnummerMax += row[j];
-                        continue;
-                    }
                     if (tbl2.Columns[j].ColumnName == "Schrittweite_soll")
                     {
-                        
                         letzteSchrittanzahl += row[j];
                         string[] letzteSchrittanzahl_ = new string[3];
                         letzteSchrittanzahl_=letzteSchrittanzahl.Split(',');
@@ -381,8 +374,53 @@ namespace Bitmap_Test1_Schmid
                 #endregion
                 Hide();
                 //todo:  hier im hintergrund alle Patientendaten abrufen und in die Arrays schreiben 
+                query3 = "SELECT Schrittweite_soll, schrittweite_ist FROM " + vorname + "_" + nachname + "_" + PatNr_aktuell + ";";
+                try
+                {
+                    cmd = new SqlCommand(query3, conn);
+                    conn.Open();
+                    da = new SqlDataAdapter(cmd);
+                    tbl2 = new DataTable();
+                    da.Fill(tbl2);
 
-                Close();
+                }
+                catch (SqlException ex)
+                {
+                    exception(ex.Number);
+                    return;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+                record = "";
+                   row = tbl2.Rows[tbl2.Rows.Count - 1];
+
+                    #region Befüllen der Variablen mit den Patientendaten
+                    for (int j = 0; j < tbl2.Columns.Count; j++)
+                    {
+                        
+                        if (tbl2.Columns[j].ColumnName == "Schrittweite_soll")
+                        {
+                            letzteSchrittanzahl += row[j];
+                            string[] letzteSchrittanzahl_ = new string[3];
+                            letzteSchrittanzahl_ = letzteSchrittanzahl.Split(',');
+                            letzteSchrittanzahl = letzteSchrittanzahl_[1];
+                            continue;
+                        }
+                        if (tbl2.Columns[j].ColumnName == "Schrittweite_ist")
+                        {
+                            letzteSchrittanzahl += row[j];
+                            string[] letzteSchrittanzahl_ = new string[3];
+                            letzteSchrittanzahl_ = letzteSchrittanzahl.Split(',');
+                            letzteSchrittanzahl = letzteSchrittanzahl_[1];
+                            continue;
+                        }
+                    }
+                
+                    #endregion
+                    Close();
                 auswahl = true;
             }
         }
@@ -467,7 +505,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (TbName.Text == "")
             {
-                TbName.ForeColor = color_on_leafe;
+                TbName.ForeColor = color_on_leave;
                 TbName.Text = "Vorname";
             }
         }
@@ -475,7 +513,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (TbNachname.Text == "")
             {
-                TbNachname.ForeColor = color_on_leafe;
+                TbNachname.ForeColor = color_on_leave;
                 TbNachname.Text = "Nachname";
             }
         }
@@ -483,7 +521,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (TbAdresse.Text == "")
             {
-                TbAdresse.ForeColor = color_on_leafe;
+                TbAdresse.ForeColor = color_on_leave;
                 TbAdresse.Text = "Adresse";
             }
         }
@@ -491,7 +529,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (TbTelefonnummer.Text == "")
             {
-                TbTelefonnummer.ForeColor = color_on_leafe;
+                TbTelefonnummer.ForeColor = color_on_leave;
                 TbTelefonnummer.Text = "Telefonnummer";
             }
         }
@@ -499,7 +537,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (TbOrt.Text == "")
             {
-                TbOrt.ForeColor = color_on_leafe;
+                TbOrt.ForeColor = color_on_leave;
                 TbOrt.Text = "Ort";
             }
         }
@@ -507,7 +545,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (TbGeburtsdatum.Text == "")
             {
-                TbGeburtsdatum.ForeColor = color_on_leafe;
+                TbGeburtsdatum.ForeColor = color_on_leave;
                 TbGeburtsdatum.Text = "Geburtsdatum";
             }
         }
@@ -515,7 +553,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (TbPLZ.Text == "")
             {
-                TbPLZ.ForeColor = color_on_leafe;
+                TbPLZ.ForeColor = color_on_leave;
                 TbPLZ.Text = "PLZ";
             }
         }
@@ -523,7 +561,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (TbPatNr.Text == "")
             {
-                TbPatNr.ForeColor = color_on_leafe;
+                TbPatNr.ForeColor = color_on_leave;
                 TbPatNr.Text = "Patientennr.";
             }
         }
@@ -603,8 +641,7 @@ namespace Bitmap_Test1_Schmid
                 string[] uebergeben=value.Split(';');
 
 
-                Nameaktuell = Nameaktuell.Replace(" ", "_");
-                query3 = "INSERT INTO " + Patientenname.Replace(" ", "_") + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist) VALUES ('" + vorname + "','" + nachname + "','"
+                query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist) VALUES ('" + vorname + "','" + nachname + "','"
                     + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"');";
 
                 try
@@ -939,7 +976,7 @@ namespace Bitmap_Test1_Schmid
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Eintragung erfolgreich entfernt!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    TbPatNr.ForeColor = color_on_leafe;
+                    TbPatNr.ForeColor = color_on_leave;
                     TbPatNr.ReadOnly = false;
                     lblEditStatus.BackColor = Color.Lime;
 
@@ -980,31 +1017,31 @@ namespace Bitmap_Test1_Schmid
             Size = new Size(471, 383);
             auswahlBtn.Location = new Point(166, 349);
             TbName.Text = "Vorname";
-            TbName.ForeColor = color_on_leafe;
+            TbName.ForeColor = color_on_leave;
             TbName.ReadOnly = false;
 
             TbNachname.Text = "Nachname";
-            TbNachname.ForeColor = color_on_leafe;
+            TbNachname.ForeColor = color_on_leave;
             TbNachname.ReadOnly = false;
 
             TbPatNr.Text = "Patientennr.";
-            TbPatNr.ForeColor = color_on_leafe;
+            TbPatNr.ForeColor = color_on_leave;
             TbPatNr.ReadOnly = false;
 
             TbGeburtsdatum.Text = "Geburtsdatum";
-            TbGeburtsdatum.ForeColor = color_on_leafe;
+            TbGeburtsdatum.ForeColor = color_on_leave;
 
             TbAdresse.Text = "Adresse";
-            TbAdresse.ForeColor = color_on_leafe;
+            TbAdresse.ForeColor = color_on_leave;
 
             TbPLZ.Text = "PLZ";
-            TbPLZ.ForeColor = color_on_leafe;
+            TbPLZ.ForeColor = color_on_leave;
 
             TbOrt.Text = "Ort";
-            TbOrt.ForeColor = color_on_leafe;
+            TbOrt.ForeColor = color_on_leave;
 
             TbTelefonnummer.Text = "Telefonnummer";
-            TbTelefonnummer.ForeColor = color_on_leafe;
+            TbTelefonnummer.ForeColor = color_on_leave;
 
             #endregion
 
@@ -1028,7 +1065,7 @@ namespace Bitmap_Test1_Schmid
                     messagebox_leerfeld();
                     return;
                 }
-                if (TbNachname.Text == "Vorname" || TbNachname.Text == "")
+                if (TbNachname.Text == "Nachname" || TbNachname.Text == "")
                 {
                     messagebox_leerfeld();
                     return;
@@ -1054,14 +1091,12 @@ namespace Bitmap_Test1_Schmid
                     TbAdresse.Text = "";
                 }
 
-                string[] PatName_ = new string[2];
-                Patientenname = TbName.Text.ToString();
-                PatName_ = Patientenname.Split('_');
                 //erstellen der Datenbank für den jeweiligen Patienten(Schema Vorname_Nachname_Patientennummer), Füllen der tablle Patientenliste mit Informationen für die Suche
                 query2 = "CREATE TABLE " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int NOT NULL IDENTITY(1,1)," +
                                                                                                         "Vorname nvarchar(50) NOT NULL," +
                                                                                                         "Nachname nvarchar(50) NOT NULL," +
-                                                                                                        "Schrittweite int NOT NULL," +
+                                                                                                        "Schrittweite_ist nvarchar(50) NOT NULL," +
+                                                                                                        "Schrittweite_soll nvarchar(50) NOT NULL," +
                                                                                                         "Behandlungsdatum varchar(10) NOT NULL," +
                                                                                                         "Primary Key(Behandlungsnummer)); " +
                     "INSERT INTO Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) VALUES ('" + TbName.Text + "','" + TbNachname.Text + "','" +
@@ -1078,10 +1113,10 @@ namespace Bitmap_Test1_Schmid
                     if (TbGeburtsdatum.Text == "")
                     {
                         TbGeburtsdatum.Text = "Geburtsdatum";
-                        TbGeburtsdatum.ForeColor = color_on_leafe;
+                        TbGeburtsdatum.ForeColor = color_on_leave;
                     }
                     TbPatNr.Text = "Patientennr.";
-                    TbPatNr.ForeColor = color_on_leafe;
+                    TbPatNr.ForeColor = color_on_leave;
                     TbPatNr.ReadOnly = false;
                     lblEditStatus.BackColor = Color.Lime;
 
@@ -1124,7 +1159,7 @@ namespace Bitmap_Test1_Schmid
                     messagebox_leerfeld();
                     return;
                 }
-                if (TbNachname.Text == "Vorname" || TbNachname.Text == "")
+                if (TbNachname.Text == "Nachname" || TbNachname.Text == "")
                 {
                     messagebox_leerfeld();
                     return;
@@ -1173,32 +1208,31 @@ namespace Bitmap_Test1_Schmid
                     MessageBox.Show("Patient erfolgreich aktualisiert!", "Erfolgreich!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     #region zurücksetzen der Oberflächenelemente zur Suchmaske
-                    //todo: was diese color_on_leafe-> vor allem leafe? leave?
 
                     TbName.Text = "Vorname";
-                    TbName.ForeColor = color_on_leafe;
+                    TbName.ForeColor = color_on_leave;
 
                     TbNachname.Text = "Nachname";
-                    TbNachname.ForeColor = color_on_leafe;
+                    TbNachname.ForeColor = color_on_leave;
 
                     TbPatNr.Text = "Patientennr.";
-                    TbPatNr.ForeColor = color_on_leafe;
+                    TbPatNr.ForeColor = color_on_leave;
                     TbPatNr.ReadOnly = false;
 
                     TbGeburtsdatum.Text = "Geburtsdatum";
-                    TbGeburtsdatum.ForeColor = color_on_leafe;
+                    TbGeburtsdatum.ForeColor = color_on_leave;
 
                     TbAdresse.Text = "Adresse";
-                    TbAdresse.ForeColor = color_on_leafe;
+                    TbAdresse.ForeColor = color_on_leave;
 
                     TbPLZ.Text = "PLZ";
-                    TbPLZ.ForeColor = color_on_leafe;
+                    TbPLZ.ForeColor = color_on_leave;
 
                     TbOrt.Text = "Ort";
-                    TbOrt.ForeColor = color_on_leafe;
+                    TbOrt.ForeColor = color_on_leave;
 
                     TbTelefonnummer.Text = "Telefonnummer";
-                    TbTelefonnummer.ForeColor = color_on_leafe;
+                    TbTelefonnummer.ForeColor = color_on_leave;
 
                     lblEditStatus.BackColor = Color.Lime;
 
@@ -1245,6 +1279,9 @@ namespace Bitmap_Test1_Schmid
                     return;
                 case 3701:
                     MessageBox.Show("Dieses Objekt ist nicht in der Datenbank vorhanden\nFehler: " + Exception);
+                    return;
+                case 207:
+                    MessageBox.Show("Schmisch du kek hast wieder die alte DB Struktur bei einem Patienten drinnan");
                     return;
                 default:
                     MessageBox.Show("Fehler: " + Exception.ToString());

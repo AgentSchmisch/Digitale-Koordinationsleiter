@@ -31,7 +31,9 @@ namespace Bitmap_Test1_Schmid
         public int soll_kleinsterabstand = 100;
         public double soll_mittelwert = 0;
         public int soll_anzahl = 0;
+
         bool keinschritt=false;
+        bool etwas_geändert=true;
 
         int animation = 0;
         public Form1()
@@ -186,9 +188,9 @@ namespace Bitmap_Test1_Schmid
                 Patientendatenbank.haupt = this;
                 Patientendatenbank.ShowDialog();
 
-                if (Patientendatenbank.Patientenname != null && Patientendatenbank.letzteBehandlung != null)
+                if (Patientendatenbank.vorname != null && Patientendatenbank.nachname != null && Patientendatenbank.letzteBehandlung != null)
                 {
-                    lblName.Text = Patientendatenbank.Patientenname;
+                    lblName.Text = Patientendatenbank.vorname+" "+Patientendatenbank.nachname;
                     lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
                     lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
 
@@ -210,13 +212,7 @@ namespace Bitmap_Test1_Schmid
             }
 
         }
-        private void Patientendatenbank_Closing(object sender, FormClosingEventArgs e)
-        {
-            //wenn die Form geschlossen wird die Werte aus der Patientendatenbank übernehmen und im Label anzeigen
-            lblName.Text = Patientendatenbank.Patientenname;
-            lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
-            lblSteps.Text = Patientendatenbank.letzteSchrittanzahl; //todo:hier den mittelwert einsetzen
-        }
+
 
         private void BtnSitzungBeenden_Click(object sender, EventArgs e)
         {
@@ -463,8 +459,8 @@ namespace Bitmap_Test1_Schmid
                 kinectM.autobox = false;
                 fläche.Text = "bestätigen";
                 trackBar1.Enabled = false;
-                label7.ForeColor = Patientendatenbank.color_on_leafe;
-                label9.ForeColor = Patientendatenbank.color_on_leafe;
+                label7.ForeColor = Patientendatenbank.color_on_leave;
+                label9.ForeColor = Patientendatenbank.color_on_leave;
             }
         }
 
