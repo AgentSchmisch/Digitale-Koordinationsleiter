@@ -43,13 +43,14 @@ namespace Bitmap_Test1_Schmid
         public double mittelpunkt_links_y = 0;
         public double mittelpunkt_rechts_y = 0;//unwichtig: das wurde geändert
 
-        int kreise = 1;
+        int kreise = 0;
         double skalierkorrektur = 260;
         double downskaling = 360 / 512;
         double upskaling = 512 / 360;
 
         private void IR_Load_1(object sender, EventArgs e)
         {
+            error.Text = "        Kalibrierung abgeschlossen!\nSie können das Fenster nun schließen";
             downskaling = (skalierkorrektur * 2) / 512.0;
             upskaling = 512.0 / (skalierkorrektur * 2);
 
@@ -142,26 +143,46 @@ namespace Bitmap_Test1_Schmid
                                 (int)(center.Y - radius),
                                 (int)(radius * 2),
                                 (int)(radius * 2));
-                            if (kreise == 1)
+                            if (kreise == 0)
                             {
                                 ecken_x[0] = (int)center.X;
                                 ecken_y[0] = (int)center.Y;
                             }
-                            if (kreise == 2)
+                            if (kreise == 1)
                             {
                                 ecken_x[1] = (int)center.X;
                                 ecken_y[1] = (int)center.Y;
                             }
-                            if (kreise == 3)
+                            if (kreise == 2)
                             {
                                 ecken_x[2] = (int)center.X;
                                 ecken_y[2] = (int)center.Y;
                             }
-                            if (kreise == 4)
+                            if (kreise == 3)
                             {
                                 ecken_x[3] = (int)center.X;
                                 ecken_y[3] = (int)center.Y;
                                 kreise = 0;
+                                for (int z = 0; z < 4; z++)
+                                {
+                                    for (int j = i + 1; j < 4; j++)
+                                    {
+                                        if (ecken_x[z] == ecken_x[j])
+                                        {
+                                            //timer1.Start();
+                                            //error.Visible = true;
+                                            return;
+                                        }
+                                    }
+                                }//doppelte x werte löschen
+
+                                if (Array.Exists(ecken_x, element => element == 0) && Array.Exists(ecken_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
+                                {
+                                    //timer1.Start();
+                                    //error.Visible = true;
+                                    return;
+                                }
+                                kal.PerformClick();
                             }
                             kreise++;
                         }
@@ -200,31 +221,19 @@ namespace Bitmap_Test1_Schmid
             {
                 for (int j = i + 1; j < 4; j++)
                 {
-                    if (vergleich_y[i] == vergleich_y[j])
-                    {
-                        timer1.Start();
-                        error.Visible = true;
-                        return;
-                    }
-                }
-            }//doppelte y werte löschen
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = i + 1; j < 4; j++)
-                {
                     if (vergleich_x[i] == vergleich_x[j])
                     {
-                        timer1.Start();
-                        error.Visible = true;
-                        return;
+                            //timer1.Start();
+                            //error.Visible = true;
+                            return;
                     }
                 }
             }//doppelte x werte löschen
 
             if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
             {
-                timer1.Start();
-                error.Visible = true;
+                //timer1.Start();
+                //error.Visible = true;
                 return;
             }
 
@@ -375,10 +384,6 @@ namespace Bitmap_Test1_Schmid
             }
             #endregion
 
-            //MessageBox.Show("rechts oben: " + erg_x[0] + " " + erg_y[0] + "\n" + 
-            //                "rechts unten: " + erg_x[1] + " " + erg_y[1] + "\n" + 
-            //                "links unten: " + erg_x[2] + " " + erg_y[2] + "\n" + 
-            //                "links oben: " + erg_x[3] + " " + erg_y[3]);
 
             k1.Left = (int)Math.Round(erg_x[0] * upskaling) + pictureBox1.Location.X;
             k1.Top = (int)(erg_y[0]) + pictureBox1.Location.Y;
@@ -417,6 +422,8 @@ namespace Bitmap_Test1_Schmid
                 Properties.Settings.Default.mittelpunkt_rechtsy = mittelpunkt_rechts_y;
                 Properties.Settings.Default.multiplikator = multiplikator;
                 Properties.Settings.Default.Save();
+                timer1.Start();
+                error.Visible = true;
             }
             catch
             {
@@ -426,7 +433,7 @@ namespace Bitmap_Test1_Schmid
         }
         private void IR_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (reader != null)//unwichtig: kürzlich geändert
+            if (reader != null)
             {
                 reader.Dispose();
             }

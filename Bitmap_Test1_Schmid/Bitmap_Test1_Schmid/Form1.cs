@@ -32,7 +32,7 @@ namespace Bitmap_Test1_Schmid
         public double soll_mittelwert = 0;
         public int soll_anzahl = 0;
 
-        bool keinschritt=false;
+        bool keinschritt=false; 
         bool etwas_geändert=true;
 
         int animation = 0;
@@ -325,6 +325,7 @@ namespace Bitmap_Test1_Schmid
             screen.left_nine.Hide();
             screen.left_ten.Hide();
 
+            kinectM.lf_rf_vergleich = true;
             delsteps.Visible = false;
             kinectM.schrittzähler = 0;
             Array.Clear(kinectM.schritt_rechts, 0, kinectM.schritt_rechts.Length);//arays clearn um Fehler zu vermeiden in der Schritterkennung
@@ -411,35 +412,35 @@ namespace Bitmap_Test1_Schmid
             {
                 label9.Location = new Point(446, label9.Location.Y);
                 label9.Text = "sehr früh";
-                kinectM.empfindlichkeit = 500;
+                kinectM.empfindlichkeit = 700;
             }
 
             if (trackBar1.Value == 2)
             {
                 label9.Location = new Point(490, label9.Location.Y);
                 label9.Text = "früh";
-                kinectM.empfindlichkeit = 400;
+                kinectM.empfindlichkeit = 600;
             }
 
             if (trackBar1.Value == 3)
             {
                 label9.Location = new Point(505, label9.Location.Y);
                 label9.Text = "mittel";
-                kinectM.empfindlichkeit = 300;
+                kinectM.empfindlichkeit = 500;
             }
 
             if (trackBar1.Value == 4)
             {
                 label9.Location = new Point(525, label9.Location.Y);
                 label9.Text = "spät";
-                kinectM.empfindlichkeit = 200;
+                kinectM.empfindlichkeit = 400;
             }
 
             if (trackBar1.Value == 5)
             {
                 label9.Location = new Point(540, label9.Location.Y);
                 label9.Text = "sehr spät";
-                kinectM.empfindlichkeit = 100;
+                kinectM.empfindlichkeit = 300;
             }
             screen.fläche.PerformClick();
         }

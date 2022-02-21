@@ -288,6 +288,7 @@
             this.analyseToolStripMenuItem.Name = "analyseToolStripMenuItem";
             this.analyseToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.analyseToolStripMenuItem.Text = "Analyse";
+            this.analyseToolStripMenuItem.Visible = false;
             this.analyseToolStripMenuItem.Click += new System.EventHandler(this.analyseToolStripMenuItem_Click);
             // 
             // BtnSitzungBeenden

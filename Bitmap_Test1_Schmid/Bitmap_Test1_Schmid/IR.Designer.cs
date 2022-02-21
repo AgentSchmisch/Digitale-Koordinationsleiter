@@ -121,7 +121,7 @@ namespace Bitmap_Test1_Schmid
             this.kal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.kal.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.kal.Location = new System.Drawing.Point(229, 510);
+            this.kal.Location = new System.Drawing.Point(239, 540);
             this.kal.Name = "kal";
             this.kal.Size = new System.Drawing.Size(127, 45);
             this.kal.TabIndex = 12;
@@ -289,15 +289,15 @@ namespace Bitmap_Test1_Schmid
             // error
             // 
             this.error.AutoSize = true;
-            this.error.BackColor = System.Drawing.Color.Transparent;
+            this.error.BackColor = System.Drawing.Color.Black;
             this.error.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.error.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.error.ForeColor = System.Drawing.Color.Red;
-            this.error.Location = new System.Drawing.Point(120, 76);
+            this.error.ForeColor = System.Drawing.Color.Lime;
+            this.error.Location = new System.Drawing.Point(114, 76);
             this.error.Name = "error";
-            this.error.Size = new System.Drawing.Size(363, 28);
+            this.error.Size = new System.Drawing.Size(384, 28);
             this.error.TabIndex = 27;
-            this.error.Text = "Es wurden keine 4 Punkte gefunden";
+            this.error.Text = "Sie können das Fenster nun schließen";
             this.error.Visible = false;
             // 
             // IR
@@ -306,7 +306,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(645, 570);
+            this.ClientSize = new System.Drawing.Size(645, 534);
             this.Controls.Add(this.error);
             this.Controls.Add(this.warten);
             this.Controls.Add(this.überschrift);
