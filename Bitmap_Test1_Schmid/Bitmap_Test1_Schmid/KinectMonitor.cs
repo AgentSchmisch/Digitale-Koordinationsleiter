@@ -43,10 +43,6 @@ namespace Bitmap_Test1_Schmid
 
         public bool lf_rf_vergleich = true;//bei false mit rechtem Fuß starten
 
-        double skalierkorrektur = 260;
-        double downscaling = 360 / 512;
-        double upscaling = 512 / 360;
-
         public int timeout = 10;
 
         public bool autobox = false;//für automatische Boxeinblendung
@@ -75,17 +71,15 @@ namespace Bitmap_Test1_Schmid
         {
             Pen blackPen = new Pen(Color.Red, 1);
 
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[0] * upscaling)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[1] * upscaling)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[1]) + pictureBox1.Location.Y);// ro ru
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[0] * upscaling)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[3] * upscaling)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[3]) + pictureBox1.Location.Y);// ro lo
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[2] * upscaling)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[3] * upscaling)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[3]) + pictureBox1.Location.Y);// lu lo
-            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[2] * upscaling)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[1] * upscaling)) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[1]) + pictureBox1.Location.Y);// lu ru
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[0])) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[1])) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[1]) + pictureBox1.Location.Y);// ro ru
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[0])) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[0]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[3])) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[3]) + pictureBox1.Location.Y);// ro lo
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[2])) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[3])) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[3]) + pictureBox1.Location.Y);// lu lo
+            e.Graphics.DrawLine(blackPen, (int)(Math.Round(_form1_schritt.ir.erg_x[2])) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[2]) + pictureBox1.Location.Y, (int)(Math.Round(_form1_schritt.ir.erg_x[1])) + pictureBox1.Location.X, (int)(_form1_schritt.ir.erg_y[1]) + pictureBox1.Location.Y);// lu ru
 
-            e.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * upscaling) + pictureBox1.Location.X, (int)mittelpunkt_links_y + pictureBox1.Location.Y, (int)Math.Round(mittelpunkt_rechts * upscaling) + pictureBox1.Location.X, (int)mittelpunkt_rechts_y + pictureBox1.Location.Y);
+            e.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links) + pictureBox1.Location.X, (int)mittelpunkt_links_y + pictureBox1.Location.Y, (int)Math.Round(mittelpunkt_rechts) + pictureBox1.Location.X, (int)mittelpunkt_rechts_y + pictureBox1.Location.Y);
         }
         private void KinectMonitor_Load(object sender, EventArgs e)
         {
-            downscaling = (skalierkorrektur * 2) / 512.0;
-            upscaling = 512.0 / (skalierkorrektur * 2);
 
             mittelpunkt_links = Properties.Settings.Default.mittelpunkt_links;
             mittelpunkt_rechts = Properties.Settings.Default.mittelpunkt_rechts;
@@ -249,11 +243,11 @@ namespace Bitmap_Test1_Schmid
                         Joint FootRight = joints[JointType.FootRight];
                         Joint FootLeft = joints[JointType.FootLeft];
 
-                        float rf_distance_x = ((FootRight.Position.X * -100) + (float)skalierkorrektur);
+                        float rf_distance_x = ((FootRight.Position.X * -100) + 256);
                         float rf_distance_y = FootRight.Position.Y * 1000;
                         float rf_distance_z = FootRight.Position.Z;
 
-                        float lf_distance_x = ((FootLeft.Position.X * -100) + (float)skalierkorrektur);
+                        float lf_distance_x = ((FootLeft.Position.X * -100) + 256);
                         float lf_distance_y = FootLeft.Position.Y * 1000;
                         float lf_distance_z = FootLeft.Position.Z;
 

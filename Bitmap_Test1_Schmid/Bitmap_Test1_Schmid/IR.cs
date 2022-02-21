@@ -31,8 +31,8 @@ namespace Bitmap_Test1_Schmid
         }
 
         string[] possibleTracker;
-        int[] ecken_x = new int[4];
-        int[] ecken_y = new int[4];
+        double[] ecken_x = new double[4];
+        double[] ecken_y = new double[4];
 
         int mode = 0;
         public double multiplikator;
@@ -44,15 +44,10 @@ namespace Bitmap_Test1_Schmid
         public double mittelpunkt_rechts_y = 0;//unwichtig: das wurde geändert
 
         int kreise = 0;
-        double skalierkorrektur = 260;
-        double downskaling = 360 / 512;
-        double upskaling = 512 / 360;
 
         private void IR_Load_1(object sender, EventArgs e)
         {
             error.Text = "        Kalibrierung abgeschlossen!\nSie können das Fenster nun schließen";
-            downskaling = (skalierkorrektur * 2) / 512.0;
-            upskaling = 512.0 / (skalierkorrektur * 2);
 
             sensor = KinectSensor.GetDefault();
             //rgbsensor = KinectSensor.GetDefault();
@@ -207,10 +202,10 @@ namespace Bitmap_Test1_Schmid
             double rechts_max = 0;
             double links_max = 0;
 
-            vergleich_x[0] = Math.Round(ecken_x[0] * downskaling);
-            vergleich_x[1] = Math.Round(ecken_x[1] * downskaling);
-            vergleich_x[2] = Math.Round(ecken_x[2] * downskaling);
-            vergleich_x[3] = Math.Round(ecken_x[3] * downskaling);
+            vergleich_x[0] = Math.Round(ecken_x[0]);
+            vergleich_x[1] = Math.Round(ecken_x[1]);
+            vergleich_x[2] = Math.Round(ecken_x[2]);
+            vergleich_x[3] = Math.Round(ecken_x[3]);
 
             vergleich_y[0] = ecken_y[0];
             vergleich_y[1] = ecken_y[1];
@@ -385,22 +380,22 @@ namespace Bitmap_Test1_Schmid
             #endregion
 
 
-            k1.Left = (int)Math.Round(erg_x[0] * upskaling) + pictureBox1.Location.X;
+            k1.Left = (int)Math.Round(erg_x[0]) + pictureBox1.Location.X;
             k1.Top = (int)(erg_y[0]) + pictureBox1.Location.Y;
             //k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];//nur für debugging mit Koordinaten
             k1.Text = "rechts oben";
 
-            k2.Left = (int)Math.Round(erg_x[1] * upskaling) + pictureBox1.Location.X;
+            k2.Left = (int)Math.Round(erg_x[1]) + pictureBox1.Location.X;
             k2.Top = (int)(erg_y[1]) + pictureBox1.Location.Y;
             //k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];//nur für debugging mit Koordinaten
             k2.Text = "rechts unten";
 
-            k3.Left = (int)Math.Round(erg_x[2] * upskaling) + pictureBox1.Location.X;
+            k3.Left = (int)Math.Round(erg_x[2]) + pictureBox1.Location.X;
             k3.Top = (int)(erg_y[2]) + pictureBox1.Location.Y;
             //k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];//nur für debugging mit Koordinaten
             k3.Text = "links unten";
 
-            k4.Left = (int)Math.Round(erg_x[3] * upskaling) + pictureBox1.Location.X;
+            k4.Left = (int)Math.Round(erg_x[3]) + pictureBox1.Location.X;
             k4.Top = (int)(erg_y[3]) + pictureBox1.Location.Y;
             //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";
@@ -448,12 +443,12 @@ namespace Bitmap_Test1_Schmid
 
             Pen blackPen = new Pen(Color.Red, 1);
 
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * upskaling)), (int)(erg_y[0]), (int)(Math.Round(erg_x[1] * upskaling)), (int)(erg_y[1]));// ro ru
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0] * upskaling)), (int)(erg_y[0]), (int)(Math.Round(erg_x[3] * upskaling)), (int)(erg_y[3]));// ro lo
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * upskaling)), (int)(erg_y[2]), (int)(Math.Round(erg_x[3] * upskaling)), (int)(erg_y[3]));// lu lo
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2] * upskaling)), (int)(erg_y[2]), (int)(Math.Round(erg_x[1] * upskaling)), (int)(erg_y[1]));// lu ru
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0])), (int)(erg_y[0]), (int)(Math.Round(erg_x[1])), (int)(erg_y[1]));// ro ru
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0])), (int)(erg_y[0]), (int)(Math.Round(erg_x[3])), (int)(erg_y[3]));// ro lo
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2])), (int)(erg_y[2]), (int)(Math.Round(erg_x[3])), (int)(erg_y[3]));// lu lo
+            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2])), (int)(erg_y[2]), (int)(Math.Round(erg_x[1])), (int)(erg_y[1]));// lu ru
 
-            g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links * upskaling), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts * upskaling), (int)mittelpunkt_rechts_y);
+            g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts), (int)mittelpunkt_rechts_y);
         }
 
         private void IR_KeyDown(object sender, KeyEventArgs e)
