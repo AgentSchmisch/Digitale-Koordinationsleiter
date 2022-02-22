@@ -43,7 +43,7 @@ namespace Bitmap_Test1_Schmid
         public double mittelpunkt_links_y = 0;
         public double mittelpunkt_rechts_y = 0;//unwichtig: das wurde geändert
 
-        int kreise = 0;
+        int kreise = 1;
 
         private void IR_Load_1(object sender, EventArgs e)
         {
@@ -138,26 +138,27 @@ namespace Bitmap_Test1_Schmid
                                 (int)(center.Y - radius),
                                 (int)(radius * 2),
                                 (int)(radius * 2));
-                            if (kreise == 0)
+                            if (kreise == 1)
                             {
                                 ecken_x[0] = (int)center.X;
                                 ecken_y[0] = (int)center.Y;
                             }
-                            if (kreise == 1)
+                            if (kreise == 2)
                             {
                                 ecken_x[1] = (int)center.X;
                                 ecken_y[1] = (int)center.Y;
                             }
-                            if (kreise == 2)
+                            if (kreise == 3)
                             {
                                 ecken_x[2] = (int)center.X;
                                 ecken_y[2] = (int)center.Y;
                             }
-                            if (kreise == 3)
+                            if (kreise == 4)
                             {
                                 ecken_x[3] = (int)center.X;
                                 ecken_y[3] = (int)center.Y;
                                 kreise = 0;
+
                                 for (int z = 0; z < 4; z++)
                                 {
                                     for (int j = i + 1; j < 4; j++)
@@ -379,6 +380,10 @@ namespace Bitmap_Test1_Schmid
             }
             #endregion
 
+            if (Math.Abs(erg_y[0] - erg_y[3]) > 20 || Math.Abs(erg_y[1] - erg_y[2]) > 20)
+            {
+                return;
+            }
 
             k1.Left = (int)Math.Round(erg_x[0]) + pictureBox1.Location.X;
             k1.Top = (int)(erg_y[0]) + pictureBox1.Location.Y;
@@ -400,14 +405,13 @@ namespace Bitmap_Test1_Schmid
             //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";
 
-            pictureBox1.Paint += DrawEllipseFloat;
-
             try
             {
                 mittelpunkt_links = erg_x[2] + ((erg_x[3] - erg_x[2]) / 2); //"linkster" punkt plus hälfte der beiden
                 mittelpunkt_rechts = erg_x[1] + ((erg_x[0] - erg_x[1]) / 2); //"rechtster" punkt plus hälfte der beiden
                 mittelpunkt_links_y = erg_y[2] + ((erg_y[3] - erg_y[2]) / 2); //"linkster" punkt plus hälfte der beiden
                 mittelpunkt_rechts_y = erg_y[1] + ((erg_y[0] - erg_y[1]) / 2); //"rechtster" punkt plus hälfte der beiden
+                pictureBox1.Paint += DrawEllipseFloat;
 
                 multiplikator = Math.Round(_form1_2.screen.Auflösung_Projektor_x / (mittelpunkt_rechts - mittelpunkt_links));
 
@@ -415,6 +419,8 @@ namespace Bitmap_Test1_Schmid
                 Properties.Settings.Default.mittelpunkt_rechts = mittelpunkt_rechts;
                 Properties.Settings.Default.mittelpunkt_linksy = mittelpunkt_links_y;
                 Properties.Settings.Default.mittelpunkt_rechtsy = mittelpunkt_rechts_y;
+                Properties.Settings.Default.weg_oben = erg_y[0];
+                Properties.Settings.Default.weg_unten = erg_y[1];
                 Properties.Settings.Default.multiplikator = multiplikator;
                 Properties.Settings.Default.Save();
                 timer1.Start();
@@ -438,17 +444,18 @@ namespace Bitmap_Test1_Schmid
                 sensor.Close();
             }
         }
+        bool drawn = true;
         private void DrawEllipseFloat(object sender, PaintEventArgs g)
         {
+                Pen blackPen = new Pen(Color.Red, 1);
 
-            Pen blackPen = new Pen(Color.Red, 1);
+                g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0])), (int)(erg_y[0]), (int)(Math.Round(erg_x[1])), (int)(erg_y[1]));// ro ru
+                g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0])), (int)(erg_y[0]), (int)(Math.Round(erg_x[3])), (int)(erg_y[3]));// ro lo
+                g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2])), (int)(erg_y[2]), (int)(Math.Round(erg_x[3])), (int)(erg_y[3]));// lu lo
+                g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2])), (int)(erg_y[2]), (int)(Math.Round(erg_x[1])), (int)(erg_y[1]));// lu ru
 
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0])), (int)(erg_y[0]), (int)(Math.Round(erg_x[1])), (int)(erg_y[1]));// ro ru
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0])), (int)(erg_y[0]), (int)(Math.Round(erg_x[3])), (int)(erg_y[3]));// ro lo
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2])), (int)(erg_y[2]), (int)(Math.Round(erg_x[3])), (int)(erg_y[3]));// lu lo
-            g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2])), (int)(erg_y[2]), (int)(Math.Round(erg_x[1])), (int)(erg_y[1]));// lu ru
+                g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts), (int)mittelpunkt_rechts_y);
 
-            g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts), (int)mittelpunkt_rechts_y);
         }
 
         private void IR_KeyDown(object sender, KeyEventArgs e)

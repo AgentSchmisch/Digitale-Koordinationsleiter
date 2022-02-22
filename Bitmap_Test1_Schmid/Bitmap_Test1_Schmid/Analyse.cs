@@ -75,6 +75,10 @@ namespace Bitmap_Test1_Schmid
 
         private void Analyse_Load(object sender, EventArgs e)
         {
+            time = 0;
+            opacity = 0;
+            x = 0;
+
             hintergrund.Visible = false;
             Color myColor = Color.FromArgb(40, 50, 60);
 
@@ -89,16 +93,14 @@ namespace Bitmap_Test1_Schmid
 
             länge = Properties.Settings.Default.länge;
 
-            steps.Text = schritte.ToString();
-            durchs.Text = Math.Round(((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
-            klein.Text = Math.Round(((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
-            groß.Text = Math.Round(((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
+            steps.Text = schritte.ToString() + " (" + Math.Round((_form1_anal.screen.Auflösung_Projektor_x / (schritte-1)) / _form1_anal.screen.Auflösung_Projektor_x * länge).ToString() + " cm)";
+            durchs.Text = Math.Round((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            klein.Text = Math.Round((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            groß.Text = Math.Round((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
 
             Size = new Size(470, 136);
             this.CenterToScreen();
             timer.Start();
-
-
         }
 
         private void Analyse_HelpButtonClicked(object sender, CancelEventArgs e)
@@ -149,39 +151,39 @@ namespace Bitmap_Test1_Schmid
 
         private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)
         {
-            //zuerst die form vergrößern um das chart zu zeigen
-            //dann die werte aus der Patientendatenbank holen und im chart darstellen
-            chart1.Titles.Add(patientendatenbank.vorname + " " + patientendatenbank.nachname); //titel des diagramms setzen
-            fenstergroeße.Start();//Fenster vergrößern
-            chart1.Series["Mittelwerte"].Points.Clear();//alle alten informationen löschen
-            chart1.Series["Abweichungen"].Points.Clear();
+            ////zuerst die form vergrößern um das chart zu zeigen
+            ////dann die werte aus der Patientendatenbank holen und im chart darstellen
+            //chart1.Titles.Add(patientendatenbank.vorname + " " + patientendatenbank.nachname); //titel des diagramms setzen
+            //fenstergroeße.Start();//Fenster vergrößern
+            //chart1.Series["Mittelwerte"].Points.Clear();//alle alten informationen löschen
+            //chart1.Series["Abweichungen"].Points.Clear();
 
-            foreach (int element in patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
-            {
-                int xcoord = 1;
-                chart1.Series["Mittelwerte"].Points.AddXY(xcoord, element);
+            //foreach (int element in patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
+            //{
+            //    int xcoord = 1;
+            //    chart1.Series["Mittelwerte"].Points.AddXY(xcoord, element);
 
-                xcoord++;
-            }
-            foreach (int element in patientendatenbank.sollMaximalwerte) //die Maximalen Werte darstellen
-            {
+            //    xcoord++;
+            //}
+            //foreach (int element in patientendatenbank.sollMaximalwerte) //die Maximalen Werte darstellen
+            //{
 
-            }
-            foreach (int element in patientendatenbank.sollMinimalwerte)//die minimalen Werte darstellen
-            {
+            //}
+            //foreach (int element in patientendatenbank.sollMinimalwerte)//die minimalen Werte darstellen
+            //{
 
-            }
+            //}
 
         }
 
         private void RB_istwerte_CheckedChanged(object sender, EventArgs e)
         {
-            //gleiches verhalten wie bei auswahl des anderen Radio buttons
-            fenstergroeße.Start();
-            chart1.Titles.Add(patientendatenbank.vorname+" "+patientendatenbank.nachname);
+            ////gleiches verhalten wie bei auswahl des anderen Radio buttons
+            //fenstergroeße.Start();
+            //chart1.Titles.Add(patientendatenbank.vorname+" "+patientendatenbank.nachname);
 
-            chart1.Series["Mittelwerte"].Points.Clear();
-            chart1.Series["Abweichungen"].Points.Clear();
+            //chart1.Series["Mittelwerte"].Points.Clear();
+            //chart1.Series["Abweichungen"].Points.Clear();
 
 
         }

@@ -332,6 +332,7 @@ namespace Bitmap_Test1_Schmid
             Array.Clear(kinectM.schritt_links, 0, kinectM.schritt_links.Length);
             Array.Clear(kinectM.zw_schritt_rechts, 0, kinectM.zw_schritt_rechts.Length);
             Array.Clear(kinectM.zw_schritt_links, 0, kinectM.zw_schritt_links.Length);
+            analyseToolStripMenuItem.Visible = false;
         }
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
         {
@@ -352,25 +353,23 @@ namespace Bitmap_Test1_Schmid
 
         private void analyseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            for (int i = 0; i < kinectM.schrittzähler; i++)
+            schrittdurchschnitt = 0;
+            for (int i = 1; i < kinectM.schrittzähler-1; i++)
             {
-                schrittdurchschnitt += kinectM.durchschnitt[i];
-                if (i > 0)
-                {
-                    if (Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]) < kleinsterabstand)
-                    {
-                        kleinsterabstand = Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]);
-                    }
+                schrittdurchschnitt += kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1];
 
-                    if (Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]) > größterabstand)
-                    {
-                        größterabstand = Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]);
-                    }
+                if (Math.Abs(kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1]) < kleinsterabstand)
+                {
+                    kleinsterabstand = Math.Abs(kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1]);
                 }
 
+                if (Math.Abs(kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1]) > größterabstand)
+                {
+                    größterabstand = Math.Abs(kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1]);
+                }
             }
-            schrittdurchschnitt = schrittdurchschnitt / (kinectM.schrittzähler - 1);
+          
+            schrittdurchschnitt = schrittdurchschnitt / (kinectM.schrittzähler);
 
             Math.Round(schrittdurchschnitt);
             Math.Round(kleinsterabstand);

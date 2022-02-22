@@ -638,11 +638,12 @@ namespace Bitmap_Test1_Schmid
         {
             set
             {
-                string[] uebergeben=value.Split(';');
+                //string[] uebergeben=value.Split(';');
 
-
-                query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist) VALUES ('" + vorname + "','" + nachname + "','"
-                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"');";
+                query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll) VALUES ('" + vorname + "','" + nachname + "','"
+                 + DateTime.Now.ToString("dd.MM.yyyy") + "','0," + value+ ",0');";
+                //query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist) VALUES ('" + vorname + "','" + nachname + "','"
+                // + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"');";
 
                 try
                 {

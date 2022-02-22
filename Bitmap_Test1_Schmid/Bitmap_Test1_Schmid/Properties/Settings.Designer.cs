@@ -178,5 +178,29 @@ namespace Bitmap_Test1_Schmid.Properties {
                 this["Laufwerk"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double weg_oben {
+            get {
+                return ((double)(this["weg_oben"]));
+            }
+            set {
+                this["weg_oben"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double weg_unten {
+            get {
+                return ((double)(this["weg_unten"]));
+            }
+            set {
+                this["weg_unten"] = value;
+            }
+        }
     }
 }
