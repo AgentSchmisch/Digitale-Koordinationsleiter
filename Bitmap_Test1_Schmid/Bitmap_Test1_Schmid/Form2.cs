@@ -28,6 +28,9 @@ namespace Bitmap_Test1_Schmid
         public string reglerwertalt;
         public int längewertalt;
 
+        public int[] objektposition = new int[3];
+        public bool objekte_generiert = false;
+
         public int Auflösung_Projektor_x = 1280; //Auflösung Projektor ----- zeile 230 wird die Zahl 1280.0 verwendet
         public int Auflösung_Projektor_y = 800;
 
@@ -80,8 +83,8 @@ namespace Bitmap_Test1_Schmid
 
             image1 = new Bitmap(Auflösung_Projektor_x, Auflösung_Projektor_y);
 
-            timer1.Start(); //ohne animation das kommentieren
-            //linienladen(); //ohne animation das auskommentieren
+            //timer1.Start(); //ohne animation das kommentieren
+            linienladen(); //ohne animation das auskommentieren
 
             //zu "linieladen()" verschoben !!!
         }
@@ -454,7 +457,7 @@ namespace Bitmap_Test1_Schmid
                 MessageBox.Show(e001.Message, "Error", 0, MessageBoxIcon.Error);
             }
         }
-        bool klick = true;
+        public bool klick = true;
         public void himmel_hölle()
         {
             if (klick)
@@ -480,7 +483,70 @@ namespace Bitmap_Test1_Schmid
 
             klick = !klick;
         }
+        public void rnd_dots()
+        {
+            if (klick)
+            {
+                for (x = 0; x < image1.Width; x++) //alles löschen
+                {
+                    for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(0, 0, 0);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }//Alles löschen
+                var = true;
+                pictureBox1.Paint += drawcircle;
+                pictureBox1.Image = image1;
+            }
+            if (!klick)
+            {
+                var = false;
+                himmelhölle.Visible = false;
+                bestätigen.PerformClick();
+            }
 
+            klick = !klick;
+        }
+        bool var = true;
+        public void drawcircle(object sender, PaintEventArgs g)
+        {
+            if (var)
+            {
+                int radius = 10;
+                Random rnd = new Random();
+                Random rnd2 = new Random();
+                rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten);
+                Pen redPen = new Pen(Color.Red, 20);//Kreisradius
+                Pen bluePen = new Pen(Color.Blue, 20);//Kreisradius
+                for (int i = 0; i < 5; i++)
+                {
+                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * 270) - radius), (int)(rnd.Next(waagrechtoben-100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * 270) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten+100) - radius), (int)(radius * 2), (int)(radius * 2));
+                }
+            }
+            if (!var)
+            {
+                int radius = 20;
+                Random rnd = new Random();
+                Random rnd2 = new Random();
+                rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten);
+                Pen redPen = new Pen(Color.Transparent, 20);//Kreisradius
+                Pen bluePen = new Pen(Color.Transparent, 20);//Kreisradius
+                for (int i = 0; i < 5; i++)
+                {
+                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * 270) - radius), (int)(rnd.Next(waagrechtoben-100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * 270) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten+100) - radius), (int)(radius * 2), (int)(radius * 2));
+                }
+            }
+        }
         public void kantenerkennung()
         {
             for (x = 0; x < image1.Width; x++) //alles löschen
@@ -601,6 +667,41 @@ namespace Bitmap_Test1_Schmid
 
             kanten.Visible = false;
             bestätigen.PerformClick();
+        }
+        public void zufallbox()
+        {
+            if (!objekte_generiert)
+            {
+                Array.Clear(objektposition, 0, objektposition.Length);
+                Random objekt = new Random();
+                objektposition.ToString();
+                for (int i = 0; i < längebox.Value; i++)
+                {
+
+                    do objektposition[i] = objekt.Next(1, Convert.ToInt32(steps.Text));
+                    while (objektposition[0] == objektposition[1]);
+                    //while (objektposition[i].ToString().Contains(number.ToString()));
+
+                    //objektposition[i] = objekt.Next(2, Convert.ToInt32(steps.Text) - 1);
+                }
+                objekte_generiert = !objekte_generiert;
+            }
+            if (objekte_generiert)
+            {
+                for (int i = 0; i < längebox.Value; i++)
+                {
+                    for (x = Convert.ToInt32(schrittlänge[objektposition[i]]) + dicke + 5; x < schrittlänge[objektposition[i] + 1]; x++)                 //fläche
+                    {
+                        for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
+                        {
+                            Color pixelColor = image1.GetPixel(x, y);
+                            Color newColor = Color.FromArgb(color_box_r, color_box_g, color_box_b);
+                            image1.SetPixel(x, y, newColor);
+                        }
+                    } //box 
+                }
+                pictureBox1.Image = image1;
+            }
         }
     }
 }

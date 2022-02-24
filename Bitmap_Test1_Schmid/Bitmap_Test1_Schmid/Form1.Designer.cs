@@ -69,6 +69,9 @@
             this.lab_schrittgeschw_text = new System.Windows.Forms.Label();
             this.schrittgeschw = new System.Windows.Forms.TrackBar();
             this.steps = new System.Windows.Forms.NumericUpDown();
+            this.programme = new System.Windows.Forms.DomainUpDown();
+            this.programmauswahl = new System.Windows.Forms.Button();
+            this.zufall = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -82,7 +85,7 @@
             this.steps2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.steps2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.steps2.ForeColor = System.Drawing.Color.White;
-            this.steps2.Location = new System.Drawing.Point(154, 117);
+            this.steps2.Location = new System.Drawing.Point(154, 149);
             this.steps2.MaxLength = 2;
             this.steps2.Name = "steps2";
             this.steps2.Size = new System.Drawing.Size(57, 38);
@@ -97,7 +100,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(33, 119);
+            this.label1.Location = new System.Drawing.Point(33, 149);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(115, 31);
@@ -110,7 +113,7 @@
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.bestätigen.ForeColor = System.Drawing.Color.White;
-            this.bestätigen.Location = new System.Drawing.Point(51, 190);
+            this.bestätigen.Location = new System.Drawing.Point(51, 206);
             this.bestätigen.Name = "bestätigen";
             this.bestätigen.Size = new System.Drawing.Size(160, 54);
             this.bestätigen.TabIndex = 3;
@@ -393,7 +396,7 @@
             this.delsteps.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.delsteps.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.delsteps.ForeColor = System.Drawing.Color.White;
-            this.delsteps.Location = new System.Drawing.Point(51, 276);
+            this.delsteps.Location = new System.Drawing.Point(51, 292);
             this.delsteps.Name = "delsteps";
             this.delsteps.Size = new System.Drawing.Size(160, 65);
             this.delsteps.TabIndex = 37;
@@ -424,7 +427,7 @@
             this.check_autoobjekt.Enabled = false;
             this.check_autoobjekt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.check_autoobjekt.ForeColor = System.Drawing.Color.White;
-            this.check_autoobjekt.Location = new System.Drawing.Point(317, 263);
+            this.check_autoobjekt.Location = new System.Drawing.Point(290, 263);
             this.check_autoobjekt.Name = "check_autoobjekt";
             this.check_autoobjekt.Size = new System.Drawing.Size(261, 24);
             this.check_autoobjekt.TabIndex = 40;
@@ -539,7 +542,7 @@
             this.steps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.steps.ForeColor = System.Drawing.Color.White;
-            this.steps.Location = new System.Drawing.Point(154, 118);
+            this.steps.Location = new System.Drawing.Point(154, 148);
             this.steps.Maximum = new decimal(new int[] {
             99,
             0,
@@ -561,6 +564,49 @@
             this.steps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.steps_KeyDown_1);
             this.steps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.steps_KeyPress_1);
             // 
+            // programme
+            // 
+            this.programme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
+            this.programme.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.programme.ForeColor = System.Drawing.Color.White;
+            this.programme.Items.Add("Himmel/Hölle");
+            this.programme.Items.Add("rot/blau");
+            this.programme.Items.Add("Start/Stop");
+            this.programme.Location = new System.Drawing.Point(39, 42);
+            this.programme.Name = "programme";
+            this.programme.Size = new System.Drawing.Size(186, 29);
+            this.programme.TabIndex = 50;
+            this.programme.Text = "Programmauswahl";
+            this.programme.SelectedItemChanged += new System.EventHandler(this.programme_SelectedItemChanged);
+            // 
+            // programmauswahl
+            // 
+            this.programmauswahl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.programmauswahl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.programmauswahl.ForeColor = System.Drawing.Color.White;
+            this.programmauswahl.Location = new System.Drawing.Point(73, 90);
+            this.programmauswahl.Margin = new System.Windows.Forms.Padding(0);
+            this.programmauswahl.Name = "programmauswahl";
+            this.programmauswahl.Size = new System.Drawing.Size(112, 35);
+            this.programmauswahl.TabIndex = 51;
+            this.programmauswahl.Text = "auswählen";
+            this.programmauswahl.UseVisualStyleBackColor = true;
+            this.programmauswahl.Click += new System.EventHandler(this.programmauswahl_Click);
+            // 
+            // zufall
+            // 
+            this.zufall.AutoSize = true;
+            this.zufall.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.zufall.ForeColor = System.Drawing.Color.White;
+            this.zufall.Location = new System.Drawing.Point(567, 263);
+            this.zufall.Name = "zufall";
+            this.zufall.Size = new System.Drawing.Size(65, 24);
+            this.zufall.TabIndex = 52;
+            this.zufall.Text = "zufall";
+            this.zufall.UseVisualStyleBackColor = true;
+            this.zufall.Visible = false;
+            this.zufall.CheckedChanged += new System.EventHandler(this.zufall_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,6 +615,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(644, 385);
+            this.Controls.Add(this.zufall);
+            this.Controls.Add(this.programmauswahl);
+            this.Controls.Add(this.programme);
             this.Controls.Add(this.steps);
             this.Controls.Add(this.lab_schrittgeschw);
             this.Controls.Add(this.lab_schrittgeschw_text);
@@ -613,6 +662,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Digitale Koordinationsleiter";
+            this.TopMost = true;
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Form1_HelpButtonClicked);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -667,7 +717,10 @@
         private System.Windows.Forms.Label lab_schrittgeschw;
         private System.Windows.Forms.Label lab_schrittgeschw_text;
         public System.Windows.Forms.TrackBar schrittgeschw;
-        private System.Windows.Forms.NumericUpDown steps;
+        private System.Windows.Forms.DomainUpDown programme;
+        private System.Windows.Forms.Button programmauswahl;
+        private System.Windows.Forms.CheckBox zufall;
+        public System.Windows.Forms.NumericUpDown steps;
     }
 }
 

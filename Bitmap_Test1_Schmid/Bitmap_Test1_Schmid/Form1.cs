@@ -12,7 +12,7 @@ namespace Bitmap_Test1_Schmid
         Einstellungen einstellungen = new Einstellungen();
         public Patientendatenbank Patientendatenbank = new Patientendatenbank();
         public Analyse analyse = new Analyse();
-        public KinectMonitor kinectM;// = new KinectMonitor();
+        public KinectMonitor kinectM = new KinectMonitor();
         public IR ir = new IR();
         public Laufwerk usb = new Laufwerk();
 
@@ -250,7 +250,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (einaus)
             {
-                kinectM = new KinectMonitor();
+                //kinectM = new KinectMonitor();
                 kinectM.form1_schritt = this;
                 //ir.form1_2 = this;
                 kinectM.steps_kinect = Convert.ToInt32(steps.Text);
@@ -448,6 +448,8 @@ namespace Bitmap_Test1_Schmid
         {
             if (check_autoobjekt.Checked == true)//wenn aktiviert
             {
+                bestätigen.PerformClick();
+                zufall.Visible = true;
                 fläche.Text = "Entfernen";
                 trackBar1.Enabled = true;
                 label9.ForeColor = Color.White;
@@ -459,6 +461,8 @@ namespace Bitmap_Test1_Schmid
             }
             if (check_autoobjekt.Checked == false)// wenn deaktiviert
             {
+                zufall.Checked = false;
+                zufall.Visible = false;
                 kinectM.autobox = false;
                 fläche.Text = "bestätigen";
                 trackBar1.Enabled = false;
@@ -539,6 +543,88 @@ namespace Bitmap_Test1_Schmid
                 anzahl = 1;
             }
             anzahl++;
+        }
+
+        private void programme_SelectedItemChanged(object sender, EventArgs e)
+        {
+        }
+        bool erstesmal = true;
+        private void programmauswahl_Click(object sender, EventArgs e)
+        {
+            if (programme.SelectedItem == "Himmel/Hölle")
+            {
+                screen.himmel_hölle();
+            }
+            if (programme.SelectedItem == "rot/blau")
+            {
+                screen.rnd_dots();
+            }
+            if (programme.SelectedItem == "Start/Stop")
+            {
+                if (erstesmal)
+                {
+                    try
+                    {
+                        if (!screen.klick)
+                        {
+                            screen.himmelhölle.Visible = false;
+                            screen.bestätigen.PerformClick();
+                            screen.klick = !screen.klick;
+                        }
+                        screen.linienladen();
+                        kinectM.startstop = true;
+                        erstesmal = false;
+                        if (einaus)
+                        {
+                            kinectToolStripMenuItem.PerformClick();
+                        }
+                    }
+                    catch 
+                    {
+                        MessageBox.Show("Bitte zuerst du Schritterkennung starten!","Schritterkennung starten", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else if (!erstesmal)
+                {
+                    erstesmal = true;
+                    kinectM.startstop = false;
+                    screen.linienladen();
+                    if (!einaus)
+                    {
+                        kinectToolStripMenuItem.PerformClick();
+                    }
+                }
+            }
+        }
+
+        private void zufall_CheckedChanged(object sender, EventArgs e)
+        {
+            if (zufall.Checked == true)//wenn aktiviert
+            {
+                label2.Text = "Anzahl der Objekte";
+                längebox.Maximum = 2;
+                screen.längebox.Maximum = 3;
+                screen.steps.Text = steps.Text;
+                fläche.Enabled = false;
+                regler.Enabled = false;
+                kinectM.zufall_objekt = true;
+                screen.zufallbox();
+                kinectM.autobox = false;
+            }
+            if (zufall.Checked == false)// wenn deaktiviert
+            {
+                label2.Text = "Länge des Objektes:";
+                längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
+                screen.längebox.Maximum = längebox.Maximum;
+                fläche.Enabled = true;
+                regler.Enabled = true;
+                kinectM.zufall_objekt = false;
+                screen.linienladen();
+                bestätigen.PerformClick();
+                screen.objekte_generiert = false;
+                kinectM.autobox = true;
+            }
         }
     }
 }
