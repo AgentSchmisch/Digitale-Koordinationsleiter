@@ -18,7 +18,7 @@ namespace Bitmap_Test1_Schmid
         public double kleinsterabstand = 500;
         public double größterabstand = 0;
         public double schritte = 0;
-        double länge = 300;
+        public double länge = 300;
 
         Patientendatenbank patientendatenbank = new Patientendatenbank();
 
@@ -68,7 +68,7 @@ namespace Bitmap_Test1_Schmid
 
                     opacity += 10;
                     if (opacity >= 260)
-                        timer.Stop(); return;
+                        timer.Stop(); x  =  0; fenstergroeße.Start(); return;
                 }
             }
         }
@@ -81,6 +81,17 @@ namespace Bitmap_Test1_Schmid
 
             hintergrund.Visible = false;
             Color myColor = Color.FromArgb(40, 50, 60);
+            //das Chart weiß färben
+            chart1.ChartAreas[0].AxisX.LineColor = Color.White;
+            chart1.ChartAreas[0].AxisY.LineColor = Color.White;
+            chart1.ChartAreas[0].AxisX2.LineColor = Color.White;
+            chart1.ChartAreas[0].AxisY2.LineColor = Color.White;
+            chart1.ChartAreas[0].AxisX.MinorGrid.LineColor = Color.White;
+            chart1.ChartAreas[0].AxisY.MinorGrid.LineColor = Color.White;
+            chart1.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.White;
+            chart1.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.White;
+            chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
+            chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
 
             lab_durchs.ForeColor = myColor;
             lab_klein.ForeColor = myColor;
@@ -151,47 +162,46 @@ namespace Bitmap_Test1_Schmid
 
         private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)
         {
-            ////zuerst die form vergrößern um das chart zu zeigen
-            ////dann die werte aus der Patientendatenbank holen und im chart darstellen
-            //chart1.Titles.Add(patientendatenbank.vorname + " " + patientendatenbank.nachname); //titel des diagramms setzen
-            //fenstergroeße.Start();//Fenster vergrößern
-            //chart1.Series["Mittelwerte"].Points.Clear();//alle alten informationen löschen
-            //chart1.Series["Abweichungen"].Points.Clear();
+            //zuerst die form vergrößern um das chart zu zeigen
+            //dann die werte aus der Patientendatenbank holen und im chart darstellen
+            chart1.Titles.Add(patientendatenbank.vorname + " " + patientendatenbank.nachname); //titel des diagramms setzen
+            fenstergroeße.Start();//Fenster vergrößern
+            chart1.Series["Soll"].Points.Clear();//alle alten informationen löschen
+            chart1.Series["Ist"].Points.Clear();
 
-            //foreach (int element in patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
-            //{
-            //    int xcoord = 1;
-            //    chart1.Series["Mittelwerte"].Points.AddXY(xcoord, element);
+            foreach (int element in patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
+            {
+                int xcoord = 1;
+                chart1.Series["Ist"].Points.AddXY(xcoord, element);
 
-            //    xcoord++;
-            //}
-            //foreach (int element in patientendatenbank.sollMaximalwerte) //die Maximalen Werte darstellen
-            //{
-
-            //}
-            //foreach (int element in patientendatenbank.sollMinimalwerte)//die minimalen Werte darstellen
-            //{
+                xcoord++;
+            }
+            foreach (int element in patientendatenbank.istMaximalwerte) //die Maximalen Werte darstellen 
+            {
+                int xcoord = 1;
+                chart1.Series["Soll"].Points.AddXY(xcoord, element);
+                xcoord++;
+            }
+            foreach (int element in patientendatenbank.istMinimalwerte)//die minimalen Werte darstellen
+            {
 
             //}
 
         }
 
-        private void RB_istwerte_CheckedChanged(object sender, EventArgs e)
-        {
-            ////gleiches verhalten wie bei auswahl des anderen Radio buttons
-            //fenstergroeße.Start();
-            //chart1.Titles.Add(patientendatenbank.vorname+" "+patientendatenbank.nachname);
 
-            //chart1.Series["Mittelwerte"].Points.Clear();
-            //chart1.Series["Abweichungen"].Points.Clear();
-
-
-        }
         private void fenstergroeße_Tick(object sender, EventArgs e)
         {
-            //todo: i hab keine ahnung wie a timer funktioniert in dem schas
-            
+            x += 15;
+            if (x <= 540)
+            {
+                Size = new Size(470 + x, this.Size.Height);
+                this.CenterToScreen();
+            }
+            else
+            {
+                fenstergroeße.Stop(); return;
+            }
         }
     }
-
 }

@@ -219,31 +219,22 @@ namespace Bitmap_Test1_Schmid
 
         private void BtnSitzungBeenden_Click(object sender, EventArgs e)
         {
-            Array.Sort(sollabstände);
-            Array.Reverse(sollabstände);
-            soll_größterabstand = sollabstände.Max();
-            //flag setzen die angibt ob 0 als abstand ausgewählt wurde
-            soll_kleinsterabstand = sollabstände[soll_anzahl];
-
             for (int i = 1; i < sollabstände.Length; i++) //alle arraywerte durchgehen außer den ersten, da dieser von der letzten Sitzung übernommen wird
             {
                 soll_mittelwert += sollabstände[i];
             }
             soll_mittelwert = (soll_mittelwert-Convert.ToInt32(Patientendatenbank.letzteSchrittanzahl)) / (soll_anzahl - 1);
             //übergabe der aktuellen schrittweite nach abschließen der Behandlungssitzung
-            Patientendatenbank.wertuebergabe = steps.Text;
-            //Patientendatenbank.wertuebergabe = soll_größterabstand+","+
-            //    soll_mittelwert+ "," +
-            //    soll_kleinsterabstand + ";" +
-            //    analyse.kleinsterabstand.ToString()+","+
-            //    analyse.größterabstand.ToString()+","+
-            //    analyse.schrittdurchschnitt.ToString()+";";
+            Patientendatenbank.wertuebergabe = 
+                soll_mittelwert+ "," +
+                analyse.kleinsterabstand.ToString()+","+
+                analyse.größterabstand.ToString()+","+
+                analyse.schrittdurchschnitt.ToString()+";";
+
             x = 0;
             animation = 1;
             timer.Start();
             soll_anzahl = 0;
-            //Size = new Size(defaultsize_f1_x, defaultsize_f1_y);
-            //this.CenterToScreen();
         }
         bool einaus = true;
         private void kinectToolStripMenuItem_Click(object sender, EventArgs e)

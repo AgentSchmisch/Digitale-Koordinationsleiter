@@ -48,13 +48,9 @@ namespace Bitmap_Test1_Schmid
             this.text_länge = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.RB_Sollwerte = new System.Windows.Forms.RadioButton();
-            this.RB_istwerte = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.fenstergroeße = new System.Windows.Forms.Timer(this.components);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.hintergrund)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -205,59 +201,23 @@ namespace Bitmap_Test1_Schmid
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // RB_Sollwerte
-            // 
-            this.RB_Sollwerte.AutoSize = true;
-            this.RB_Sollwerte.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RB_Sollwerte.ForeColor = System.Drawing.Color.White;
-            this.RB_Sollwerte.Location = new System.Drawing.Point(24, 19);
-            this.RB_Sollwerte.Name = "RB_Sollwerte";
-            this.RB_Sollwerte.Size = new System.Drawing.Size(144, 35);
-            this.RB_Sollwerte.TabIndex = 13;
-            this.RB_Sollwerte.TabStop = true;
-            this.RB_Sollwerte.Text = "Sollwerte";
-            this.RB_Sollwerte.UseVisualStyleBackColor = true;
-            this.RB_Sollwerte.CheckedChanged += new System.EventHandler(this.RB_sollwerte_CheckedChanged);
-            // 
-            // RB_istwerte
-            // 
-            this.RB_istwerte.AutoSize = true;
-            this.RB_istwerte.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RB_istwerte.ForeColor = System.Drawing.SystemColors.Window;
-            this.RB_istwerte.Location = new System.Drawing.Point(24, 61);
-            this.RB_istwerte.Name = "RB_istwerte";
-            this.RB_istwerte.Size = new System.Drawing.Size(129, 35);
-            this.RB_istwerte.TabIndex = 14;
-            this.RB_istwerte.TabStop = true;
-            this.RB_istwerte.Text = "Istwerte";
-            this.RB_istwerte.UseVisualStyleBackColor = true;
-            this.RB_istwerte.CheckedChanged += new System.EventHandler(this.RB_istwerte_CheckedChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.RB_istwerte);
-            this.groupBox1.Controls.Add(this.RB_Sollwerte);
-            this.groupBox1.Location = new System.Drawing.Point(402, 72);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(174, 113);
-            this.groupBox1.TabIndex = 15;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Visible = false;
-            // 
             // fenstergroeße
             // 
+            this.fenstergroeße.Interval = 10;
             this.fenstergroeße.Tick += new System.EventHandler(this.fenstergroeße_Tick);
             // 
             // chart1
             // 
-            this.chart1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.chart1.BorderlineColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.chart1.BackColor = System.Drawing.Color.Transparent;
+            this.chart1.BorderlineColor = System.Drawing.Color.AliceBlue;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Location = new System.Drawing.Point(582, 12);
             this.chart1.Name = "chart1";
             series1.BorderWidth = 5;
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.IsVisibleInLegend = false;
             series1.LabelBorderWidth = 5;
             series1.Name = "Mittelwerte";
@@ -279,9 +239,8 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(1008, 326);
+            this.ClientSize = new System.Drawing.Size(1024, 246);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.text_länge);
@@ -307,8 +266,6 @@ namespace Bitmap_Test1_Schmid
             this.HelpButtonClicked += new System.ComponentModel.CancelEventHandler(this.Analyse_HelpButtonClicked);
             this.Load += new System.EventHandler(this.Analyse_Load);
             ((System.ComponentModel.ISupportInitialize)(this.hintergrund)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -331,9 +288,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.TextBox text_länge;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton RB_Sollwerte;
-        private System.Windows.Forms.RadioButton RB_istwerte;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Timer fenstergroeße;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
