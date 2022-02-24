@@ -69,6 +69,8 @@
             this.lab_schrittgeschw_text = new System.Windows.Forms.Label();
             this.schrittgeschw = new System.Windows.Forms.TrackBar();
             this.steps = new System.Windows.Forms.NumericUpDown();
+            this.projektionslaenge = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -245,7 +247,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(644, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1052, 24);
             this.menuStrip1.TabIndex = 26;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -560,6 +562,30 @@
             this.steps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.steps_KeyDown_1);
             this.steps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.steps_KeyPress_1);
             // 
+            // projektionslaenge
+            // 
+            this.projektionslaenge.AutoSize = true;
+            this.projektionslaenge.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.projektionslaenge.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.projektionslaenge.Location = new System.Drawing.Point(875, 179);
+            this.projektionslaenge.Name = "projektionslaenge";
+            this.projektionslaenge.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.projektionslaenge.Size = new System.Drawing.Size(44, 31);
+            this.projektionslaenge.TabIndex = 51;
+            this.projektionslaenge.Text = "10";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.label12.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label12.Location = new System.Drawing.Point(659, 179);
+            this.label12.Name = "label12";
+            this.label12.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label12.Size = new System.Drawing.Size(223, 31);
+            this.label12.TabIndex = 50;
+            this.label12.Text = "Projektionslänge:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -567,7 +593,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(644, 385);
+            this.ClientSize = new System.Drawing.Size(1052, 385);
+            this.Controls.Add(this.projektionslaenge);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.steps);
             this.Controls.Add(this.lab_schrittgeschw);
             this.Controls.Add(this.lab_schrittgeschw_text);
@@ -667,6 +695,8 @@
         private System.Windows.Forms.Label lab_schrittgeschw_text;
         public System.Windows.Forms.TrackBar schrittgeschw;
         private System.Windows.Forms.NumericUpDown steps;
+        private System.Windows.Forms.Label projektionslaenge;
+        private System.Windows.Forms.Label label12;
     }
 }
 

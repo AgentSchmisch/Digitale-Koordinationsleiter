@@ -9,7 +9,7 @@ namespace Bitmap_Test1_Schmid
     public partial class Patientendatenbank : Form
     {
         /*Alle Patientenspezifischen Tabellen nach dem Schema: Patientennummer_Vorname_Nachname
-         * TODO: Patienten neu anlegen: VornameTB wird nicht gecleart beim klicken
+         * TODO: 
         */
 
         //Connectionstring für die Verbindung zum Server
@@ -35,13 +35,13 @@ namespace Bitmap_Test1_Schmid
         public string letzteSchrittanzahl;
         public string Datenbankbuchstabe;
         public string patnr = "", vorname = "", nachname = "", geburtsdatum = "", adresse = "", plz = "", ort = "", telNr = "";
-
+        public string projektionslaenge = "";
         int[] tabs = new int[5];
         int telnummerlength = 0;
 
         public int[] sollMittelwerte = new int[5];
-        public int[] sollMinimalwerte = new int[5];
-        public int[] sollMaximalwerte = new int[5];
+        public int[] istMinimalwerte = new int[5];
+        public int[] istMaximalwerte = new int[5];
 
         public Color color_on_leave = Color.FromArgb(180, 190, 200);
 
@@ -328,7 +328,6 @@ namespace Bitmap_Test1_Schmid
             }
 
             record = "";
-            //Daten nur aus der letzten Zeile auslesen um so das aktuellste Behandlungsdatum zu erhalten
             if (tbl2.Rows.Count == 0)
             {
                 letzteBehandlung = "keine Sitzungen vorhanden";
@@ -340,6 +339,7 @@ namespace Bitmap_Test1_Schmid
 
             else
             {
+                //Daten nur aus der letzten Zeile auslesen um so das aktuellste Behandlungsdatum zu erhalten
                 DataRow row = tbl2.Rows[tbl2.Rows.Count - 1];
 
                 #region Befüllen der Variablen mit den Patientendaten
@@ -361,20 +361,17 @@ namespace Bitmap_Test1_Schmid
                         letzteBehandlung = letzteBehandlung.Replace(" 00:00:00", "");
                         continue;
                     }
-                    if (tbl2.Columns[j].ColumnName == "Schrittweite_soll")
+                    if (tbl2.Columns[j].ColumnName == "Projektionslaenge")
                     {
-                        letzteSchrittanzahl += row[j];
-                        string[] letzteSchrittanzahl_ = new string[3];
-                        letzteSchrittanzahl_=letzteSchrittanzahl.Split(',');
-                       letzteSchrittanzahl= letzteSchrittanzahl_[1];
+                        projektionslaenge += row[j].ToString();
                         continue;
                     }
                 }
 
                 #endregion
                 Hide();
-                //todo:  hier im hintergrund alle Patientendaten abrufen und in die Arrays schreiben 
-                query3 = "SELECT Schrittweite_soll, schrittweite_ist FROM " + vorname + "_" + nachname + "_" + PatNr_aktuell + ";";
+                //TODO: im hintergrund alle Patientendaten die für das Chart benötigt werden abrufen und in die Arrays schreiben 
+                query3 = "SELECT Schrittweite_soll, Schrittweite_ist FROM " + vorname + "_" + nachname + "_" + PatNr_aktuell + ";";
                 try
                 {
                     cmd = new SqlCommand(query3, conn);
@@ -394,31 +391,43 @@ namespace Bitmap_Test1_Schmid
                     conn.Close();
                 }
 
+                #region Abfragen der Werte wärend die form schon im hintergrund ist um ladezeiten zu verringern
                 record = "";
-                   row = tbl2.Rows[tbl2.Rows.Count - 1];
+                int number = 0;
+                if (tbl2.Rows.Count < 6)
+                    number = tbl2.Rows.Count;
+                int arrayindex = 0;
 
-                    #region Befüllen der Variablen mit den Patientendaten
+                for (int i = tbl2.Rows.Count-number ; i < tbl2.Rows.Count; i++) //nur die letzten 5 werte abrufen
+                {
+                     row = tbl2.Rows[i];
+
                     for (int j = 0; j < tbl2.Columns.Count; j++)
                     {
-                        
-                        if (tbl2.Columns[j].ColumnName == "Schrittweite_soll")
+
+                        if (tbl2.Columns[j].ColumnName == "Schrittweite_soll") //TODO: nur in eine Variable schreiben
                         {
-                            letzteSchrittanzahl += row[j];
-                            string[] letzteSchrittanzahl_ = new string[3];
-                            letzteSchrittanzahl_ = letzteSchrittanzahl.Split(',');
-                            letzteSchrittanzahl = letzteSchrittanzahl_[1];
+                           letzteSchrittanzahl = row[j].ToString();
+
+
+                            sollMittelwerte[i] += Convert.ToInt32(row[j]);
+
                             continue;
                         }
-                        if (tbl2.Columns[j].ColumnName == "Schrittweite_ist")
+                        if (tbl2.Columns[j].ColumnName == "Schrittweite_ist") //TODO: 2 werte reichen hier da chart nur max und min wert anzeigt
                         {
-                            letzteSchrittanzahl += row[j];
-                            string[] letzteSchrittanzahl_ = new string[3];
-                            letzteSchrittanzahl_ = letzteSchrittanzahl.Split(',');
-                            letzteSchrittanzahl = letzteSchrittanzahl_[1];
-                            continue;
+                            int arrayindex_ = 0;
+                            string schrittwert = null;
+                            schrittwert += row[j];
+                            string[] schrittwert_ = new string[3];
+                            schrittwert_ = schrittwert.Split(',');
+                            istMaximalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_]); 
+                            istMinimalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_+2]);
+                            arrayindex++;
+
                         }
                     }
-                
+                }
                     #endregion
                     Close();
                 auswahl = true;
@@ -640,16 +649,16 @@ namespace Bitmap_Test1_Schmid
             {
                 string[] uebergeben=value.Split(';');
 
-
-                query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist) VALUES ('" + vorname + "','" + nachname + "','"
-                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"');";
+                Analyse analyse = new Analyse();
+                query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist,Projektionslaenge) VALUES ('" + vorname + "','" + nachname + "','"
+                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"','"+analyse.länge.ToString()+"');";
 
                 try
                 {
                     cmd = new SqlCommand(query3, conn);
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    //MessageBox.Show("Sitzung erfolgreich beendet", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MessageBox.Show("Sitzung erfolgreich beendet", "Erfolgreich", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 catch (SqlException ex)
                 {
@@ -693,7 +702,6 @@ namespace Bitmap_Test1_Schmid
         {
             _haupt.usb.ShowDialog();
             laufwerkToolStripMenuItem.Text = "Aktuelles Laufwerk: " + Properties.Settings.Default.Laufwerk;
-            //todo: hier muss noch der string geändert werden
         }
 
         private void TbPatNr_KeyPress(object sender, KeyPressEventArgs e)
@@ -1097,6 +1105,7 @@ namespace Bitmap_Test1_Schmid
                                                                                                         "Nachname nvarchar(50) NOT NULL," +
                                                                                                         "Schrittweite_ist nvarchar(50) NOT NULL," +
                                                                                                         "Schrittweite_soll nvarchar(50) NOT NULL," +
+                                                                                                        "Projektionslaenge NVARCHAR(30) NULL,"+
                                                                                                         "Behandlungsdatum varchar(10) NOT NULL," +
                                                                                                         "Primary Key(Behandlungsnummer)); " +
                     "INSERT INTO Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) VALUES ('" + TbName.Text + "','" + TbNachname.Text + "','" +
