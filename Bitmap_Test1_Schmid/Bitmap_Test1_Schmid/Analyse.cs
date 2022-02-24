@@ -75,6 +75,10 @@ namespace Bitmap_Test1_Schmid
 
         private void Analyse_Load(object sender, EventArgs e)
         {
+            time = 0;
+            opacity = 0;
+            x = 0;
+
             hintergrund.Visible = false;
             Color myColor = Color.FromArgb(40, 50, 60);
             //das Chart weiß färben
@@ -100,16 +104,14 @@ namespace Bitmap_Test1_Schmid
 
             länge = Properties.Settings.Default.länge;
 
-            steps.Text = schritte.ToString();
-            durchs.Text = Math.Round(((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
-            klein.Text = Math.Round(((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
-            groß.Text = Math.Round(((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
+            steps.Text = schritte.ToString() + " (" + Math.Round((_form1_anal.screen.Auflösung_Projektor_x / (schritte-1)) / _form1_anal.screen.Auflösung_Projektor_x * länge).ToString() + " cm)";
+            durchs.Text = Math.Round((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            klein.Text = Math.Round((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            groß.Text = Math.Round((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
 
             Size = new Size(470, 136);
             this.CenterToScreen();
             timer.Start();
-
-
         }
 
         private void Analyse_HelpButtonClicked(object sender, CancelEventArgs e)
@@ -183,7 +185,7 @@ namespace Bitmap_Test1_Schmid
             foreach (int element in patientendatenbank.istMinimalwerte)//die minimalen Werte darstellen
             {
 
-            }
+            //}
 
         }
 

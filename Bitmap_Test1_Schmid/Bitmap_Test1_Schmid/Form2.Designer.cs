@@ -241,12 +241,14 @@ namespace Bitmap_Test1_Schmid
             // koordinaten_left
             // 
             this.koordinaten_left.AutoSize = true;
+            this.koordinaten_left.BackColor = System.Drawing.Color.White;
             this.koordinaten_left.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.koordinaten_left.ForeColor = System.Drawing.Color.Black;
             this.koordinaten_left.Location = new System.Drawing.Point(397, 366);
             this.koordinaten_left.Name = "koordinaten_left";
-            this.koordinaten_left.Size = new System.Drawing.Size(235, 46);
+            this.koordinaten_left.Size = new System.Drawing.Size(173, 46);
             this.koordinaten_left.TabIndex = 45;
-            this.koordinaten_left.Text = "Koordinaten";
+            this.koordinaten_left.Text = "Loading ";
             this.koordinaten_left.Visible = false;
             // 
             // himmelhölle
@@ -284,7 +286,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_seven
             // 
-            this.right_seven.BackColor = System.Drawing.Color.Black;
+            this.right_seven.BackColor = System.Drawing.Color.Transparent;
             this.right_seven.Image = ((System.Drawing.Image)(resources.GetObject("right_seven.Image")));
             this.right_seven.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_seven.InitialImage")));
             this.right_seven.Location = new System.Drawing.Point(853, 227);
@@ -297,7 +299,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // left_seven
             // 
-            this.left_seven.BackColor = System.Drawing.Color.Black;
+            this.left_seven.BackColor = System.Drawing.Color.Transparent;
             this.left_seven.Image = ((System.Drawing.Image)(resources.GetObject("left_seven.Image")));
             this.left_seven.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_seven.InitialImage")));
             this.left_seven.Location = new System.Drawing.Point(853, 148);
@@ -310,7 +312,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_ten
             // 
-            this.right_ten.BackColor = System.Drawing.Color.Black;
+            this.right_ten.BackColor = System.Drawing.Color.Transparent;
             this.right_ten.Image = ((System.Drawing.Image)(resources.GetObject("right_ten.Image")));
             this.right_ten.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_ten.InitialImage")));
             this.right_ten.Location = new System.Drawing.Point(991, 385);
@@ -323,7 +325,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // left_ten
             // 
-            this.left_ten.BackColor = System.Drawing.Color.Black;
+            this.left_ten.BackColor = System.Drawing.Color.Transparent;
             this.left_ten.Image = ((System.Drawing.Image)(resources.GetObject("left_ten.Image")));
             this.left_ten.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_ten.InitialImage")));
             this.left_ten.Location = new System.Drawing.Point(991, 306);
@@ -336,7 +338,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_nine
             // 
-            this.right_nine.BackColor = System.Drawing.Color.Black;
+            this.right_nine.BackColor = System.Drawing.Color.Transparent;
             this.right_nine.Image = ((System.Drawing.Image)(resources.GetObject("right_nine.Image")));
             this.right_nine.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_nine.InitialImage")));
             this.right_nine.Location = new System.Drawing.Point(853, 385);
@@ -349,7 +351,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // left_nine
             // 
-            this.left_nine.BackColor = System.Drawing.Color.Black;
+            this.left_nine.BackColor = System.Drawing.Color.Transparent;
             this.left_nine.Image = ((System.Drawing.Image)(resources.GetObject("left_nine.Image")));
             this.left_nine.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_nine.InitialImage")));
             this.left_nine.Location = new System.Drawing.Point(853, 306);
@@ -362,7 +364,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_eight
             // 
-            this.right_eight.BackColor = System.Drawing.Color.Black;
+            this.right_eight.BackColor = System.Drawing.Color.Transparent;
             this.right_eight.Image = ((System.Drawing.Image)(resources.GetObject("right_eight.Image")));
             this.right_eight.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_eight.InitialImage")));
             this.right_eight.Location = new System.Drawing.Point(991, 227);
@@ -375,7 +377,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // left_eight
             // 
-            this.left_eight.BackColor = System.Drawing.Color.Black;
+            this.left_eight.BackColor = System.Drawing.Color.Transparent;
             this.left_eight.Image = ((System.Drawing.Image)(resources.GetObject("left_eight.Image")));
             this.left_eight.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_eight.InitialImage")));
             this.left_eight.Location = new System.Drawing.Point(991, 148);
@@ -388,7 +390,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_six
             // 
-            this.right_six.BackColor = System.Drawing.Color.Black;
+            this.right_six.BackColor = System.Drawing.Color.Transparent;
             this.right_six.Image = ((System.Drawing.Image)(resources.GetObject("right_six.Image")));
             this.right_six.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_six.InitialImage")));
             this.right_six.Location = new System.Drawing.Point(715, 227);
@@ -401,7 +403,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // left_six
             // 
-            this.left_six.BackColor = System.Drawing.Color.Black;
+            this.left_six.BackColor = System.Drawing.Color.Transparent;
             this.left_six.Image = ((System.Drawing.Image)(resources.GetObject("left_six.Image")));
             this.left_six.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_six.InitialImage")));
             this.left_six.Location = new System.Drawing.Point(715, 148);
@@ -414,7 +416,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_five
             // 
-            this.right_five.BackColor = System.Drawing.Color.Black;
+            this.right_five.BackColor = System.Drawing.Color.Transparent;
             this.right_five.Image = ((System.Drawing.Image)(resources.GetObject("right_five.Image")));
             this.right_five.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_five.InitialImage")));
             this.right_five.Location = new System.Drawing.Point(577, 227);
@@ -427,7 +429,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // left_five
             // 
-            this.left_five.BackColor = System.Drawing.Color.Black;
+            this.left_five.BackColor = System.Drawing.Color.Transparent;
             this.left_five.Image = ((System.Drawing.Image)(resources.GetObject("left_five.Image")));
             this.left_five.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_five.InitialImage")));
             this.left_five.Location = new System.Drawing.Point(577, 148);
@@ -440,7 +442,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_four
             // 
-            this.right_four.BackColor = System.Drawing.Color.Black;
+            this.right_four.BackColor = System.Drawing.Color.Transparent;
             this.right_four.Image = ((System.Drawing.Image)(resources.GetObject("right_four.Image")));
             this.right_four.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_four.InitialImage")));
             this.right_four.Location = new System.Drawing.Point(439, 227);
@@ -453,7 +455,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // left_four
             // 
-            this.left_four.BackColor = System.Drawing.Color.Black;
+            this.left_four.BackColor = System.Drawing.Color.Transparent;
             this.left_four.Image = ((System.Drawing.Image)(resources.GetObject("left_four.Image")));
             this.left_four.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_four.InitialImage")));
             this.left_four.Location = new System.Drawing.Point(439, 148);
@@ -466,7 +468,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_three
             // 
-            this.right_three.BackColor = System.Drawing.Color.Black;
+            this.right_three.BackColor = System.Drawing.Color.Transparent;
             this.right_three.Image = ((System.Drawing.Image)(resources.GetObject("right_three.Image")));
             this.right_three.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_three.InitialImage")));
             this.right_three.Location = new System.Drawing.Point(301, 227);
@@ -479,7 +481,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // left_three
             // 
-            this.left_three.BackColor = System.Drawing.Color.Black;
+            this.left_three.BackColor = System.Drawing.Color.Transparent;
             this.left_three.Image = ((System.Drawing.Image)(resources.GetObject("left_three.Image")));
             this.left_three.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_three.InitialImage")));
             this.left_three.Location = new System.Drawing.Point(301, 148);
@@ -492,7 +494,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_two
             // 
-            this.right_two.BackColor = System.Drawing.Color.Black;
+            this.right_two.BackColor = System.Drawing.Color.Transparent;
             this.right_two.Image = ((System.Drawing.Image)(resources.GetObject("right_two.Image")));
             this.right_two.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_two.InitialImage")));
             this.right_two.Location = new System.Drawing.Point(163, 227);
@@ -505,7 +507,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // left_two
             // 
-            this.left_two.BackColor = System.Drawing.Color.Black;
+            this.left_two.BackColor = System.Drawing.Color.Transparent;
             this.left_two.Image = ((System.Drawing.Image)(resources.GetObject("left_two.Image")));
             this.left_two.InitialImage = ((System.Drawing.Image)(resources.GetObject("left_two.InitialImage")));
             this.left_two.Location = new System.Drawing.Point(163, 148);
@@ -518,7 +520,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // right_one
             // 
-            this.right_one.BackColor = System.Drawing.Color.Black;
+            this.right_one.BackColor = System.Drawing.Color.Transparent;
             this.right_one.Image = ((System.Drawing.Image)(resources.GetObject("right_one.Image")));
             this.right_one.InitialImage = ((System.Drawing.Image)(resources.GetObject("right_one.InitialImage")));
             this.right_one.Location = new System.Drawing.Point(25, 227);
@@ -597,6 +599,10 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 800);
+            this.Controls.Add(this.right_two);
+            this.Controls.Add(this.left_two);
+            this.Controls.Add(this.right_one);
+            this.Controls.Add(this.left_one);
             this.Controls.Add(this.strich_rechts);
             this.Controls.Add(this.koordinaten_right);
             this.Controls.Add(this.kanten);
@@ -621,10 +627,6 @@ namespace Bitmap_Test1_Schmid
             this.Controls.Add(this.left_four);
             this.Controls.Add(this.right_three);
             this.Controls.Add(this.left_three);
-            this.Controls.Add(this.right_two);
-            this.Controls.Add(this.left_two);
-            this.Controls.Add(this.right_one);
-            this.Controls.Add(this.left_one);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.längelabel);
             this.Controls.Add(this.längebox);

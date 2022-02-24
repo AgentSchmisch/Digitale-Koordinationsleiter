@@ -32,7 +32,7 @@ namespace Bitmap_Test1_Schmid
         public double soll_mittelwert = 0;
         public int soll_anzahl = 0;
 
-        bool keinschritt=false;
+        bool keinschritt=false; 
         bool etwas_geändert=true;
 
         int animation = 0;
@@ -316,12 +316,14 @@ namespace Bitmap_Test1_Schmid
             screen.left_nine.Hide();
             screen.left_ten.Hide();
 
+            kinectM.lf_rf_vergleich = true;
             delsteps.Visible = false;
             kinectM.schrittzähler = 0;
             Array.Clear(kinectM.schritt_rechts, 0, kinectM.schritt_rechts.Length);//arays clearn um Fehler zu vermeiden in der Schritterkennung
             Array.Clear(kinectM.schritt_links, 0, kinectM.schritt_links.Length);
             Array.Clear(kinectM.zw_schritt_rechts, 0, kinectM.zw_schritt_rechts.Length);
             Array.Clear(kinectM.zw_schritt_links, 0, kinectM.zw_schritt_links.Length);
+            analyseToolStripMenuItem.Visible = false;
         }
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
         {
@@ -342,25 +344,23 @@ namespace Bitmap_Test1_Schmid
 
         private void analyseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            for (int i = 0; i < kinectM.schrittzähler; i++)
+            schrittdurchschnitt = 0;
+            for (int i = 1; i < kinectM.schrittzähler-1; i++)
             {
-                schrittdurchschnitt += kinectM.durchschnitt[i];
-                if (i > 0)
-                {
-                    if (Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]) < kleinsterabstand)
-                    {
-                        kleinsterabstand = Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]);
-                    }
+                schrittdurchschnitt += kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1];
 
-                    if (Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]) > größterabstand)
-                    {
-                        größterabstand = Math.Abs(kinectM.durchschnitt[i + 1] - kinectM.durchschnitt[i]);
-                    }
+                if (Math.Abs(kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1]) < kleinsterabstand)
+                {
+                    kleinsterabstand = Math.Abs(kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1]);
                 }
 
+                if (Math.Abs(kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1]) > größterabstand)
+                {
+                    größterabstand = Math.Abs(kinectM.durchschnitt[i] - kinectM.durchschnitt[i-1]);
+                }
             }
-            schrittdurchschnitt = schrittdurchschnitt / (kinectM.schrittzähler - 1);
+          
+            schrittdurchschnitt = schrittdurchschnitt / (kinectM.schrittzähler);
 
             Math.Round(schrittdurchschnitt);
             Math.Round(kleinsterabstand);
@@ -402,35 +402,35 @@ namespace Bitmap_Test1_Schmid
             {
                 label9.Location = new Point(446, label9.Location.Y);
                 label9.Text = "sehr früh";
-                kinectM.empfindlichkeit = 500;
+                kinectM.empfindlichkeit = 700;
             }
 
             if (trackBar1.Value == 2)
             {
                 label9.Location = new Point(490, label9.Location.Y);
                 label9.Text = "früh";
-                kinectM.empfindlichkeit = 400;
+                kinectM.empfindlichkeit = 600;
             }
 
             if (trackBar1.Value == 3)
             {
                 label9.Location = new Point(505, label9.Location.Y);
                 label9.Text = "mittel";
-                kinectM.empfindlichkeit = 300;
+                kinectM.empfindlichkeit = 500;
             }
 
             if (trackBar1.Value == 4)
             {
                 label9.Location = new Point(525, label9.Location.Y);
                 label9.Text = "spät";
-                kinectM.empfindlichkeit = 200;
+                kinectM.empfindlichkeit = 400;
             }
 
             if (trackBar1.Value == 5)
             {
                 label9.Location = new Point(540, label9.Location.Y);
                 label9.Text = "sehr spät";
-                kinectM.empfindlichkeit = 100;
+                kinectM.empfindlichkeit = 300;
             }
             screen.fläche.PerformClick();
         }

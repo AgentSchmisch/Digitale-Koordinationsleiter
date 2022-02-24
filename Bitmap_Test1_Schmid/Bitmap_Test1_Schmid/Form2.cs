@@ -80,8 +80,8 @@ namespace Bitmap_Test1_Schmid
 
             image1 = new Bitmap(Auflösung_Projektor_x, Auflösung_Projektor_y);
 
-            //timer1.Start(); //ohne animation das kommentieren
-            linienladen(); //ohne animation das auskommentieren
+            timer1.Start(); //ohne animation das kommentieren
+            //linienladen(); //ohne animation das auskommentieren
 
             //zu "linieladen()" verschoben !!!
         }
@@ -306,6 +306,8 @@ namespace Bitmap_Test1_Schmid
         int delay = 0;
         private void timer1_Tick(object sender, EventArgs e)
         {
+            koordinaten_left.Location = new Point(Auflösung_Projektor_x/2 - koordinaten_left.Width/2, Auflösung_Projektor_y - 100 );
+            koordinaten_left.Visible = true;
             if (neu + Auflösung_Projektor_x / 2 < Auflösung_Projektor_x)
             {
                 neu += 10;
@@ -341,10 +343,19 @@ namespace Bitmap_Test1_Schmid
                     System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Resources\mac_bong.wav");
                     player.Play();
                 }
+                if (delay == 100 || delay == 200)
+                {
+                    koordinaten_left.Text = "Loading ";
+                }
+                if (delay == 10 || delay == 40 || delay == 70 || delay == 100 || delay == 140 || delay == 170 || delay == 200)
+                {
+                    koordinaten_left.Text += ".";
+                }
                 if (delay > 200)
                 {
                     linienladen();
                     timer1.Stop();
+                    koordinaten_left.Visible = false;
                 }
             }
         }
