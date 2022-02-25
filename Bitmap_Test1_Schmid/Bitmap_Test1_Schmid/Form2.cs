@@ -462,6 +462,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (klick)
             {
+                var = false;
                 for (x = 0; x < image1.Width; x++) //alles löschen
                 {
                     for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
@@ -504,7 +505,8 @@ namespace Bitmap_Test1_Schmid
             {
                 var = false;
                 himmelhölle.Visible = false;
-                bestätigen.PerformClick();
+                pictureBox1.Image = image1;
+                //bestätigen.PerformClick();
             }
 
             klick = !klick;
@@ -522,11 +524,11 @@ namespace Bitmap_Test1_Schmid
                 Pen bluePen = new Pen(Color.Blue, 20);//Kreisradius
                 for (int i = 0; i < 5; i++)
                 {
-                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * 270) - radius), (int)(rnd.Next(waagrechtoben-100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
+                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * 270) - radius), (int)(rnd.Next(waagrechtoben+100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
                 }
                 for (int i = 0; i < 5; i++)
                 {
-                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * 270) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten+100) - radius), (int)(radius * 2), (int)(radius * 2));
+                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * 270) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten-100) - radius), (int)(radius * 2), (int)(radius * 2));
                 }
             }
             if (!var)
@@ -539,11 +541,11 @@ namespace Bitmap_Test1_Schmid
                 Pen bluePen = new Pen(Color.Transparent, 20);//Kreisradius
                 for (int i = 0; i < 5; i++)
                 {
-                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * 270) - radius), (int)(rnd.Next(waagrechtoben-100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
+                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * 270) - radius), (int)(rnd.Next(waagrechtoben+100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
                 }
                 for (int i = 0; i < 5; i++)
                 {
-                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * 270) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten+100) - radius), (int)(radius * 2), (int)(radius * 2));
+                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * 270) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten-100) - radius), (int)(radius * 2), (int)(radius * 2));
                 }
             }
         }
@@ -703,5 +705,30 @@ namespace Bitmap_Test1_Schmid
                 pictureBox1.Image = image1;
             }
         }
+        bool unendlich = true;
+        public void unendlich_()
+        {
+            if (unendlich)
+            {
+                for (x = 0; x < image1.Width; x++) //alles löschen
+                {
+                    for (y = waagrechtoben - 50; y < waagrechtunten + 50; y++)
+                    {
+                        Color pixelColor = image1.GetPixel(x, y);
+                        Color newColor = Color.FromArgb(0, 0, 0);
+                        image1.SetPixel(x, y, newColor);
+                    }
+                }//Alles löschen
+
+                unendlich2.Visible = true; 
+                unendlich2.Location = new Point(0, Auflösung_Projektor_y / 2 - unendlich2.Height / 2);
+            }
+            if (!unendlich)
+            {
+                unendlich2.Visible = false;
+            }
+            unendlich = !unendlich;
+        }
+       
     }
 }

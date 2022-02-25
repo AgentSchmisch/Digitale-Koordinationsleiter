@@ -48,6 +48,11 @@
             this.kantenerkennungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analyseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programmauswahlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.himmelHölleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotblauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startstopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unendlichToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnSitzungBeenden = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,18 +70,12 @@
             this.label9 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.lab_schrittgeschw = new System.Windows.Forms.Label();
-            this.lab_schrittgeschw_text = new System.Windows.Forms.Label();
-            this.schrittgeschw = new System.Windows.Forms.TrackBar();
             this.steps = new System.Windows.Forms.NumericUpDown();
-            this.programme = new System.Windows.Forms.DomainUpDown();
-            this.programmauswahl = new System.Windows.Forms.Button();
             this.zufall = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schrittgeschw)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.steps)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +84,7 @@
             this.steps2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.steps2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.steps2.ForeColor = System.Drawing.Color.White;
-            this.steps2.Location = new System.Drawing.Point(154, 149);
+            this.steps2.Location = new System.Drawing.Point(154, 120);
             this.steps2.MaxLength = 2;
             this.steps2.Name = "steps2";
             this.steps2.Size = new System.Drawing.Size(57, 38);
@@ -100,7 +99,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(33, 149);
+            this.label1.Location = new System.Drawing.Point(33, 120);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label1.Size = new System.Drawing.Size(115, 31);
@@ -113,7 +112,7 @@
             this.bestätigen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bestätigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.bestätigen.ForeColor = System.Drawing.Color.White;
-            this.bestätigen.Location = new System.Drawing.Point(51, 206);
+            this.bestätigen.Location = new System.Drawing.Point(51, 177);
             this.bestätigen.Name = "bestätigen";
             this.bestätigen.Size = new System.Drawing.Size(160, 54);
             this.bestätigen.TabIndex = 3;
@@ -244,11 +243,12 @@
             this.kinectToolStripMenuItem,
             this.kantenerkennungToolStripMenuItem,
             this.einstellungenToolStripMenuItem,
+            this.programmauswahlToolStripMenuItem,
             this.analyseToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1052, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(644, 24);
             this.menuStrip1.TabIndex = 26;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -293,6 +293,54 @@
             this.analyseToolStripMenuItem.Text = "Analyse";
             this.analyseToolStripMenuItem.Visible = false;
             this.analyseToolStripMenuItem.Click += new System.EventHandler(this.analyseToolStripMenuItem_Click);
+            // 
+            // programmauswahlToolStripMenuItem
+            // 
+            this.programmauswahlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.himmelHölleToolStripMenuItem,
+            this.rotblauToolStripMenuItem,
+            this.startstopToolStripMenuItem,
+            this.unendlichToolStripMenuItem});
+            this.programmauswahlToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.programmauswahlToolStripMenuItem.Name = "programmauswahlToolStripMenuItem";
+            this.programmauswahlToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.programmauswahlToolStripMenuItem.Text = "Programmauswahl";
+            // 
+            // himmelHölleToolStripMenuItem
+            // 
+            this.himmelHölleToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.himmelHölleToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.himmelHölleToolStripMenuItem.Name = "himmelHölleToolStripMenuItem";
+            this.himmelHölleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.himmelHölleToolStripMenuItem.Text = "Himmel/Hölle";
+            this.himmelHölleToolStripMenuItem.Click += new System.EventHandler(this.himmelHölleToolStripMenuItem_Click);
+            // 
+            // rotblauToolStripMenuItem
+            // 
+            this.rotblauToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.rotblauToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.rotblauToolStripMenuItem.Name = "rotblauToolStripMenuItem";
+            this.rotblauToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rotblauToolStripMenuItem.Text = "rot/blau";
+            this.rotblauToolStripMenuItem.Click += new System.EventHandler(this.rotblauToolStripMenuItem_Click);
+            // 
+            // startstopToolStripMenuItem
+            // 
+            this.startstopToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.startstopToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.startstopToolStripMenuItem.Name = "startstopToolStripMenuItem";
+            this.startstopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startstopToolStripMenuItem.Text = "start/stop";
+            this.startstopToolStripMenuItem.Click += new System.EventHandler(this.startstopToolStripMenuItem_Click);
+            // 
+            // unendlichToolStripMenuItem
+            // 
+            this.unendlichToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.unendlichToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.unendlichToolStripMenuItem.Name = "unendlichToolStripMenuItem";
+            this.unendlichToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unendlichToolStripMenuItem.Text = "unendlich";
+            this.unendlichToolStripMenuItem.Click += new System.EventHandler(this.unendlichToolStripMenuItem_Click);
             // 
             // BtnSitzungBeenden
             // 
@@ -396,7 +444,7 @@
             this.delsteps.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.delsteps.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.delsteps.ForeColor = System.Drawing.Color.White;
-            this.delsteps.Location = new System.Drawing.Point(51, 292);
+            this.delsteps.Location = new System.Drawing.Point(51, 263);
             this.delsteps.Name = "delsteps";
             this.delsteps.Size = new System.Drawing.Size(160, 65);
             this.delsteps.TabIndex = 37;
@@ -496,53 +544,13 @@
             this.label10.Size = new System.Drawing.Size(1144, 2);
             this.label10.TabIndex = 45;
             // 
-            // lab_schrittgeschw
-            // 
-            this.lab_schrittgeschw.AutoSize = true;
-            this.lab_schrittgeschw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.lab_schrittgeschw.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lab_schrittgeschw.ForeColor = System.Drawing.Color.White;
-            this.lab_schrittgeschw.Location = new System.Drawing.Point(176, 74);
-            this.lab_schrittgeschw.Name = "lab_schrittgeschw";
-            this.lab_schrittgeschw.Size = new System.Drawing.Size(41, 17);
-            this.lab_schrittgeschw.TabIndex = 48;
-            this.lab_schrittgeschw.Text = "mittel";
-            this.lab_schrittgeschw.Visible = false;
-            // 
-            // lab_schrittgeschw_text
-            // 
-            this.lab_schrittgeschw_text.AutoSize = true;
-            this.lab_schrittgeschw_text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.lab_schrittgeschw_text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lab_schrittgeschw_text.ForeColor = System.Drawing.Color.White;
-            this.lab_schrittgeschw_text.Location = new System.Drawing.Point(12, 42);
-            this.lab_schrittgeschw_text.Name = "lab_schrittgeschw_text";
-            this.lab_schrittgeschw_text.Size = new System.Drawing.Size(117, 20);
-            this.lab_schrittgeschw_text.TabIndex = 47;
-            this.lab_schrittgeschw_text.Text = "Schrittgeschw.:";
-            this.lab_schrittgeschw_text.Visible = false;
-            // 
-            // schrittgeschw
-            // 
-            this.schrittgeschw.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.schrittgeschw.LargeChange = 1;
-            this.schrittgeschw.Location = new System.Drawing.Point(140, 42);
-            this.schrittgeschw.Maximum = 3;
-            this.schrittgeschw.Minimum = 1;
-            this.schrittgeschw.Name = "schrittgeschw";
-            this.schrittgeschw.Size = new System.Drawing.Size(110, 45);
-            this.schrittgeschw.TabIndex = 46;
-            this.schrittgeschw.Value = 2;
-            this.schrittgeschw.Visible = false;
-            this.schrittgeschw.ValueChanged += new System.EventHandler(this.schrittgeschw_ValueChanged);
-            // 
             // steps
             // 
             this.steps.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
             this.steps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.steps.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.steps.ForeColor = System.Drawing.Color.White;
-            this.steps.Location = new System.Drawing.Point(154, 148);
+            this.steps.Location = new System.Drawing.Point(154, 119);
             this.steps.Maximum = new decimal(new int[] {
             99,
             0,
@@ -563,35 +571,6 @@
             0});
             this.steps.KeyDown += new System.Windows.Forms.KeyEventHandler(this.steps_KeyDown_1);
             this.steps.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.steps_KeyPress_1);
-            // 
-            // programme
-            // 
-            this.programme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(110)))), ((int)(((byte)(120)))));
-            this.programme.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.programme.ForeColor = System.Drawing.Color.White;
-            this.programme.Items.Add("Himmel/Hölle");
-            this.programme.Items.Add("rot/blau");
-            this.programme.Items.Add("Start/Stop");
-            this.programme.Location = new System.Drawing.Point(39, 42);
-            this.programme.Name = "programme";
-            this.programme.Size = new System.Drawing.Size(186, 29);
-            this.programme.TabIndex = 50;
-            this.programme.Text = "Programmauswahl";
-            this.programme.SelectedItemChanged += new System.EventHandler(this.programme_SelectedItemChanged);
-            // 
-            // programmauswahl
-            // 
-            this.programmauswahl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.programmauswahl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.programmauswahl.ForeColor = System.Drawing.Color.White;
-            this.programmauswahl.Location = new System.Drawing.Point(73, 90);
-            this.programmauswahl.Margin = new System.Windows.Forms.Padding(0);
-            this.programmauswahl.Name = "programmauswahl";
-            this.programmauswahl.Size = new System.Drawing.Size(112, 35);
-            this.programmauswahl.TabIndex = 51;
-            this.programmauswahl.Text = "auswählen";
-            this.programmauswahl.UseVisualStyleBackColor = true;
-            this.programmauswahl.Click += new System.EventHandler(this.programmauswahl_Click);
             // 
             // zufall
             // 
@@ -616,12 +595,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(644, 385);
             this.Controls.Add(this.zufall);
-            this.Controls.Add(this.programmauswahl);
-            this.Controls.Add(this.programme);
             this.Controls.Add(this.steps);
-            this.Controls.Add(this.lab_schrittgeschw);
-            this.Controls.Add(this.lab_schrittgeschw_text);
-            this.Controls.Add(this.schrittgeschw);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label9);
@@ -671,7 +645,6 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.schrittgeschw)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.steps)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -714,13 +687,13 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lab_schrittgeschw;
-        private System.Windows.Forms.Label lab_schrittgeschw_text;
-        public System.Windows.Forms.TrackBar schrittgeschw;
-        private System.Windows.Forms.DomainUpDown programme;
-        private System.Windows.Forms.Button programmauswahl;
         private System.Windows.Forms.CheckBox zufall;
         public System.Windows.Forms.NumericUpDown steps;
+        private System.Windows.Forms.ToolStripMenuItem programmauswahlToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem himmelHölleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotblauToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startstopToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unendlichToolStripMenuItem;
     }
 }
 

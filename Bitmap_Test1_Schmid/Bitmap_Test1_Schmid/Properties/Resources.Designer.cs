@@ -133,6 +133,16 @@ namespace Bitmap_Test1_Schmid.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap INFINITY {
+            get {
+                object obj = ResourceManager.GetObject("INFINITY", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap klammer {
             get {
                 object obj = ResourceManager.GetObject("klammer", resourceCulture);

@@ -185,7 +185,7 @@ namespace Bitmap_Test1_Schmid
             foreach (int element in patientendatenbank.istMinimalwerte)//die minimalen Werte darstellen
             {
 
-            //}
+            }
 
         }
 

@@ -241,16 +241,11 @@ namespace Bitmap_Test1_Schmid
         {
             if (einaus)
             {
-                //kinectM = new KinectMonitor();
+                kinectM = new KinectMonitor();
                 kinectM.form1_schritt = this;
-                //ir.form1_2 = this;
                 kinectM.steps_kinect = Convert.ToInt32(steps.Text);
                 kinectToolStripMenuItem.BackColor = Color.Red;
                 check_autoobjekt.Enabled = true;
-                //lab_schrittgeschw.Visible = true;
-                //lab_schrittgeschw_text.Visible = true;
-                //schrittgeschw.Visible = true;
-
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
                 kinectM.WindowState = FormWindowState.Minimized;
                 kinectM.Show();
@@ -260,9 +255,6 @@ namespace Bitmap_Test1_Schmid
             {
                 check_autoobjekt.Enabled = false;
                 check_autoobjekt.Checked = false;
-                lab_schrittgeschw.Visible = false;
-                lab_schrittgeschw_text.Visible = false;
-                schrittgeschw.Visible = false;
                 kinectM.Close();
                 kinectToolStripMenuItem.BackColor = Color.Transparent;
             }
@@ -484,30 +476,6 @@ namespace Bitmap_Test1_Schmid
                 e.Handled = true;
             }
         }
-
-        private void schrittgeschw_ValueChanged(object sender, EventArgs e)
-        {
-            if (schrittgeschw.Value == 1)
-            {
-                lab_schrittgeschw.Location = new Point(127, lab_schrittgeschw.Location.Y);
-                lab_schrittgeschw.Text = "langsam";
-                kinectM.timeout = 20;
-            }
-
-            if (schrittgeschw.Value == 2)
-            {
-                lab_schrittgeschw.Location = new Point(176, lab_schrittgeschw.Location.Y);
-                lab_schrittgeschw.Text = "mittel";
-                kinectM.timeout = 12;
-            }
-
-            if (schrittgeschw.Value == 3)
-            {
-                lab_schrittgeschw.Location = new Point(210, lab_schrittgeschw.Location.Y);
-                lab_schrittgeschw.Text = "schnell";
-                kinectM.timeout = 5;
-            }
-        }
         int anzahl = 1;
         private void steps_KeyDown_1(object sender, KeyEventArgs e)
         {
@@ -534,60 +502,7 @@ namespace Bitmap_Test1_Schmid
                 anzahl = 1;
             }
             anzahl++;
-        }
-
-        private void programme_SelectedItemChanged(object sender, EventArgs e)
-        {
-        }
-        bool erstesmal = true;
-        private void programmauswahl_Click(object sender, EventArgs e)
-        {
-            if (programme.SelectedItem == "Himmel/Hölle")
-            {
-                screen.himmel_hölle();
-            }
-            if (programme.SelectedItem == "rot/blau")
-            {
-                screen.rnd_dots();
-            }
-            if (programme.SelectedItem == "Start/Stop")
-            {
-                if (erstesmal)
-                {
-                    try
-                    {
-                        if (!screen.klick)
-                        {
-                            screen.himmelhölle.Visible = false;
-                            screen.bestätigen.PerformClick();
-                            screen.klick = !screen.klick;
-                        }
-                        screen.linienladen();
-                        kinectM.startstop = true;
-                        erstesmal = false;
-                        if (einaus)
-                        {
-                            kinectToolStripMenuItem.PerformClick();
-                        }
-                    }
-                    catch 
-                    {
-                        MessageBox.Show("Bitte zuerst du Schritterkennung starten!","Schritterkennung starten", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                else if (!erstesmal)
-                {
-                    erstesmal = true;
-                    kinectM.startstop = false;
-                    screen.linienladen();
-                    if (!einaus)
-                    {
-                        kinectToolStripMenuItem.PerformClick();
-                    }
-                }
-            }
-        }
+        }        
 
         private void zufall_CheckedChanged(object sender, EventArgs e)
         {
@@ -616,6 +531,59 @@ namespace Bitmap_Test1_Schmid
                 screen.objekte_generiert = false;
                 kinectM.autobox = true;
             }
+        }
+
+        private void himmelHölleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            screen.himmel_hölle();
+        }
+
+        private void rotblauToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            screen.rnd_dots();
+        }
+        bool erstesmal = true;
+        private void startstopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (erstesmal)
+            {
+                try
+                {
+                    if (!screen.klick)
+                    {
+                        screen.himmelhölle.Visible = false;
+                        screen.bestätigen.PerformClick();
+                        screen.klick = !screen.klick;
+                    }
+                    screen.linienladen();
+                    kinectM.startstop = true;
+                    erstesmal = false;
+                    if (einaus)
+                    {
+                        kinectToolStripMenuItem.PerformClick();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Irgendwas ist schiefgelaufen! :(", "hmm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else if (!erstesmal)
+            {
+                erstesmal = true;
+                kinectM.startstop = false;
+                screen.linienladen();
+                if (!einaus)
+                {
+                    kinectToolStripMenuItem.PerformClick();
+                }
+            }
+        }
+
+        private void unendlichToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            screen.unendlich_();
         }
     }
 }

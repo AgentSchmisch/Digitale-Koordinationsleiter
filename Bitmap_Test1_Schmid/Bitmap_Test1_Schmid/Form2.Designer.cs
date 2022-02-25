@@ -69,8 +69,9 @@ namespace Bitmap_Test1_Schmid
             this.left_one = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kanten = new System.Windows.Forms.Label();
-            this.koordinaten_right = new System.Windows.Forms.Label();
             this.strich_links = new System.Windows.Forms.Label();
+            this.unendlich2 = new System.Windows.Forms.PictureBox();
+            this.koordinaten_right = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.himmelhölle)).BeginInit();
@@ -97,6 +98,7 @@ namespace Bitmap_Test1_Schmid
             ((System.ComponentModel.ISupportInitialize)(this.right_one)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_one)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unendlich2)).BeginInit();
             this.SuspendLayout();
             // 
             // bestätigen
@@ -569,17 +571,6 @@ namespace Bitmap_Test1_Schmid
             this.kanten.Text = "Reflektoren in die Rechtecke legen";
             this.kanten.Visible = false;
             // 
-            // koordinaten_right
-            // 
-            this.koordinaten_right.AutoSize = true;
-            this.koordinaten_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.koordinaten_right.Location = new System.Drawing.Point(405, 412);
-            this.koordinaten_right.Name = "koordinaten_right";
-            this.koordinaten_right.Size = new System.Drawing.Size(235, 46);
-            this.koordinaten_right.TabIndex = 49;
-            this.koordinaten_right.Text = "Koordinaten";
-            this.koordinaten_right.Visible = false;
-            // 
             // strich_links
             // 
             this.strich_links.AutoSize = true;
@@ -593,6 +584,28 @@ namespace Bitmap_Test1_Schmid
             this.strich_links.TabIndex = 50;
             this.strich_links.Visible = false;
             // 
+            // unendlich2
+            // 
+            this.unendlich2.Image = global::Bitmap_Test1_Schmid.Properties.Resources.INFINITY;
+            this.unendlich2.Location = new System.Drawing.Point(0, 606);
+            this.unendlich2.Name = "unendlich2";
+            this.unendlich2.Size = new System.Drawing.Size(1280, 809);
+            this.unendlich2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.unendlich2.TabIndex = 51;
+            this.unendlich2.TabStop = false;
+            this.unendlich2.Visible = false;
+            // 
+            // koordinaten_right
+            // 
+            this.koordinaten_right.AutoSize = true;
+            this.koordinaten_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.koordinaten_right.Location = new System.Drawing.Point(405, 412);
+            this.koordinaten_right.Name = "koordinaten_right";
+            this.koordinaten_right.Size = new System.Drawing.Size(235, 46);
+            this.koordinaten_right.TabIndex = 49;
+            this.koordinaten_right.Text = "Koordinaten";
+            this.koordinaten_right.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -600,6 +613,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 800);
+            this.Controls.Add(this.unendlich2);
             this.Controls.Add(this.right_two);
             this.Controls.Add(this.left_two);
             this.Controls.Add(this.right_one);
@@ -672,6 +686,7 @@ namespace Bitmap_Test1_Schmid
             ((System.ComponentModel.ISupportInitialize)(this.right_one)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.left_one)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unendlich2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -716,8 +731,9 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.Label koordinaten_left;
         private System.Windows.Forms.PictureBox kur;
         private System.Windows.Forms.Label kanten;
-        public System.Windows.Forms.Label koordinaten_right;
         public System.Windows.Forms.Label strich_links;
         public System.Windows.Forms.PictureBox himmelhölle;
+        public System.Windows.Forms.PictureBox unendlich2;
+        public System.Windows.Forms.Label koordinaten_right;
     }
 }

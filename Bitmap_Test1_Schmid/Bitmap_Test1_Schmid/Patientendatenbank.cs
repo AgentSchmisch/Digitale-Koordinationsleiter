@@ -647,7 +647,7 @@ namespace Bitmap_Test1_Schmid
         {
             set
             {
-                //string[] uebergeben=value.Split(';');
+                string[] uebergeben=value.Split(';');
 
                 Analyse analyse = new Analyse();
                 query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist,Projektionslaenge) VALUES ('" + vorname + "','" + nachname + "','"
