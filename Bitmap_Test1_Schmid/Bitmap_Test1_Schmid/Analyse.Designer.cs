@@ -48,7 +48,6 @@ namespace Bitmap_Test1_Schmid
             this.text_länge = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.fenstergroeße = new System.Windows.Forms.Timer(this.components);
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.hintergrund)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -201,11 +200,6 @@ namespace Bitmap_Test1_Schmid
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // fenstergroeße
-            // 
-            this.fenstergroeße.Interval = 10;
-            this.fenstergroeße.Tick += new System.EventHandler(this.fenstergroeße_Tick);
-            // 
             // chart1
             // 
             this.chart1.BackColor = System.Drawing.Color.Transparent;
@@ -213,7 +207,7 @@ namespace Bitmap_Test1_Schmid
             chartArea1.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Location = new System.Drawing.Point(582, 12);
+            this.chart1.Location = new System.Drawing.Point(447, 15);
             this.chart1.Name = "chart1";
             series1.BorderWidth = 5;
             series1.ChartArea = "ChartArea1";
@@ -239,7 +233,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
-            this.ClientSize = new System.Drawing.Size(1024, 246);
+            this.ClientSize = new System.Drawing.Size(876, 311);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -288,7 +282,6 @@ namespace Bitmap_Test1_Schmid
         private System.Windows.Forms.TextBox text_länge;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer fenstergroeße;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

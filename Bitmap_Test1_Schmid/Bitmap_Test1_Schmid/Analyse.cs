@@ -36,7 +36,7 @@ namespace Bitmap_Test1_Schmid
                 x += 15;
                 if (x <= 200)
                 {
-                    Size = new Size(470, 136 + x);
+                    Size = new Size(this.Size.Width, 136 + x);
                     this.CenterToScreen();
                 }
                 if (x > 300)
@@ -68,7 +68,9 @@ namespace Bitmap_Test1_Schmid
 
                     opacity += 10;
                     if (opacity >= 260)
-                        timer.Stop(); x  =  0; fenstergroeße.Start(); return;
+                    {
+                        timer.Stop(); return;
+                    }
                 }
             }
         }
@@ -104,12 +106,12 @@ namespace Bitmap_Test1_Schmid
 
             länge = Properties.Settings.Default.länge;
 
-            steps.Text = schritte.ToString() + " (" + Math.Round((_form1_anal.screen.Auflösung_Projektor_x / (schritte-1)) / _form1_anal.screen.Auflösung_Projektor_x * länge).ToString() + " cm)";
+            steps.Text = schritte.ToString() + " (" + Math.Round((_form1_anal.screen.Auflösung_Projektor_x / (schritte - 1)) / _form1_anal.screen.Auflösung_Projektor_x * länge).ToString() + " cm)";
             durchs.Text = Math.Round((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
             klein.Text = Math.Round((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
             groß.Text = Math.Round((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
 
-            Size = new Size(470, 136);
+            Size = new Size(this.Size.Width, 136);
             this.CenterToScreen();
             timer.Start();
         }
@@ -126,6 +128,7 @@ namespace Bitmap_Test1_Schmid
             groß.Visible = false;
             steps.Visible = false;
 
+            Size = new Size(470, this.Size.Height);
             hintergrund.Location = new Point(2, 2);
             label2.Location = new Point(33, 112);
             text_länge.Location = new Point(307, 112);
@@ -158,6 +161,7 @@ namespace Bitmap_Test1_Schmid
             durchs.Text = Math.Round(((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
             klein.Text = Math.Round(((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
             groß.Text = Math.Round(((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
+            Size = new Size(470, this.Size.Height);
         }
 
         private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)
@@ -165,7 +169,6 @@ namespace Bitmap_Test1_Schmid
             //zuerst die form vergrößern um das chart zu zeigen
             //dann die werte aus der Patientendatenbank holen und im chart darstellen
             chart1.Titles.Add(patientendatenbank.vorname + " " + patientendatenbank.nachname); //titel des diagramms setzen
-            fenstergroeße.Start();//Fenster vergrößern
             chart1.Series["Soll"].Points.Clear();//alle alten informationen löschen
             chart1.Series["Ist"].Points.Clear();
 
@@ -187,21 +190,6 @@ namespace Bitmap_Test1_Schmid
 
             }
 
-        }
-
-
-        private void fenstergroeße_Tick(object sender, EventArgs e)
-        {
-            x += 15;
-            if (x <= 540)
-            {
-                Size = new Size(470 + x, this.Size.Height);
-                this.CenterToScreen();
-            }
-            else
-            {
-                fenstergroeße.Stop(); return;
-            }
         }
     }
 }

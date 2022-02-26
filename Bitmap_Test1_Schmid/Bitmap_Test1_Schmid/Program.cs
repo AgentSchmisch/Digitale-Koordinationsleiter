@@ -15,7 +15,8 @@ namespace Bitmap_Test1_Schmid
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
-                Application.Run(new Form1());
+                //Application.Run(new Form1());
+                Application.Run(new Analyse());
             }
             catch
             {
