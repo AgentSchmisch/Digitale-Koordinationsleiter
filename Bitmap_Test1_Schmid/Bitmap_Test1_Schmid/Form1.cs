@@ -545,6 +545,43 @@ namespace Bitmap_Test1_Schmid
         bool erstesmal = true;
         private void startstopToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void unendlichToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            screen.unendlich_();
+        }
+        bool blockklick = false;
+        private void blöckeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!blockklick)
+            {
+                if (!screen.klick)
+                {
+                    screen.himmelhölle.Visible = false;
+                    screen.bestätigen.PerformClick();
+                    screen.klick = !screen.klick;
+                }
+                kinectM.übsülon = true;
+                kinectM.puh = 0;
+                kinectM.imquadrat = false;
+            }
+            if (blockklick)
+            {
+                kinectM.übsülon = false;
+                screen.block_two.Visible = false;
+                screen.block_two.Visible = false;
+                screen.block_three.Visible = false;
+                screen.block_four.Visible = false;
+                screen.block_five.Visible = false;
+                screen.block_six.Visible = false;
+            }
+            blockklick = !blockklick;
+        }
+
+        private void normalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             if (erstesmal)
             {
                 try
