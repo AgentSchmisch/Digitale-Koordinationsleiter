@@ -545,126 +545,45 @@ namespace Bitmap_Test1_Schmid
         bool erstesmal = true;
         private void startstopToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            if (erstesmal)
+            {
+                try
+                {
+                    if (!screen.klick)
+                    {
+                        screen.himmelhölle.Visible = false;
+                        screen.bestätigen.PerformClick();
+                        screen.klick = !screen.klick;
+                    }
+                    screen.linienladen();
+                    kinectM.startstop = true;
+                    erstesmal = false;
+                    if (einaus)
+                    {
+                        kinectToolStripMenuItem.PerformClick();
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Irgendwas ist schiefgelaufen! :(", "hmm", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else if (!erstesmal)
+            {
+                erstesmal = true;
+                kinectM.startstop = false;
+                screen.linienladen();
+                if (!einaus)
+                {
+                    kinectToolStripMenuItem.PerformClick();
+                }
+            }
         }
 
         private void unendlichToolStripMenuItem_Click(object sender, EventArgs e)
         {
             screen.unendlich_();
-        }
-        bool blockklick = false;
-        private void blöckeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (!blockklick)
-            {
-                kinectM.übsülon = true;
-                kinectM.puh = 0;
-                kinectM.imquadrat = false;
-            }
-            if (blockklick)
-            {
-                kinectM.übsülon = false;
-                screen.block_two.Visible = false;
-                screen.block_two.Visible = false;
-                screen.block_three.Visible = false;
-                screen.block_four.Visible = false;
-                screen.block_five.Visible = false;
-                screen.block_six.Visible = false;
-            }
-            blockklick = !blockklick;
-        }
-
-        private void normalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (erstesmal)
-            {
-                try
-                {
-                    if (!screen.klick)
-                    {
-                        screen.himmelhölle.Visible = false;
-                        screen.bestätigen.PerformClick();
-                        screen.klick = !screen.klick;
-                    }
-                    screen.linienladen();
-                    kinectM.startstop = true;
-                    erstesmal = false;
-                    if (einaus)
-                    {
-                        kinectToolStripMenuItem.PerformClick();
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Irgendwas ist schiefgelaufen! :(", "hmm", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            else if (!erstesmal)
-            {
-                erstesmal = true;
-                kinectM.startstop = false;
-                screen.linienladen();
-                if (!einaus)
-                {
-                    kinectToolStripMenuItem.PerformClick();
-                }
-            }
-        }
-        public bool userchanged = true;
-        private void multiplayerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            screen.form1_main = this;
-            if (erstesmal)
-            {
-                try
-                {
-                    if (!screen.klick)
-                    {
-                        screen.himmelhölle.Visible = false;
-                        screen.bestätigen.PerformClick();
-                        screen.klick = !screen.klick;
-                    }
-                    screen.linienladen();
-                    kinectM.startstop = true;
-                    kinectM.startstop_multiplayer = true;
-                    screen.time_left.Visible = true;
-                    screen.time_left.Text = "Verbleibende Zeit: 20,0 sek.";
-                    screen.time_left.Location = new Point(screen.Auflösung_Projektor_x / 2 - screen.time_left.Size.Width / 2, screen.waagrechtoben - screen.time_left.Height - 10);
-                    erstesmal = false;
-                    screen.user1.Visible = true;
-                    screen.user2.Visible = true;
-                    screen.user1.Location = new Point(screen.Auflösung_Projektor_x / 3 - screen.user2.Size.Width / 2, screen.waagrechtunten + 20);
-                    screen.user2.Location = new Point(2 * (screen.Auflösung_Projektor_x / 3) - screen.user2.Size.Width/2, screen.waagrechtunten + 20);
-                    if (einaus)
-                    {
-                        kinectToolStripMenuItem.PerformClick();
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Irgendwas ist schiefgelaufen! :(", "hmm", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-            else if (!erstesmal)
-            {
-                erstesmal = true;
-                kinectM.startstop = false;
-                screen.time_left.Visible = false;
-                kinectM.startstop_multiplayer = false;
-                screen.Multiplayer_timer.Stop();
-                screen.time_left.Visible = false;
-                screen.linienladen();
-                screen.user1.Visible = false;
-                screen.user1.Text = "Spieler 1: ";
-                screen.user2.Text = "Spieler 2: ";
-                screen.user2.Visible = false;
-                if (!einaus)
-                {
-                    kinectToolStripMenuItem.PerformClick();
-                }
-            }
         }
     }
 }

@@ -37,12 +37,6 @@ namespace Bitmap_Test1_Schmid
         public int waagrechtoben = 100;
         public int waagrechtunten = 700;
 
-        private Form1 _form1_main;
-        public Form1 form1_main
-        {
-            set { this._form1_main = value; }
-        }
-
         Bitmap image1 = null;
         public KinectMonitor _Kinect;
         public Form2()
@@ -349,7 +343,7 @@ namespace Bitmap_Test1_Schmid
                 if (delay > 10 && delay < 12)
                 {
                     kur.Visible = true;
-                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"..\..\Resources\mac_bong.wav");
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\CS-Projekte\Digitale-Koordinationsleiter\Bitmap_Test1_Schmid\Bitmap_Test1_Schmid\Resources\mac_bong.wav");
                     player.Play();
                 }
                 if (delay == 100 || delay == 200)
@@ -712,27 +706,6 @@ namespace Bitmap_Test1_Schmid
             }
         }
         bool unendlich = true;
-        public double timervalue = 0;
-        public double startzeit = 20;
-        private void Multiplayer_timer_Tick(object sender, EventArgs e)
-        {
-            timervalue = Math.Round(timervalue + 0.1, 2);
-            time_left.Text = "Verbleibende Zeit: " + Math.Round((startzeit - timervalue), 2) + " sek.";
-            if(startzeit - timervalue <= 0)
-            {
-                Multiplayer_timer.Stop();
-                _form1_main.kinectToolStripMenuItem.PerformClick();
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"..\..\Resources\mac_bong.wav");
-                player.Play();
-                _form1_main.kinectToolStripMenuItem.PerformClick();
-                strich_rechts.Visible = false;
-                _form1_main.userchanged = !_form1_main.userchanged;
-                _form1_main.kinectM.schongestartet = false;
-                _form1_main.screen.timervalue = 0;
-                _form1_main.kinectM.wieviel_geschafft = 0;
-            }
-        }
-
         public void unendlich_()
         {
             if (unendlich)
@@ -756,21 +729,6 @@ namespace Bitmap_Test1_Schmid
             }
             unendlich = !unendlich;
         }
-        public void neuerwert()
-        {
-            if (_form1_main.userchanged)
-            {
-                user2.BackColor = Color.Transparent;
-                user1.BackColor = Color.Green;
-                user1.Text = "Spieler 1: " + _form1_main.kinectM.wieviel_geschafft;
-            }
-            if (!_form1_main.userchanged)
-            {
-                user2.BackColor = Color.Green;
-                user1.BackColor = Color.Transparent;
-                user2.Text = "Spieler 2: " + _form1_main.kinectM.wieviel_geschafft;
-            }
-        }
-
+       
     }
 }

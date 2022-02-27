@@ -71,16 +71,7 @@ namespace Bitmap_Test1_Schmid
             this.kanten = new System.Windows.Forms.Label();
             this.strich_links = new System.Windows.Forms.Label();
             this.unendlich2 = new System.Windows.Forms.PictureBox();
-            this.user1 = new System.Windows.Forms.Label();
-            this.block_one = new System.Windows.Forms.Label();
-            this.block_two = new System.Windows.Forms.Label();
-            this.block_three = new System.Windows.Forms.Label();
-            this.block_four = new System.Windows.Forms.Label();
-            this.block_five = new System.Windows.Forms.Label();
-            this.block_six = new System.Windows.Forms.Label();
-            this.user2 = new System.Windows.Forms.Label();
-            this.Multiplayer_timer = new System.Windows.Forms.Timer(this.components);
-            this.time_left = new System.Windows.Forms.Label();
+            this.koordinaten_right = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.himmelhölle)).BeginInit();
@@ -604,109 +595,16 @@ namespace Bitmap_Test1_Schmid
             this.unendlich2.TabStop = false;
             this.unendlich2.Visible = false;
             // 
-            // user1
+            // koordinaten_right
             // 
-            this.user1.AutoSize = true;
-            this.user1.BackColor = System.Drawing.Color.Lime;
-            this.user1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.user1.Location = new System.Drawing.Point(405, 412);
-            this.user1.Name = "user1";
-            this.user1.Size = new System.Drawing.Size(199, 46);
-            this.user1.TabIndex = 49;
-            this.user1.Text = "Spieler 1: ";
-            this.user1.Visible = false;
-            // 
-            // block_one
-            // 
-            this.block_one.AutoSize = true;
-            this.block_one.BackColor = System.Drawing.Color.White;
-            this.block_one.Location = new System.Drawing.Point(22, 428);
-            this.block_one.MinimumSize = new System.Drawing.Size(30, 30);
-            this.block_one.Name = "block_one";
-            this.block_one.Size = new System.Drawing.Size(30, 30);
-            this.block_one.TabIndex = 52;
-            this.block_one.Visible = false;
-            // 
-            // block_two
-            // 
-            this.block_two.AutoSize = true;
-            this.block_two.BackColor = System.Drawing.Color.White;
-            this.block_two.Location = new System.Drawing.Point(58, 428);
-            this.block_two.MinimumSize = new System.Drawing.Size(30, 30);
-            this.block_two.Name = "block_two";
-            this.block_two.Size = new System.Drawing.Size(30, 30);
-            this.block_two.TabIndex = 53;
-            this.block_two.Visible = false;
-            // 
-            // block_three
-            // 
-            this.block_three.AutoSize = true;
-            this.block_three.BackColor = System.Drawing.Color.White;
-            this.block_three.Location = new System.Drawing.Point(94, 428);
-            this.block_three.MinimumSize = new System.Drawing.Size(30, 30);
-            this.block_three.Name = "block_three";
-            this.block_three.Size = new System.Drawing.Size(30, 30);
-            this.block_three.TabIndex = 54;
-            this.block_three.Visible = false;
-            // 
-            // block_four
-            // 
-            this.block_four.AutoSize = true;
-            this.block_four.BackColor = System.Drawing.Color.White;
-            this.block_four.Location = new System.Drawing.Point(127, 428);
-            this.block_four.MinimumSize = new System.Drawing.Size(30, 30);
-            this.block_four.Name = "block_four";
-            this.block_four.Size = new System.Drawing.Size(30, 30);
-            this.block_four.TabIndex = 55;
-            this.block_four.Visible = false;
-            // 
-            // block_five
-            // 
-            this.block_five.AutoSize = true;
-            this.block_five.BackColor = System.Drawing.Color.White;
-            this.block_five.Location = new System.Drawing.Point(163, 428);
-            this.block_five.MinimumSize = new System.Drawing.Size(30, 30);
-            this.block_five.Name = "block_five";
-            this.block_five.Size = new System.Drawing.Size(30, 30);
-            this.block_five.TabIndex = 56;
-            this.block_five.Visible = false;
-            // 
-            // block_six
-            // 
-            this.block_six.AutoSize = true;
-            this.block_six.BackColor = System.Drawing.Color.White;
-            this.block_six.Location = new System.Drawing.Point(199, 428);
-            this.block_six.MinimumSize = new System.Drawing.Size(30, 30);
-            this.block_six.Name = "block_six";
-            this.block_six.Size = new System.Drawing.Size(30, 30);
-            this.block_six.TabIndex = 57;
-            this.block_six.Visible = false;
-            // 
-            // user2
-            // 
-            this.user2.AutoSize = true;
-            this.user2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.user2.Location = new System.Drawing.Point(407, 458);
-            this.user2.Name = "user2";
-            this.user2.Size = new System.Drawing.Size(199, 46);
-            this.user2.TabIndex = 58;
-            this.user2.Text = "Spieler 2: ";
-            this.user2.Visible = false;
-            // 
-            // Multiplayer_timer
-            // 
-            this.Multiplayer_timer.Tick += new System.EventHandler(this.Multiplayer_timer_Tick);
-            // 
-            // time_left
-            // 
-            this.time_left.AutoSize = true;
-            this.time_left.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
-            this.time_left.Location = new System.Drawing.Point(422, 495);
-            this.time_left.Name = "time_left";
-            this.time_left.Size = new System.Drawing.Size(514, 46);
-            this.time_left.TabIndex = 59;
-            this.time_left.Text = "Verbleibende Zeit: 20,0 sek.";
-            this.time_left.Visible = false;
+            this.koordinaten_right.AutoSize = true;
+            this.koordinaten_right.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.koordinaten_right.Location = new System.Drawing.Point(405, 412);
+            this.koordinaten_right.Name = "koordinaten_right";
+            this.koordinaten_right.Size = new System.Drawing.Size(235, 46);
+            this.koordinaten_right.TabIndex = 49;
+            this.koordinaten_right.Text = "Koordinaten";
+            this.koordinaten_right.Visible = false;
             // 
             // Form2
             // 
@@ -715,21 +613,13 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 800);
-            this.Controls.Add(this.time_left);
-            this.Controls.Add(this.user2);
-            this.Controls.Add(this.block_six);
-            this.Controls.Add(this.block_five);
-            this.Controls.Add(this.block_four);
-            this.Controls.Add(this.block_three);
-            this.Controls.Add(this.block_two);
-            this.Controls.Add(this.block_one);
             this.Controls.Add(this.unendlich2);
             this.Controls.Add(this.right_two);
             this.Controls.Add(this.left_two);
             this.Controls.Add(this.right_one);
             this.Controls.Add(this.left_one);
             this.Controls.Add(this.strich_links);
-            this.Controls.Add(this.user1);
+            this.Controls.Add(this.koordinaten_right);
             this.Controls.Add(this.kanten);
             this.Controls.Add(this.himmelhölle);
             this.Controls.Add(this.kur);
@@ -844,15 +734,6 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.Label strich_links;
         public System.Windows.Forms.PictureBox himmelhölle;
         public System.Windows.Forms.PictureBox unendlich2;
-        public System.Windows.Forms.Label user1;
-        public System.Windows.Forms.Label block_one;
-        public System.Windows.Forms.Label block_two;
-        public System.Windows.Forms.Label block_three;
-        public System.Windows.Forms.Label block_four;
-        public System.Windows.Forms.Label block_five;
-        public System.Windows.Forms.Label block_six;
-        public System.Windows.Forms.Label user2;
-        public System.Windows.Forms.Label time_left;
-        public System.Windows.Forms.Timer Multiplayer_timer;
+        public System.Windows.Forms.Label koordinaten_right;
     }
 }
