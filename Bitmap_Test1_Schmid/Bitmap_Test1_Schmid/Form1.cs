@@ -557,12 +557,6 @@ namespace Bitmap_Test1_Schmid
         {
             if (!blockklick)
             {
-                if (!screen.klick)
-                {
-                    screen.himmelhölle.Visible = false;
-                    screen.bestätigen.PerformClick();
-                    screen.klick = !screen.klick;
-                }
                 kinectM.übsülon = true;
                 kinectM.puh = 0;
                 kinectM.imquadrat = false;
