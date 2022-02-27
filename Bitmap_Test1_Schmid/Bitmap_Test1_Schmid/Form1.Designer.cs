@@ -47,13 +47,12 @@
             this.kinectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kantenerkennungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.einstellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.analyseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.programmauswahlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.himmelHölleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rotblauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startstopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unendlichToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.blöckeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.analyseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BtnSitzungBeenden = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -73,8 +72,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.steps = new System.Windows.Forms.NumericUpDown();
             this.zufall = new System.Windows.Forms.CheckBox();
-            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.multiplayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -288,14 +285,22 @@
             this.einstellungenToolStripMenuItem.Text = "Einstellungen";
             this.einstellungenToolStripMenuItem.Click += new System.EventHandler(this.einstellungenToolStripMenuItem_Click);
             // 
+            // analyseToolStripMenuItem
+            // 
+            this.analyseToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.analyseToolStripMenuItem.Name = "analyseToolStripMenuItem";
+            this.analyseToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.analyseToolStripMenuItem.Text = "Analyse";
+            this.analyseToolStripMenuItem.Visible = false;
+            this.analyseToolStripMenuItem.Click += new System.EventHandler(this.analyseToolStripMenuItem_Click);
+            // 
             // programmauswahlToolStripMenuItem
             // 
             this.programmauswahlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.himmelHölleToolStripMenuItem,
             this.rotblauToolStripMenuItem,
             this.startstopToolStripMenuItem,
-            this.unendlichToolStripMenuItem,
-            this.blöckeToolStripMenuItem});
+            this.unendlichToolStripMenuItem});
             this.programmauswahlToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.programmauswahlToolStripMenuItem.Name = "programmauswahlToolStripMenuItem";
             this.programmauswahlToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
@@ -322,9 +327,6 @@
             // startstopToolStripMenuItem
             // 
             this.startstopToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
-            this.startstopToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.normalToolStripMenuItem,
-            this.multiplayerToolStripMenuItem});
             this.startstopToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.startstopToolStripMenuItem.Name = "startstopToolStripMenuItem";
             this.startstopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -339,24 +341,6 @@
             this.unendlichToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.unendlichToolStripMenuItem.Text = "unendlich";
             this.unendlichToolStripMenuItem.Click += new System.EventHandler(this.unendlichToolStripMenuItem_Click);
-            // 
-            // blöckeToolStripMenuItem
-            // 
-            this.blöckeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
-            this.blöckeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.blöckeToolStripMenuItem.Name = "blöckeToolStripMenuItem";
-            this.blöckeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.blöckeToolStripMenuItem.Text = "Blöcke";
-            this.blöckeToolStripMenuItem.Click += new System.EventHandler(this.blöckeToolStripMenuItem_Click);
-            // 
-            // analyseToolStripMenuItem
-            // 
-            this.analyseToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.analyseToolStripMenuItem.Name = "analyseToolStripMenuItem";
-            this.analyseToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.analyseToolStripMenuItem.Text = "Analyse";
-            this.analyseToolStripMenuItem.Visible = false;
-            this.analyseToolStripMenuItem.Click += new System.EventHandler(this.analyseToolStripMenuItem_Click);
             // 
             // BtnSitzungBeenden
             // 
@@ -602,24 +586,6 @@
             this.zufall.Visible = false;
             this.zufall.CheckedChanged += new System.EventHandler(this.zufall_CheckedChanged);
             // 
-            // normalToolStripMenuItem
-            // 
-            this.normalToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
-            this.normalToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.normalToolStripMenuItem.Text = "singleplayer";
-            this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
-            // 
-            // multiplayerToolStripMenuItem
-            // 
-            this.multiplayerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
-            this.multiplayerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.multiplayerToolStripMenuItem.Name = "multiplayerToolStripMenuItem";
-            this.multiplayerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.multiplayerToolStripMenuItem.Text = "multiplayer";
-            this.multiplayerToolStripMenuItem.Click += new System.EventHandler(this.multiplayerToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -728,9 +694,6 @@
         private System.Windows.Forms.ToolStripMenuItem rotblauToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startstopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unendlichToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem blöckeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem normalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem multiplayerToolStripMenuItem;
     }
 }
 
