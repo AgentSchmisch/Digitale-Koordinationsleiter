@@ -79,14 +79,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bitmap_Test1_Schmid.exe" size="1428992">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bitmap_Test1_Schmid.exe" size="1428480">
       <assemblyIdentity name="Bitmap_Test1_Schmid" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mydM5+WSM5kr5Ko3lLGDogH6hvz3kejKxpiWlc/uSgw=</dsig:DigestValue>
+        <dsig:DigestValue>jr4Dhc6CdZT3T9NqKg2tKuMZOvEFciXCPEIZpZBH1Z4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -171,6 +171,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>XqougqJrCzAigNCPVNydolFl3Q4oa+UkQKJxKF1j9pU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MySql.Data.dll" size="1758208">
+      <assemblyIdentity name="MySql.Data" version="8.0.26.0" publicKeyToken="C5687FC88969C44D" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>5fBp0rT1epnMaw7yt2i9rAUAeEBzkINO96uELeYUwVA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
