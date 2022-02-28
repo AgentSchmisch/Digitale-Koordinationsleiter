@@ -43,7 +43,7 @@ namespace Bitmap_Test1_Schmid
         public double mittelpunkt_links_y = 0;
         public double mittelpunkt_rechts_y = 0;//unwichtig: das wurde geändert
 
-        int kreise = 1;
+        int kreise = 0;
 
         private void IR_Load_1(object sender, EventArgs e)
         {
@@ -138,22 +138,22 @@ namespace Bitmap_Test1_Schmid
                                 (int)(center.Y - radius),
                                 (int)(radius * 2),
                                 (int)(radius * 2));
-                            if (kreise == 1)
+                            if (kreise == 0)
                             {
                                 ecken_x[0] = (int)center.X;
                                 ecken_y[0] = (int)center.Y;
                             }
-                            if (kreise == 2)
+                            if (kreise ==1)
                             {
                                 ecken_x[1] = (int)center.X;
                                 ecken_y[1] = (int)center.Y;
                             }
-                            if (kreise == 3)
+                            if (kreise == 2)
                             {
                                 ecken_x[2] = (int)center.X;
                                 ecken_y[2] = (int)center.Y;
                             }
-                            if (kreise == 4)
+                            if (kreise == 3)
                             {
                                 ecken_x[3] = (int)center.X;
                                 ecken_y[3] = (int)center.Y;

@@ -51,6 +51,8 @@
             this.himmelHölleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rotblauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startstopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.multiplayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unendlichToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blöckeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.analyseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,8 +75,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.steps = new System.Windows.Forms.NumericUpDown();
             this.zufall = new System.Windows.Forms.CheckBox();
-            this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.multiplayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -330,6 +330,24 @@
             this.startstopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startstopToolStripMenuItem.Text = "start/stop";
             this.startstopToolStripMenuItem.Click += new System.EventHandler(this.startstopToolStripMenuItem_Click);
+            // 
+            // normalToolStripMenuItem
+            // 
+            this.normalToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.normalToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.normalToolStripMenuItem.Text = "singleplayer";
+            this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
+            // 
+            // multiplayerToolStripMenuItem
+            // 
+            this.multiplayerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.multiplayerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.multiplayerToolStripMenuItem.Name = "multiplayerToolStripMenuItem";
+            this.multiplayerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.multiplayerToolStripMenuItem.Text = "multiplayer";
+            this.multiplayerToolStripMenuItem.Click += new System.EventHandler(this.multiplayerToolStripMenuItem_Click);
             // 
             // unendlichToolStripMenuItem
             // 
@@ -602,24 +620,6 @@
             this.zufall.Visible = false;
             this.zufall.CheckedChanged += new System.EventHandler(this.zufall_CheckedChanged);
             // 
-            // normalToolStripMenuItem
-            // 
-            this.normalToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
-            this.normalToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.normalToolStripMenuItem.Text = "singleplayer";
-            this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
-            // 
-            // multiplayerToolStripMenuItem
-            // 
-            this.multiplayerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
-            this.multiplayerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.multiplayerToolStripMenuItem.Name = "multiplayerToolStripMenuItem";
-            this.multiplayerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.multiplayerToolStripMenuItem.Text = "multiplayer";
-            this.multiplayerToolStripMenuItem.Click += new System.EventHandler(this.multiplayerToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -728,9 +728,9 @@
         private System.Windows.Forms.ToolStripMenuItem rotblauToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startstopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unendlichToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem blöckeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem normalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem multiplayerToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem blöckeToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem multiplayerToolStripMenuItem;
     }
 }
 

@@ -246,6 +246,7 @@ namespace Bitmap_Test1_Schmid
                 kinectM.steps_kinect = Convert.ToInt32(steps.Text);
                 kinectToolStripMenuItem.BackColor = Color.Red;
                 check_autoobjekt.Enabled = true;
+                screen.fuß_zurücksetzen.Visible = true;
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
                 kinectM.WindowState = FormWindowState.Minimized;
                 kinectM.Show();
@@ -255,6 +256,8 @@ namespace Bitmap_Test1_Schmid
             {
                 check_autoobjekt.Enabled = false;
                 check_autoobjekt.Checked = false;
+                screen.fuß_zurücksetzen.Visible = false;
+
                 kinectM.Close();
                 kinectToolStripMenuItem.BackColor = Color.Transparent;
             }
@@ -557,6 +560,10 @@ namespace Bitmap_Test1_Schmid
         {
             if (!blockklick)
             {
+                if (einaus)
+                {
+                    kinectToolStripMenuItem.PerformClick();
+                }
                 kinectM.übsülon = true;
                 kinectM.puh = 0;
                 kinectM.imquadrat = false;
@@ -564,7 +571,7 @@ namespace Bitmap_Test1_Schmid
             if (blockklick)
             {
                 kinectM.übsülon = false;
-                screen.block_two.Visible = false;
+                screen.block_one.Visible = false;
                 screen.block_two.Visible = false;
                 screen.block_three.Visible = false;
                 screen.block_four.Visible = false;
@@ -619,6 +626,10 @@ namespace Bitmap_Test1_Schmid
             {
                 try
                 {
+                    if (einaus)
+                    {
+                        kinectToolStripMenuItem.PerformClick();
+                    }
                     if (!screen.klick)
                     {
                         screen.himmelhölle.Visible = false;
@@ -636,10 +647,6 @@ namespace Bitmap_Test1_Schmid
                     screen.user2.Visible = true;
                     screen.user1.Location = new Point(screen.Auflösung_Projektor_x / 3 - screen.user2.Size.Width / 2, screen.waagrechtunten + 20);
                     screen.user2.Location = new Point(2 * (screen.Auflösung_Projektor_x / 3) - screen.user2.Size.Width/2, screen.waagrechtunten + 20);
-                    if (einaus)
-                    {
-                        kinectToolStripMenuItem.PerformClick();
-                    }
                 }
                 catch
                 {

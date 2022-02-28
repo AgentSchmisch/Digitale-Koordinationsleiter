@@ -81,6 +81,7 @@ namespace Bitmap_Test1_Schmid
             this.user2 = new System.Windows.Forms.Label();
             this.Multiplayer_timer = new System.Windows.Forms.Timer(this.components);
             this.time_left = new System.Windows.Forms.Label();
+            this.fuß_zurücksetzen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.himmelhölle)).BeginInit();
@@ -708,6 +709,19 @@ namespace Bitmap_Test1_Schmid
             this.time_left.Text = "Verbleibende Zeit: 20,0 sek.";
             this.time_left.Visible = false;
             // 
+            // fuß_zurücksetzen
+            // 
+            this.fuß_zurücksetzen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.fuß_zurücksetzen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.fuß_zurücksetzen.ForeColor = System.Drawing.Color.White;
+            this.fuß_zurücksetzen.Location = new System.Drawing.Point(154, 481);
+            this.fuß_zurücksetzen.Name = "fuß_zurücksetzen";
+            this.fuß_zurücksetzen.Size = new System.Drawing.Size(141, 71);
+            this.fuß_zurücksetzen.TabIndex = 60;
+            this.fuß_zurücksetzen.Text = "Fußabdrücke zurücksetzen";
+            this.fuß_zurücksetzen.UseVisualStyleBackColor = true;
+            this.fuß_zurücksetzen.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -715,6 +729,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 800);
+            this.Controls.Add(this.fuß_zurücksetzen);
             this.Controls.Add(this.time_left);
             this.Controls.Add(this.user2);
             this.Controls.Add(this.block_six);
@@ -854,5 +869,6 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.Label user2;
         public System.Windows.Forms.Label time_left;
         public System.Windows.Forms.Timer Multiplayer_timer;
+        public System.Windows.Forms.Button fuß_zurücksetzen;
     }
 }

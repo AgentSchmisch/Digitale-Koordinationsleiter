@@ -18,8 +18,9 @@ namespace Bitmap_Test1_Schmid
                 Application.Run(new Form1());
                
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString()); ;
                 if (MessageBox.Show("Fatal Error", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Stop) == DialogResult.OK)
                 {
                     Application.Restart();

@@ -54,6 +54,7 @@ namespace Bitmap_Test1_Schmid
         {
             this.Size = new Size(Auflösung_Projektor_x, Auflösung_Projektor_y);
             pictureBox1.Size = new Size(Auflösung_Projektor_x, Auflösung_Projektor_y);
+            fuß_zurücksetzen.Location = new Point(200, Auflösung_Projektor_y-fuß_zurücksetzen.Size.Height);
 
             color_box_r = Properties.Settings.Default.colorbox_r;
             color_box_g = Properties.Settings.Default.colorbox_g;
@@ -721,15 +722,17 @@ namespace Bitmap_Test1_Schmid
             if(startzeit - timervalue <= 0)
             {
                 Multiplayer_timer.Stop();
-                _form1_main.kinectToolStripMenuItem.PerformClick();
+                //_form1_main.kinectToolStripMenuItem.PerformClick();
                 System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"..\..\Resources\mac_bong.wav");
                 player.Play();
-                _form1_main.kinectToolStripMenuItem.PerformClick();
+                //_form1_main.kinectToolStripMenuItem.PerformClick();
                 strich_rechts.Visible = false;
+                _form1_main.kinectM.startstop_multiplayer = true;
                 _form1_main.userchanged = !_form1_main.userchanged;
                 _form1_main.kinectM.schongestartet = false;
                 _form1_main.screen.timervalue = 0;
                 _form1_main.kinectM.wieviel_geschafft = 0;
+                neuerwert();
             }
         }
 
