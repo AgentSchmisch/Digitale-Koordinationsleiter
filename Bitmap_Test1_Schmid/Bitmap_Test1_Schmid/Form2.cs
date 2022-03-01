@@ -12,6 +12,8 @@ namespace Bitmap_Test1_Schmid
         public double schrittlängealt = 100;
         int x, y;
 
+        public System.Media.SoundPlayer player;
+
         public int color_r = 255;//linienfarbe
         public int color_g = 255;
         public int color_b = 255;
@@ -90,8 +92,8 @@ namespace Bitmap_Test1_Schmid
 
             image1 = new Bitmap(Auflösung_Projektor_x, Auflösung_Projektor_y);
 
-            //timer1.Start(); //ohne animation das kommentieren
-            linienladen(); //ohne animation das auskommentieren
+            timer1.Start(); //ohne animation das kommentieren
+            //linienladen(); //ohne animation das auskommentieren
 
             //zu "linieladen()" verschoben !!!
         }
@@ -350,7 +352,7 @@ namespace Bitmap_Test1_Schmid
                 if (delay > 10 && delay < 12)
                 {
                     kur.Visible = true;
-                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"..\..\Resources\mac_bong.wav");
+                    player = new System.Media.SoundPlayer(@"..\..\Resources\mac_bong.wav");
                     player.Play();
                 }
                 if (delay == 100 || delay == 200)
@@ -723,7 +725,8 @@ namespace Bitmap_Test1_Schmid
             {
                 Multiplayer_timer.Stop();
                 //_form1_main.kinectToolStripMenuItem.PerformClick();
-                System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"..\..\Resources\mac_bong.wav");
+                player.Stop();
+                player = new System.Media.SoundPlayer(@"..\..\Resources\mac_bong.wav");
                 player.Play();
                 //_form1_main.kinectToolStripMenuItem.PerformClick();
                 strich_rechts.Visible = false;
