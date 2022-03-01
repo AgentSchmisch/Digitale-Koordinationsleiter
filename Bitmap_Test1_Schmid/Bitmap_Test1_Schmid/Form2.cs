@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Bitmap_Test1_Schmid
 {
@@ -56,7 +57,9 @@ namespace Bitmap_Test1_Schmid
         {
             this.Size = new Size(Auflösung_Projektor_x, Auflösung_Projektor_y);
             pictureBox1.Size = new Size(Auflösung_Projektor_x, Auflösung_Projektor_y);
-            fuß_zurücksetzen.Location = new Point(200, Auflösung_Projektor_y-fuß_zurücksetzen.Size.Height);
+            fuß_zurücksetzen.Location = new Point(100, Auflösung_Projektor_y-fuß_zurücksetzen.Size.Height);
+
+            next_player.Location = new Point(Auflösung_Projektor_x / 2 - next_player.Width/2, Auflösung_Projektor_y / 2 - next_player.Height/2);
 
             color_box_r = Properties.Settings.Default.colorbox_r;
             color_box_g = Properties.Settings.Default.colorbox_g;
@@ -92,8 +95,8 @@ namespace Bitmap_Test1_Schmid
 
             image1 = new Bitmap(Auflösung_Projektor_x, Auflösung_Projektor_y);
 
-            timer1.Start(); //ohne animation das kommentieren
-            //linienladen(); //ohne animation das auskommentieren
+            //timer1.Start(); //ohne animation das kommentieren
+            linienladen(); //ohne animation das auskommentieren
 
             //zu "linieladen()" verschoben !!!
         }
@@ -736,6 +739,9 @@ namespace Bitmap_Test1_Schmid
                 _form1_main.screen.timervalue = 0;
                 _form1_main.kinectM.wieviel_geschafft = 0;
                 neuerwert();
+                next_player.Visible = true;
+                Thread.Sleep(3000);
+                next_player.Visible = false;
             }
         }
 

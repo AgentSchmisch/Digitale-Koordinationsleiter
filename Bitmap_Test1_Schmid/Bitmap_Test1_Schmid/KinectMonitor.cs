@@ -217,7 +217,7 @@ namespace Bitmap_Test1_Schmid
                 if (bodyFrame != null)
                 {
                     if (bodies == null)
-                        bodies = new Body[0];//new Body[bodyFrame.BodyCount];
+                        bodies = new Body[bodyFrame.BodyCount];
 
                     bodyFrame.GetAndRefreshBodyData(bodies);
                     _form1_schritt.kinectToolStripMenuItem.BackColor = Color.Orange;
@@ -258,9 +258,11 @@ namespace Bitmap_Test1_Schmid
                         Yrechts.Text = rf_distance_y.ToString("###");
                         Zrechts.Text = rf_distance_z.ToString("#.##");
 
-                        double multi = Math.Round((_form1_schritt.screen.Auflösung_Projektor_y / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben)) + 2, 2);
-                        double right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
-                        double left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
+                        double multi = (_form1_schritt.screen.Auflösung_Projektor_y / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben)) + 3;
+                        double right_y;
+                        right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi)+10;
+                        double left_y;
+                        left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi)+10; 
 
 
                         tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
@@ -301,6 +303,9 @@ namespace Bitmap_Test1_Schmid
                         //_form1_schritt.screen.koordinaten_right.Location = new Point(Convert.ToInt32((Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), 550);
                         //_form1_schritt.screen.koordinaten_left.Text = (Convert.ToInt32(rf_distance_y) - (int)Properties.Settings.Default.weg_oben).ToString();
                         //_form1_schritt.screen.koordinaten_left.Visible = true;
+                        //_form1_schritt.screen.block_five.Visible = true;
+                        //_form1_schritt.screen.block_five.Location = new Point((int)((((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), (int)left_y);
+
                         #endregion
 
                         #region Versuch 1 (unzuverlässig)
@@ -506,7 +511,7 @@ namespace Bitmap_Test1_Schmid
                                     if ((Convert.ToInt32(rf_distance_x) > Convert.ToInt32(lf_distance_x)) && !lf_rf_vergleich)
                                     {
                                         durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator;
-                                        left_y = (Math.Round((schritt_links_y[0] + schritt_links_y[1] + schritt_links_y[2]) / 3) - Properties.Settings.Default.weg_oben) * multi;
+                                        left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
 
                                         if (schrittzähler > 1 && Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 2]) > abstand_zw_zwei_schritten)
                                         {
@@ -587,7 +592,7 @@ namespace Bitmap_Test1_Schmid
                                     else if ((Convert.ToInt32(rf_distance_x) < Convert.ToInt32(lf_distance_x)) && lf_rf_vergleich)
                                     {
                                         durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
-                                        right_y = (Math.Round((schritt_rechts_y[0] + schritt_rechts_y[1] + schritt_rechts_y[2]) / 3) - Properties.Settings.Default.weg_oben) * multi;
+                                        right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
 
                                         if (schrittzähler > 1 && Math.Abs(durchschnitt[schrittzähler] - durchschnitt[schrittzähler - 2]) > abstand_zw_zwei_schritten)
                                         {
@@ -743,8 +748,8 @@ namespace Bitmap_Test1_Schmid
                         {
                             double aktuell_rechts = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
                             double aktuell_links = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator;
-                            right_y = (Math.Round((schritt_rechts_y[0] + schritt_rechts_y[1] + schritt_rechts_y[2]) / 3) - Properties.Settings.Default.weg_oben) * multi;
-                            left_y = (Math.Round((schritt_links_y[0] + schritt_links_y[1] + schritt_links_y[2]) / 3) - Properties.Settings.Default.weg_oben) * multi;
+                            //right_y = (Math.Round((schritt_rechts_y[0] + schritt_rechts_y[1] + schritt_rechts_y[2]) / 3) - Properties.Settings.Default.weg_oben) * multi;
+                            //left_y = (Math.Round((schritt_links_y[0] + schritt_links_y[1] + schritt_links_y[2]) / 3) - Properties.Settings.Default.weg_oben) * multi;
 
                             Random rnd = new Random();
                             #region blockeinblendung
@@ -756,8 +761,8 @@ namespace Bitmap_Test1_Schmid
                             }
                             else if (puh == 0 && imquadrat)
                             {
-                                if (aktuell_links <= _form1_schritt.screen.block_one.Location.X + _form1_schritt.screen.block_one.Size.Width && aktuell_links >= _form1_schritt.screen.block_one.Location.X && left_y <= (_form1_schritt.screen.block_one.Location.Y + _form1_schritt.screen.block_one.Size.Width)+20 && left_y >= _form1_schritt.screen.block_one.Location.Y-20
-                                    || aktuell_rechts <= _form1_schritt.screen.block_one.Location.X + _form1_schritt.screen.block_one.Size.Width && aktuell_rechts >= _form1_schritt.screen.block_one.Location.X && right_y <= (_form1_schritt.screen.block_one.Location.Y + _form1_schritt.screen.block_one.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_one.Location.Y - 20)
+                                if (aktuell_links- 50 <= _form1_schritt.screen.block_one.Location.X + _form1_schritt.screen.block_one.Size.Width && aktuell_links + 50 >= _form1_schritt.screen.block_one.Location.X && left_y <= (_form1_schritt.screen.block_one.Location.Y + _form1_schritt.screen.block_one.Size.Width)+20 && left_y >= _form1_schritt.screen.block_one.Location.Y-20
+                                    || aktuell_rechts - 50 <= _form1_schritt.screen.block_one.Location.X + _form1_schritt.screen.block_one.Size.Width && aktuell_rechts + 50 >= _form1_schritt.screen.block_one.Location.X && right_y <= (_form1_schritt.screen.block_one.Location.Y + _form1_schritt.screen.block_one.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_one.Location.Y - 20)
                                 {
                                     puh = 1;
                                     imquadrat = false;
@@ -771,8 +776,8 @@ namespace Bitmap_Test1_Schmid
                             }
                             else if (puh == 1 && imquadrat)
                             {
-                                if (aktuell_links <= _form1_schritt.screen.block_two.Location.X + _form1_schritt.screen.block_two.Size.Width && aktuell_links >= _form1_schritt.screen.block_two.Location.X && left_y <= (_form1_schritt.screen.block_two.Location.Y + _form1_schritt.screen.block_two.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_two.Location.Y - 20
-                                    || aktuell_rechts <= _form1_schritt.screen.block_two.Location.X + _form1_schritt.screen.block_two.Size.Width && aktuell_rechts >= _form1_schritt.screen.block_two.Location.X && right_y <= (_form1_schritt.screen.block_two.Location.Y + _form1_schritt.screen.block_two.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_two.Location.Y - 20)
+                                if (aktuell_links - 50 <= _form1_schritt.screen.block_two.Location.X + _form1_schritt.screen.block_two.Size.Width && aktuell_links + 50 >= _form1_schritt.screen.block_two.Location.X && left_y <= (_form1_schritt.screen.block_two.Location.Y + _form1_schritt.screen.block_two.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_two.Location.Y - 20
+                                    || aktuell_rechts - 50 <= _form1_schritt.screen.block_two.Location.X + _form1_schritt.screen.block_two.Size.Width && aktuell_rechts + 50 >= _form1_schritt.screen.block_two.Location.X && right_y <= (_form1_schritt.screen.block_two.Location.Y + _form1_schritt.screen.block_two.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_two.Location.Y - 20)
                                 {
                                     puh = 2;
                                     imquadrat = false;
@@ -786,8 +791,8 @@ namespace Bitmap_Test1_Schmid
                             }
                             else if (puh == 2 && imquadrat)
                             {
-                                if (aktuell_links <= _form1_schritt.screen.block_three.Location.X + _form1_schritt.screen.block_three.Size.Width && aktuell_links >= _form1_schritt.screen.block_three.Location.X && left_y <= (_form1_schritt.screen.block_three.Location.Y + _form1_schritt.screen.block_three.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_three.Location.Y - 20
-                                    || aktuell_rechts <= _form1_schritt.screen.block_three.Location.X + _form1_schritt.screen.block_three.Size.Width && aktuell_rechts >= _form1_schritt.screen.block_three.Location.X && right_y <= (_form1_schritt.screen.block_three.Location.Y + _form1_schritt.screen.block_three.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_three.Location.Y - 20)
+                                if (aktuell_links - 50 <= _form1_schritt.screen.block_three.Location.X + _form1_schritt.screen.block_three.Size.Width && aktuell_links + 50 >= _form1_schritt.screen.block_three.Location.X && left_y <= (_form1_schritt.screen.block_three.Location.Y + _form1_schritt.screen.block_three.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_three.Location.Y - 20
+                                    || aktuell_rechts - 50 <= _form1_schritt.screen.block_three.Location.X + _form1_schritt.screen.block_three.Size.Width && aktuell_rechts + 50 >= _form1_schritt.screen.block_three.Location.X && right_y <= (_form1_schritt.screen.block_three.Location.Y + _form1_schritt.screen.block_three.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_three.Location.Y - 20)
                                 {
                                     puh = 3;
                                     imquadrat = false;
@@ -801,8 +806,8 @@ namespace Bitmap_Test1_Schmid
                             }
                             else if (puh == 3 && imquadrat)
                             {
-                                if (aktuell_links <= _form1_schritt.screen.block_four.Location.X + _form1_schritt.screen.block_four.Size.Width && aktuell_links >= _form1_schritt.screen.block_four.Location.X && left_y <= (_form1_schritt.screen.block_four.Location.Y + _form1_schritt.screen.block_four.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_four.Location.Y - 20
-                                    || aktuell_rechts <= _form1_schritt.screen.block_four.Location.X + _form1_schritt.screen.block_four.Size.Width && aktuell_rechts >= _form1_schritt.screen.block_four.Location.X && right_y <= (_form1_schritt.screen.block_four.Location.Y + _form1_schritt.screen.block_four.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_four.Location.Y - 20)
+                                if (aktuell_links - 50 <= _form1_schritt.screen.block_four.Location.X + _form1_schritt.screen.block_four.Size.Width && aktuell_links + 50 >= _form1_schritt.screen.block_four.Location.X && left_y <= (_form1_schritt.screen.block_four.Location.Y + _form1_schritt.screen.block_four.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_four.Location.Y - 20
+                                    || aktuell_rechts - 50 <= _form1_schritt.screen.block_four.Location.X + _form1_schritt.screen.block_four.Size.Width && aktuell_rechts + 50 >= _form1_schritt.screen.block_four.Location.X && right_y <= (_form1_schritt.screen.block_four.Location.Y + _form1_schritt.screen.block_four.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_four.Location.Y - 20)
                                 {
                                     puh = 4;
                                     imquadrat = false;
@@ -816,8 +821,8 @@ namespace Bitmap_Test1_Schmid
                             }
                             else if (puh == 4 && imquadrat)
                             {
-                                if (aktuell_links <= _form1_schritt.screen.block_five.Location.X + _form1_schritt.screen.block_five.Size.Width && aktuell_links >= _form1_schritt.screen.block_five.Location.X && left_y <= (_form1_schritt.screen.block_five.Location.Y + _form1_schritt.screen.block_five.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_five.Location.Y - 20
-                                    || aktuell_rechts <= _form1_schritt.screen.block_five.Location.X + _form1_schritt.screen.block_five.Size.Width && aktuell_rechts >= _form1_schritt.screen.block_five.Location.X && right_y <= (_form1_schritt.screen.block_five.Location.Y + _form1_schritt.screen.block_five.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_five.Location.Y - 20)
+                                if (aktuell_links - 50 <= _form1_schritt.screen.block_five.Location.X + _form1_schritt.screen.block_five.Size.Width && aktuell_links + 50 >= _form1_schritt.screen.block_five.Location.X && left_y <= (_form1_schritt.screen.block_five.Location.Y + _form1_schritt.screen.block_five.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_five.Location.Y - 20
+                                    || aktuell_rechts - 50 <= _form1_schritt.screen.block_five.Location.X + _form1_schritt.screen.block_five.Size.Width && aktuell_rechts + 50 >= _form1_schritt.screen.block_five.Location.X && right_y <= (_form1_schritt.screen.block_five.Location.Y + _form1_schritt.screen.block_five.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_five.Location.Y - 20)
                                 {
                                     puh = 5;
                                     imquadrat = false;
@@ -831,11 +836,12 @@ namespace Bitmap_Test1_Schmid
                             }
                             else if (puh == 5 && imquadrat)
                             {
-                                if (aktuell_links <= _form1_schritt.screen.block_six.Location.X + _form1_schritt.screen.block_six.Size.Width && aktuell_links >= _form1_schritt.screen.block_six.Location.X && left_y <= (_form1_schritt.screen.block_six.Location.Y + _form1_schritt.screen.block_six.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_six.Location.Y - 20
-                                    || aktuell_rechts <= _form1_schritt.screen.block_six.Location.X + _form1_schritt.screen.block_six.Size.Width && aktuell_rechts >= _form1_schritt.screen.block_six.Location.X && right_y <= (_form1_schritt.screen.block_six.Location.Y + _form1_schritt.screen.block_six.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_six.Location.Y - 20)
+                                if (aktuell_links - 50 <= _form1_schritt.screen.block_six.Location.X + _form1_schritt.screen.block_six.Size.Width && aktuell_links + 50 >= _form1_schritt.screen.block_six.Location.X && left_y <= (_form1_schritt.screen.block_six.Location.Y + _form1_schritt.screen.block_six.Size.Width) + 20 && left_y >= _form1_schritt.screen.block_six.Location.Y - 20
+                                    || aktuell_rechts - 50 <= _form1_schritt.screen.block_six.Location.X + _form1_schritt.screen.block_six.Size.Width && aktuell_rechts + 50 >= _form1_schritt.screen.block_six.Location.X && right_y <= (_form1_schritt.screen.block_six.Location.Y + _form1_schritt.screen.block_six.Size.Width) + 20 && right_y >= _form1_schritt.screen.block_six.Location.Y - 20)
                                 {
                                     puh = 0;
                                     imquadrat = false;
+                                    _form1_schritt.blockklick = true;
                                     _form1_schritt.blöckeToolStripMenuItem.PerformClick();
                                     übsülon = true;
                                 }

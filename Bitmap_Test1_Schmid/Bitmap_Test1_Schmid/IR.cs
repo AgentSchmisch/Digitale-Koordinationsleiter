@@ -219,8 +219,6 @@ namespace Bitmap_Test1_Schmid
                 {
                     if (vergleich_x[i] == vergleich_x[j])
                     {
-                            //timer1.Start();
-                            //error.Visible = true;
                             return;
                     }
                 }
@@ -228,8 +226,6 @@ namespace Bitmap_Test1_Schmid
 
             if (Array.Exists(vergleich_x, element => element == 0) && Array.Exists(vergleich_y, element => element == 0))//wenn eine Koordinate "0" ist --> bricht das Kalibrieren ab
             {
-                //timer1.Start();
-                //error.Visible = true;
                 return;
             }
 
@@ -387,22 +383,18 @@ namespace Bitmap_Test1_Schmid
 
             k1.Left = (int)Math.Round(erg_x[0]) + pictureBox1.Location.X;
             k1.Top = (int)(erg_y[0]) + pictureBox1.Location.Y;
-            //k1.Text = "ro:" + erg_x[0] + " " + erg_y[0];//nur für debugging mit Koordinaten
             k1.Text = "rechts oben";
 
             k2.Left = (int)Math.Round(erg_x[1]) + pictureBox1.Location.X;
             k2.Top = (int)(erg_y[1]) + pictureBox1.Location.Y;
-            //k2.Text = "ru:" + erg_x[1] + " " + erg_y[1];//nur für debugging mit Koordinaten
             k2.Text = "rechts unten";
 
             k3.Left = (int)Math.Round(erg_x[2]) + pictureBox1.Location.X;
             k3.Top = (int)(erg_y[2]) + pictureBox1.Location.Y;
-            //k3.Text = "lu:" + erg_x[2] + " " + erg_y[2];//nur für debugging mit Koordinaten
             k3.Text = "links unten";
 
             k4.Left = (int)Math.Round(erg_x[3]) + pictureBox1.Location.X;
             k4.Top = (int)(erg_y[3]) + pictureBox1.Location.Y;
-            //k4.Text = "lo:" + erg_x[3] + " " + erg_y[3];//nur für debugging mit Koordinaten
             k4.Text = "links oben";
 
             try
@@ -449,10 +441,10 @@ namespace Bitmap_Test1_Schmid
         {
                 Pen blackPen = new Pen(Color.Red, 1);
 
-                g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0])), (int)(erg_y[0]), (int)(Math.Round(erg_x[1])), (int)(erg_y[1]));// ro ru
-                g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[0])), (int)(erg_y[0]), (int)(Math.Round(erg_x[3])), (int)(erg_y[3]));// ro lo
-                g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2])), (int)(erg_y[2]), (int)(Math.Round(erg_x[3])), (int)(erg_y[3]));// lu lo
-                g.Graphics.DrawLine(blackPen, (int)(Math.Round(erg_x[2])), (int)(erg_y[2]), (int)(Math.Round(erg_x[1])), (int)(erg_y[1]));// lu ru
+                g.Graphics.DrawLine(blackPen, (int)(Math.Round(Convert.ToDouble(k1.Left) - pictureBox1.Location.X)), (int)(Convert.ToDouble(k1.Top) - pictureBox1.Location.Y), (int)(Math.Round(Convert.ToDouble(k2.Left) - pictureBox1.Location.X)), (int)(Convert.ToDouble(k2.Top) - pictureBox1.Location.Y));// ro ru
+                g.Graphics.DrawLine(blackPen, (int)(Math.Round(Convert.ToDouble(k1.Left) - pictureBox1.Location.X)), (int)(Convert.ToDouble(k1.Top) - pictureBox1.Location.Y), (int)(Math.Round(Convert.ToDouble(k4.Left) - pictureBox1.Location.X)), (int)(Convert.ToDouble(k4.Top) - pictureBox1.Location.Y));// ro lo
+                g.Graphics.DrawLine(blackPen, (int)(Math.Round(Convert.ToDouble(k3.Left) - pictureBox1.Location.X)), (int)(Convert.ToDouble(k3.Top) - pictureBox1.Location.Y), (int)(Math.Round(Convert.ToDouble(k4.Left) - pictureBox1.Location.X)), (int)(Convert.ToDouble(k4.Top) - pictureBox1.Location.Y));// lu lo
+                g.Graphics.DrawLine(blackPen, (int)(Math.Round(Convert.ToDouble(k3.Left) - pictureBox1.Location.X)), (int)(Convert.ToDouble(k3.Top) - pictureBox1.Location.Y), (int)(Math.Round(Convert.ToDouble(k2.Left) - pictureBox1.Location.X)), (int)(Convert.ToDouble(k2.Top) - pictureBox1.Location.Y));// lu ru
 
                 g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts), (int)mittelpunkt_rechts_y);
 

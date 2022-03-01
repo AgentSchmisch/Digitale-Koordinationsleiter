@@ -555,7 +555,7 @@ namespace Bitmap_Test1_Schmid
         {
             screen.unendlich_();
         }
-        bool blockklick = false;
+        public bool blockklick = false;
         private void blöckeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!blockklick)
@@ -656,6 +656,7 @@ namespace Bitmap_Test1_Schmid
             }
             else if (!erstesmal)
             {
+                screen.player.Stop();
                 erstesmal = true;
                 kinectM.startstop = false;
                 screen.time_left.Visible = false;

@@ -82,6 +82,7 @@ namespace Bitmap_Test1_Schmid
             this.Multiplayer_timer = new System.Windows.Forms.Timer(this.components);
             this.time_left = new System.Windows.Forms.Label();
             this.fuß_zurücksetzen = new System.Windows.Forms.Button();
+            this.next_player = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.himmelhölle)).BeginInit();
@@ -722,6 +723,17 @@ namespace Bitmap_Test1_Schmid
             this.fuß_zurücksetzen.UseVisualStyleBackColor = true;
             this.fuß_zurücksetzen.Visible = false;
             // 
+            // next_player
+            // 
+            this.next_player.AutoSize = true;
+            this.next_player.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.next_player.Location = new System.Drawing.Point(420, 579);
+            this.next_player.Name = "next_player";
+            this.next_player.Size = new System.Drawing.Size(703, 63);
+            this.next_player.TabIndex = 61;
+            this.next_player.Text = "nächster Spieler vorbereiten";
+            this.next_player.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -729,6 +741,7 @@ namespace Bitmap_Test1_Schmid
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1280, 800);
+            this.Controls.Add(this.next_player);
             this.Controls.Add(this.fuß_zurücksetzen);
             this.Controls.Add(this.time_left);
             this.Controls.Add(this.user2);
@@ -870,5 +883,6 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.Label time_left;
         public System.Windows.Forms.Timer Multiplayer_timer;
         public System.Windows.Forms.Button fuß_zurücksetzen;
+        public System.Windows.Forms.Label next_player;
     }
 }
