@@ -258,11 +258,10 @@ namespace Bitmap_Test1_Schmid
                         Yrechts.Text = rf_distance_y.ToString("###");
                         Zrechts.Text = rf_distance_z.ToString("#.##");
 
-                        double multi = (_form1_schritt.screen.Auflösung_Projektor_y / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben)) + 3;
-                        double right_y;
-                        right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi)+10;
-                        double left_y;
-                        left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi)+10; 
+                        //double multi = (_form1_schritt.screen.Auflösung_Projektor_y / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben)) + 3;
+                        double multi = ((_form1_schritt.screen.waagrechtunten - _form1_schritt.screen.waagrechtoben) / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben))+5;
+                        double right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
+                        double left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi); 
 
 
                         tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
@@ -506,7 +505,7 @@ namespace Bitmap_Test1_Schmid
                                 //   && Convert.ToInt32(lf_distance_x) >= mittelpunkt_links && Convert.ToInt32(lf_distance_x) <= mittelpunkt_rechts && Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts)
 
                                 if (_form1_schritt.screen.waagrechtunten >= right_y && _form1_schritt.screen.waagrechtoben <= right_y && _form1_schritt.screen.waagrechtunten >= left_y && _form1_schritt.screen.waagrechtoben <= left_y
-                                && Convert.ToInt32(lf_distance_x) >= mittelpunkt_links && Convert.ToInt32(lf_distance_x) <= mittelpunkt_rechts && Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts)
+                                && Convert.ToInt32(lf_distance_x) >= mittelpunkt_links && Convert.ToInt32(lf_distance_x) <= mittelpunkt_rechts+10 && Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts+10)
                                 {
                                     if ((Convert.ToInt32(rf_distance_x) > Convert.ToInt32(lf_distance_x)) && !lf_rf_vergleich)
                                     {
@@ -755,7 +754,7 @@ namespace Bitmap_Test1_Schmid
                             #region blockeinblendung
                             if (puh == 0 && !imquadrat)
                             {
-                                _form1_schritt.screen.block_one.Location = new Point(280,(int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 250, _form1_schritt.screen.waagrechtunten - 250)));
+                                _form1_schritt.screen.block_one.Location = new Point(280,(int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 220, _form1_schritt.screen.waagrechtunten - 220)));
                                 imquadrat = true;
                                 _form1_schritt.screen.block_one.Visible = true;
                             }
@@ -770,7 +769,7 @@ namespace Bitmap_Test1_Schmid
                             }
                             if (puh == 1 && !imquadrat)
                             {
-                                _form1_schritt.screen.block_two.Location = new Point(460, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 250, _form1_schritt.screen.waagrechtunten - 250)));
+                                _form1_schritt.screen.block_two.Location = new Point(460, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 220, _form1_schritt.screen.waagrechtunten - 220)));
                                 imquadrat = true;
                                 _form1_schritt.screen.block_two.Visible = true;
                             }
@@ -785,7 +784,7 @@ namespace Bitmap_Test1_Schmid
                             }
                             if (puh == 2 && !imquadrat)
                             {
-                                _form1_schritt.screen.block_three.Location = new Point(640, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 250, _form1_schritt.screen.waagrechtunten - 250)));
+                                _form1_schritt.screen.block_three.Location = new Point(640, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 220, _form1_schritt.screen.waagrechtunten - 220)));
                                 imquadrat = true;
                                 _form1_schritt.screen.block_three.Visible = true;
                             }
@@ -800,7 +799,7 @@ namespace Bitmap_Test1_Schmid
                             }
                             if (puh == 3 && !imquadrat)
                             {
-                                _form1_schritt.screen.block_four.Location = new Point(820, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 250, _form1_schritt.screen.waagrechtunten - 250)));
+                                _form1_schritt.screen.block_four.Location = new Point(820, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 220, _form1_schritt.screen.waagrechtunten - 220)));
                                 imquadrat = true;
                                 _form1_schritt.screen.block_four.Visible = true;
                             }
@@ -815,7 +814,7 @@ namespace Bitmap_Test1_Schmid
                             }
                             if (puh == 4 && !imquadrat)
                             {
-                                _form1_schritt.screen.block_five.Location = new Point(1000, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 250, _form1_schritt.screen.waagrechtunten - 250)));
+                                _form1_schritt.screen.block_five.Location = new Point(1000, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 220, _form1_schritt.screen.waagrechtunten - 220)));
                                 imquadrat = true;
                                 _form1_schritt.screen.block_five.Visible = true;
                             }
@@ -830,7 +829,7 @@ namespace Bitmap_Test1_Schmid
                             }
                             if (puh == 5 && !imquadrat)
                             {
-                                _form1_schritt.screen.block_six.Location = new Point(1180, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 250, _form1_schritt.screen.waagrechtunten - 250)));
+                                _form1_schritt.screen.block_six.Location = new Point(1180, (int)(rnd.Next(_form1_schritt.screen.waagrechtoben + 220, _form1_schritt.screen.waagrechtunten - 220)));
                                 imquadrat = true;
                                 _form1_schritt.screen.block_six.Visible = true;
                             }

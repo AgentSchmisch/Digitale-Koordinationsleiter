@@ -328,7 +328,7 @@
             this.startstopToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.startstopToolStripMenuItem.Name = "startstopToolStripMenuItem";
             this.startstopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.startstopToolStripMenuItem.Text = "start/stop";
+            this.startstopToolStripMenuItem.Text = "catch me";
             this.startstopToolStripMenuItem.Click += new System.EventHandler(this.startstopToolStripMenuItem_Click);
             // 
             // normalToolStripMenuItem

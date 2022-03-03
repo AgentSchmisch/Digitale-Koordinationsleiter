@@ -611,6 +611,7 @@ namespace Bitmap_Test1_Schmid
             {
                 erstesmal = true;
                 kinectM.startstop = false;
+                screen.strich_rechts.Visible = false;
                 screen.linienladen();
                 if (!einaus)
                 {
@@ -668,7 +669,8 @@ namespace Bitmap_Test1_Schmid
                 screen.user1.Text = "Spieler 1: ";
                 screen.user2.Text = "Spieler 2: ";
                 screen.user2.Visible = false;
-                if (!einaus)
+                screen.strich_rechts.Visible = false;
+                if (einaus)
                 {
                     kinectToolStripMenuItem.PerformClick();
                 }
