@@ -75,11 +75,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.steps = new System.Windows.Forms.NumericUpDown();
             this.zufall = new System.Windows.Forms.CheckBox();
+            this.reset = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.längebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regler)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.steps)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reset)).BeginInit();
             this.SuspendLayout();
             // 
             // steps2
@@ -290,6 +292,7 @@
             // 
             // programmauswahlToolStripMenuItem
             // 
+            this.programmauswahlToolStripMenuItem.CheckOnClick = true;
             this.programmauswahlToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.himmelHölleToolStripMenuItem,
             this.rotblauToolStripMenuItem,
@@ -304,6 +307,7 @@
             // himmelHölleToolStripMenuItem
             // 
             this.himmelHölleToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.himmelHölleToolStripMenuItem.CheckOnClick = true;
             this.himmelHölleToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.himmelHölleToolStripMenuItem.Name = "himmelHölleToolStripMenuItem";
             this.himmelHölleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -313,6 +317,7 @@
             // rotblauToolStripMenuItem
             // 
             this.rotblauToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.rotblauToolStripMenuItem.CheckOnClick = true;
             this.rotblauToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.rotblauToolStripMenuItem.Name = "rotblauToolStripMenuItem";
             this.rotblauToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -322,6 +327,7 @@
             // startstopToolStripMenuItem
             // 
             this.startstopToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.startstopToolStripMenuItem.CheckOnClick = true;
             this.startstopToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.normalToolStripMenuItem,
             this.multiplayerToolStripMenuItem});
@@ -334,6 +340,7 @@
             // normalToolStripMenuItem
             // 
             this.normalToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.normalToolStripMenuItem.CheckOnClick = true;
             this.normalToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
             this.normalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -343,6 +350,7 @@
             // multiplayerToolStripMenuItem
             // 
             this.multiplayerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.multiplayerToolStripMenuItem.CheckOnClick = true;
             this.multiplayerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.multiplayerToolStripMenuItem.Name = "multiplayerToolStripMenuItem";
             this.multiplayerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -352,6 +360,7 @@
             // unendlichToolStripMenuItem
             // 
             this.unendlichToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.unendlichToolStripMenuItem.CheckOnClick = true;
             this.unendlichToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.unendlichToolStripMenuItem.Name = "unendlichToolStripMenuItem";
             this.unendlichToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -361,6 +370,7 @@
             // blöckeToolStripMenuItem
             // 
             this.blöckeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(80)))));
+            this.blöckeToolStripMenuItem.CheckOnClick = true;
             this.blöckeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.blöckeToolStripMenuItem.Name = "blöckeToolStripMenuItem";
             this.blöckeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
@@ -620,6 +630,21 @@
             this.zufall.Visible = false;
             this.zufall.CheckedChanged += new System.EventHandler(this.zufall_CheckedChanged);
             // 
+            // reset
+            // 
+            this.reset.BackColor = System.Drawing.Color.Transparent;
+            this.reset.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.reset.Image = global::Bitmap_Test1_Schmid.Properties.Resources.reset1;
+            this.reset.Location = new System.Drawing.Point(1, 27);
+            this.reset.Name = "reset";
+            this.reset.Size = new System.Drawing.Size(27, 26);
+            this.reset.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.reset.TabIndex = 53;
+            this.reset.TabStop = false;
+            this.reset.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.reset.MouseEnter += new System.EventHandler(this.reset_MouseEnter);
+            this.reset.MouseLeave += new System.EventHandler(this.reset_MouseLeave);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -628,6 +653,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(644, 385);
+            this.Controls.Add(this.reset);
             this.Controls.Add(this.zufall);
             this.Controls.Add(this.steps);
             this.Controls.Add(this.label10);
@@ -680,6 +706,7 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.steps)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -731,6 +758,7 @@
         private System.Windows.Forms.ToolStripMenuItem normalToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem blöckeToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem multiplayerToolStripMenuItem;
+        private System.Windows.Forms.PictureBox reset;
     }
 }
 

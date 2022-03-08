@@ -14,11 +14,15 @@ namespace Bitmap_Test1_Schmid
         int x, y;
 
         public System.Media.SoundPlayer player;
+        public string audio_mac = "mac_bong.wav";
+        //public string audio_mac = @"..\..\Resources\mac_bong.wav";
+        public string audio_game = "fight_theme.wav";
+        //public string audio_game = @"..\..\Resources\fight_theme.wav";
 
         public int color_r = 255;//linienfarbe
         public int color_g = 255;
         public int color_b = 255;
-
+        
         public int color_box_r = 150;//objektfarbe
         public int color_box_g = 0;
         public int color_box_b = 180;
@@ -57,7 +61,7 @@ namespace Bitmap_Test1_Schmid
         {
             this.Size = new Size(Auflösung_Projektor_x, Auflösung_Projektor_y);
             pictureBox1.Size = new Size(Auflösung_Projektor_x, Auflösung_Projektor_y);
-            fuß_zurücksetzen.Location = new Point(100, Auflösung_Projektor_y-fuß_zurücksetzen.Size.Height);
+            fuß_zurücksetzen.Location = new Point(0, Auflösung_Projektor_y-fuß_zurücksetzen.Size.Height);
 
             next_player.Location = new Point(Auflösung_Projektor_x / 2 - next_player.Width/2, Auflösung_Projektor_y / 2 - next_player.Height/2);
 
@@ -95,8 +99,8 @@ namespace Bitmap_Test1_Schmid
 
             image1 = new Bitmap(Auflösung_Projektor_x, Auflösung_Projektor_y);
 
-            //timer1.Start(); //ohne animation das kommentieren
-            linienladen(); //ohne animation das auskommentieren
+            timer1.Start(); //ohne animation das kommentieren
+            //linienladen(); //ohne animation das auskommentieren
 
             //zu "linieladen()" verschoben !!!
         }
@@ -355,7 +359,7 @@ namespace Bitmap_Test1_Schmid
                 if (delay > 10 && delay < 12)
                 {
                     kur.Visible = true;
-                    player = new System.Media.SoundPlayer(@"..\..\Resources\mac_bong.wav");
+                    player = new System.Media.SoundPlayer(audio_mac);
                     player.Play();
                 }
                 if (delay == 100 || delay == 200)
@@ -523,7 +527,7 @@ namespace Bitmap_Test1_Schmid
 
             klick = !klick;
         }
-        bool var = true;
+        public bool var = true;
         public void drawcircle(object sender, PaintEventArgs g)
         {
             if (var)
@@ -729,7 +733,7 @@ namespace Bitmap_Test1_Schmid
                 Multiplayer_timer.Stop();
                 //_form1_main.kinectToolStripMenuItem.PerformClick();
                 player.Stop();
-                player = new System.Media.SoundPlayer(@"..\..\Resources\mac_bong.wav");
+                player = new System.Media.SoundPlayer(audio_mac);
                 player.Play();
                 //_form1_main.kinectToolStripMenuItem.PerformClick();
                 strich_rechts.Visible = false;

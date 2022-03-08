@@ -259,7 +259,7 @@ namespace Bitmap_Test1_Schmid
                         Zrechts.Text = rf_distance_z.ToString("#.##");
 
                         //double multi = (_form1_schritt.screen.Auflösung_Projektor_y / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben)) + 3;
-                        double multi = ((_form1_schritt.screen.waagrechtunten - _form1_schritt.screen.waagrechtoben) / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben))+5;
+                        double multi = ((_form1_schritt.screen.waagrechtunten - _form1_schritt.screen.waagrechtoben) / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben))+6;
                         double right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
                         double left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi); 
 
@@ -507,7 +507,7 @@ namespace Bitmap_Test1_Schmid
                                 if (_form1_schritt.screen.waagrechtunten >= right_y && _form1_schritt.screen.waagrechtoben <= right_y && _form1_schritt.screen.waagrechtunten >= left_y && _form1_schritt.screen.waagrechtoben <= left_y
                                 && Convert.ToInt32(lf_distance_x) >= mittelpunkt_links && Convert.ToInt32(lf_distance_x) <= mittelpunkt_rechts+10 && Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts+10)
                                 {
-                                    if ((Convert.ToInt32(rf_distance_x) > Convert.ToInt32(lf_distance_x)) && !lf_rf_vergleich)
+                                    if ((Convert.ToInt32(rf_distance_x) > Convert.ToInt32(lf_distance_x) + 10) && !lf_rf_vergleich)
                                     {
                                         durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator;
                                         left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
@@ -583,12 +583,13 @@ namespace Bitmap_Test1_Schmid
                                             schrittzähler++;
                                             _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
                                             _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                                            _form1_schritt.screen.fuß_zurücksetzen.Visible = true;
                                             lf_rf_vergleich = true;
                                         }
 
                                     }
 
-                                    else if ((Convert.ToInt32(rf_distance_x) < Convert.ToInt32(lf_distance_x)) && lf_rf_vergleich)
+                                    else if ((Convert.ToInt32(rf_distance_x)+10 < Convert.ToInt32(lf_distance_x)) && lf_rf_vergleich)
                                     {
                                         durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
                                         right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
@@ -665,6 +666,7 @@ namespace Bitmap_Test1_Schmid
                                             lf_rf_vergleich = false;
                                             _form1_schritt.delsteps.Visible = true;//aktiviert zurücksetzen button
                                             _form1_schritt.analyseToolStripMenuItem.Visible = true;//aktiviert analyse button
+                                            _form1_schritt.screen.fuß_zurücksetzen.Visible = true;
                                         }
                                     }
                                 }
@@ -700,7 +702,7 @@ namespace Bitmap_Test1_Schmid
                                             else
                                             {
                                                 _form1_schritt.screen.Multiplayer_timer.Start();
-                                                _form1_schritt.screen.player = new System.Media.SoundPlayer(@"..\..\Resources\fight_theme.wav");
+                                                _form1_schritt.screen.player = new System.Media.SoundPlayer(_form1_schritt.screen.audio_game);
                                                 _form1_schritt.screen.player.Play();
                                                 schongestartet = true;
                                                 wieviel_geschafft++;
@@ -731,7 +733,7 @@ namespace Bitmap_Test1_Schmid
                                             else
                                             {
                                                 _form1_schritt.screen.Multiplayer_timer.Start();
-                                                _form1_schritt.screen.player = new System.Media.SoundPlayer(@"..\..\Resources\fight_theme.wav");
+                                                _form1_schritt.screen.player = new System.Media.SoundPlayer(_form1_schritt.screen.audio_game);
                                                 _form1_schritt.screen.player.Play();
                                                 schongestartet = true;
                                                 wieviel_geschafft++;
