@@ -196,7 +196,7 @@ namespace Bitmap_Test1_Schmid
                     lblName.Text = Patientendatenbank.vorname+" "+Patientendatenbank.nachname;
                     lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
                     lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
-
+                    lblProjektionslaenge.Text = Patientendatenbank.projektionslaenge;
                     if (Patientendatenbank.letzteSchrittanzahl.All(char.IsDigit))
                         steps.Text = Patientendatenbank.letzteSchrittanzahl;
 

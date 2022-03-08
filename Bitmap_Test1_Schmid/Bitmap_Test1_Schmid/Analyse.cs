@@ -20,6 +20,10 @@ namespace Bitmap_Test1_Schmid
         public double schritte = 0;
         public double länge = 300;
 
+        public int[] sollMittelwerte = new int[6];
+        public int[] istMinimalwerte = new int[6];
+        public int[] istMaximalwerte = new int[6];
+
         Patientendatenbank patientendatenbank = new Patientendatenbank();
 
         private Form1 _form1_anal;
@@ -83,6 +87,7 @@ namespace Bitmap_Test1_Schmid
 
             hintergrund.Visible = false;
             Color myColor = Color.FromArgb(40, 50, 60);
+
             //das Chart weiß färben
             chart1.ChartAreas[0].AxisX.LineColor = Color.White;
             chart1.ChartAreas[0].AxisY.LineColor = Color.White;
@@ -101,14 +106,14 @@ namespace Bitmap_Test1_Schmid
             chart1.Series["Soll"].Points.Clear();//alle alten informationen löschen
             chart1.Series["Ist"].Points.Clear();
 
-            foreach (int element in patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
+            foreach (int element in sollMittelwerte) //die Durchschnittlichen Werte darstellen
             {
                 int xcoord = 1;
                 chart1.Series["Ist"].Points.AddXY(xcoord, element);
 
                 xcoord++;
             }
-            foreach (int element in patientendatenbank.istMaximalwerte) //die Maximalen Werte darstellen 
+            foreach (int element in istMaximalwerte) //die Maximalen Werte darstellen 
             {
                 int xcoord = 1;
                 chart1.Series["Soll"].Points.AddXY(xcoord, element);
@@ -186,7 +191,7 @@ namespace Bitmap_Test1_Schmid
 
         private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (int element in patientendatenbank.istMinimalwerte)//die minimalen Werte darstellen
+            foreach (int element in istMinimalwerte)//die minimalen Werte darstellen
             {
 
             }

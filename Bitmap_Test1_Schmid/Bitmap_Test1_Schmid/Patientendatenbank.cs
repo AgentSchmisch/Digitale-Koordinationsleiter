@@ -39,9 +39,7 @@ namespace Bitmap_Test1_Schmid
         int[] tabs = new int[5];
         int telnummerlength = 0;
 
-        public int[] sollMittelwerte = new int[5];
-        public int[] istMinimalwerte = new int[5];
-        public int[] istMaximalwerte = new int[5];
+
 
         public Color color_on_leave = Color.FromArgb(180, 190, 200);
 
@@ -208,6 +206,7 @@ namespace Bitmap_Test1_Schmid
                 if (TbName.Text == "listall")
                 {
                     query1 = "SELECT Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum FROM Patientenliste;";
+                    // TODO: Patienten.Enabled = false;
                 }
 
                 if (query1 != "SELECT Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum FROM Patientenliste WHERE ;")
@@ -304,10 +303,9 @@ namespace Bitmap_Test1_Schmid
             letzteBehandlung = "";
             letzteSchrittanzahl = "";
 
-            string s = Patienten.SelectedItem.ToString();
 
             DataTable tbl2;
-            query3 = "SELECT Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Schrittweite_soll FROM " + vorname+ "_"+nachname + "_" + PatNr_aktuell + ";"; 
+            query3 = "SELECT Behandlungsnummer, Vorname, Nachname, Behandlungsdatum, Projektionslaenge FROM " + vorname+ "_"+nachname + "_" + PatNr_aktuell + ";"; 
             try
             {
                 cmd = new SqlCommand(query3, conn);
@@ -363,7 +361,7 @@ namespace Bitmap_Test1_Schmid
                     }
                     if (tbl2.Columns[j].ColumnName == "Projektionslaenge")
                     {
-                        projektionslaenge += row[j].ToString();
+                        projektionslaenge += row[j].ToString()+"cm";
                         continue;
                     }
                 }
@@ -391,14 +389,15 @@ namespace Bitmap_Test1_Schmid
                     conn.Close();
                 }
 
-                #region Abfragen der Werte wärend die form schon im hintergrund ist um ladezeiten zu verringern
+                #region Abfragen der Werte wärend die Form schon im Hintergrund ist um Ladezeiten zu verringern
                 record = "";
-                int number = 0;
+                int number = 5;
                 if (tbl2.Rows.Count < 6)
                     number = tbl2.Rows.Count;
                 int arrayindex = 0;
 
-                for (int i = tbl2.Rows.Count-number ; i < tbl2.Rows.Count; i++) //nur die letzten 5 werte abrufen
+                Analyse anal = new Analyse();
+                for (int i = tbl2.Rows.Count-number; i < tbl2.Rows.Count; i++) //nur die letzten 5 werte abrufen
                 {
                      row = tbl2.Rows[i];
 
@@ -410,7 +409,7 @@ namespace Bitmap_Test1_Schmid
                            letzteSchrittanzahl = row[j].ToString();
 
 
-                            sollMittelwerte[i] += Convert.ToInt32(row[j]);
+                            anal.sollMittelwerte[i] += Convert.ToInt32(row[j]);
 
                             continue;
                         }
@@ -421,15 +420,15 @@ namespace Bitmap_Test1_Schmid
                             schrittwert += row[j];
                             string[] schrittwert_ = new string[3];
                             schrittwert_ = schrittwert.Split(',');
-                            istMaximalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_]); 
-                            istMinimalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_+2]);
+                            anal.istMaximalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_]); 
+                            anal.istMinimalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_+2]);
                             arrayindex++;
 
                         }
                     }
                 }
                     #endregion
-                    Close();
+                    //Close();
                 auswahl = true;
             }
         }
@@ -647,14 +646,11 @@ namespace Bitmap_Test1_Schmid
         {
             set
             {
-                //string[] uebergeben=value.Split(';');
+                string[] uebergeben=value.Split(';');
 
                 Analyse analyse = new Analyse();
-                //query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist,Projektionslaenge) VALUES ('" + vorname + "','" + nachname + "','"
-                //    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"','"+analyse.länge.ToString()+"');";
-
                 query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist,Projektionslaenge) VALUES ('" + vorname + "','" + nachname + "','"
-                     + DateTime.Now.ToString("dd.MM.yyyy") + "','" + value.ToString() + "','"+"0,0,0"+ "','" + analyse.länge.ToString() + "');";
+                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"','"+analyse.länge.ToString()+"');";
 
                 try
                 {
@@ -1106,7 +1102,7 @@ namespace Bitmap_Test1_Schmid
                 query2 = "CREATE TABLE " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int NOT NULL IDENTITY(1,1)," +
                                                                                                         "Vorname nvarchar(50) NOT NULL," +
                                                                                                         "Nachname nvarchar(50) NOT NULL," +
-                                                                                                        "Schrittweite_ist nvarchar(50) NOT NULL DEFAULT '0,0,0'," +
+                                                                                                        "Schrittweite_ist nvarchar(50) NOT NULL," +
                                                                                                         "Schrittweite_soll nvarchar(50) NOT NULL," +
                                                                                                         "Projektionslaenge NVARCHAR(30) NULL,"+
                                                                                                         "Behandlungsdatum varchar(10) NOT NULL," +
