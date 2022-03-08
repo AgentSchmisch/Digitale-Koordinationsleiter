@@ -47,6 +47,7 @@ namespace Bitmap_Test1_Schmid
 
         private void IR_Load_1(object sender, EventArgs e)
         {
+            pictureBox1.Paint += obj;
             error.Text = "        Kalibrierung abgeschlossen!\nSie können das Fenster nun schließen";
 
             sensor = KinectSensor.GetDefault();
@@ -411,8 +412,9 @@ namespace Bitmap_Test1_Schmid
                 Properties.Settings.Default.mittelpunkt_rechts = mittelpunkt_rechts;
                 Properties.Settings.Default.mittelpunkt_linksy = mittelpunkt_links_y;
                 Properties.Settings.Default.mittelpunkt_rechtsy = mittelpunkt_rechts_y;
-                Properties.Settings.Default.weg_oben = erg_y[0];
-                Properties.Settings.Default.weg_unten = erg_y[1];
+                Properties.Settings.Default.weg_oben = (erg_y[0] + erg_y[3]) /2;
+                Properties.Settings.Default.weg_unten = (erg_y[1] + erg_y[2]) / 2;
+
                 Properties.Settings.Default.multiplikator = multiplikator;
                 Properties.Settings.Default.Save();
                 timer1.Start();
@@ -449,7 +451,13 @@ namespace Bitmap_Test1_Schmid
                 g.Graphics.DrawLine(blackPen, (int)Math.Round(mittelpunkt_links), (int)mittelpunkt_links_y, (int)Math.Round(mittelpunkt_rechts), (int)mittelpunkt_rechts_y);
 
         }
+        private void obj(object sender, PaintEventArgs g)
+        {
+            Pen blackPen = new Pen(Color.Green, 1);
 
+            g.Graphics.DrawLine(blackPen,  0, 245, pictureBox1.Location.X + pictureBox1.Size.Width, 245);
+
+        }
         private void IR_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

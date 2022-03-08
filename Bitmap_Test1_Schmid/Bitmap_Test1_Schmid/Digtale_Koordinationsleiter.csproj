@@ -268,11 +268,13 @@
   <ItemGroup>
     <None Include="Resources\left.png" />
     <None Include="Resources\klammer.png" />
+    <None Include="bin\Debug\Media\INFINITY.png" />
     <Content Include="Resources\Bildschirmfoto 2021-11-29 um 18.26.59.png" />
     <None Include="Resources\logo_dpl.jpg" />
     <None Include="Resources\DKL.jpeg" />
     <None Include="Resources\himmelhölle3.png" />
     <None Include="Resources\INFINITY.png" />
+    <None Include="Resources\reset.png" />
     <Content Include="Resources\walking_man.ico" />
   </ItemGroup>
   <ItemGroup>

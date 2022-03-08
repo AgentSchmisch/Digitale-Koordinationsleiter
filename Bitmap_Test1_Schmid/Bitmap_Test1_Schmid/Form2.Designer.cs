@@ -597,7 +597,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // unendlich2
             // 
-            this.unendlich2.Image = global::Bitmap_Test1_Schmid.Properties.Resources.INFINITY;
+            this.unendlich2.BackgroundImage = global::Bitmap_Test1_Schmid.Properties.Resources.INFINITY1;
             this.unendlich2.Location = new System.Drawing.Point(0, 606);
             this.unendlich2.Name = "unendlich2";
             this.unendlich2.Size = new System.Drawing.Size(1280, 809);

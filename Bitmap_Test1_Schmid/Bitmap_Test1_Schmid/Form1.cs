@@ -320,6 +320,7 @@ namespace Bitmap_Test1_Schmid
             Array.Clear(kinectM.zw_schritt_rechts, 0, kinectM.zw_schritt_rechts.Length);
             Array.Clear(kinectM.zw_schritt_links, 0, kinectM.zw_schritt_links.Length);
             analyseToolStripMenuItem.Visible = false;
+            screen.fuß_zurücksetzen.Visible = false;
         }
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
         {
@@ -608,10 +609,11 @@ namespace Bitmap_Test1_Schmid
                     return;
                 }
             }
-            else if (!erstesmal)
+            if (!erstesmal)
             {
                 erstesmal = true;
                 kinectM.startstop = false;
+                screen.strich_rechts.Visible = false;
                 screen.linienladen();
                 if (!einaus)
                 {
@@ -669,11 +671,31 @@ namespace Bitmap_Test1_Schmid
                 screen.user1.Text = "Spieler 1: ";
                 screen.user2.Text = "Spieler 2: ";
                 screen.user2.Visible = false;
-                if (!einaus)
+                screen.strich_rechts.Visible = false;
+                if (einaus)
                 {
                     kinectToolStripMenuItem.PerformClick();
                 }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            screen.unendlich2.Visible = false;
+            screen.var = false;
+            screen.himmelhölle.Visible = false;
+            screen.klick = false;
+            screen.linienladen();
+        }
+
+        private void reset_MouseEnter(object sender, EventArgs e)
+        {
+            reset.BackColor = Color.Red;
+        }
+
+        private void reset_MouseLeave(object sender, EventArgs e)
+        {
+            reset.BackColor = Color.Transparent;
         }
     }
 }
