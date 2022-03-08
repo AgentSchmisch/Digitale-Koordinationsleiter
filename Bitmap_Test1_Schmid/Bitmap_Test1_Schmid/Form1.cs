@@ -57,10 +57,10 @@ namespace Bitmap_Test1_Schmid
                 {
                     steps.Text = "99";
                 }
-                screen.sendvar = Convert.ToInt32(steps.Text);
-                regler.Maximum = Convert.ToInt32(steps.Text) - 1;
-                screen.regler.Maximum = Convert.ToInt32(steps.Text) - 1;
-                längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
+                screen.sendvar = Convert.ToInt32(steps.Value);
+                regler.Maximum = Convert.ToInt32(steps.Value) - 1;
+                screen.regler.Maximum = Convert.ToInt32(steps.Value) - 1;
+                längebox.Maximum = Convert.ToInt32(steps.Value) - regler.Value;
                 screen.bestätigen.PerformClick();
 
                 regler.Enabled = true; //entfernt den ausgegrauten look
@@ -71,7 +71,7 @@ namespace Bitmap_Test1_Schmid
                 label2.ForeColor = Color.White;
                 label4.ForeColor = Color.White;
                
-                sollabstände[soll_anzahl] += Convert.ToInt32(steps.Text);
+                sollabstände[soll_anzahl] += Convert.ToInt32(steps.Value.ToString());
                 soll_anzahl++;
             }
             catch
@@ -225,6 +225,7 @@ namespace Bitmap_Test1_Schmid
             }
             soll_mittelwert = (soll_mittelwert-Convert.ToInt32(Patientendatenbank.letzteSchrittanzahl)) / (soll_anzahl - 1);
             //übergabe der aktuellen schrittweite nach abschließen der Behandlungssitzung
+            Patientendatenbank.wertuebergabe = steps.Value.ToString(); 
             Patientendatenbank.wertuebergabe = 
                 soll_mittelwert+ "," +
                 analyse.kleinsterabstand.ToString()+","+

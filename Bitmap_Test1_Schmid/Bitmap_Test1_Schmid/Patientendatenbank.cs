@@ -647,11 +647,14 @@ namespace Bitmap_Test1_Schmid
         {
             set
             {
-                string[] uebergeben=value.Split(';');
+                //string[] uebergeben=value.Split(';');
 
                 Analyse analyse = new Analyse();
+                //query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist,Projektionslaenge) VALUES ('" + vorname + "','" + nachname + "','"
+                //    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"','"+analyse.länge.ToString()+"');";
+
                 query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist,Projektionslaenge) VALUES ('" + vorname + "','" + nachname + "','"
-                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"','"+analyse.länge.ToString()+"');";
+                     + DateTime.Now.ToString("dd.MM.yyyy") + "','" + value.ToString() + "','"+"0,0,0"+ "','" + analyse.länge.ToString() + "');";
 
                 try
                 {
@@ -1103,7 +1106,7 @@ namespace Bitmap_Test1_Schmid
                 query2 = "CREATE TABLE " + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Behandlungsnummer int NOT NULL IDENTITY(1,1)," +
                                                                                                         "Vorname nvarchar(50) NOT NULL," +
                                                                                                         "Nachname nvarchar(50) NOT NULL," +
-                                                                                                        "Schrittweite_ist nvarchar(50) NOT NULL," +
+                                                                                                        "Schrittweite_ist nvarchar(50) NOT NULL DEFAULT '0,0,0'," +
                                                                                                         "Schrittweite_soll nvarchar(50) NOT NULL," +
                                                                                                         "Projektionslaenge NVARCHAR(30) NULL,"+
                                                                                                         "Behandlungsdatum varchar(10) NOT NULL," +

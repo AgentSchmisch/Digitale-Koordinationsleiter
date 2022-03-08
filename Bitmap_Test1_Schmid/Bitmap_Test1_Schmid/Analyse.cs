@@ -34,7 +34,7 @@ namespace Bitmap_Test1_Schmid
             if (time >= 30)
             {
                 x += 15;
-                if (x <= 200)
+                if (x <= 250)
                 {
                     Size = new Size(this.Size.Width, 136 + x);
                     this.CenterToScreen();
@@ -95,6 +95,26 @@ namespace Bitmap_Test1_Schmid
             chart1.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
             chart1.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
 
+            //zuerst die form vergrößern um das chart zu zeigen
+            //dann die werte aus der Patientendatenbank holen und im chart darstellen
+            chart1.Titles.Add(patientendatenbank.vorname + " " + patientendatenbank.nachname); //titel des diagramms setzen
+            chart1.Series["Soll"].Points.Clear();//alle alten informationen löschen
+            chart1.Series["Ist"].Points.Clear();
+
+            foreach (int element in patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
+            {
+                int xcoord = 1;
+                chart1.Series["Ist"].Points.AddXY(xcoord, element);
+
+                xcoord++;
+            }
+            foreach (int element in patientendatenbank.istMaximalwerte) //die Maximalen Werte darstellen 
+            {
+                int xcoord = 1;
+                chart1.Series["Soll"].Points.AddXY(xcoord, element);
+                xcoord++;
+            }
+
             lab_durchs.ForeColor = myColor;
             lab_klein.ForeColor = myColor;
             lab_groß.ForeColor = myColor;
@@ -106,10 +126,10 @@ namespace Bitmap_Test1_Schmid
 
             länge = Properties.Settings.Default.länge;
 
-            steps.Text = schritte.ToString() + " (" + Math.Round((_form1_anal.screen.Auflösung_Projektor_x / (schritte - 1)) / _form1_anal.screen.Auflösung_Projektor_x * länge).ToString() + " cm)";
-            durchs.Text = Math.Round((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
-            klein.Text = Math.Round((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
-            groß.Text = Math.Round((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            //steps.Text = schritte.ToString() + " (" + Math.Round((_form1_anal.screen.Auflösung_Projektor_x / (schritte - 1)) / _form1_anal.screen.Auflösung_Projektor_x * länge).ToString() + " cm)";
+            //durchs.Text = Math.Round((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            //klein.Text = Math.Round((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            //groß.Text = Math.Round((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
 
             Size = new Size(this.Size.Width, 136);
             this.CenterToScreen();
@@ -166,25 +186,6 @@ namespace Bitmap_Test1_Schmid
 
         private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)
         {
-            //zuerst die form vergrößern um das chart zu zeigen
-            //dann die werte aus der Patientendatenbank holen und im chart darstellen
-            chart1.Titles.Add(patientendatenbank.vorname + " " + patientendatenbank.nachname); //titel des diagramms setzen
-            chart1.Series["Soll"].Points.Clear();//alle alten informationen löschen
-            chart1.Series["Ist"].Points.Clear();
-
-            foreach (int element in patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
-            {
-                int xcoord = 1;
-                chart1.Series["Ist"].Points.AddXY(xcoord, element);
-
-                xcoord++;
-            }
-            foreach (int element in patientendatenbank.istMaximalwerte) //die Maximalen Werte darstellen 
-            {
-                int xcoord = 1;
-                chart1.Series["Soll"].Points.AddXY(xcoord, element);
-                xcoord++;
-            }
             foreach (int element in patientendatenbank.istMinimalwerte)//die minimalen Werte darstellen
             {
 
