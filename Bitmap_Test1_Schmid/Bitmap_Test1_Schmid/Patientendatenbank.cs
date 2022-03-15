@@ -39,7 +39,9 @@ namespace Bitmap_Test1_Schmid
         int[] tabs = new int[5];
         int telnummerlength = 0;
 
-
+        public int[] sollMittelwerte = new int[7];
+        public int[] istMinimalwerte = new int[6];
+        public int[] istMaximalwerte = new int[6];
 
         public Color color_on_leave = Color.FromArgb(180, 190, 200);
 
@@ -390,13 +392,12 @@ namespace Bitmap_Test1_Schmid
                 }
 
                 #region Abfragen der Werte wärend die Form schon im Hintergrund ist um Ladezeiten zu verringern
-                record = "";
                 int number = 5;
-                if (tbl2.Rows.Count < 6)
+                if (tbl2.Rows.Count <= 6)
                     number = tbl2.Rows.Count;
+
                 int arrayindex = 0;
 
-                Analyse anal = new Analyse();
                 for (int i = tbl2.Rows.Count-number; i < tbl2.Rows.Count; i++) //nur die letzten 5 werte abrufen
                 {
                      row = tbl2.Rows[i];
@@ -408,8 +409,7 @@ namespace Bitmap_Test1_Schmid
                         {
                            letzteSchrittanzahl = row[j].ToString();
 
-
-                            anal.sollMittelwerte[i] += Convert.ToInt32(row[j]);
+                            sollMittelwerte[i] = Convert.ToInt32(row[j]);
 
                             continue;
                         }
@@ -420,15 +420,15 @@ namespace Bitmap_Test1_Schmid
                             schrittwert += row[j];
                             string[] schrittwert_ = new string[3];
                             schrittwert_ = schrittwert.Split(',');
-                            anal.istMaximalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_]); 
-                            anal.istMinimalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_+2]);
+                            istMaximalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_]); 
+                            istMinimalwerte[arrayindex] = Convert.ToInt32(schrittwert_[arrayindex_+2]);
                             arrayindex++;
 
                         }
                     }
                 }
                     #endregion
-                    //Close();
+                    Close();
                 auswahl = true;
             }
         }
@@ -646,11 +646,13 @@ namespace Bitmap_Test1_Schmid
         {
             set
             {
-                string[] uebergeben=value.Split(';');
-
-                Analyse analyse = new Analyse();
+                int kleinsterabstand=0;
+                if (_haupt.analyse.kleinsterabstand == 500)
+                {
+                    kleinsterabstand = 0;
+                }
                 query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist,Projektionslaenge) VALUES ('" + vorname + "','" + nachname + "','"
-                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + uebergeben[0] + "','"+uebergeben[1]+"','"+analyse.länge.ToString()+"');";
+                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + value + "','"+kleinsterabstand+","+_haupt.analyse.schrittdurchschnitt+","+_haupt.analyse.größterabstand+"','"+ (Properties.Settings.Default.länge).ToString()+"');";
 
                 try
                 {
@@ -1288,8 +1290,8 @@ namespace Bitmap_Test1_Schmid
                 case 3701:
                     MessageBox.Show("Dieses Objekt ist nicht in der Datenbank vorhanden\nFehler: " + Exception);
                     return;
-                case 207:
-                    MessageBox.Show("Schmisch du kek hast wieder die alte DB Struktur bei einem Patienten drinnan");
+                case 823:
+                    MessageBox.Show("Ein anderes Programm greift auf die Datenbank zu.\nBeenden sie alle Vorgänge und versuchen Sie es anschließend noch einmal.","Fehler");
                     return;
                 default:
                     MessageBox.Show("Fehler: " + Exception.ToString());

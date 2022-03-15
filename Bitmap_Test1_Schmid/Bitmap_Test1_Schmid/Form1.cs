@@ -225,12 +225,13 @@ namespace Bitmap_Test1_Schmid
             }
             soll_mittelwert = (soll_mittelwert-Convert.ToInt32(Patientendatenbank.letzteSchrittanzahl)) / (soll_anzahl - 1);
             //übergabe der aktuellen schrittweite nach abschließen der Behandlungssitzung
-            Patientendatenbank.wertuebergabe = steps.Value.ToString(); 
-            Patientendatenbank.wertuebergabe = 
-                soll_mittelwert+ "," +
-                analyse.kleinsterabstand.ToString()+","+
-                analyse.größterabstand.ToString()+","+
-                analyse.schrittdurchschnitt.ToString()+";";
+            Patientendatenbank.wertuebergabe = soll_mittelwert.ToString(); ; 
+            //Patientendatenbank.wertuebergabe = 
+            //    soll_mittelwert+ "," +
+            //    analyse.kleinsterabstand.ToString()+","+
+            //    analyse.größterabstand.ToString()+","+
+            //    analyse.schrittdurchschnitt.ToString()+
+            //    ";";
 
             x = 0;
             animation = 1;

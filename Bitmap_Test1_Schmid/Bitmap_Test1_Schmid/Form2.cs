@@ -360,7 +360,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     kur.Visible = true;
                     player = new System.Media.SoundPlayer(audio_mac);
-                    player.Play();
+                    //player.Play();
                 }
                 if (delay == 100 || delay == 200)
                 {

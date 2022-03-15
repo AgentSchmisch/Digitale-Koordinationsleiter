@@ -20,9 +20,7 @@ namespace Bitmap_Test1_Schmid
         public double schritte = 0;
         public double länge = 300;
 
-        public int[] sollMittelwerte = new int[6];
-        public int[] istMinimalwerte = new int[6];
-        public int[] istMaximalwerte = new int[6];
+
 
         Patientendatenbank patientendatenbank = new Patientendatenbank();
 
@@ -106,14 +104,20 @@ namespace Bitmap_Test1_Schmid
             chart1.Series["Soll"].Points.Clear();//alle alten informationen löschen
             chart1.Series["Ist"].Points.Clear();
 
-            foreach (int element in sollMittelwerte) //die Durchschnittlichen Werte darstellen
+            foreach (int element in _form1_anal.Patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
             {
                 int xcoord = 1;
-                chart1.Series["Ist"].Points.AddXY(xcoord, element);
+                chart1.Series["Ist"].Points.AddXY(0, 0, xcoord, element);
 
                 xcoord++;
             }
-            foreach (int element in istMaximalwerte) //die Maximalen Werte darstellen 
+            foreach (int element in _form1_anal.Patientendatenbank.istMaximalwerte) //die Maximalen Werte darstellen 
+            {
+                int xcoord = 1;
+                chart1.Series["Soll"].Points.AddXY(xcoord, element);
+                xcoord++;
+            }
+            foreach (int element in _form1_anal.Patientendatenbank.istMinimalwerte)//die minimalen Werte darstellen
             {
                 int xcoord = 1;
                 chart1.Series["Soll"].Points.AddXY(xcoord, element);
@@ -191,10 +195,7 @@ namespace Bitmap_Test1_Schmid
 
         private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (int element in istMinimalwerte)//die minimalen Werte darstellen
-            {
 
-            }
 
         }
     }
