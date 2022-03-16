@@ -507,7 +507,7 @@ namespace Bitmap_Test1_Schmid
                                 if (_form1_schritt.screen.waagrechtunten >= right_y && _form1_schritt.screen.waagrechtoben <= right_y && _form1_schritt.screen.waagrechtunten >= left_y && _form1_schritt.screen.waagrechtoben <= left_y
                                 && Convert.ToInt32(lf_distance_x) >= mittelpunkt_links && Convert.ToInt32(lf_distance_x) <= mittelpunkt_rechts+10 && Convert.ToInt32(rf_distance_x) >= mittelpunkt_links && Convert.ToInt32(rf_distance_x) <= mittelpunkt_rechts+10)
                                 {
-                                    if ((Convert.ToInt32(rf_distance_x) > Convert.ToInt32(lf_distance_x) + 10) && !lf_rf_vergleich)
+                                    if ((Convert.ToInt32(rf_distance_x) > Convert.ToInt32(lf_distance_x) + 20) && !lf_rf_vergleich)
                                     {
                                         durchschnitt[schrittzähler] = (Math.Round((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator;
                                         left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
@@ -589,7 +589,7 @@ namespace Bitmap_Test1_Schmid
 
                                     }
 
-                                    else if ((Convert.ToInt32(rf_distance_x)+10 < Convert.ToInt32(lf_distance_x)) && lf_rf_vergleich)
+                                    else if ((Convert.ToInt32(rf_distance_x)+20 < Convert.ToInt32(lf_distance_x)) && lf_rf_vergleich)
                                     {
                                         durchschnitt[schrittzähler] = (Math.Round((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator;
                                         right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
