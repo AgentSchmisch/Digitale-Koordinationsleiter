@@ -20,9 +20,7 @@ namespace Bitmap_Test1_Schmid
         public double schritte = 0;
         public double länge = 300;
 
-        public int[] sollMittelwerte = new int[6];
-        public int[] istMinimalwerte = new int[6];
-        public int[] istMaximalwerte = new int[6];
+
 
         Patientendatenbank patientendatenbank = new Patientendatenbank();
 
@@ -102,23 +100,31 @@ namespace Bitmap_Test1_Schmid
 
             //zuerst die form vergrößern um das chart zu zeigen
             //dann die werte aus der Patientendatenbank holen und im chart darstellen
-            chart1.Titles.Add(patientendatenbank.vorname + " " + patientendatenbank.nachname); //titel des diagramms setzen
+            chart1.Titles["Title1"].Text =_form1_anal.Patientendatenbank.vorname + " " + _form1_anal.Patientendatenbank.nachname; //titel des diagramms setzen
             chart1.Series["Soll"].Points.Clear();//alle alten informationen löschen
             chart1.Series["Ist"].Points.Clear();
 
-            foreach (int element in sollMittelwerte) //die Durchschnittlichen Werte darstellen
+            int xcoord = 1;
+            foreach (int element in _form1_anal.Patientendatenbank.sollMittelwerte) //die Durchschnittlichen Werte darstellen
             {
-                int xcoord = 1;
-                chart1.Series["Ist"].Points.AddXY(xcoord, element);
+                
+                chart1.Series["Soll"].Points.AddXY(xcoord, element);
 
                 xcoord++;
             }
-            foreach (int element in istMaximalwerte) //die Maximalen Werte darstellen 
+
+           
+            for (int i = 0; i < _form1_anal.Patientendatenbank.istMaximalwerte.Length; i++)
             {
-                int xcoord = 1;
-                chart1.Series["Soll"].Points.AddXY(xcoord, element);
+                if (i == 0)
+                    xcoord = 1;
+
+                
+                chart1.Series["Ist"].Points.AddXY(xcoord, 0, _form1_anal.Patientendatenbank.istMinimalwerte[i], _form1_anal.Patientendatenbank.istMaximalwerte[i]);
                 xcoord++;
             }
+
+
 
             lab_durchs.ForeColor = myColor;
             lab_klein.ForeColor = myColor;
@@ -191,10 +197,7 @@ namespace Bitmap_Test1_Schmid
 
         private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)
         {
-            foreach (int element in istMinimalwerte)//die minimalen Werte darstellen
-            {
 
-            }
 
         }
     }

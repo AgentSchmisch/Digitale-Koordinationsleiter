@@ -123,6 +123,7 @@ namespace Bitmap_Test1_Schmid
             this.Patienten.Name = "Patienten";
             this.Patienten.Size = new System.Drawing.Size(435, 100);
             this.Patienten.TabIndex = 9;
+            this.Patienten.SelectedIndexChanged += new System.EventHandler(this.Patienten_SelectedIndexChanged);
             this.Patienten.DoubleClick += new System.EventHandler(this.Patienten_DoubleClick);
             // 
             // auswahlBtn
