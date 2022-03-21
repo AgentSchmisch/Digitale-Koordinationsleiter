@@ -215,7 +215,8 @@ namespace Bitmap_Test1_Schmid
 
                 if (query1 != "SELECT Patientennummer, Vorname, Nachname, PLZ, Ort, Geburtsdatum FROM Patientenliste WHERE ;")
                 {
-                    Patienten.Enabled = true;
+
+                    Patienten.Enabled = true; 
 
                     cmd = new SqlCommand(query1, conn);
                     conn.Open();

@@ -137,10 +137,10 @@ namespace Bitmap_Test1_Schmid
 
             länge = Properties.Settings.Default.länge;
 
-            //steps.Text = schritte.ToString() + " (" + Math.Round((_form1_anal.screen.Auflösung_Projektor_x / (schritte - 1)) / _form1_anal.screen.Auflösung_Projektor_x * länge).ToString() + " cm)";
-            //durchs.Text = Math.Round((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
-            //klein.Text = Math.Round((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
-            //groß.Text = Math.Round((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            steps.Text = schritte.ToString() + " (" + Math.Round((_form1_anal.screen.Auflösung_Projektor_x / (schritte - 1)) / _form1_anal.screen.Auflösung_Projektor_x * länge).ToString() + " cm)";
+            durchs.Text = Math.Round((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            klein.Text = Math.Round((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+            groß.Text = Math.Round((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
 
             Size = new Size(this.Size.Width, 136);
             this.CenterToScreen();

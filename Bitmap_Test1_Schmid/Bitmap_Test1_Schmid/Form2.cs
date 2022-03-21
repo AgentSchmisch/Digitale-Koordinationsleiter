@@ -15,9 +15,7 @@ namespace Bitmap_Test1_Schmid
 
         public System.Media.SoundPlayer player;
         public string audio_mac = "mac_bong.wav";
-        //public string audio_mac = @"..\..\Resources\mac_bong.wav";
         public string audio_game = "fight_theme.wav";
-        //public string audio_game = @"..\..\Resources\fight_theme.wav";
 
         public int color_r = 255;//linienfarbe
         public int color_g = 255;
@@ -360,8 +358,7 @@ namespace Bitmap_Test1_Schmid
                 {
                     kur.Visible = true;
                     player = new System.Media.SoundPlayer(audio_mac);
-                   //TODO: kommentiert entfernen
-                    //player.Play();
+                    player.Play();
                 }
                 if (delay == 100 || delay == 200)
                 {
