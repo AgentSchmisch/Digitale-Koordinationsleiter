@@ -25,7 +25,7 @@ namespace Bitmap_Test1_Schmid
         public double kleinsterabstand = 500;
         public double größterabstand = 0;
 
-        public int[] sollabstände=new int[100];
+        public int sollabstände=0;
 
         public int soll_größterabstand = 0;
         public int soll_kleinsterabstand = 100;
@@ -70,9 +70,12 @@ namespace Bitmap_Test1_Schmid
                 länge.ForeColor = Color.White;
                 label2.ForeColor = Color.White;
                 label4.ForeColor = Color.White;
-               
-                sollabstände[soll_anzahl] += Convert.ToInt32(steps.Value.ToString());
-                soll_anzahl++;
+                //if (steps.Value == Convert.ToInt32(Patientendatenbank.projektionslaenge)) { }
+                //else
+                //{
+                //    sollabstände += Convert.ToInt32(steps.Value.ToString());
+                //    soll_anzahl++;
+                //}
             }
             catch
             {
@@ -193,12 +196,16 @@ namespace Bitmap_Test1_Schmid
 
                 if (Patientendatenbank.vorname != null && Patientendatenbank.nachname != null && Patientendatenbank.letzteBehandlung != null)
                 {
+                    int step = Convert.ToInt32(Patientendatenbank.projektionslaenge.Replace("cm", "")) / Convert.ToInt32(Patientendatenbank.letzteSchrittanzahl);
+
                     lblName.Text = Patientendatenbank.vorname+" "+Patientendatenbank.nachname;
                     lblLezteTherapie.Text = Patientendatenbank.letzteBehandlung;
-                    lblSteps.Text = Patientendatenbank.letzteSchrittanzahl;
+                    lblSteps.Text = step.ToString();
                     lblProjektionslaenge.Text = Patientendatenbank.projektionslaenge;
+
+
                     if (Patientendatenbank.letzteSchrittanzahl.All(char.IsDigit))
-                        steps.Text = Patientendatenbank.letzteSchrittanzahl;
+                        steps.Text = step.ToString();
 
                     if (Patientendatenbank.auswahl)
                     {
@@ -219,13 +226,11 @@ namespace Bitmap_Test1_Schmid
 
         private void BtnSitzungBeenden_Click(object sender, EventArgs e)
         {
-            for (int i = 1; i < sollabstände.Length; i++) //alle arraywerte durchgehen außer den ersten, da dieser von der letzten Sitzung übernommen wird
-            {
-                soll_mittelwert += sollabstände[i];
-            }
-            soll_mittelwert = (soll_mittelwert-Convert.ToInt32(Patientendatenbank.letzteSchrittanzahl)) / (soll_anzahl - 1);
+
+            soll_mittelwert = (soll_mittelwert) / (soll_anzahl);
             //übergabe der aktuellen schrittweite nach abschließen der Behandlungssitzung
-            Patientendatenbank.wertuebergabe = soll_mittelwert.ToString(); ; 
+            Patientendatenbank.wertuebergabe = steps.Value.ToString(); 
+
             //Patientendatenbank.wertuebergabe = 
             //    soll_mittelwert+ "," +
             //    analyse.kleinsterabstand.ToString()+","+
