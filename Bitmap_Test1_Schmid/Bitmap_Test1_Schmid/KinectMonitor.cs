@@ -250,7 +250,7 @@ namespace Bitmap_Test1_Schmid
                         if ((int)lf_distance_x <= 0)
                             lf_distance_x = 1;
 
-                        Xlinks.Text = lf_distance_x.ToString("###");//todo entfernen
+                        Xlinks.Text = lf_distance_x.ToString("###");
                         Ylinks.Text = lf_distance_y.ToString("###");
                         Zlinks.Text = lf_distance_z.ToString("#.##");
 

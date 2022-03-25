@@ -334,6 +334,7 @@ namespace Bitmap_Test1_Schmid
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Kantenerkennung";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IR_FormClosing);
             this.Load += new System.EventHandler(this.IR_Load_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IR_KeyDown);

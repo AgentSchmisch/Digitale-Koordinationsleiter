@@ -41,7 +41,7 @@ namespace Bitmap_Test1_Schmid
         public double mittelpunkt_rechts = 0;
 
         public double mittelpunkt_links_y = 0;
-        public double mittelpunkt_rechts_y = 0;//unwichtig: das wurde geändert
+        public double mittelpunkt_rechts_y = 0;
 
         int kreise = 0;
 
