@@ -649,13 +649,14 @@ namespace Bitmap_Test1_Schmid
         {
             set
             {
-                int kleinsterabstand=0;
+                int kleinsterabstand=Convert.ToInt32(_haupt.analyse.kleinsterabstand);
                 if (_haupt.analyse.kleinsterabstand == 500)
                 {
                     kleinsterabstand = 0;
                 }
+                int durchschnitt =  Convert.ToInt32(Properties.Settings.Default.länge)/ Convert.ToInt32(value);
                 query3 = "INSERT INTO " + vorname + "_" + nachname + "_" + PatNr_aktuell + " (Vorname,Nachname,Behandlungsdatum,Schrittweite_soll,Schrittweite_ist,Projektionslaenge) VALUES ('" + vorname + "','" + nachname + "','"
-                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + value + "','"+kleinsterabstand+","+_haupt.analyse.schrittdurchschnitt+","+_haupt.analyse.größterabstand+"','"+ (Properties.Settings.Default.länge).ToString()+"');";
+                    + DateTime.Now.ToString("dd.MM.yyyy") + "','" + durchschnitt.ToString() + "','"+kleinsterabstand+","+Math.Ceiling(_haupt.analyse.schrittdurchschnitt)+","+Math.Ceiling(_haupt.analyse.größterabstand)+"','"+ (Properties.Settings.Default.länge).ToString()+"');";
 
                 try
                 {
@@ -1136,7 +1137,7 @@ namespace Bitmap_Test1_Schmid
                                                                                                         "Primary Key(Behandlungsnummer)); " +
                     "INSERT INTO Patientenliste(Vorname,Nachname,Geburtsdatum,Adresse,PLZ,Ort,Telefonnummer) VALUES ('" + TbName.Text + "','" + TbNachname.Text + "','" +
                      TbGeburtsdatum.Text + "','" + TbAdresse.Text + "','" + TbOrt.Text + "','" + TbPLZ.Text + "','" + TbTelefonnummer.Text + "') ;";
-
+                query2 += "INSERT INTO" + TbName.Text + "_" + TbNachname.Text + "_" + TbPatNr.Text + "(Vorname,Nachname,Schrittweite_soll,Schrittweite_ist) VALUES('" + TbName.Text + "','" + TbNachname.Text + "','0','0,0,0');";
                 try
                 {
                     conn.Open();

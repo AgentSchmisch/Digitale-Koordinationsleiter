@@ -138,9 +138,14 @@ namespace Bitmap_Test1_Schmid
             länge = Properties.Settings.Default.länge;
 
             steps.Text = schritte.ToString() + " (" + Math.Round((_form1_anal.screen.Auflösung_Projektor_x / (schritte - 1)) / _form1_anal.screen.Auflösung_Projektor_x * länge).ToString() + " cm)";
-            durchs.Text = Math.Round((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
-            klein.Text = Math.Round((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
-            groß.Text = Math.Round((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge).ToString() + " cm";
+
+            schrittdurchschnitt = Math.Round(((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge));
+            kleinsterabstand = Math.Round(((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge));
+            größterabstand = Math.Round(((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge));
+
+            durchs.Text = schrittdurchschnitt + " cm";
+            klein.Text = kleinsterabstand + " cm";
+            groß.Text = größterabstand + " cm";
 
             Size = new Size(this.Size.Width, 136);
             this.CenterToScreen();
@@ -189,10 +194,14 @@ namespace Bitmap_Test1_Schmid
             Properties.Settings.Default.länge = länge;
             Properties.Settings.Default.Save();
 
-            durchs.Text = Math.Round(((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
-            klein.Text = Math.Round(((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
-            groß.Text = Math.Round(((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge)).ToString() + " cm";
-            Size = new Size(470, this.Size.Height);
+            schrittdurchschnitt = Math.Round(((schrittdurchschnitt / _form1_anal.screen.Auflösung_Projektor_x) * länge));
+            kleinsterabstand = Math.Round(((kleinsterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge));
+            größterabstand = Math.Round(((größterabstand / _form1_anal.screen.Auflösung_Projektor_x) * länge));
+
+            durchs.Text = schrittdurchschnitt + " cm";
+            klein.Text = kleinsterabstand + " cm";
+            groß.Text = größterabstand  + " cm";
+            Size = new Size(986, this.Size.Height);
         }
 
         private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)
