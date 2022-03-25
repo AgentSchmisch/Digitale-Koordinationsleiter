@@ -247,6 +247,7 @@ namespace Bitmap_Test1_Schmid
                 kinectM.form1_schritt = this;
                 kinectM.steps_kinect = Convert.ToInt32(steps.Text);
                 kinectToolStripMenuItem.BackColor = Color.Red;
+                screen.fuß_zurücksetzen.BackColor = Color.Red;
                 check_autoobjekt.Enabled = true;
                 screen.fuß_zurücksetzen.Visible = true;
                 //Task kinectmon = Task.Run(() => kinectM.ShowDialog());
@@ -262,6 +263,7 @@ namespace Bitmap_Test1_Schmid
 
                 kinectM.Close();
                 kinectToolStripMenuItem.BackColor = Color.Transparent;
+                screen.fuß_zurücksetzen.BackColor = Color.Transparent;
             }
             einaus = !einaus;
         }
@@ -682,6 +684,9 @@ namespace Bitmap_Test1_Schmid
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            fläche.Enabled = false;
+            regler.Enabled = false;
+            längebox.Enabled = false;
             screen.unendlich2.Visible = false;
             screen.var = false;
             screen.himmelhölle.Visible = false;

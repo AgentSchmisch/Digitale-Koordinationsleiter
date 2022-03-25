@@ -221,6 +221,7 @@ namespace Bitmap_Test1_Schmid
 
                     bodyFrame.GetAndRefreshBodyData(bodies);
                     _form1_schritt.kinectToolStripMenuItem.BackColor = Color.Orange;
+                    _form1_schritt.screen.fuß_zurücksetzen.BackColor = Color.Orange;
                     dataRecieved = true;
                 }
             }
@@ -231,7 +232,8 @@ namespace Bitmap_Test1_Schmid
                     if (body.IsTracked)
                     {
                         _form1_schritt.kinectToolStripMenuItem.BackColor = Color.Green;
-                        IReadOnlyDictionary<JointType, Joint> joints = body.Joints;
+                        _form1_schritt.screen.fuß_zurücksetzen.BackColor = Color.Green;
+                        IReadOnlyDictionary <JointType, Joint> joints = body.Joints;
                         Dictionary<JointType, Point> jointPoints = new Dictionary<JointType, Point>();
 
                         Joint FootRight = joints[JointType.FootRight];

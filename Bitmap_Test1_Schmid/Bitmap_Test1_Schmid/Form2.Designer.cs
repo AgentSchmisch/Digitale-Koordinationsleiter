@@ -712,7 +712,7 @@ namespace Bitmap_Test1_Schmid
             // 
             // fuß_zurücksetzen
             // 
-            this.fuß_zurücksetzen.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.fuß_zurücksetzen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fuß_zurücksetzen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.fuß_zurücksetzen.ForeColor = System.Drawing.Color.White;
             this.fuß_zurücksetzen.Location = new System.Drawing.Point(154, 481);
