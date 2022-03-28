@@ -201,7 +201,7 @@ namespace Bitmap_Test1_Schmid
             durchs.Text = schrittdurchschnitt + " cm";
             klein.Text = kleinsterabstand + " cm";
             groß.Text = größterabstand  + " cm";
-            Size = new Size(986, this.Size.Height);
+            Size = new Size(892, this.Size.Height);
         }
 
         private void RB_sollwerte_CheckedChanged(object sender, EventArgs e)

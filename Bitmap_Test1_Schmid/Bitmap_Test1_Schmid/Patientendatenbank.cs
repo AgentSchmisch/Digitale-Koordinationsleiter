@@ -8,10 +8,6 @@ namespace Bitmap_Test1_Schmid
 {
     public partial class Patientendatenbank : Form
     {
-        /*Alle Patientenspezifischen Tabellen nach dem Schema: Patientennummer_Vorname_Nachname
-         * TODO: 
-        */
-
         //Connectionstring für die Verbindung zum Server
         string SQLServer = "";
         //"server = koordinationsleiter.ddns.net; user id = Klinikum; password = koordinationsleiter; database = Patienten; sslmode=None; port=3306; persistsecurityinfo=True";

@@ -474,7 +474,6 @@ namespace Bitmap_Test1_Schmid
 
         private void label1_DoubleClick(object sender, EventArgs e)
         {
-            screen.himmel_hölle();
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -261,7 +261,7 @@ namespace Bitmap_Test1_Schmid
                         Zrechts.Text = rf_distance_z.ToString("#.##");
 
                         //double multi = (_form1_schritt.screen.Auflösung_Projektor_y / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben)) + 3;
-                        double multi = ((_form1_schritt.screen.waagrechtunten - _form1_schritt.screen.waagrechtoben) / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben))+6;
+                        double multi = ((_form1_schritt.screen.waagrechtunten - _form1_schritt.screen.waagrechtoben) / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben))+5;
                         double right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
                         double left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi); 
 
