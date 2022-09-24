@@ -61,11 +61,11 @@ namespace Bitmap_Test1_Schmid
 
         private void Patientendatenbank_Load(object sender, EventArgs e)
         {
-            if (neustart)
-            {
-                _haupt.usb.ShowDialog();
-                neustart = false;
-            }
+            //if (neustart)
+            //{
+            //    _haupt.usb.ShowDialog();
+            //    neustart = false;
+            //}
             Patienten.Enabled = false;
             Patienten.Items.Clear();
             Patienten.Items.Add("\t         Keine Einträge gefunden");
@@ -73,7 +73,14 @@ namespace Bitmap_Test1_Schmid
             laufwerkToolStripMenuItem.Text = "Aktuelles Laufwerk: " + Properties.Settings.Default.Laufwerk;
             Datenbankbuchstabe = Properties.Settings.Default.Laufwerk;
             Datenbankbuchstabe.Replace("\\", "");
-            SQLServer = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Datenbankbuchstabe + @"Datenbank\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+
+            string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            path = path.Replace(@"file:\", "");
+            path = path.Replace(@"Digitale Koordinationsleiter\Digitale Koordinationsleiter", "");
+            SQLServer = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"Datenbank\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+
+            //SQLServer = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Datenbankbuchstabe + @"Datenbank\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+
             conn = new SqlConnection(SQLServer);
 
             #region zurücksetzen der Formelemente

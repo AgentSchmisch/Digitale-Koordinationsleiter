@@ -40,7 +40,9 @@ namespace Bitmap_Test1_Schmid
         public int Auflösung_Projektor_y = 800;
 
         public int waagrechtoben = 100;
-        public int waagrechtunten = 700;
+        public int waagrechtunten = 800 - 100;
+
+        int devidierer = 5; //für rot-blau; bei doppelter auflösung =10
 
         private Form1 _form1_main;
         public Form1 form1_main
@@ -97,8 +99,8 @@ namespace Bitmap_Test1_Schmid
 
             image1 = new Bitmap(Auflösung_Projektor_x, Auflösung_Projektor_y);
 
-            timer1.Start(); //ohne animation das kommentieren
-            //linienladen(); //ohne animation das auskommentieren
+            //timer1.Start(); //ohne animation das kommentieren
+            linienladen(); //ohne animation das auskommentieren
 
             //zu "linieladen()" verschoben !!!
         }
@@ -239,7 +241,7 @@ namespace Bitmap_Test1_Schmid
                 }
 
                 regler.Maximum = sendvar - 1;
-                schrittlänge[1] = 1280.0 / sendvar;
+                schrittlänge[1] = Convert.ToDouble(Auflösung_Projektor_x) / sendvar;
                 schrittlängealt = schrittlänge[1];
 
                 for (x = 0; x < image1.Width; x++)               //waagrecht oben
@@ -329,7 +331,7 @@ namespace Bitmap_Test1_Schmid
             {
                 neu += 10;
 
-                for (x = 630 + neu; x < 630 + neu + 10; x++)
+                for (x = Auflösung_Projektor_x / 2 -10 + neu; x < Auflösung_Projektor_x / 2 - 10 + neu + 10; x++)
                 {
                     for (y = 0; y < Auflösung_Projektor_y; y++)
                     {
@@ -338,7 +340,7 @@ namespace Bitmap_Test1_Schmid
                         image1.SetPixel(x, y, newColor);
                     }
                 }
-                for (x = 650 - neu; x > 650 - neu - 10; x--)
+                for (x = Auflösung_Projektor_x / 2 + 10 - neu; x > Auflösung_Projektor_x / 2 + 10 - neu - 10; x--)
                 {
                     for (y = 0; y < Auflösung_Projektor_y; y++)
                     {
@@ -528,6 +530,8 @@ namespace Bitmap_Test1_Schmid
         public bool var = true;
         public void drawcircle(object sender, PaintEventArgs g)
         {
+
+            double multiplikator_rotblau = Auflösung_Projektor_x / devidierer;
             if (var)
             {
                 int radius = 10;
@@ -536,13 +540,13 @@ namespace Bitmap_Test1_Schmid
                 rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten);
                 Pen redPen = new Pen(Color.Red, 20);//Kreisradius
                 Pen bluePen = new Pen(Color.Blue, 20);//Kreisradius
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < devidierer; i++)
                 {
-                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * 270) - radius), (int)(rnd.Next(waagrechtoben+100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
+                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * multiplikator_rotblau) - radius), (int)(rnd.Next(waagrechtoben+100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
                 }
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < devidierer; i++)
                 {
-                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * 270) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten-100) - radius), (int)(radius * 2), (int)(radius * 2));
+                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * multiplikator_rotblau) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten-100) - radius), (int)(radius * 2), (int)(radius * 2));
                 }
             }
             if (!var)
@@ -553,13 +557,13 @@ namespace Bitmap_Test1_Schmid
                 rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten);
                 Pen redPen = new Pen(Color.Transparent, 20);//Kreisradius
                 Pen bluePen = new Pen(Color.Transparent, 20);//Kreisradius
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < devidierer; i++)
                 {
-                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * 270) - radius), (int)(rnd.Next(waagrechtoben+100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
+                    g.Graphics.DrawEllipse(bluePen, (int)(130 + (i * multiplikator_rotblau) - radius), (int)(rnd.Next(waagrechtoben+100, Auflösung_Projektor_y / 2) - radius), (int)(radius * 2), (int)(radius * 2));
                 }
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < devidierer; i++)
                 {
-                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * 270) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten-100) - radius), (int)(radius * 2), (int)(radius * 2));
+                    g.Graphics.DrawEllipse(redPen, (int)(30 + (i * multiplikator_rotblau) - radius), (int)(rnd2.Next(Auflösung_Projektor_y / 2, waagrechtunten-100) - radius), (int)(radius * 2), (int)(radius * 2));
                 }
             }
         }

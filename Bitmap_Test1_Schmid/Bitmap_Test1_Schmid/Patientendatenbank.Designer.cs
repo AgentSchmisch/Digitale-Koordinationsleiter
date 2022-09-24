@@ -96,6 +96,7 @@ namespace Bitmap_Test1_Schmid
             this.laufwerkToolStripMenuItem.Name = "laufwerkToolStripMenuItem";
             this.laufwerkToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.laufwerkToolStripMenuItem.Text = "Laufwerk:";
+            this.laufwerkToolStripMenuItem.Visible = false;
             this.laufwerkToolStripMenuItem.Click += new System.EventHandler(this.laufwerkToolStripMenuItem_Click);
             // 
             // sucheBtn
