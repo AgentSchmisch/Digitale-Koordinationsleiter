@@ -474,6 +474,11 @@ namespace Bitmap_Test1_Schmid
 
         private void label1_DoubleClick(object sender, EventArgs e)
         {
+            screen.block_five.Visible = true;
+            screen.block_five.Location = new Point((int)((((kinectM.schritt_links[0] + kinectM.schritt_links[1] + kinectM.schritt_links[2]) / 3) - kinectM.mittelpunkt_links) * kinectM.multiplikator), (int)kinectM.left_y);
+            screen.block_four.Visible = true;
+            screen.block_four.Location = new Point((int)((((kinectM.schritt_rechts[0] + kinectM.schritt_rechts[1] + kinectM.schritt_rechts[2]) / 3) - kinectM.mittelpunkt_links) * kinectM.multiplikator), (int)kinectM.right_y);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -524,7 +529,7 @@ namespace Bitmap_Test1_Schmid
                 längebox.Maximum = 2;
                 screen.längebox.Maximum = 3;
                 screen.steps.Text = steps.Text;
-                fläche.Enabled = false;
+                //fläche.Enabled = false;
                 regler.Enabled = false;
                 kinectM.zufall_objekt = true;
                 screen.zufallbox();
@@ -535,10 +540,10 @@ namespace Bitmap_Test1_Schmid
                 label2.Text = "Länge des Objektes:";
                 längebox.Maximum = Convert.ToInt32(steps.Text) - regler.Value;
                 screen.längebox.Maximum = längebox.Maximum;
-                fläche.Enabled = true;
+                //fläche.Enabled = true;
                 regler.Enabled = true;
                 kinectM.zufall_objekt = false;
-                screen.linienladen();
+                screen.deletebox();
                 bestätigen.PerformClick();
                 screen.objekte_generiert = false;
                 kinectM.autobox = true;
@@ -569,7 +574,7 @@ namespace Bitmap_Test1_Schmid
         {
             if (!blockklick)
             {
-                if (einaus)
+                if (einaus)//wenn ausgeschaltet dann einschalten
                 {
                     kinectToolStripMenuItem.PerformClick();
                 }
@@ -672,14 +677,13 @@ namespace Bitmap_Test1_Schmid
                 screen.time_left.Visible = false;
                 kinectM.startstop_multiplayer = false;
                 screen.Multiplayer_timer.Stop();
-                screen.time_left.Visible = false;
                 screen.linienladen();
                 screen.user1.Visible = false;
                 screen.user1.Text = "Spieler 1: ";
                 screen.user2.Text = "Spieler 2: ";
                 screen.user2.Visible = false;
                 screen.strich_rechts.Visible = false;
-                if (einaus)
+                if (!einaus)
                 {
                     kinectToolStripMenuItem.PerformClick();
                 }

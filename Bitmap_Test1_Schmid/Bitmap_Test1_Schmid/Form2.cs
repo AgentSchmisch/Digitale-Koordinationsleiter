@@ -50,7 +50,7 @@ namespace Bitmap_Test1_Schmid
             set { this._form1_main = value; }
         }
 
-        Bitmap image1 = null;
+        public Bitmap image1 = null;
         public KinectMonitor _Kinect;
         public Form2()
         {
@@ -99,8 +99,8 @@ namespace Bitmap_Test1_Schmid
 
             image1 = new Bitmap(Auflösung_Projektor_x, Auflösung_Projektor_y);
 
-            //timer1.Start(); //ohne animation das kommentieren
-            linienladen(); //ohne animation das auskommentieren
+            timer1.Start(); //ohne animation das kommentieren
+            //linienladen(); //ohne animation das auskommentieren
 
             //zu "linieladen()" verschoben !!!
         }
@@ -698,7 +698,7 @@ namespace Bitmap_Test1_Schmid
                 for (int i = 0; i < längebox.Value; i++)
                 {
 
-                    do objektposition[i] = objekt.Next(1, Convert.ToInt32(steps.Text));
+                    do objektposition[i] = objekt.Next(2, Convert.ToInt32(steps.Text));
                     while (objektposition[0] == objektposition[1]);
                     //while (objektposition[i].ToString().Contains(number.ToString()));
 
@@ -708,6 +708,10 @@ namespace Bitmap_Test1_Schmid
             }
             if (objekte_generiert)
             {
+                reglerwertalt = objektposition[0].ToString();
+                längewertalt = längebox.Value;
+                _form1_main.kinectM.anzeigepunkt = Convert.ToInt32(schrittlänge[objektposition[0]]);
+
                 for (int i = 0; i < längebox.Value; i++)
                 {
                     for (x = Convert.ToInt32(schrittlänge[objektposition[i]]) + dicke + 5; x < schrittlänge[objektposition[i] + 1]; x++)                 //fläche
@@ -746,7 +750,7 @@ namespace Bitmap_Test1_Schmid
                 _form1_main.kinectM.wieviel_geschafft = 0;
                 neuerwert();
                 next_player.Visible = true;
-                Thread.Sleep(3000);
+                Thread.Sleep(5000);
                 next_player.Visible = false;
             }
         }

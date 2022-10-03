@@ -45,11 +45,15 @@ namespace Bitmap_Test1_Schmid
         int schritterkennungabstand = 3;
         int abstand_zw_zwei_schritten = 40;
 
-        double mittelpunkt_links;
+        public double mittelpunkt_links;
         double mittelpunkt_rechts;
         double mittelpunkt_links_y;
         double mittelpunkt_rechts_y;
-        double multiplikator;
+        public double multiplikator;
+
+        public double multi;
+        public double right_y;
+        public double left_y;
 
         public bool übsülon = false;
         public int puh = 0;
@@ -261,9 +265,9 @@ namespace Bitmap_Test1_Schmid
                         Zrechts.Text = rf_distance_z.ToString("#.##");
 
                         //double multi = (_form1_schritt.screen.Auflösung_Projektor_y / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben)) + 3;
-                        double multi = ((_form1_schritt.screen.waagrechtunten - _form1_schritt.screen.waagrechtoben) / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben))+5;
-                        double right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
-                        double left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi); 
+                        multi = ((_form1_schritt.screen.waagrechtunten - _form1_schritt.screen.waagrechtoben) / (Properties.Settings.Default.weg_unten - Properties.Settings.Default.weg_oben))+5;
+                        right_y = ((Convert.ToDouble(rf_distance_y) - Properties.Settings.Default.weg_oben) * multi);
+                        left_y = ((Convert.ToDouble(lf_distance_y) - Properties.Settings.Default.weg_oben) * multi); 
 
 
                         tracker_xrechts[0] = Convert.ToDouble(Xrechts.Text);
@@ -306,9 +310,11 @@ namespace Bitmap_Test1_Schmid
                         //_form1_schritt.screen.koordinaten_left.Visible = true;
                         //_form1_schritt.screen.block_five.Visible = true;
                         //_form1_schritt.screen.block_five.Location = new Point((int)((((schritt_links[0] + schritt_links[1] + schritt_links[2]) / 3) - mittelpunkt_links) * multiplikator), (int)left_y);
+                        //_form1_schritt.screen.block_four.Visible = true;
+                        //_form1_schritt.screen.block_four.Location = new Point((int)((((schritt_rechts[0] + schritt_rechts[1] + schritt_rechts[2]) / 3) - mittelpunkt_links) * multiplikator), (int)right_y);
 
                         #endregion
-                    
+
                         if (!übsülon)
                         {
                             if (!startstop)
@@ -485,7 +491,13 @@ namespace Bitmap_Test1_Schmid
                                 }
                                 if (zufall_objekt)
                                 {
-
+                                    if (Convert.ToInt32(rf_distance_x) >= 0 || Convert.ToInt32(lf_distance_x) >= 0)
+                                    {
+                                        if (Convert.ToInt32((rf_distance_x - mittelpunkt_links) * multiplikator) >= anzeigepunkt - empfindlichkeit || Convert.ToInt32((lf_distance_x - mittelpunkt_links) * multiplikator) >= anzeigepunkt - empfindlichkeit)
+                                        {
+                                            _form1_schritt.screen.pictureBox1.Image = _form1_schritt.screen.image1;
+                                        }
+                                    }
                                 }
                             }
                             if (startstop)//rote linie

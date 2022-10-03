@@ -312,7 +312,7 @@
             this.himmelHölleToolStripMenuItem.CheckOnClick = true;
             this.himmelHölleToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.himmelHölleToolStripMenuItem.Name = "himmelHölleToolStripMenuItem";
-            this.himmelHölleToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.himmelHölleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.himmelHölleToolStripMenuItem.Text = "Himmel/Hölle";
             this.himmelHölleToolStripMenuItem.Click += new System.EventHandler(this.himmelHölleToolStripMenuItem_Click);
             // 
@@ -322,7 +322,7 @@
             this.rotblauToolStripMenuItem.CheckOnClick = true;
             this.rotblauToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.rotblauToolStripMenuItem.Name = "rotblauToolStripMenuItem";
-            this.rotblauToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.rotblauToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.rotblauToolStripMenuItem.Text = "rot/blau";
             this.rotblauToolStripMenuItem.Click += new System.EventHandler(this.rotblauToolStripMenuItem_Click);
             // 
@@ -335,7 +335,7 @@
             this.multiplayerToolStripMenuItem});
             this.startstopToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.startstopToolStripMenuItem.Name = "startstopToolStripMenuItem";
-            this.startstopToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.startstopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startstopToolStripMenuItem.Text = "catch me";
             this.startstopToolStripMenuItem.Click += new System.EventHandler(this.startstopToolStripMenuItem_Click);
             // 
@@ -345,7 +345,7 @@
             this.normalToolStripMenuItem.CheckOnClick = true;
             this.normalToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.normalToolStripMenuItem.Text = "singleplayer";
             this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
             // 
@@ -355,7 +355,7 @@
             this.multiplayerToolStripMenuItem.CheckOnClick = true;
             this.multiplayerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.multiplayerToolStripMenuItem.Name = "multiplayerToolStripMenuItem";
-            this.multiplayerToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.multiplayerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.multiplayerToolStripMenuItem.Text = "multiplayer";
             this.multiplayerToolStripMenuItem.Click += new System.EventHandler(this.multiplayerToolStripMenuItem_Click);
             // 
@@ -365,7 +365,7 @@
             this.unendlichToolStripMenuItem.CheckOnClick = true;
             this.unendlichToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.unendlichToolStripMenuItem.Name = "unendlichToolStripMenuItem";
-            this.unendlichToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.unendlichToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.unendlichToolStripMenuItem.Text = "unendlich";
             this.unendlichToolStripMenuItem.Click += new System.EventHandler(this.unendlichToolStripMenuItem_Click);
             // 
@@ -375,7 +375,7 @@
             this.blöckeToolStripMenuItem.CheckOnClick = true;
             this.blöckeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.blöckeToolStripMenuItem.Name = "blöckeToolStripMenuItem";
-            this.blöckeToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.blöckeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.blöckeToolStripMenuItem.Text = "Blöcke";
             this.blöckeToolStripMenuItem.Click += new System.EventHandler(this.blöckeToolStripMenuItem_Click);
             // 

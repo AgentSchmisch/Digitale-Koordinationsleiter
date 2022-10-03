@@ -831,8 +831,6 @@ namespace Bitmap_Test1_Schmid
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox steps;
@@ -884,5 +882,6 @@ namespace Bitmap_Test1_Schmid
         public System.Windows.Forms.Timer Multiplayer_timer;
         public System.Windows.Forms.Button fuß_zurücksetzen;
         public System.Windows.Forms.Label next_player;
+        public System.Windows.Forms.PictureBox pictureBox1;
     }
 }
