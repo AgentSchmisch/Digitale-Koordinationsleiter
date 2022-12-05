@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Bitmap_Test1_Schmid
@@ -330,9 +331,22 @@ namespace Bitmap_Test1_Schmid
         }
         private void Form1_HelpButtonClicked(object sender, CancelEventArgs e)
         {
-            if (MessageBox.Show("Wollen Sie wirklich neustarten?", "Neustart", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                Application.Restart();
-        }
+            DialogResult result = MessageBox.Show("Falls Sie ein Problem haben, versuchen Sie zuerst die App neuzustarten.\nIst das bereits geschehen? ", "", MessageBoxButtons.YesNoCancel);
+
+            if (result == DialogResult.No)
+            {
+                if (MessageBox.Show("Wollen Sie wirklich neustarten?", "Neustart", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    Application.Restart();
+            }
+
+            else if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+            else if (result == DialogResult.Yes)
+                sendMail();
+        
+    }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -703,5 +717,11 @@ namespace Bitmap_Test1_Schmid
         {
             reset.BackColor = Color.Transparent;
         }
+
+        void sendMail()
+        {
+            Process.Start("mailto:digitale.koordinationsleiter@gmail.com?subject=" + "Supportfall Digitale Koordinationsleiter");
+        }
+
     }
 }
