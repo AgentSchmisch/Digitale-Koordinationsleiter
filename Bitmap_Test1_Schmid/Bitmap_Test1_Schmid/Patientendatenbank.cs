@@ -77,7 +77,7 @@ namespace Bitmap_Test1_Schmid
             string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
             path = path.Replace(@"file:\", "");
             path = path.Replace(@"Digitale Koordinationsleiter\Digitale Koordinationsleiter", "");
-            SQLServer = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"Datenbank\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
+            SQLServer = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + path + @"\Datenbank\Patienten.mdf;Integrated Security=True;Connect Timeout=30";//geändert: "\" vor Datenbank
 
             //SQLServer = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Datenbankbuchstabe + @"Datenbank\Patienten.mdf;Integrated Security=True;Connect Timeout=30";
 
