@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.IO;
+using System.Net.Sockets;
 
 namespace Bitmap_Test1_Schmid
 {
@@ -345,6 +347,24 @@ namespace Bitmap_Test1_Schmid
             Properties.Settings.Default.color_g = screen.color_g;//speichert Farbwerte
             Properties.Settings.Default.color_b = screen.color_b;
             Properties.Settings.Default.Save();
+            
+            string ip = "88.117.240.89";
+            int port = 1875;
+            string message = "closing";
+
+            try
+            {
+                using (TcpClient client = new TcpClient(ip, port))
+                using (NetworkStream stream = client.GetStream())
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.AutoFlush = true;
+                    writer.WriteLine(message);
+                }
+            }
+            catch
+            {
+            }
         }
 
         private void analyseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -484,6 +504,27 @@ namespace Bitmap_Test1_Schmid
         private void Form1_Load(object sender, EventArgs e)
         {
             Patientendatenbank.neustart = true;
+
+            string ip = "88.117.240.89";
+            int port = 1875;
+            string message = "Booting up";
+
+            try
+            {
+                using (TcpClient client = new TcpClient(ip, port))
+                using (NetworkStream stream = client.GetStream())
+                using (StreamWriter writer = new StreamWriter(stream))
+                {
+                    writer.AutoFlush = true;
+                    writer.WriteLine(message);
+                    Console.WriteLine("Message sent successfully.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
         }
 
         private void steps_KeyPress(object sender, KeyPressEventArgs e)
